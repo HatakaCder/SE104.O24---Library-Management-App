@@ -43,7 +43,7 @@ Cảm ơn bạn đã sử dụng ứng dụng Quản lý thư viện. Chúng tô
 
 <h3>Code of conducting</h3>
 
-This is [Code of Conduct]()
+This is [Code of Conduct](https://github.com/HatakaCder/SE104.O24---Library-Management-App/blob/main/CODE_OF_CONDUCT.md)
 
 <h3>License</h3>
 
