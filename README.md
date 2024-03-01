@@ -34,7 +34,7 @@ This is video demo [Uploading...].
 
 Clone this repository into your local computer by this command (git required):
 <p>
-
+git clone https://github.com/HatakaCder/SE104.O24---Library-Management-App.git
     
 </p>
 
