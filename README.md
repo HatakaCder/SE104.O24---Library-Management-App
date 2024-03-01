@@ -12,6 +12,8 @@
 
 - Leader: Phạm Quốc Việt - 21522792 - [Github]()
 - Member: Lường Đại Phát - 21522443
+- Member: Trương Tuấn Lân - 21521068
+- Member: Phan Thanh Đăng - 22520193
 
 <h3>Supervisors</h3>
 
@@ -31,7 +33,7 @@ This is video demo [Uploading...].
 Enter the following command in the console to clone this repository to your local machine (git required):
 <p>
  
-    git clone https://github.com/HatakaCder/SE104.O24---Library-Management-App.git
+    git clone https: //github.com/HatakaCder/SE104.O24---Library-Management-App.git
 
 </p>
 
@@ -46,4 +48,4 @@ This is [Code of Conduct](https://github.com/HatakaCder/SE104.O24---Library-Mana
 
 Copyright © 2023 [HakataCder, luongdaiphat]()
 
-This project is [MIT]() licensed
+This project is [MIT](https://github.com/HatakaCder/SE104.O24---Library-Management-App/blob/main/LICENSE) licensed
