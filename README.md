@@ -28,7 +28,7 @@ This is video demo [Uploading...].
 
 <h3>How to use</h3>
 
-Clone this repository into your local computer by this command (git required):
+Enter the following command in the console to clone this repository to your local machine (git required):
 <p>
  
     git clone https://github.com/HatakaCder/SE104.O24---Library-Management-App.git
