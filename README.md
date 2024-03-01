@@ -47,6 +47,6 @@ This is [Code of Conduct]()
 
 <h3>License</h3>
 
-Copyright © 2023 [kiendoo4, HakataCder, luongdaiphat, AnTran210]()
+Copyright © 2023 [HakataCder, luongdaiphat]()
 
 This project is [MIT]() licensed
