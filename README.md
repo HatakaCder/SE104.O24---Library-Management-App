@@ -26,16 +26,13 @@ This is video demo [Uploading...].
 <h3>Description</h3>
 
 
-***Phần mềm bao gồm các chức năng chính như:***
-**1**
-**2**
-
 <h3>How to use</h3>
 
 Clone this repository into your local computer by this command (git required):
 <p>
-git clone https://github.com/HatakaCder/SE104.O24---Library-Management-App.git
-    
+ 
+    git clone https://github.com/HatakaCder/SE104.O24---Library-Management-App.git
+
 </p>
 
 <h3>Additional information</h3>
