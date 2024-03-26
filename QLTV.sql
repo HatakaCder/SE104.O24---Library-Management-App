@@ -125,6 +125,7 @@ BEGIN
 
 		-- Tổng tiền = Số ngày * Tiền nộp 1 ngày
 		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @IDPhTra)
+	
 		PRINT('Trả sách quá thời hạn, đã lập phiếu thu!')
 	END
 END;
