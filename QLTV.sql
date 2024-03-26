@@ -1,50 +1,179 @@
-create database qltv_beta
+﻿CREATE DATABASE QLTV_BETA
+GO
+USE QLTV_BETA
+GO
+SET DATEFORMAT DMY -- dateformat: dd/mm/yyyy
+GO
 
-use qltv_beta
-
-create table docgia (
-	madg varchar(5) not null primary key,
-	loaidg varchar(255),
-	ngaysinh date,
-	diachi varchar(255),
-	email varchar(255),
-	ngaylapthe date
+CREATE TABLE DOCGIA 
+(
+	MaDG		VARCHAR(5) NOT NULL PRIMARY KEY,
+	LoaiDG		VARCHAR(255),
+	NgaySinh	DATE,
+	DiaChi		VARCHAR(255),
+	Email		VARCHAR(255),
+	NgayLapThe	DATE,
+	IsDeleted	BIT DEFAULT 0
 );
+GO
 
-create table sach (
-	masach varchar(5) not null primary key,
-	tensach varchar(255),
-	theloai varchar(255),
-	tacgia varchar(255),
-	namxb smallint,
-	nhaxb varchar(255),
-	ngaynhap date,
-	trigia int
+CREATE TABLE SACH 
+(
+	MaSach		VARCHAR(5) NOT NULL PRIMARY KEY,
+	TenSach		VARCHAR(255),
+	TheLoai		VARCHAR(255),
+	TacGia		VARCHAR(255),
+	NamXB		SMALLINT,
+	NhaXB		VARCHAR(255),
+	NgayNhap	DATE,
+	TriGia		INT,
+	TinhTrang	BIT,
+	IsDeleted	BIT DEFAULT 0
 );
+GO
 
-create table phieumuon (
-	maphmuon varchar(5),
-	madocgia varchar(5),
-	ngaymuon date
+CREATE TABLE PHIEUMUON
+(
+	MaPhMuon	VARCHAR(5) NOT NULL PRIMARY KEY,
+	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
+	MaSach		VARCHAR(5) FOREIGN KEY REFERENCES SACH(MaSach),
+	NgayMuon	DATE,
+	NgayPhTra	DATE,
+	IsDeleted	BIT DEFAULT 0
 );
+GO
 
-create table chitietphmuon (
-	maphmuon varchar(5),
-	masaach varchar(5)
+CREATE TABLE PHIEUTRA
+(
+	MaPhTra		VARCHAR(5) NOT NULL PRIMARY KEY,
+	MaPhMuon	VARCHAR(5) FOREIGN KEY REFERENCES PHIEUMUON(MaPhMuon),
+	NgayTra		DATE,
+	IsDeleted	BIT DEFAULT 0
 );
+GO
 
-create table phieutra (
-	maphtra varchar(5),
-	madg varchar(5),
-	ngaytra date
+CREATE TABLE PHIEUTHU
+(
+	--Phiếu thu chỉ được tạo khi sách trả quá hạn, tạo trigger để kiểm tra việc trả quá hạn và tự lập phiếu thu nếu có. Việc truy xuất phiếu thu sẽ được thực hiện thông qua MaPhTra trong bảng PHIEUTHU
+	ID			INT IDENTITY(1, 1) PRIMARY KEY,
+	MaPhTra		VARCHAR(5) FOREIGN KEY REFERENCES PHIEUTRA(MaPhTra),
+	SoNgayQHan	SMALLINT,
+	SoTienThu	INT
 );
+GO
 
-create table phieuthu (
-	maphthu varchar(5),
-	madg varchar(5)
+CREATE TABLE ACCOUNT
+(
+	ID			INT IDENTITY(1, 1) PRIMARY KEY,
+	TaiKhoan	VARCHAR(5) NOT NULL,
+	MatKhau		VARCHAR(5) NOT NULL,
+	-- Để phục vụ cho việc thay đổi tên tài khoản, mật khẩu, không nên để tài khoản và mật khẩu làm thuộc tính khóa chính
+	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
+	IsDeleted	BIT DEFAULT 0
 );
+GO
 
-create table account (
-	taikhoan varchar(5),
-	matkhau varchar(5)
-);
+CREATE TABLE PARAMETERs
+(
+	IDDocGia	INT 	DEFAULT 0,
+	IDSach		INT 	DEFAULT 0,
+	IDPhMuon	INT 	DEFAULT 0,
+	IDPhThu		INT 	DEFAULT 0,
+	IDPhTra		INT 	DEFAULT 5000,
+	SoNgMuonTD	INT 	DEFAULT 30
+)
+GO
+
+-- Tạo TRIGGER để tính ngày phải trả của cuốn sách
+CREATE TRIGGER NGAY_PHAI_TRA_PHIEUMUON
+ON PHIEUMUON
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @MaPhMuon VARCHAR(5), @MAXDAY INT = 30
+	
+	SELECT @MaPhMuon = MaPhMuon FROM INSERTED
+
+	-- Tính toán hạn trả trong phiếu mượn
+	UPDATE PHIEUMUON
+	SET NgayPhTra = DATEADD(day, @MAXDAY, NgayMuon)
+	WHERE PHIEUMUON.MaPhMuon = @MaPhMuon
+
+	PRINT('Thông tin phiếu mượn đã được hoàn tất!')
+END;
+GO
+
+-- Tạo TRIGGER kiểm tra có trả sách quá hạn không, nếu có thì tạo phiếu thu trong bảng PHIEUTHU tương ứng với phiếu mượn, phiếu trả đó
+CREATE TRIGGER KIEM_TRA_QUA_HAN_PHIEUTRA
+ON PHIEUTRA
+FOR INSERT, UPDATE
+AS
+BEGIN
+	-- Lấy dữ liệu để kiểm tra điều kiện
+	DECLARE @NgayPhTra DATE, @NgayTra DATE
+
+	SELECT @NgayPhTra = NgayPhTra
+	FROM INSERTED INNER JOIN PHIEUMUON ON INSERTED.MaPhMuon = PHIEUMUON.MaPhMuon
+	SELECT @NgayTra = NgayTra FROM INSERTED
+
+	IF (@NgayTra > @NgayPhTra)
+	BEGIN
+		DECLARE @MaPhTra VARCHAR(5), @IDPhTra INT = 5000, @SoNgQuaHan INT
+
+		SELECT @MaPhTra = MaPhTra FROM INSERTED
+		SELECT @SoNgQuaHan = DATEDIFF(day, @NgayPhTra, @NgayTra)
+
+		-- Tổng tiền = Số ngày * Tiền nộp 1 ngày
+		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @IDPhTra)
+		PRINT('Trả sách quá thời hạn, đã lập phiếu thu!')
+	END
+END;
+GO
+
+-- INSERT DATA INTO DOCGIA TABLE
+INSERT INTO DOCGIA VALUES('DG001', 'LOAIDG_A', '22/10/2003', 'Dia chi 1', 'email_1.com', '20/03/2024', DEFAULT);
+INSERT INTO DOCGIA VALUES('DG002', 'LOAIDG_B', '12/12/2000', 'Dia chi 2', 'email_2.com', '19/03/2024', DEFAULT);
+INSERT INTO DOCGIA VALUES('DG003', 'LOAIDG_C', '10/12/2004', 'Dia chi 3', 'email_3.com', '26/03/2024', DEFAULT);
+INSERT INTO DOCGIA VALUES('DG004', 'LOAIDG_D', '3/04/2002', 'Dia chi 4', 'email_4.com', '21/02/2024', DEFAULT);
+INSERT INTO DOCGIA VALUES('DG005', 'LOAIDG_E', '8/05/2001', 'Dia chi 5', 'email_5.com', '19/02/2024', DEFAULT);
+GO
+
+-- INSERT DATA INTO SACH TABLE
+INSERT INTO SACH VALUES('SH001', 'Ten sach 1', 'Giao trinh', 'Tac gia 1', 2000, 'DHQG HCM', '24/02/2001', 75000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH002', 'Ten sach 2', 'Sach tham khao', 'Tac gia 2', 2003, 'DHQG HCM', '15/03/2005', 100000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH003', 'Ten sach 3', 'Truyen tranh', 'Tac gia 3', 2015, 'Nha xuat ban 1', '14/10/2019', 50000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH004', 'Ten sach 4', 'Giao trinh', 'Tac gia 4', 2012, 'DHQG HA NOI', '23/03/2017', 80000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH005', 'Ten sach 5', 'Giao trinh', 'Tac gia 5', 2012, 'DHQG HCM', '24/10/2017', 85000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH006', 'Ten sach 6', 'Sach tham khao', 'Tac gia 6', 2017, 'DHQG HCM', '12/12/2020', 90000, 1, DEFAULT);
+INSERT INTO SACH VALUES('SH007', 'Ten sach 7', 'Giao trinh', 'Tac gia 7', 2018, 'DHQG HA NOI', '03/03/2019', 90000, 1, DEFAULT);
+GO
+
+-- INSERT DATA INTO PHIEUMUON
+INSERT INTO PHIEUMUON VALUES('PM001', 'DG001', 'SH004', '20/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM002', 'DG004', 'SH004', '21/02/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM003', 'DG001', 'SH001', '25/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM004', 'DG002', 'SH002', '19/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM005', 'DG003', 'SH006', '26/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM006', 'DG005', 'SH007', '19/02/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM007', 'DG004', 'SH002', '01/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM008', 'DG001', 'SH003', '25/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM009', 'DG003', 'SH001', '26/03/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES('PM010', 'DG005', 'SH003', '26/03/2024', NULL, DEFAULT);
+GO
+
+-- INSERT DATA INTO PHIEUTRA TABLE 
+INSERT INTO PHIEUTRA VALUES('PT001', 'PM002', '01/10/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT002', 'PM003', '19/04/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT003', 'PM008', '19/11/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT004', 'PM005', '01/04/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT005', 'PM006', '29/03/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT006', 'PM001', '22/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES('PT007', 'PM004', '01/04/2024', DEFAULT);
+GO
+
+-- INSERT DATA INTO ACCOUNT TABLE
+INSERT INTO ACCOUNT VALUES('USER1', 'pass1', 'DG001', DEFAULT);
+INSERT INTO ACCOUNT VALUES('USER2', 'pass2', 'DG002', DEFAULT);
+INSERT INTO ACCOUNT VALUES('USER3', 'pass3', 'DG003', DEFAULT);
+INSERT INTO ACCOUNT VALUES('USER4', 'pass4', 'DG004', DEFAULT);
+INSERT INTO ACCOUNT VALUES('USER5', 'pass5', 'DG005', DEFAULT);

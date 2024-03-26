@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "6uDPrCR5RPjWjdEEVKJFVpVyOIAiYMI0HQgzZRncNOxY5ce3cxf0apWHaxaDDiXnNwGp4izmCYa913oSqcr02g==",
+  "dgSpecHash": "48qMTavObSc96dmHZSVAHIERNO5tb80zWxEYxOdjc5joyB42u+JmWTJQ3NrgbPSzlMpEsoAt1HjnOeBJT7SzHw==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\HatakaCder\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.16\\microsoft.netcore.app.host.win-x64.7.0.16.nupkg.sha512"
+  ],
   "logs": []
 }

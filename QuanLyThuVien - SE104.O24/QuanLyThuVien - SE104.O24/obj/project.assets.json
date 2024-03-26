@@ -8,19 +8,19 @@
     "net7.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\source\\repos\\HatakaCder\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
       "projectName": "QuanLyThuVien - SE104.O24",
-      "projectPath": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\obj\\",
+      "projectPath": "C:\\Users\\USER\\source\\repos\\HatakaCder\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\source\\repos\\HatakaCder\\SE104.O24---Library-Management-App\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -40,6 +40,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -56,6 +61,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.16, 7.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.16, 7.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.16, 7.0.16]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.16, 7.0.16]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -64,7 +87,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
