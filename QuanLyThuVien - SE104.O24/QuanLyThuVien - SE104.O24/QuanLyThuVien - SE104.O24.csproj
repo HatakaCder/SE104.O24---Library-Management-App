@@ -11,7 +11,7 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Images\" />
-    <Folder Include="UserControlSE\" />
+    <Folder Include="images\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
 

@@ -21,5 +21,6 @@ E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\n
 E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.pdb
 E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.genruntimeconfig.cache
 E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\ref\QuanLyThuVien - SE104.O24.dll
-E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\UserControl\ControlBarUC.g.cs
 E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\UserControlSE\ControlBarUc.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\UserControlSE\ControlBarUc.baml
