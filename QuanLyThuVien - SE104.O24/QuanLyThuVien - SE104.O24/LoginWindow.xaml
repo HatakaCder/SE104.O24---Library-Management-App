@@ -1,0 +1,123 @@
+﻿<Window x:Class="QuanLyThuVien___SE104.O24.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien___SE104.O24"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:QuanLyThuVien___SE104.O24.UserControlSE"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="LoginWindow" Height="800" Width="1240">
+    <Grid>
+        <Border Background="#F8F7F8" CornerRadius="50" BorderBrush="Gray" BorderThickness="0.5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="760"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" Grid.Column="0" Margin="28,10,10,34" Background="#F8F7F8">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="500"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="/Images/loginwindow.png" Grid.Row="0"></Image>
+                        <Label Content="Phần mềm quản lý thư viện" FontSize="35"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="top"
+                               FontFamily="Roboto" 
+                               FontWeight="Bold"
+                               Grid.Row="1"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <uc:ControlBarUc HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15"></uc:ControlBarUc>
+                </Grid>
+                <Border Grid.Column="1" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"></RowDefinition>
+                            <RowDefinition Height="1.5*"></RowDefinition>
+                            <RowDefinition Height="0.5*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Border Background="White" CornerRadius="20" Margin="10, 10, 30, 10" BorderThickness="0.5" BorderBrush="Gray">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition Height="1.5*"></RowDefinition>
+                                        <RowDefinition Height="1.5*"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Content="Đăng nhập" FontSize="35" 
+                                           FontFamily="Roboto" Width="384" 
+                                           FontWeight="Bold"/>
+                                    <Border Grid.Row="1" CornerRadius="20" Grid.Column="0" Margin="25,15,25,15" BorderBrush="Gray" BorderThickness="0.5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25*"/>
+                                                <RowDefinition Height="22*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="Username" FontSize="20" FontFamily="Roboto" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="8,29,264,0" Grid.RowSpan="2" />
+                                            <TextBox Name="Username" BorderBrush="Gray" BorderThickness="0.25" FontSize="20" FontFamily="Roboto" Margin="10,38,10,36" Grid.Column="1" Grid.RowSpan="2"/>
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Row="2" CornerRadius="20" Grid.Column="0" Margin="25,15,25,15" BorderBrush="Gray" BorderThickness="0.5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="Password" FontSize="20" FontFamily="Roboto" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="8,0,264,0" />
+                                            <PasswordBox Name="Password" BorderBrush="Gray" BorderThickness="0.25" FontSize="20" FontFamily="Roboto" Margin="10,38,10,36" Grid.Column="1"/>
+                                        </Grid>
+
+                                    </Border>
+                                    <Button Grid.Row="3" HorizontalAlignment="Left" Width="123" Height="47" VerticalAlignment="Center" Cursor="Hand" Margin="281,0,0,0" >
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="20" BorderThickness="0" Margin="0,0,0,6">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Background" Value="Transparent"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="LightBlue"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsMouseOver" Value="False">
+                                                                    <Setter Property="Background" Value="CadetBlue"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid>
+                                                        <TextBlock Text="Đăng nhập"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto" FontSize="18" Foreground="White"/>
+                                                    </Grid>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</Window>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="QuanLyThuVien___SE104.O24.UserControlSE.ControlBarUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyThuVien___SE104.O24.UserControlSE"
+             mc:Ignorable="d" 
+             Name="ucControlBar"
+             >
+    <Grid>
+        <WrapPanel>
+            <Button  Command="{Binding MinimizeWindowCommand}"
+             CommandParameter="{Binding ElementName=ucControlBar}"
+        Height="auto" 
+        Background="Transparent"
+        BorderThickness="0" 
+        Width="30">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Ellipse Width="20" Height="20" Fill ="Green" Margin="0 0 10 0">
+                        </Ellipse>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button  Command="{Binding CloseWindowCommand}"
+             CommandParameter="{Binding ElementName=ucControlBar}"
+        Height="auto" 
+             Width="auto" 
+             Background="Transparent" 
+             BorderThickness="0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Ellipse Width="20" Height="20" Fill="Red" Margin="0 0 10 0">
+                        </Ellipse>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </WrapPanel>
+
+    </Grid>
+</UserControl>

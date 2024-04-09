@@ -1,0 +1,26 @@
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\bin\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.exe
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\bin\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.deps.json
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\bin\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.runtimeconfig.json
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\bin\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.dll
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\bin\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.pdb
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\LoginWindow.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\MainWindow.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\App.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24_MarkupCompile.cache
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24_MarkupCompile.lref
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\LoginWindow.baml
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\MainWindow.baml
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.g.resources
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.GeneratedMSBuildEditorConfig.editorconfig
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.AssemblyInfoInputs.cache
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.AssemblyInfo.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.csproj.CoreCompileInputs.cache
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.sourcelink.json
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.dll
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\refint\QuanLyThuVien - SE104.O24.dll
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.pdb
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\QuanLyThuVien - SE104.O24.genruntimeconfig.cache
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\ref\QuanLyThuVien - SE104.O24.dll
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\UserControlSE\ControlBarUc.g.cs
+E:\Software\DoAn\QuanLyThuVien - SE104.O24\QuanLyThuVien - SE104.O24\obj\Debug\net7.0-windows\UserControlSE\ControlBarUc.baml
