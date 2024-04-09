@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\quanlythuvien - se104.o24\\usercontrolse\\controlbaruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\usercontrolse\\controlbaruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|e:\\software\\doan\\quanlythuvien - se104.o24\\quanlythuvien - se104.o24\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\quanlythuvien - se104.o24\\usercontrolse\\controlbaruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\usercontrolse\\controlbaruc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|e:\\software\\doan\\quanlythuvien - se104.o24\\quanlythuvien - se104.o24\\viewmodel\\controlbarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\viewmodel\\controlbarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|e:\\software\\doan\\quanlythuvien - se104.o24\\quanlythuvien - se104.o24\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\quanlythuvien - se104.o24\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -17,6 +25,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\quanlythuvien - se104.o24\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|e:\\software\\doan\\quanlythuvien - se104.o24\\quanlythuvien - se104.o24\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32232717-1EE1-436A-90E2-BE9896723703}|QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj|solutionrelative:quanlythuvien - se104.o24\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +38,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 10,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\ViewModel\\BaseViewModel.cs",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\BaseViewModel.cs",
+              "RelativeToolTip": "QuanLyThuVien - SE104.O24\\ViewModel\\BaseViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T02:50:23.16Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\ViewModel\\MainViewModel.cs",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\MainViewModel.cs",
+              "RelativeToolTip": "QuanLyThuVien - SE104.O24\\ViewModel\\MainViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T02:54:40.366Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -54,19 +94,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ControlBarUc.xaml",
-              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
-              "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
-              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
-              "RelativeToolTip": "QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-08T15:04:08.978Z",
+              "DocumentIndex": 2,
+              "Title": "ControlBarViewModel.cs",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\ControlBarViewModel.cs",
+              "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\ViewModel\\ControlBarViewModel.cs",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\ViewModel\\ControlBarViewModel.cs",
+              "RelativeToolTip": "QuanLyThuVien - SE104.O24\\ViewModel\\ControlBarViewModel.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA5wBkAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T02:55:24.51Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LoginWindow.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\LoginWindow.xaml",
               "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\LoginWindow.xaml",
@@ -78,7 +119,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "ControlBarUc.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
+              "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
+              "RelativeToolTip": "QuanLyThuVien - SE104.O24\\UserControlSE\\ControlBarUc.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-08T15:04:08.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\App.xaml",
               "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\App.xaml",
@@ -90,14 +143,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\MainWindow.xaml",
               "RelativeDocumentMoniker": "QuanLyThuVien - SE104.O24\\MainWindow.xaml",
               "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\MainWindow.xaml",
               "RelativeToolTip": "QuanLyThuVien - SE104.O24\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-18T12:55:29.226Z"
+              "WhenOpened": "2024-03-18T12:55:29.226Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien___SE104.O24.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace QuanLyThuVien___SE104.O24.UserControlSE
     /// </summary>
     public partial class ControlBarUc : UserControl
     {
+        public ControlBarViewModel Viewmodel { get; set; }
         public ControlBarUc()
         {
             InitializeComponent();
+            this.DataContext = Viewmodel = new ControlBarViewModel();
         }
     }
 }
