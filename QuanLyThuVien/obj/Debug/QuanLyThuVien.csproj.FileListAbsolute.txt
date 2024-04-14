@@ -23,3 +23,7 @@ E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.CoreCompileInputs.
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\ResourceXAML\MainResource.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\LoginWindow.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\LoginWindow.baml
