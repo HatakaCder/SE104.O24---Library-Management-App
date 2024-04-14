@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "r6BgJB+PTPq9o5sj1t4ttS8CDSfNVHKpOat2mIiZwAyOiv2RtzRv8TwRfhOU4G2N+g8yCtUsN2fShi2uh7CNRw==",
+  "dgSpecHash": "1nR2izoEJSLsSPn4l0c4lIwv83jww0kpEfkZnXOBre1X7NAhGd1puXV+QpFFqSTP5xzAjcsjqHSMTc9khMcypQ==",
   "success": true,
   "projectFilePath": "E:\\Software\\DoAn\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\PHAT PC\\.nuget\\packages\\materialdesigncolors\\3.0.0\\materialdesigncolors.3.0.0.nupkg.sha512",
+    "C:\\Users\\PHAT PC\\.nuget\\packages\\materialdesignthemes\\5.0.0\\materialdesignthemes.5.0.0.nupkg.sha512",
+    "C:\\Users\\PHAT PC\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }

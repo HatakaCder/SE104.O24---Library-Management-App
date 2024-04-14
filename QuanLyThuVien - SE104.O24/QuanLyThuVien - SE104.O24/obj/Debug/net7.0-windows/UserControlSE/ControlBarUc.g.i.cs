@@ -61,7 +61,7 @@ namespace QuanLyThuVien___SE104.O24.UserControlSE {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/QuanLyThuVien - SE104.O24;V1.0.0.0;component/usercontrolse/controlbaruc.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/QuanLyThuVien - SE104.O24;component/usercontrolse/controlbaruc.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UserControlSE\ControlBarUc.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
