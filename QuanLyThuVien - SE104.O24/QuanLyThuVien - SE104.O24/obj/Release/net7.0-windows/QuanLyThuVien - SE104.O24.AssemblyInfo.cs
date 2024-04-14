@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuanLyThuVien - SE104.O24")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+463c907be77d3c262f59c8545530cb6c3b711532")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0327b179dd94dfdd8e16c0cac0affdf5ee13907")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuanLyThuVien - SE104.O24")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuanLyThuVien - SE104.O24")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

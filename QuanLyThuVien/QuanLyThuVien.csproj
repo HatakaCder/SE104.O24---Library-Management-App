@@ -122,6 +122,28 @@
   <ItemGroup>
     <Folder Include="Model\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-book-100.png" />
+    <Resource Include="Images\icons8-book-50 %281%29.png" />
+    <Resource Include="Images\icons8-book-50.png" />
+    <Resource Include="Images\icons8-books-50.png" />
+    <Resource Include="Images\icons8-calendar-50.png" />
+    <Resource Include="Images\icons8-clock-50.png" />
+    <Resource Include="Images\icons8-home-50.png" />
+    <Resource Include="Images\icons8-human-50.png" />
+    <Resource Include="Images\icons8-minus-50.png" />
+    <Resource Include="Images\icons8-plus-50.png" />
+    <Resource Include="Images\icons8-readers-64 %281%29.png" />
+    <Resource Include="Images\icons8-readers-64.png" />
+    <Resource Include="Images\icons8-report-50.png" />
+    <Resource Include="Images\icons8-setting-50.png" />
+    <Resource Include="Images\icons8-staff-64.png" />
+    <Resource Include="Images\icons8-tick-50.png" />
+    <Resource Include="Images\icons8-user-48.png" />
+    <Resource Include="Images\Login.jpg" />
+    <Resource Include="Images\loginwindow.png" />
+    <Resource Include="Images\phan-mem-quan-ly-thu-vien-1024x655.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

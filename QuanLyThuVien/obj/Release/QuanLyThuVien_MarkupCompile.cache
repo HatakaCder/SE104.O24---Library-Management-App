@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Release\
 QuanLyThuVien
 none
 false
-DEBUG;TRACE
+TRACE
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\App.xaml
 3338219967
 
-9833599318
+8-1379279360
 162037563364
 LoginWindow.xaml;MainWindow.xaml;ResourceXAML\MainResource.xaml;
 
-False
+True
 

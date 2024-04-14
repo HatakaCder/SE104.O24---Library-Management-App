@@ -23,6 +23,14 @@
             <ColumnDefinition Width="750"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Image Source="\Images\loginwindow.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+            <TextBlock
+  Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+  Text="Phần mềm quản lý thư viện" 
+                HorizontalAlignment="Center"
+                Margin="30"/>
+        </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <materialDesign:Card 
               HorizontalAlignment="Center" VerticalAlignment="Center"
