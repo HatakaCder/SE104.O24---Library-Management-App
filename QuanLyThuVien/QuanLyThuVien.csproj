@@ -51,6 +51,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -72,11 +74,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Utilities\Btn.cs" />
+    <Compile Include="Utilities\RelayCommand.cs" />
+    <Compile Include="Utilities\ViewModelBase.cs" />
+    <Compile Include="ViewModel\BookBorrowVM.cs" />
+    <Compile Include="ViewModel\BookVM.cs" />
+    <Compile Include="ViewModel\HomeVM.cs" />
+    <Compile Include="ViewModel\LibarianVM.cs" />
+    <Compile Include="ViewModel\NavigationVM.cs" />
+    <Compile Include="ViewModel\ReaderUCVM.cs" />
+    <Compile Include="ViewModel\Report.cs" />
+    <Compile Include="ViewModel\SettingVM.cs" />
+    <Compile Include="View\Book.xaml.cs">
+      <DependentUpon>Book.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BookBorrow.xaml.cs">
+      <DependentUpon>BookBorrow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reader.xaml.cs">
       <DependentUpon>Reader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Librarian.xaml.cs">
+      <DependentUpon>Librarian.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlQLTV\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
@@ -87,6 +113,44 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\NavigationVM.cs" />
+    <Compile Include="View\Reader.xaml.cs">
+      <DependentUpon>Reader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Text.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utilities\DataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Book.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BookBorrow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +171,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Librarian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceXAML\MainResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +188,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlQLTV\LeftOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Setting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,9 +231,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\icons8-book-100.png" />
     <Resource Include="Images\icons8-book-50 %281%29.png" />
