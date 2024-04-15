@@ -62,3 +62,5 @@ E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\Micr
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\System.Windows.Interactivity.dll
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\Microsoft.Expression.Interactions.xml
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\System.Windows.Interactivity.xml
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\UserControlQLTV\LeftOptions.g.cs
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\UserControlQLTV\LeftOptions.baml

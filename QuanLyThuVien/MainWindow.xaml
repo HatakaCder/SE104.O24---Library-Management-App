@@ -7,25 +7,93 @@
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-         TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
-         TextOptions.TextFormattingMode="Ideal"
-         TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignPaper}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
-         Height="800" Width="1240">
-    <Grid>
-        <Grid.RowDefinitions>
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+ 
+            WindowStartupLocation="CenterScreen"
+         Height="800" Width="1240"
+        Title="Libary Managerment App">
+    <Border Background="#E6FAEF" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="750"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="1">
-            <uc:ControlBarUC VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15"></uc:ControlBarUC>
+            <!--<Grid Grid.Row="0" Grid.Column="0" Background="Snow">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                  Text="Libary Managerment App" />
+            </Grid>-->
+        <!--<Grid Grid.Row="0" Grid.Column="1" Background="Snow">
+                <uc:ControlBarUC VerticalAlignment="Top" HorizontalAlignment="Right" Margin="1"></uc:ControlBarUC>
+            </Grid>-->
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:LeftOptions></uc:LeftOptions>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Border CornerRadius="10" BorderThickness="0.5" Background="Snow" Margin="15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="80"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <materialDesign:PackIcon Kind="Home" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                  Text="Trang chủ"/>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Button
+                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                  Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                  ToolTip="Đăng xuất">
+                                                                    <materialDesign:PackIcon Width="35" Height="35"
+                                    Kind="Logout" />
+                                </Button>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <TextBlock HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                    Text="Tên user" />
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
+                                    <TextBlock HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="Tên user" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

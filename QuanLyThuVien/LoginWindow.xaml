@@ -14,10 +14,8 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
-        ResizeMode="NoResize"
-        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="LoginWindow" Height="800" Width="1240">
+        Title="Đăng nhập" Height="800" Width="1240">
     <Border Background="#E6FAEF" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
@@ -28,14 +26,15 @@
                 <ColumnDefinition Width="750"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.Column="1">
-                <uc:ControlBarUC VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15"></uc:ControlBarUC>
-            </Grid>
+            <!--<Grid Grid.Row="0" Grid.Column="0" Background="snow"></Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Background="Snow">
+                <uc:ControlBarUC VerticalAlignment="Top" HorizontalAlignment="Right" Margin="1"></uc:ControlBarUC>
+            </Grid>-->
             <Grid Grid.Row="1" Grid.Column="0">
                 <Image Source="\Images\loginwindow.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                 <TextBlock
   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-  Text="Phần mềm quản lý thư viện" 
+  Text="Libary Managerment App" 
                 HorizontalAlignment="Center"
                 Margin="30"/>
             </Grid>
