@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:QuanLyThuVien"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
@@ -13,47 +14,54 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="LoginWindow" Height="800" Width="1240">
-    <Grid Background="WhiteSmoke">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="750"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Image Source="\Images\loginwindow.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-            <TextBlock
+    <Border Background="#E6FAEF" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="750"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <uc:ControlBarUC VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15"></uc:ControlBarUC>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Image Source="\Images\loginwindow.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                <TextBlock
   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
   Text="Phần mềm quản lý thư viện" 
                 HorizontalAlignment="Center"
                 Margin="30"/>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
-            <materialDesign:Card 
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <materialDesign:Card 
               HorizontalAlignment="Center" VerticalAlignment="Center"
               Width="400" Height="300">
-                <Grid>
-                    <Grid.Resources>
-                        <Style TargetType="Grid">
-                            <Setter Property="Margin" Value="15 0 15 0"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <TextBox
-      VerticalAlignment="Center"
-      materialDesign:HintAssist.Hint="Floating Hint"
-      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300"/>  
-                    </Grid>
-                    <Grid Grid.Row="1" >
-                        <PasswordBox HorizontalAlignment="Center"
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Margin" Value="15 0 15 0"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBox
+                  VerticalAlignment="Center"
+                  materialDesign:HintAssist.Hint="Tên đăng nhập"
+                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300"/>  
+                        </Grid>
+                        <Grid Grid.Row="1" >
+                            <PasswordBox HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                 x:Name="FloatingPasswordBox"
                                 materialDesign:HintAssist.Foreground="MediumPurple"
@@ -61,29 +69,30 @@
                                 materialDesign:TextFieldAssist.UnderlineBrush="MediumPurple"
                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="300"
                           />
-                    </Grid>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0"
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
                               Width="130"
                               Background="DeepSkyBlue"
                             Content="Đăng nhập"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             ToolTip="Resource name: MaterialDesignRaisedButton" />
-                        <Button Grid.Column="1"
+                            <Button Grid.Column="1"
                               Width="130"
                               Background="IndianRed"
                           Content="Thoát"
                           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                           Style="{StaticResource MaterialDesignRaisedButton}"
                           ToolTip="Resource name: MaterialDesignRaisedButton" />
+                        </Grid>
                     </Grid>
-                </Grid>
-            </materialDesign:Card>
+                </materialDesign:Card>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

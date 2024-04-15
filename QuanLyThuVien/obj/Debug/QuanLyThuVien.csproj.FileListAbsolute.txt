@@ -56,3 +56,9 @@ E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Quan
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\UserControlQLTV\ControlBarUC.g.cs
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\UserControlQLTV\ControlBarUC.baml
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\Microsoft.Expression.Interactions.dll
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\System.Windows.Interactivity.dll
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\Microsoft.Expression.Interactions.xml
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\bin\Debug\System.Windows.Interactivity.xml
