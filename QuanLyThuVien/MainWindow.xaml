@@ -14,11 +14,10 @@
              TextOptions.TextRenderingMode="Auto"
             Background="{DynamicResource MaterialDesignPaper}"
             FontFamily="{DynamicResource MaterialDesignFont}"
- 
             WindowStartupLocation="CenterScreen"
          Height="800" Width="1240"
         Title="Libary Managerment App">
-    <Border Background="#E6FAEF" BorderThickness="1">
+    <Border Background="#E6FAEF" BorderThickness="0.5">
         <Grid>
             <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -40,11 +39,11 @@
                 <uc:LeftOptions></uc:LeftOptions>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
-                <Border CornerRadius="10" BorderThickness="0.5" Background="Snow" Margin="15">
+                <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="150"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
@@ -90,7 +89,223 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                        
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <materialDesign:Card Margin="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"></ColumnDefinition>
+                                            <ColumnDefinition ></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="Book" Height="35" Width="35"
+                                                                     VerticalAlignment="Center"
+                                                                     HorizontalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <TextBlock HorizontalAlignment="Left"
+                                                             VerticalAlignment="Center"
+                                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                                    Text="Sách đã mượn" />
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <TextBlock HorizontalAlignment="Left"
+                                                         VerticalAlignment="Center"
+                                                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                                Text="0" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </Grid><Grid Grid.Column="1">
+                                <materialDesign:Card Margin="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="BookAlert" Height="35" Width="35"
+                                                 VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <TextBlock HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Sách quá hạn" />
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <TextBlock HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+        Text="0" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <materialDesign:Card Margin="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="AccountMultiple" Height="35" Width="35"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <TextBlock HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+            Text="Tổng số độc giả" />
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <TextBlock HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+        Text="0" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                              Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                              Text="Sách được thêm gần đây" />
+                            </Grid>
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <TextBlock HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                Text="Danh sách độc giả có sách quá hạn mượn" />
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="0">
+                                <DataGrid AutoGenerateColumns="True" 
+                                          ItemsSource="{Binding Items}" 
+                                          Background="White"
+                                          BorderThickness="2"
+                                          Margin="15">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="ID">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tên sách">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tác giả">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Thể loại">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <DataGrid AutoGenerateColumns="True" 
+                                          ItemsSource="{Binding Items}" 
+                                          Background="White"
+                                          BorderThickness="2"
+                                          Margin="15">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="ID">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tên độc giả">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tên sách">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tác giả">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Quá hạn">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Tiền phạt">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Border>
             </Grid>
