@@ -22,7 +22,7 @@
                                     Height="35"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
-                                    Background="#FFFFFF"
+                                    Background="#000000"
                                     Visibility="Collapsed"
                                     CornerRadius="2"/>
                             <ContentPresenter/>

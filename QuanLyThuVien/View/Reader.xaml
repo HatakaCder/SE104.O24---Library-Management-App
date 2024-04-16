@@ -140,7 +140,7 @@
                       Height="50"
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedButton}"
-                      ToolTip="Resource name: MaterialDesignRaisedButton" />
+                      ToolTip="Thêm độc giả" />
                             <Button
                       Content="Xóa"
                       Width="150"
@@ -148,7 +148,7 @@
                       Margin="15"
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedButton}"
-                      ToolTip="Resource name: MaterialDesignRaisedButton" />
+                      ToolTip="Xóa độc giả" />
                             <Button
                       Content="Sửa"
                       Width="150"
@@ -156,7 +156,7 @@
                       Margin="15"                                      
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedButton}"
-                      ToolTip="Resource name: MaterialDesignRaisedButton" />
+                      ToolTip="Sửa độc giả" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>
