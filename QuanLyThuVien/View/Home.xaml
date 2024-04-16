@@ -185,14 +185,16 @@ Text="0" />
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Row="0" Grid.Column="0">
-                        <TextBlock HorizontalAlignment="Center"
+                        <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Center"
+                                   Margin="15"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Sách được thêm gần đây" />
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="1">
-                        <TextBlock HorizontalAlignment="Center"
+                        <TextBlock HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
+                                   Margin="15"
                         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                         Text="Danh sách độc giả có sách quá hạn mượn" />
                     </Grid>
