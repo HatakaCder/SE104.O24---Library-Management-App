@@ -71,18 +71,56 @@
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-               Margin="15"
-        Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-        Text="Danh sách sách" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                         Margin="15"
+                        Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                        Text="Danh sách sách" />
+                    <Grid Grid.Column="1" Width="300" Background="#FFFFff">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                    Width="Auto" />
+                            <ColumnDefinition
+                                    Width="*" />
+                            <ColumnDefinition
+                                    Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                      Kind="Search"
+                                      Opacity=".56" />
+                        </Button>
+                        <TextBox
+                                    Grid.Column="1"
+                                    MinWidth="200"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0" />
+                        <Button
+                                    Grid.Column="2"
+                                    Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                      Margin="8,0,0,0"
+                                      Kind="Send"
+                                      Opacity=".56" />
+                        </Button>
+
+                    </Grid>
                 </Grid>
                 <Grid Grid.Row="2">
                     <DataGrid AutoGenerateColumns="True" 
-          ItemsSource="{Binding Items}" 
-          Background="White"
-          BorderThickness="2"
-          Margin="15">
+                              ItemsSource="{Binding Items}" 
+                              Background="White"
+                              BorderThickness="2"
+                              Margin="15">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="ID">
                                 <DataGridTemplateColumn.CellTemplate>

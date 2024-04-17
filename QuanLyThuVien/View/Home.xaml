@@ -160,15 +160,15 @@ Text="0" />
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
                                         <TextBlock HorizontalAlignment="Left"
-             VerticalAlignment="Center"
-    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-    Text="Tổng số độc giả" />
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                        Text="Tổng số độc giả" />
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <TextBlock HorizontalAlignment="Left"
-         VerticalAlignment="Center"
-Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-Text="0" />
+                                                     VerticalAlignment="Center"
+                                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                            Text="0" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -185,18 +185,80 @@ Text="0" />
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Row="0" Grid.Column="0">
-                        <TextBlock HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                                   Margin="15"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="15"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Sách được thêm gần đây" />
+                        <Grid Grid.Column="1" Width="140" Background="#FFFFff">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                  Kind="Search"
+                                  Opacity=".56" />
+                            </Button>
+                                <TextBox
+                                    Grid.Column="1"
+                                    MinWidth="200"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0" />
+                            <Button
+                                    Grid.Column="2"
+                                    Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                  Margin="8,0,0,0"
+                                  Kind="Send"
+                                  Opacity=".56" />
+                            </Button>
+
+                        </Grid>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                    Margin="15"
                         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                         Text="Danh sách độc giả có sách quá hạn mượn" />
+                        <Grid Grid.Column="1" Width="220" Background="#FFFFff">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                            </Button>
+                            <TextBox
+                                Grid.Column="1"
+                                MinWidth="200"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Tìm kiếm"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0" />
+                            <Button Grid.Column="2" Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                      Margin="8,0,0,0"
+                                      Kind="Send"
+                                      Opacity=".56" />
+                            </Button>
+                        </Grid>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="0">
                         <DataGrid AutoGenerateColumns="True" 
