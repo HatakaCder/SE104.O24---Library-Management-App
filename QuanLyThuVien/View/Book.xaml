@@ -13,7 +13,7 @@
                TextOptions.TextRenderingMode="Auto"
                Background="{DynamicResource MaterialDesignPaper}"
                FontFamily="{DynamicResource MaterialDesignFont}"
-            d:DesignHeight="650" d:DesignWidth="990"
+            d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:BookVM/>
@@ -172,28 +172,31 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                             <Button
+                                Background="#FADBD8"
               Content="Thêm"
               Margin="15"
               Width="150"
               Height="50"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-              Style="{StaticResource MaterialDesignRaisedButton}"
+              Style="{StaticResource MaterialDesignRaisedLightButton}"
               ToolTip="Thêm sách" />
                             <Button
+                                Background="#FADBD8"
               Content="Xóa"
               Width="150"
               Height="50"                                      
               Margin="15"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-              Style="{StaticResource MaterialDesignRaisedButton}"
+              Style="{StaticResource MaterialDesignRaisedLightButton}"
               ToolTip="Xóa sách" />
                             <Button
+                                Background="#FADBD8"
               Content="Sửa"
               Width="150"
               Height="50"                                      
               Margin="15"                                      
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-              Style="{StaticResource MaterialDesignRaisedButton}"
+              Style="{StaticResource MaterialDesignRaisedLightButton}"
               ToolTip="Sửa sách" />
                         </StackPanel>
                     </DockPanel>

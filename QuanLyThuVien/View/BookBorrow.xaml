@@ -13,7 +13,7 @@
                    TextOptions.TextRenderingMode="Auto"
                    Background="{DynamicResource MaterialDesignPaper}"
                    FontFamily="{DynamicResource MaterialDesignFont}"
-                d:DesignHeight="650" d:DesignWidth="990"
+                d:DesignHeight="800" d:DesignWidth="990"
                 Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:BookBorrowVM/>
@@ -90,17 +90,18 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                    Margin="15"
                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Chi tiết" />
-                        <Grid Grid.Column="1" Width="300" Background="#FFFFff">
+                        <Grid Grid.Column="1" Width="250" Background="#FFFFff">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
                             <Button Style="{StaticResource MaterialDesignToolButton}">
                                 <materialDesign:PackIcon Kind="Search" Opacity=".56" />
@@ -119,6 +120,20 @@
               Kind="Send"
               Opacity=".56" />
                             </Button>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <ComboBox
+                                Margin="1"
+                              Width="200"
+                              materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                <ComboBoxItem
+                                Content="Item 1" />
+                                <ComboBoxItem
+                                Content="Item 2" />
+                                <ComboBoxItem
+                                Content="Item 3" />
+                            </ComboBox>
                         </Grid>
                     </Grid>
 
@@ -199,6 +214,40 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <DockPanel >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+                            <Button
+                Background="#FADBD8"
+      Content="Thêm"
+      Margin="15"
+      Width="150"
+      Height="50"
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Thêm độc giả" />
+                            <Button
+                Background="#FADBD8"
+      Content="Xóa"
+      Width="150"
+      Height="50"                                      
+      Margin="15"
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Xóa độc giả" />
+                            <Button
+                Background="#FADBD8"
+      Content="Sửa"
+      Width="150"
+      Height="50"                                      
+      Margin="15"                                      
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Sửa độc giả" />
+                        </StackPanel>
+                    </DockPanel>
                 </Grid>
             </Grid>
         </Border>

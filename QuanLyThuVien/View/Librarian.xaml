@@ -13,7 +13,7 @@
                TextOptions.TextRenderingMode="Auto"
                Background="{DynamicResource MaterialDesignPaper}"
                FontFamily="{DynamicResource MaterialDesignFont}"
-            d:DesignHeight="650" d:DesignWidth="990"
+            d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:LibarianVM></vm:LibarianVM>
@@ -69,6 +69,137 @@ ToolTip="Đăng xuất">
   Text="Tên user" />
                         </Grid>
                     </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Center"
+          Margin="15"
+         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+         Text="Danh sách thủ thư" />
+                    <Grid Grid.Column="1" Width="300" Background="#FFFFff">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                     Width="Auto" />
+                            <ColumnDefinition
+                     Width="*" />
+                            <ColumnDefinition
+                     Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+             Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                       Kind="Search"
+                       Opacity=".56" />
+                        </Button>
+                        <TextBox
+                     Grid.Column="1"
+                     MinWidth="200"
+                     Margin="8,0,0,0"
+                     VerticalAlignment="Center"
+                     materialDesign:HintAssist.Hint="Tìm kiếm"
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                     BorderThickness="0" />
+                        <Button
+                     Grid.Column="2"
+                     Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                       Margin="8,0,0,0"
+                       Kind="Send"
+                       Opacity=".56" />
+                        </Button>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <DataGrid AutoGenerateColumns="True" 
+               ItemsSource="{Binding Items}" 
+               Background="White"
+               BorderThickness="2"
+               Margin="15">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="ID">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Tên thủ thư">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Ngày sinh">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Địa chỉ">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Email">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Tên tài khoản">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <DockPanel >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+                            <Button
+                Background="#FADBD8"
+      Content="Thêm"
+      Margin="15"
+      Width="150"
+      Height="50"
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Thêm độc giả" />
+                            <Button
+                Background="#FADBD8"
+      Content="Xóa"
+      Width="150"
+      Height="50"                                      
+      Margin="15"
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Xóa độc giả" />
+                            <Button
+                Background="#FADBD8"
+      Content="Sửa"
+      Width="150"
+      Height="50"                                      
+      Margin="15"                                      
+      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+      Style="{StaticResource MaterialDesignRaisedLightButton}"
+      ToolTip="Sửa độc giả" />
+                        </StackPanel>
+                    </DockPanel>
                 </Grid>
 
 

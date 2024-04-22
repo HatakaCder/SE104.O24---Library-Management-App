@@ -15,13 +15,9 @@
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Đăng nhập" Height="800" Width="1240">
+        Title="Đăng nhập" Height="850" Width="1240">
     <Border Background="#E6FAEF" BorderThickness="1">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="750"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -30,15 +26,26 @@
             <Grid Grid.Row="0" Grid.Column="1" Background="Snow">
                 <uc:ControlBarUC VerticalAlignment="Top" HorizontalAlignment="Right" Margin="1"></uc:ControlBarUC>
             </Grid>-->
-            <Grid Grid.Row="1" Grid.Column="0">
-                <Image Source="\Images\loginwindow.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                <TextBlock
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="700"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
   Style="{StaticResource MaterialDesignHeadline4TextBlock}"
   Text="Libary Managerment App" 
                 HorizontalAlignment="Center"
-                Margin="30"/>
+                Margin="15"/>
+                <Grid Grid.Row="1">
+                    <Image Source="\Images\loginwindow.png"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"
+                            Height="685"
+                           Width="730" Margin="0,5,0,0"/>
+                </Grid>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
+
+            <Grid Grid.Column="1">
                 <materialDesign:Card 
               HorizontalAlignment="Center" VerticalAlignment="Center"
               Width="400" Height="300">
@@ -57,7 +64,7 @@
                             <TextBox
                   VerticalAlignment="Center"
                   materialDesign:HintAssist.Hint="Tên đăng nhập"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300"/>  
+                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300"/>
                         </Grid>
                         <Grid Grid.Row="1" >
                             <PasswordBox HorizontalAlignment="Center"
