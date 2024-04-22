@@ -73,8 +73,7 @@ Text="Trang chủ" />
                                     </Grid>
                                 </Menu:Btn>
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding ReaderCommand}"
-                  IsChecked="True">
+                  Command="{Binding ReaderCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="Account" Height="35" 
                                          Width="35" 
@@ -89,8 +88,7 @@ Text="Trang chủ" />
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding BookCommand}"
-                  IsChecked="True">
+                  Command="{Binding BookCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="BookOpen" Height="35" 
                                          Width="35" 
@@ -105,8 +103,7 @@ Text="Trang chủ" />
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding BookBorrowCommand}"
-                  IsChecked="True">
+                  Command="{Binding BookBorrowCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="BookOpenBlankVariant" Height="35" 
                                          Width="35" 
@@ -121,8 +118,7 @@ Text="Trang chủ" />
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding libraianCommand}"
-                  IsChecked="True">
+                  Command="{Binding libraianCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="BookAccount" Height="35" 
                                          Width="35" 
@@ -137,8 +133,7 @@ Text="Trang chủ" />
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding ReportCommand}"
-                  IsChecked="True">
+                  Command="{Binding ReportCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="ChartBar" Height="35" 
                                          Width="35" 
@@ -153,8 +148,7 @@ Text="Trang chủ" />
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding SettingsCommand}"
-                  IsChecked="True">
+                                            Command="{Binding SettingsCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="Settings" Height="35" 
                                          Width="35" 
