@@ -7,98 +7,91 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
-         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-         TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
-         TextOptions.TextFormattingMode="Ideal"
-         TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignPaper}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="Transparent"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        Title="Đăng nhập" Height="850" Width="1240">
-    <Border Background="#E6FAEF" BorderThickness="1">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="750"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <!--<Grid Grid.Row="0" Grid.Column="0" Background="snow"></Grid>
-            <Grid Grid.Row="0" Grid.Column="1" Background="Snow">
-                <uc:ControlBarUC VerticalAlignment="Top" HorizontalAlignment="Right" Margin="1"></uc:ControlBarUC>
-            </Grid>-->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="700"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-  Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-  Text="Libary Managerment App" 
-                HorizontalAlignment="Center"
-                Margin="15"/>
-                <Grid Grid.Row="1">
-                    <Image Source="\Images\loginwindow.png"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Top"
-                            Height="685"
-                           Width="730" Margin="0,5,0,0"/>
-                </Grid>
-            </Grid>
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Đăng nhập" Height="500" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="1">
-                <materialDesign:Card 
-              HorizontalAlignment="Center" VerticalAlignment="Center"
-              Width="400" Height="300">
-                    <Grid>
-                        <Grid.Resources>
-                            <Style TargetType="Grid">
-                                <Setter Property="Margin" Value="15 0 15 0"></Setter>
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"></RowDefinition>
-                            <RowDefinition Height="100"></RowDefinition>
-                            <RowDefinition Height="100"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <TextBox
-                  VerticalAlignment="Center"
-                  materialDesign:HintAssist.Hint="Tên đăng nhập"
-                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300"/>
-                        </Grid>
-                        <Grid Grid.Row="1" >
-                            <PasswordBox HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                x:Name="FloatingPasswordBox"
-                                materialDesign:HintAssist.Foreground="MediumPurple"
-                                materialDesign:HintAssist.Hint="Mật khẩu"
-                                materialDesign:TextFieldAssist.UnderlineBrush="MediumPurple"
-                                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="300"
-                          />
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0"
-                              Width="130"
-                              Background="DeepSkyBlue"
-                            Content="Đăng nhập"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
-                            ToolTip="Resource name: MaterialDesignRaisedButton" />
-                            <Button Grid.Column="1"
-                              Width="130"
-                              Background="IndianRed"
-                          Content="Thoát"
-                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                          Style="{StaticResource MaterialDesignRaisedButton}"
-                          ToolTip="Resource name: MaterialDesignRaisedButton" />
-                        </Grid>
-                    </Grid>
-                </materialDesign:Card>
-            </Grid>
+        <materialDesign:PackIcon Kind="Close"  
+                                 Grid.Column="1" 
+                                 Panel.ZIndex="1" 
+                                 MouseUp="Image_MouseUp"
+                                 HorizontalAlignment="Right"
+                                 Margin="15"/>
+
+        <Border CornerRadius="10 0 0 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0, 0" EndPoint="1,1">
+                    <GradientStop Color="#3AA9AD" Offset="0"/>
+                    <GradientStop Color="#3AADA1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Grid>
+            <Canvas>
+                <Polygon Points="0, 20, 230, 140 0, 270" Fill="#4EB1B6"/>
+                <Polygon Points="100, 400, 200, 370 180, 470" Fill="#4EB1B6"/>
+                <Ellipse Margin="250 400 0 0" Width="40" Height="40" Fill="#4EB1B6"/>
+                <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6"/>
+            </Canvas>
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Đăng ký" Style="{StaticResource TitleText}" />
+                <TextBlock Text="Bạn chưa có tài khoản? Đăng ký ngay" Opacity="0.8" 
+                           Margin="35 30 20 30" 
+                           Style="{StaticResource NormalText}" />
+                <Button Content="Đăng ký" Style="{StaticResource button}" />
+            </StackPanel>
         </Grid>
-    </Border>
+
+
+        <Border Background="Snow" 
+                Grid.Column="1" 
+                CornerRadius="0 10 10 0" 
+                MouseDown="Border_MouseDown">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Quản Lý Thư Viện" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
+                <TextBlock Text="Đăng nhập" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
+
+                <TextBox
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    materialDesign:TextFieldAssist.UnderlineBrush="#3AB19B"
+                    materialDesign:HintAssist.Foreground="#3AB19B"
+                    materialDesign:HintAssist.Hint="Tên đăng nhập"
+                    FontSize="14"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Width="300"
+                    Height="50"/>
+
+                <PasswordBox
+                    x:Name="FloatingPasswordBox"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="14"
+                    materialDesign:HintAssist.Foreground="#3AB19B"
+                    materialDesign:HintAssist.Hint="Mật khẩu"
+                    materialDesign:TextFieldAssist.UnderlineBrush="#3AB19B"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                    Width="300"
+                    Height="50"/>
+                
+                <Button Content="Đăng nhập" Style="{StaticResource mainButton}" />
+            </StackPanel>
+        </Border>
+
+    </Grid>
 </Window>
