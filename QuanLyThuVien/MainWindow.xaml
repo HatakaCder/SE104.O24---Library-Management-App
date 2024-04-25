@@ -123,7 +123,7 @@
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding libraianCommand}">
+                  Command="{Binding LibraianCommand}">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="BookAccount" Height="35" 
                                          Width="35" 
@@ -134,6 +134,21 @@
                  VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignBody2TextBlock}"
                 Text="Quản lý thủ thư" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                                            Command="{Binding UserCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="AccountBadge" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                                     VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                    Text="Người dùng" />
                                     </Grid>
                                 </Menu:Btn>
 

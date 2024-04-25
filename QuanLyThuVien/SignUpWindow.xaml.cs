@@ -44,7 +44,10 @@ namespace QuanLyThuVien
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            this.Close();
         }
     }
 }

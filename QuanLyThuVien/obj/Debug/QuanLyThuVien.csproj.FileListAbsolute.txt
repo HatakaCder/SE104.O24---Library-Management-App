@@ -87,3 +87,5 @@ E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Reader.baml
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.g.cs
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.baml
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\User.g.cs
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\User.baml

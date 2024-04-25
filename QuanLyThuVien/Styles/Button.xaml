@@ -5,14 +5,15 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0,5,0,0"/>
-
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Border x:Name="border"
                             Height="50"
                             Width="250"
-                            BorderThickness="0">
+                            BorderThickness="0"
+                                CornerRadius="10">
                         <Border.Background>
                             <SolidColorBrush x:Name="BorderBackground" 
                                              Color="#E6FAEF"/>
