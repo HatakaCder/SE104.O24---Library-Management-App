@@ -85,3 +85,5 @@ E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Utilities\DataTemplate.baml
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Reader.g.cs
 E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Reader.baml
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.g.cs
+E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.baml

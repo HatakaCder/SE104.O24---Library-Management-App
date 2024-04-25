@@ -29,7 +29,9 @@
                                  Panel.ZIndex="1" 
                                  MouseUp="Image_MouseUp"
                                  HorizontalAlignment="Right"
-                                 Margin="15"/>
+                                 Margin="15"
+                                 Height="35"
+                                 Width="35"/>
 
         <Border CornerRadius="10 0 0 10">
             <Border.Background>
@@ -53,7 +55,7 @@
                 <TextBlock Text="Bạn chưa có tài khoản? Đăng ký ngay" Opacity="0.8" 
                            Margin="35 30 20 30" 
                            Style="{StaticResource NormalText}" />
-                <Button Content="Đăng ký" Style="{StaticResource button}" />
+                <Button Content="Đăng ký" Style="{StaticResource button}" Click="Button_Click" />
             </StackPanel>
         </Grid>
 

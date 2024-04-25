@@ -15,14 +15,21 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for SignUpWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class SignUpWindow : Window
     {
-        public LoginWindow()
+        public SignUpWindow()
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+        }
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -31,14 +38,7 @@ namespace QuanLyThuVien
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SignUpWindow signUp = new SignUpWindow();
-            signUp.ShowDialog();
+            Close();
         }
     }
-
 }
