@@ -168,9 +168,9 @@ ToolTip="Đăng xuất">
                     </DataGrid>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <DockPanel >
+                    <DockPanel Margin="30">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-            HorizontalAlignment="Center">
+            HorizontalAlignment="Right">
                             <Button
                                   Background="#FADBD8"
                                   Content="Xóa"

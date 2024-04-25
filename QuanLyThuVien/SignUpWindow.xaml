@@ -87,7 +87,17 @@
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto" />
-                    
+
+                    <TextBox
+                        Margin="0 5 0 5"
+                            Width="300"
+                            VerticalAlignment="Top"
+                            materialDesign:HintAssist.Hint="Email"
+                            AcceptsReturn="True"                                
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto" />
+
                     <DatePicker
                           Margin="0 5 0 5"
                           Width="300"
