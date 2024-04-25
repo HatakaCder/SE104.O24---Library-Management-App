@@ -37,7 +37,15 @@ namespace QuanLyThuVien
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SignUpWindow signUp = new SignUpWindow();
-            signUp.ShowDialog();
+            signUp.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 

@@ -22,12 +22,18 @@ namespace QuanLyThuVien
         public SignUpWindow()
         {
             InitializeComponent();
+            
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();
+            loginWindow.Show();
+
+            this.Close();
+
         }
 
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
