@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="QuanLyThuVien.UserControlQLTV.LeftOptions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyThuVien.UserControlQLTV"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Height="750" Width="250">
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="170"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <materialDesign:PackIcon Kind="Bookshelf" Height="35" Width="35" HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                  ><Run Text="Libary"/><LineBreak/><Run Text="Managerment App"/></TextBlock>
+            </Grid>
+            <Grid Grid.Row="7" Grid.Column="0">
+                <materialDesign:PackIcon Kind="Cog" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="7" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                  Style="{StaticResource MaterialDesignBody2TextBlock}"
+                  Text="Cài đặt" />
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <materialDesign:PackIcon Kind="Home" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Trang chủ" />
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <materialDesign:PackIcon Kind="Account" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Quản lý độc giả" />
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <materialDesign:PackIcon Kind="BookOpen" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Quản lý sách" />
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0">
+                <materialDesign:PackIcon Kind="BookOpenBlankVariant" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Mượn/Trả sách" />
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="0">
+                <materialDesign:PackIcon Kind="BookAccount" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Quản lý thủ thư" />
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="0">
+                <materialDesign:PackIcon Kind="ChartBar" Height="35" Width="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"
+      Text="Báo cáo" />
+            </Grid>
+
+        </Grid>
+    </Border>
+</UserControl>

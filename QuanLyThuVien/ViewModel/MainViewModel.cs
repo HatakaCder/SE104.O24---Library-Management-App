@@ -19,7 +19,7 @@ namespace QuanLyThuVien.ViewModel
             LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 Isloaded = true;
                 LoginWindow loginWindow = new LoginWindow();
-                loginWindow.ShowDialog();
+                loginWindow.Show();
             }
               );
         }

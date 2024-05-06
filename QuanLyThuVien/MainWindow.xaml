@@ -3,29 +3,180 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyThuVien"
+        xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-         TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
-         TextOptions.TextFormattingMode="Ideal"
-         TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignPaper}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
-         Height="800" Width="1240">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="750"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="1">
-            <uc:ControlBarUC VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15"></uc:ControlBarUC>
+        xmlns:Menu="clr-namespace:QuanLyThuVien.Utilities"
+        Icon="/images/icons8-book-100.png"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        Height="850" Width="1240"
+        Title="Libary Managerment App">
+    <Window.DataContext>
+        <vm:NavigationVM/>
+    </Window.DataContext>
+    <Border Background="#E6FAEF" BorderThickness="0.5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Left"
+                  Width="250">
+                <Border Background="#E6FAEF">
+                </Border>
+                <Grid  Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="180"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <materialDesign:PackIcon Kind="Bookshelf" Height="35" Width="35" HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignHeadline6TextBlock}">
+                                <Run Text="Libary"/>
+                                <LineBreak/>
+                                <Run Text="Managerment App"/>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" 
+                              HorizontalAlignment="Left"
+                              Width="250">
+                            <StackPanel Height="600"
+                                        Width="250">
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                                          Command="{Binding HomeCommand}"
+                                          IsChecked="True"> 
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="Home" Height="35" 
+                         Width="35" 
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                        Text="Trang chủ" />
+                                    </Grid>
+                                </Menu:Btn>
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                                          Command="{Binding ReaderCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="Account" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                                             VerticalAlignment="Center"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                            Text="Quản lý độc giả" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                                            Command="{Binding BookCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="BookOpen" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                 VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Text="Quản lý sách" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                  Command="{Binding BookBorrowCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="BookOpenBlankVariant" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                 VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Text="Mượn/Trả sách" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                  Command="{Binding LibraianCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="BookAccount" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                 VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Text="Quản lý thủ thư" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                               
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                  Command="{Binding ReportCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="ChartBar" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                 VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Text="Báo cáo" />
+                                    </Grid>
+                                </Menu:Btn>
+
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                                            Command="{Binding SettingsCommand}">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="Settings" Height="35" 
+                                         Width="35" 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+                 VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Text="Cài đặt" />
+                                    </Grid>
+                                </Menu:Btn>
+                                
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView}"></ContentControl>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
