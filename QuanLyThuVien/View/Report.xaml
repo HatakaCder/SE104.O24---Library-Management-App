@@ -38,41 +38,37 @@
 
                     <Grid Grid.Column="0">
                         <ComboBox
-                              Margin="1"
+                              Margin="2"
                               Width="200"
                               materialDesign:HintAssist.Hint="Loại báo cáo"
                               Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                                                        <ComboBoxItem
-                              Content="Item 1" />
-                                                        <ComboBoxItem
-                              Content="Item 2" />
-                                                        <ComboBoxItem
-                              Content="Item 3" />
+                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
 
                     <Grid Grid.Column="1">
-                        <StackPanel Orientation="Horizontal">
-                            <DatePicker 
+                        <DatePicker 
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                           Margin="0 5 0 5"
                           Width="200"
                           materialDesign:HintAssist.Hint="Tìm kiếm theo ngày"
                           Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
-                            
-                            <materialDesign:PackIcon 
-                                Margin="20"                                                        
-                                Kind="Send" 
-                                Opacity=".56" 
-                                Height="35" 
-                                Width="35" 
-                                HorizontalAlignment="Center" 
-                                VerticalAlignment="Center"/>
-                        </StackPanel>
-
                     </Grid>
-                    
+
+                    <Grid Grid.Column="2">
+                        <ComboBox                           
+                               Margin="2"
+                               Width="200"
+                               materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                               Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+                        </ComboBox>
+                    </Grid>
                 </Grid>
                 
                 <Grid Grid.Row="0">
@@ -91,8 +87,8 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
-Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-Text="Báo cáo"/>
+                                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                Text="Báo cáo"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button

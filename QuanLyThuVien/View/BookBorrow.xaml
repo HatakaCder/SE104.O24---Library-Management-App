@@ -122,17 +122,14 @@
                             </Button>
                         </Grid>
                         <Grid Grid.Column="2">
-                            <ComboBox
-                                Margin="1"
-                              Width="200"
-                              materialDesign:HintAssist.Hint="Tìm kiếm theo"
-                              Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                                <ComboBoxItem
-                                Content="Item 1" />
-                                <ComboBoxItem
-                                Content="Item 2" />
-                                <ComboBoxItem
-                                Content="Item 3" />
+                            <ComboBox                           
+                                           Margin="2"
+                                           Width="200"
+                                           materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                                           Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                                <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
+                                <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
+                                <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
                             </ComboBox>
                         </Grid>
                     </Grid>

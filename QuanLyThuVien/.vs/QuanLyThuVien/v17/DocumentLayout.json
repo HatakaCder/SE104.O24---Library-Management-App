@@ -3,28 +3,44 @@
   "WorkspaceRootPath": "E:\\Software\\DoAn\\QuanLyThuVien\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\signupwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\signupwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:signupwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\viewmodel\\settingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\settingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\report.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\report.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\view\\user.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\user.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\viewmodel\\settingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\settingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +50,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Book.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeDocumentMoniker": "View\\Book.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeToolTip": "View\\Book.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-07T06:29:07.9Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -58,63 +87,103 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Home.xaml",
-              "RelativeDocumentMoniker": "View\\Home.xaml",
-              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Home.xaml*",
-              "RelativeToolTip": "View\\Home.xaml*",
+              "DocumentIndex": 1,
+              "Title": "SignUpWindow.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\SignUpWindow.xaml",
+              "RelativeDocumentMoniker": "SignUpWindow.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\SignUpWindow.xaml",
+              "RelativeToolTip": "SignUpWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-06T03:15:30.012Z",
+              "WhenOpened": "2024-05-07T06:41:44.616Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
+              "DocumentIndex": 0,
+              "Title": "Setting.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Setting.xaml",
+              "RelativeDocumentMoniker": "View\\Setting.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Setting.xaml*",
+              "RelativeToolTip": "View\\Setting.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-06T03:15:19.301Z"
+              "WhenOpened": "2024-05-07T06:38:47.821Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SignUpWindow.xaml",
-              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\SignUpWindow.xaml",
-              "RelativeDocumentMoniker": "SignUpWindow.xaml",
-              "ToolTip": "E:\\Software\\DoAn\\SE104.O24---Library-Management-App\\QuanLyThuVien\\SignUpWindow.xaml*",
-              "RelativeToolTip": "..\\SE104.O24---Library-Management-App\\QuanLyThuVien\\SignUpWindow.xaml*",
+              "DocumentIndex": 9,
+              "Title": "Reader.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Reader.xaml",
+              "RelativeDocumentMoniker": "View\\Reader.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Reader.xaml",
+              "RelativeToolTip": "View\\Reader.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-26T16:54:04.34Z"
+              "WhenOpened": "2024-05-07T06:33:18.031Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginWindow.xaml",
-              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindow.xaml",
-              "RelativeDocumentMoniker": "LoginWindow.xaml",
-              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindow.xaml",
-              "RelativeToolTip": "LoginWindow.xaml",
+              "DocumentIndex": 8,
+              "Title": "Librarian.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeDocumentMoniker": "View\\Librarian.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeToolTip": "View\\Librarian.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-26T16:53:20.979Z"
+              "WhenOpened": "2024-05-07T06:32:35.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Home.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Home.xaml",
+              "RelativeDocumentMoniker": "View\\Home.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Home.xaml",
+              "RelativeToolTip": "View\\Home.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-07T06:32:32.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookBorrow.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\BookBorrow.xaml",
+              "RelativeDocumentMoniker": "View\\BookBorrow.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\BookBorrow.xaml",
+              "RelativeToolTip": "View\\BookBorrow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-07T06:32:02.782Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Report.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Report.xaml",
+              "RelativeDocumentMoniker": "View\\Report.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Report.xaml",
+              "RelativeToolTip": "View\\Report.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-07T06:29:39.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "User.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\User.xaml",
               "RelativeDocumentMoniker": "View\\User.xaml",
               "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\User.xaml",
               "RelativeToolTip": "View\\User.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-25T13:34:42.559Z"
+              "WhenOpened": "2024-04-25T13:34:42.559Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "SettingVM.cs",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\ViewModel\\SettingVM.cs",
               "RelativeDocumentMoniker": "ViewModel\\SettingVM.cs",
@@ -122,7 +191,8 @@
               "RelativeToolTip": "ViewModel\\SettingVM.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T07:17:46.721Z"
+              "WhenOpened": "2024-04-25T07:17:46.721Z",
+              "EditorCaption": ""
             }
           ]
         }

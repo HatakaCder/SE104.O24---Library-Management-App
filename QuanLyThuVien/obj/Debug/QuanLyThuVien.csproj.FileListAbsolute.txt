@@ -122,3 +122,5 @@ E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\Reader.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\Report.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\Setting.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\User.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\Styles\TheComboBox.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\Styles\ComboboxItem.baml

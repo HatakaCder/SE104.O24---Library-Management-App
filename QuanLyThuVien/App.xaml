@@ -16,6 +16,8 @@
                 <ResourceDictionary Source="Styles/Button.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/Text.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Utilities/Datatemplate.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/TheComboBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Comboboxitem.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="TitleText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="36" />

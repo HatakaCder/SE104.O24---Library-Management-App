@@ -244,23 +244,10 @@
                                      >
                                 </TextBox>
                             </Grid>
+                            
                             <Grid Grid.Row="5" Grid.Column="1">
-                                <TextBlock
-                                    Margin="15 0 0 0"
-                                    HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                                    Text="Độ tuổi tối thiểu của độc giả" />
-                                                        <TextBox
-                                     Margin="0 0 15 0"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Center"
-                                     Height="25"
-                                     Width="80"
-                                     BorderThickness="1"
-                                     >
-                                </TextBox>
                             </Grid>
+                            
                             <Grid Grid.Row="7" Grid.Column="1">
                                 <Button
                                 VerticalAlignment="Center"
@@ -283,7 +270,7 @@
                         <ColumnDefinition Width="600"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:Card Margin="15">
+                    <materialDesign:Card Margin="15" Grid.Column="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -347,7 +334,7 @@
                                     VerticalAlignment="Center"
                                     Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                     Text="Tên thể loại" />
-                                    <TextBox
+                                <TextBox
                                      Grid.Row="2"
                                      Margin="15 0 0 0"
                                      HorizontalAlignment="Left"
@@ -358,7 +345,7 @@
                                      >
                                 </TextBox>
                                 <Grid Grid.Row="3">
-                                    <DockPanel Margin="15 0 0 0" HorizontalAlignment="Left">
+                                    <DockPanel Margin="5 0 0 0" HorizontalAlignment="Left">
                                         <StackPanel Orientation="Vertical">
                                             <Button
                                               Background="#FADBD8"
@@ -393,9 +380,55 @@
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
+
+                    <materialDesign:Card Margin="15" Grid.Column="1">
+                        <Grid>
+                            <StackPanel Orientation="Vertical"
+                                        HorizontalAlignment="Center"
+                                        Margin="15">
+                                <TextBlock Text="Đổi mật khẩu" 
+                                           HorizontalAlignment="Center" 
+                                           Style="{StaticResource MaterialDesignHeadline6TextBlock}" />
+                                <PasswordBox
+                                            Margin="0 10 0 5"
+                                            Width="200"
+                                            VerticalContentAlignment="Bottom"
+                                            materialDesign:HintAssist.Hint="Nhập mật khẩu hiện tại"
+                                            materialDesign:TextFieldAssist.HasClearButton="True"
+                                            IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
+                                            Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" />
+                                <PasswordBox
+                                            Margin="0 5 0 5"
+                                            Width="200"
+                                            VerticalContentAlignment="Bottom"
+                                            materialDesign:HintAssist.Hint="Nhập mật khẩu mới"
+                                            materialDesign:TextFieldAssist.HasClearButton="True"
+                                            IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
+                                            Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" />
+                                <PasswordBox
+                                            Margin="0 5 0 10"
+                                            Width="200"
+                                            VerticalContentAlignment="Bottom"
+                                            materialDesign:HintAssist.Hint="Nhập lại mật khẩu mới"
+                                            materialDesign:TextFieldAssist.HasClearButton="True"
+                                            IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
+                                            Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" />
+
+                                <Button           Background="#FADBD8"
+Content="Cập nhật"
+Margin="10"
+Width="150"
+Height="40"
+IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+Style="{StaticResource MaterialDesignRaisedLightButton}"
+ToolTip="Cập nhật mật khẩu"  />
+                            </StackPanel>
+                            
+                        </Grid>
+                    </materialDesign:Card>
+
                 </Grid>
-                
-      </Grid>
+            </Grid>
   </Border>
     </Grid>
 </UserControl>
