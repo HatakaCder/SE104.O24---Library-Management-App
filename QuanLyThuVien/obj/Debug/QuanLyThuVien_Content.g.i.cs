@@ -8,25 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-book-100.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-book-50%20(1).png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-book-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-books-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-calendar-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-clock-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-home-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-human-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-minus-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-plus-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-readers-64%20(1).png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-readers-64.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-report-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-setting-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-staff-64.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-tick-50.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icons8-user-48.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/login.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/loginwindow.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/phan-mem-quan-ly-thu-vien-1024x655.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
 
 
