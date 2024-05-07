@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\
 QuanLyThuVien
 none
 false
 DEBUG;TRACE
-E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\App.xaml
+E:\Software\DoAn\QuanLyThuVien\App.xaml
 20-392639458
 
 35-316909832
-201939646456
+20-318280060
 SignUpWindow.xaml;Styles\Button.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Utilities\DataTemplate.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\Setting.xaml;View\User.xaml;
 
 False
