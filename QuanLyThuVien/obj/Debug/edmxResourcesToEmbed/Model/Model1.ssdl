@@ -1,25 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="ACCOUNT">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TaiKhoan" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="MaDG" Type="varchar" MaxLength="5" />
-    <Property Name="IsDeleted" Type="bit" />
-  </EntityType>
   <EntityType Name="DOCGIA">
     <Key>
       <PropertyRef Name="MaDG" />
     </Key>
     <Property Name="MaDG" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="HoTen" Type="varchar" MaxLength="30" />
     <Property Name="LoaiDG" Type="varchar" MaxLength="255" />
+    <Property Name="GioiTinh" Type="varchar" MaxLength="3" />
     <Property Name="NgaySinh" Type="date" />
     <Property Name="DiaChi" Type="varchar" MaxLength="255" />
-    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="NgayLapThe" Type="date" />
+    <Property Name="SoCCCD" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="AnhDaiDien" Type="varchar" MaxLength="30" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -31,6 +26,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="IDPhThu" Type="int" />
           <Property Name="IDPhTra" Type="int" />
           <Property Name="SoNgMuonTD" Type="int" />
+          <Property Name="TuoiTThieu" Type="int" />
         </EntityType>-->
   <EntityType Name="PHIEUMUON">
     <Key>
@@ -51,6 +47,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
     <Property Name="MaPhTra" Type="varchar" MaxLength="5" />
     <Property Name="SoNgayQHan" Type="smallint" />
     <Property Name="SoTienThu" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <EntityType Name="PHIEUTRA">
     <Key>
@@ -73,33 +70,20 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
     <Property Name="NhaXB" Type="varchar" MaxLength="255" />
     <Property Name="NgayNhap" Type="date" />
     <Property Name="TriGia" Type="int" />
-    <Property Name="TinhTrang" Type="bit" />
+    <Property Name="TinhTrang" Type="smallint" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <EntityType Name="THUTHU">
+  <EntityType Name="sysdiagrams">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TaiKhoan" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="SDT" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DiaChi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__ACCOUNT__MaDG__5AEE82B9">
-    <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
-    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DOCGIA">
-        <PropertyRef Name="MaDG" />
-      </Principal>
-      <Dependent Role="ACCOUNT">
-        <PropertyRef Name="MaDG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PHIEUMUON__MaDG__4F7CD00D">
+  <Association Name="FK__PHIEUMUON__MaDG__3D5E1FD2">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -111,7 +95,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUMUON__MaSac__5070F446">
+  <Association Name="FK__PHIEUMUON__MaSac__3E52440B">
     <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -123,7 +107,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTHU__MaPhTr__5812160E">
+  <Association Name="FK__PHIEUTHU__MaPhTr__45F365D3">
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
     <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
     <ReferentialConstraint>
@@ -135,7 +119,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRA__MaPhMu__5441852A">
+  <Association Name="FK__PHIEUTRA__MaPhMu__4222D4EF">
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -148,30 +132,25 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QLTV_BETAModelStoreContainer">
-    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ACCOUNT__MaDG__5AEE82B9" Association="Self.FK__ACCOUNT__MaDG__5AEE82B9">
-      <End Role="DOCGIA" EntitySet="DOCGIA" />
-      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaDG__4F7CD00D" Association="Self.FK__PHIEUMUON__MaDG__4F7CD00D">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__PHIEUMUON__MaDG__3D5E1FD2" Association="Self.FK__PHIEUMUON__MaDG__3D5E1FD2">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaSac__5070F446" Association="Self.FK__PHIEUMUON__MaSac__5070F446">
+    <AssociationSet Name="FK__PHIEUMUON__MaSac__3E52440B" Association="Self.FK__PHIEUMUON__MaSac__3E52440B">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__5812160E" Association="Self.FK__PHIEUTHU__MaPhTr__5812160E">
+    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__45F365D3" Association="Self.FK__PHIEUTHU__MaPhTr__45F365D3">
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__5441852A" Association="Self.FK__PHIEUTRA__MaPhMu__5441852A">
+    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__4222D4EF" Association="Self.FK__PHIEUTRA__MaPhMu__4222D4EF">
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
     </AssociationSet>
