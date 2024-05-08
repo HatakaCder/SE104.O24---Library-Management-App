@@ -4,19 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="deaa897cff0d42428bedab072e0820af" Name="Diagram1">
-        <EntityTypeShape EntityType="QLTV_BETAModel.ACCOUNT" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.DOCGIA" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUMUON" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTHU" Width="1.5" PointX="10.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTRA" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.SACH" Width="1.5" PointX="3.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLTV_BETAModel.THUTHU" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="QLTV_BETAModel.FK__ACCOUNT__MaDG__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaDG__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaSac__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTRA__MaPhMu__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTHU__MaPhTr__5812160E" ManuallyRouted="false" />
+      <Diagram DiagramId="f917ee867ccf4bf4afc6c8606c3953ae" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="QLTV_BETAModel.DOCGIA" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUMUON" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTHU" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTRA" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.SACH" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaDG__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaSac__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTRA__MaPhMu__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTHU__MaPhTr__45F365D3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

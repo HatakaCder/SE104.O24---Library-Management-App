@@ -124,3 +124,8 @@ E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\Setting.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\User.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\Styles\TheComboBox.baml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\Styles\ComboboxItem.baml
+E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.dll
+E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.dll
+E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.xml
+E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.xml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien_Content.g.cs

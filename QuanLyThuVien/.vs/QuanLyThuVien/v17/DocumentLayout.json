@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "E:\\Software\\DoAn\\QuanLyThuVien\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\signupwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:signupwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\model\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:model\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -54,7 +58,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Book.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Book.xaml",
               "RelativeDocumentMoniker": "View\\Book.xaml",
@@ -87,17 +91,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\Model\\Model1.edmx",
+              "RelativeDocumentMoniker": "Model\\Model1.edmx",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\Model\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "Model\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-05-07T10:58:24.353Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "SignUpWindow.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\SignUpWindow.xaml",
               "RelativeDocumentMoniker": "SignUpWindow.xaml",
               "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\SignUpWindow.xaml",
               "RelativeToolTip": "SignUpWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-07T06:41:44.616Z"
+              "WhenOpened": "2024-05-07T06:41:44.616Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Setting.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Setting.xaml",
               "RelativeDocumentMoniker": "View\\Setting.xaml",
@@ -109,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Reader.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Reader.xaml",
               "RelativeDocumentMoniker": "View\\Reader.xaml",
@@ -120,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Librarian.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Librarian.xaml",
               "RelativeDocumentMoniker": "View\\Librarian.xaml",
@@ -131,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Home.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Home.xaml",
               "RelativeDocumentMoniker": "View\\Home.xaml",
@@ -142,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "BookBorrow.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\BookBorrow.xaml",
               "RelativeDocumentMoniker": "View\\BookBorrow.xaml",
@@ -153,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Report.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Report.xaml",
               "RelativeDocumentMoniker": "View\\Report.xaml",
@@ -164,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "User.xaml",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\User.xaml",
               "RelativeDocumentMoniker": "View\\User.xaml",
@@ -175,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SettingVM.cs",
               "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\ViewModel\\SettingVM.cs",
               "RelativeDocumentMoniker": "ViewModel\\SettingVM.cs",
