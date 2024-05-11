@@ -135,79 +135,132 @@
                     </Grid>
 
                     <Grid Grid.Column="0" Grid.Row="1">
-                                        <DataGrid AutoGenerateColumns="True" 
-                          ItemsSource="{Binding Items}" 
-                          Background="White"
-                          BorderThickness="2"
-                          Margin="15">
+                        <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+AutoGenerateColumns="False"
+RowStyle="{StaticResource DataGridRowStyle}" 
+Background="White"
+ScrollViewer.CanContentScroll="True" 
+ScrollViewer.VerticalScrollBarVisibility="Auto" 
+ScrollViewer.HorizontalScrollBarVisibility="Auto"
+CanUserAddRows="False"
+CanUserDeleteRows="False"
+CanUserReorderColumns="False"   
+HorizontalScrollBarVisibility="Disabled"
+HeadersVisibility="Column"
+Margin="15"
+ItemsSource="{Binding}"
+>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="ID">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="ID" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tên sách">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="Tên độc giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tác giả">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="Loại độc giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Thể loại">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+                               
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
 
                     <Grid Grid.Column="1" Grid.Row="1">
-                        <DataGrid AutoGenerateColumns="True" 
-                              ItemsSource="{Binding Items}" 
-                              Background="White"
-                              BorderThickness="2"
-                              Margin="15">
+                        <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+AutoGenerateColumns="False"
+RowStyle="{StaticResource DataGridRowStyle}" 
+Background="White"
+ScrollViewer.CanContentScroll="True" 
+ScrollViewer.VerticalScrollBarVisibility="Auto" 
+ScrollViewer.HorizontalScrollBarVisibility="Auto"
+CanUserAddRows="False"
+CanUserDeleteRows="False"
+CanUserReorderColumns="False"   
+HorizontalScrollBarVisibility="Disabled"
+HeadersVisibility="Column"
+Margin="15"
+ItemsSource="{Binding}"
+>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="ID">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="ID" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tên sách">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="Tên sách" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tác giả">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="Tác giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Thể loại">
-                                    <DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <materialDesign:PackIcon Kind="{Binding IconKind}"/>
+                                            <Grid>
+                                                <TextBlock Text="Ngày mượn" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
                                         </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <TextBlock Text="Ngày trả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <TextBlock Text="Quá hạn" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

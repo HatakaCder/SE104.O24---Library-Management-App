@@ -132,8 +132,21 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-            <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+        <Setter Property="Height" Value="45"></Setter>
+        <Setter Property="FontFamily" Value="Quicksand Semibold"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <!--<Setter Property="Margin" Value="8"></Setter>-->
+        <Setter Property="BorderBrush" Value="LightGray"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
+    <Style x:Key="DataGridColumnStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="FontFamily" Value="Quicksand Semibold"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Foreground" Value="#959595"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+    </Style>
+    <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">

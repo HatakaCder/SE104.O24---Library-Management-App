@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace QuanLyThuVien.View
         public Home()
         {
             InitializeComponent();
+            DataContext = new HomeVM();
         }
     }
 }
