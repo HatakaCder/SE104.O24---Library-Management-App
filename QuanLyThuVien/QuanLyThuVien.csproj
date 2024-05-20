@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -102,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MUON.cs" />
     <Compile Include="Model\PageModel.cs" />
     <Compile Include="Model\PHIEUMUON.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -118,6 +120,8 @@
     <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\THU.cs" />
+    <Compile Include="Model\TRA.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
