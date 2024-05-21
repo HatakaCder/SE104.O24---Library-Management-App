@@ -97,9 +97,8 @@ CREATE TABLE THUTHU
 
 CREATE TABLE ACCOUNT
 (
-	ID			INT IDENTITY(1, 1) PRIMARY KEY,
-	TaiKhoan	VARCHAR(30) NOT NULL,
-	MatKhau		VARCHAR(30) NOT NULL,
+	TaiKhoan	VARCHAR(30) PRIMARY KEY,
+	MatKhau		VARCHAR(255) NOT NULL,
 	-- Để phục vụ cho việc thay đổi tên tài khoản, mật khẩu, không nên để tài khoản và mật khẩu làm thuộc tính khóa chính
 	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
 	MaTT		VARCHAR(5) FOREIGN KEY REFERENCES THUTHU(MaTT),
