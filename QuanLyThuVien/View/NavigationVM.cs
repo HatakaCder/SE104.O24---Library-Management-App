@@ -27,6 +27,7 @@ namespace QuanLyThuVien.View
         public ICommand UserCommand { get; set; }
         public ICommand ReportCommand { get; set; }
         public ICommand SettingsCommand { get; set; }
+        public ICommand AddOrEditCommand { get; set; }
 
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Book(object obj) => CurrentView = new BookVM();
@@ -36,6 +37,7 @@ namespace QuanLyThuVien.View
         private void User(object obj) => CurrentView = new UserVM();
         private void Report(object obj) => CurrentView = new Report();
         private void Setting(object obj) => CurrentView = new SettingVM();
+        private void AddOrEdit(object obj) => CurrentView = new AddOrEditVM();
 
         public NavigationVM()
         {
@@ -47,6 +49,7 @@ namespace QuanLyThuVien.View
             UserCommand = new RelayCommand(User);
             ReportCommand = new RelayCommand(Report);
             SettingsCommand = new RelayCommand(Setting);
+            AddOrEditCommand = new RelayCommand(AddOrEdit);
 
             // Startup Page
             CurrentView = new HomeVM();

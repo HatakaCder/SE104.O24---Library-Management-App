@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Release\
+D:\MY_CODE\Quanlythuvien\SE104.O24---Library-Management-App-main\QuanLyThuVien\obj\Release\
 QuanLyThuVien
 none
 false
 TRACE
-E:\Software\DoAn\SE104.O24---Library-Management-App\QuanLyThuVien\App.xaml
-3338219967
-
-8-1379279360
-162037563364
-LoginWindow.xaml;MainWindow.xaml;ResourceXAML\MainResource.xaml;
+D:\MY_CODE\Quanlythuvien\SE104.O24---Library-Management-App-main\QuanLyThuVien\App.xaml
+251931317867
+2739969757
+531736806063
+33-1820615828
+AddOrEditMuonTra.xaml;PhieuThu.xaml;SignUpWindow.xaml;Styles\Button.xaml;Styles\ComboboxItem.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Styles\TheComboBox.xaml;Utilities\DataTemplate.xaml;View\AddOrEdit.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\Setting.xaml;View\User.xaml;
 
 True
 

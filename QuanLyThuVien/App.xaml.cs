@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,14 @@ namespace QuanLyThuVien
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Set ExcelPackage LicenseContext
+            ExcelPackage.LicenseContext = LicenseContext.Commercial;
+
+            // Rest of your startup logic...
+        }
     }
 }

@@ -44,6 +44,10 @@ namespace QuanLyThuVien
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
+            Application.Current.Properties["Data"] = "2";
+            Application.Current.Properties["ngaymuon"] = "2";
+            Application.Current.Properties["hethanthe"] = "2";
+            Application.Current.Properties["soquyen"]  = "2";
             mainWindow.Show();
             this.Close();
         }

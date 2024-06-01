@@ -145,7 +145,7 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding}" SelectionChanged="DataGrid_SelectionChanged"
           >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" IsReadOnly="True">

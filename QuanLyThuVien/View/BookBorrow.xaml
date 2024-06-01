@@ -15,9 +15,7 @@
                    FontFamily="{DynamicResource MaterialDesignFont}"
                 d:DesignHeight="800" d:DesignWidth="990"
                 Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:BookBorrowVM/>
-    </UserControl.DataContext>
+
     <Grid>
         <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
@@ -38,13 +36,11 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                         Text="Quản lý sách"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Style="{StaticResource MaterialDesignIconForegroundButton}"
                             ToolTip="Đăng xuất">
                             <materialDesign:PackIcon Width="35" Height="35"
                                  Kind="Logout" />
@@ -58,13 +54,11 @@
                         <Grid Grid.Row="0">
                             <TextBlock HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                          Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                           Text="Tên user" />
                         </Grid>
                         <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
                             <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Tên user" />
                         </Grid>
                     </Grid>
@@ -82,7 +76,6 @@
                         <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                    Margin="15"
-                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Danh sách độc giả đang mượn sách" />
                     </Grid>
 
@@ -95,7 +88,6 @@
                         <TextBlock HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                    Margin="15"
-                      Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                       Text="Chi tiết" />
                         <Grid Grid.Column="1" Width="250" Background="#FFFFff">
                             <Grid.ColumnDefinitions>
@@ -103,10 +95,8 @@
                                 <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <Button Style="{StaticResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon Kind="Search" Opacity=".56" />
-                            </Button>
                             <TextBox
+                                    TextChanged="findSerch"
                                     Grid.Column="1"
                                     MinWidth="200"
                                     Margin="8,0,0,0"
@@ -114,7 +104,7 @@
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0" />
-                            <Button Grid.Column="2" Style="{StaticResource MaterialDesignToolButton}">
+                            <Button Grid.Column="2">
                                 <materialDesign:PackIcon
               Margin="8,0,0,0"
               Kind="Send"
@@ -122,20 +112,33 @@
                             </Button>
                         </Grid>
                         <Grid Grid.Column="2">
-                            <ComboBox                           
-                                           Margin="2"
-                                           Width="200"
-                                           materialDesign:HintAssist.Hint="Tìm kiếm theo"
-                                           Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                                <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                                <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                                <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+
+                            <!--Tìm kiếm bằng ComboBox-->
+                            <ComboBox x:Name="timkiem" SelectionChanged="xulytimkiemchange"
+                                        Margin="2"
+                                        Width="200"
+                                        materialDesign:HintAssist.Hint="Tìm kiếm theo">            
+
+                                
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <!-- Hiển thị tên của mục -->
+                                        <TextBlock Text="{Binding TenSach}" />
+                                        <!-- Hiển thị ID của mục (nếu cần) -->
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                                <!--Tìm kiếm bằng ô textBox sử dụng thuộc tính "TextChanged" để khi người dùng vừa nhập dữ liệu vào thì sẽ lấy được dữ liệu đấy và bắt đầu tự động tìm kiếm, và dữ liệu sẽ được chuyền vào hàm "SearchTextBox_TextChanged" này để xử lý tìm kiếm -->
+                                <!--<TextBox x:Name="searchTextBox" TextChanged="SearchTextBox_TextChanged" />-->
+                                
+
                             </ComboBox>
+
                         </Grid>
                     </Grid>
 
                     <Grid Grid.Column="0" Grid.Row="1">
-                        <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                        <DataGrid x:Name="docgia" BorderBrush="Gray" BorderThickness="0.5"   
 AutoGenerateColumns="False"
 RowStyle="{StaticResource DataGridRowStyle}" 
 Background="White"
@@ -149,9 +152,10 @@ HorizontalScrollBarVisibility="Disabled"
 HeadersVisibility="Column"
 Margin="15"
 ItemsSource="{Binding}"
+                                  SelectionChanged="Data_Item"
 >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                                <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding MaDG}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -161,7 +165,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Email}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -171,7 +175,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding LoaiDG}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -186,7 +190,7 @@ ItemsSource="{Binding}"
                     </Grid>
 
                     <Grid Grid.Column="1" Grid.Row="1">
-                        <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                        <DataGrid x:Name="sach" SelectionChanged="Data_Sach" BorderBrush="Gray" BorderThickness="0.5"   
 AutoGenerateColumns="False"
 RowStyle="{StaticResource DataGridRowStyle}" 
 Background="White"
@@ -202,7 +206,7 @@ Margin="15"
 ItemsSource="{Binding}"
 >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                                <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding id}">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -212,7 +216,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding tensach}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -222,7 +226,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding tentacgia}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -232,7 +236,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="1.2*" Binding="{Binding ngaymuon}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -242,7 +246,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding ngaytra}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -252,7 +256,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding quahan}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -271,31 +275,28 @@ ItemsSource="{Binding}"
             HorizontalAlignment="Center">
                             <Button
                 Background="#FADBD8"
-      Content="Thêm"
+      Content="Add Phiếu mượn/Trả"
       Margin="15"
       Width="150"
       Height="50"
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Thêm độc giả" />
+      ToolTip="Thêm độc giả" Click="Button_Click" />
                             <Button
                 Background="#FADBD8"
-      Content="Xóa"
+      Content="Edit Phiếu mượn/Trả"
       Width="150"
       Height="50"                                      
       Margin="15"
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Xóa độc giả" />
+      ToolTip="Xóa độc giả" Click="Button_Click_1"/>
                             <Button
                 Background="#FADBD8"
-      Content="Sửa"
+      Content="Phiếu thu"
       Width="150"
       Height="50"                                      
       Margin="15"                                      
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Sửa độc giả" />
+      ToolTip="Sửa độc giả" Click="Button_Click_2" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>

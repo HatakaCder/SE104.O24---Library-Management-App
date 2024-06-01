@@ -24,5 +24,15 @@ namespace QuanLyThuVien
         {
             InitializeComponent();
         }
+
+        private void Btn_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Pages_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

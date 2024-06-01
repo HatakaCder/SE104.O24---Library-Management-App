@@ -64,7 +64,7 @@
                                         Width="250">
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
                                           Command="{Binding HomeCommand}"
-                                          IsChecked="True"> 
+                                          IsChecked="True">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="Home" Height="35" 
                          Width="35" 
@@ -108,17 +108,17 @@
                                 </Menu:Btn>
 
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
-                  Command="{Binding BookBorrowCommand}">
+                  Command="{Binding BookBorrowCommand}" Checked="Btn_Checked">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="BookOpenBlankVariant" Height="35" 
                                          Width="35" 
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                          Margin="23,0,0,0"/>
-                                        <TextBlock Margin="80,0,0,0"
+                                        <TextBlock
                  VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignBody2TextBlock}"
-                Text="Mượn/Trả sách" />
+                Text="Mượn/Trả sách" Margin="80,0,0,0" />
                                     </Grid>
                                 </Menu:Btn>
 
@@ -137,7 +137,7 @@
                                     </Grid>
                                 </Menu:Btn>
 
-                               
+
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
                   Command="{Binding ReportCommand}">
                                     <Grid>
@@ -167,7 +167,7 @@
                 Text="Cài đặt" />
                                     </Grid>
                                 </Menu:Btn>
-                                
+
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -175,7 +175,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <ContentControl x:Name="Pages"
-                                Content="{Binding CurrentView}"></ContentControl>
+                                Content="{Binding CurrentView}" GotFocus="Pages_GotFocus"></ContentControl>
             </Grid>
         </Grid>
     </Border>

@@ -18,7 +18,6 @@ namespace QuanLyThuVien.Model
         public string MaPhTra { get; set; }
         public Nullable<short> SoNgayQHan { get; set; }
         public Nullable<int> SoTienThu { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual PHIEUTRA PHIEUTRA { get; set; }
     }

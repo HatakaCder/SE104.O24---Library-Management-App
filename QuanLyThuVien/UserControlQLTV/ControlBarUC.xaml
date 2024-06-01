@@ -10,11 +10,7 @@
              Name="ucControlBar"
              
              >
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseLeftButtonDown">
-            <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+    
     <Grid>
         <WrapPanel>
             <Button Width="30" Height="30"
