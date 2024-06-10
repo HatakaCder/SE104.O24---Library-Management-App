@@ -17,6 +17,7 @@ namespace QuanLyThuVien.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOCGIA()
         {
+            this.ACCOUNTs = new HashSet<ACCOUNT>();
             this.PHIEUMUONs = new HashSet<PHIEUMUON>();
         }
     
@@ -30,9 +31,10 @@ namespace QuanLyThuVien.Model
         public string SoDT { get; set; }
         public Nullable<System.DateTime> NgayLapThe { get; set; }
         public string SoCCCD { get; set; }
-        public string AnhDaiDien { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
     }

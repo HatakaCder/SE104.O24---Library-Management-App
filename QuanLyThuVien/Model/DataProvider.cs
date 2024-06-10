@@ -22,11 +22,11 @@ namespace QuanLyThuVien.Model
             }
         }
 
-        public QLTV_BETAEntities1 DB { get; set; }
+        public QLTV_BETAEntities DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QLTV_BETAEntities1 ();
+            DB = new QLTV_BETAEntities ();
         }
     }
 }

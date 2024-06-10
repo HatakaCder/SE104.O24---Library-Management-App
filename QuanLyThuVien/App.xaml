@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QuanLyThuVien"
-             StartupUri="loginWindow.xaml">
+             StartupUri="LoginWindoww.xaml">
+    <!--StartupUri="loginWindow.xaml" -->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,6 +19,7 @@
                 <ResourceDictionary Source="Utilities/Datatemplate.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/TheComboBox.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/Comboboxitem.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/ResourceXAML/LoginResource.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="TitleText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="36" />

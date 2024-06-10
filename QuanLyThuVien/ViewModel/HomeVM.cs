@@ -21,7 +21,7 @@ namespace QuanLyThuVien.ViewModel
         }
         public void LoadData()
         {
-           QLTV_BETAEntities1 db = new QLTV_BETAEntities1();
+           QLTV_BETAEntities db = new QLTV_BETAEntities();
            DOCGIAs =  db.DOCGIAs.ToList();
         }
     }
