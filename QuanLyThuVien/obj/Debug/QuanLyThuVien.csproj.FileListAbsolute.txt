@@ -198,3 +198,12 @@ D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThu
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\ResourceXAML\LoginResource.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\LoginWindoww.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ForgotPassword.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignIn.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignUp.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\LoginWindoww.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ForgotPassword.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignIn.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignUp.baml
