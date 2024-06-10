@@ -12,30 +12,25 @@ namespace QuanLyThuVien.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCGIA
+    public partial class THUTHU
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DOCGIA()
+        public THUTHU()
         {
             this.ACCOUNTs = new HashSet<ACCOUNT>();
-            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
         }
     
-        public string MaDG { get; set; }
+        public string MaTT { get; set; }
         public string HoTen { get; set; }
-        public string LoaiDG { get; set; }
         public string GioiTinh { get; set; }
+        public Nullable<System.DateTime> NgayVLam { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public string SoDT { get; set; }
-        public Nullable<System.DateTime> NgayLapThe { get; set; }
-        public string SoCCCD { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
     }
 }
