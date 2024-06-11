@@ -38,5 +38,9 @@ namespace QuanLyThuVien
         {
             contentControl.Content = new ForgotPassword();
         }
+        public void SwitchToReset(string email)
+        {
+            contentControl.Content = new ResetPassword(email);
+        }
     }
 }

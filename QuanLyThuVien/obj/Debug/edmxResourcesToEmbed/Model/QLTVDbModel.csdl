@@ -5,7 +5,7 @@
       <PropertyRef Name="TaiKhoan" />
     </Key>
     <Property Name="TaiKhoan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MatKhau" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaDG" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="MaTT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="VaiTro" Type="Int16" Nullable="false" />

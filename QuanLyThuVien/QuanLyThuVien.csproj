@@ -83,54 +83,62 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\OTP.cs" />
+    <Compile Include="Class\PasswordBoxHelper.cs" />
+    <Compile Include="Class\PasswordHashing.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="LoginWindoww.xaml.cs">
       <DependentUpon>LoginWindoww.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\ACCOUNT.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DOCGIA.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocGiaDTO.cs" />
+    <Compile Include="Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\MUON.cs" />
     <Compile Include="Model\PageModel.cs" />
     <Compile Include="Model\PARAMETER.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PHIEUMUON.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PHIEUTHU.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PHIEUTRA.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QLTVDbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTVDbModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QLTVDbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QLTVDbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTVDbModel.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SACH.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THU.cs" />
     <Compile Include="Model\THUTHU.cs">
-      <DependentUpon>QLTVDbModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TRA.cs" />
+    <Compile Include="Model\UserDTO.cs" />
+    <Compile Include="Services\ForgotPasswordService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
@@ -139,12 +147,16 @@
     <Compile Include="Utilities\ViewModelBase.cs" />
     <Compile Include="ViewModel\BookBorrowVM.cs" />
     <Compile Include="ViewModel\BookVM.cs" />
+    <Compile Include="ViewModel\ForgotPasswordVM.cs" />
     <Compile Include="ViewModel\HomeVM.cs" />
     <Compile Include="ViewModel\LibarianVM.cs" />
     <Compile Include="ViewModel\NavigationVM.cs" />
     <Compile Include="ViewModel\ReaderUCVM.cs" />
     <Compile Include="ViewModel\Report.cs" />
+    <Compile Include="ViewModel\ResetPasswordVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
+    <Compile Include="ViewModel\SignInVM.cs" />
+    <Compile Include="ViewModel\SignUpVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
@@ -182,6 +194,9 @@
     </Compile>
     <Compile Include="View\Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResetPassword.xaml.cs">
+      <DependentUpon>ResetPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
@@ -295,6 +310,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ResetPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Setting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,12 +349,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\QLTVDbModel.edmx">
+    <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLTVDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\QLTVDbModel.edmx.diagram">
-      <DependentUpon>QLTVDbModel.edmx</DependentUpon>
+    <None Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -372,19 +391,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\QLTVDbModel.Context.tt">
+    <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLTVDbModel.edmx</DependentUpon>
-      <LastGenOutput>QLTVDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\QLTVDbModel.tt">
+    <Content Include="Model\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLTVDbModel.edmx</DependentUpon>
-      <LastGenOutput>QLTVDbModel.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />

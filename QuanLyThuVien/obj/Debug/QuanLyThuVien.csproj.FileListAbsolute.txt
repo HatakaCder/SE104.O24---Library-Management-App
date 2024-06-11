@@ -207,3 +207,5 @@ D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\LoginWind
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ForgotPassword.baml
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignIn.baml
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignUp.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.baml

@@ -5,7 +5,7 @@
       <PropertyRef Name="TaiKhoan" />
     </Key>
     <Property Name="TaiKhoan" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="MatKhau" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="MaDG" Type="varchar" MaxLength="5" />
     <Property Name="MaTT" Type="varchar" MaxLength="5" />
     <Property Name="VaiTro" Type="smallint" Nullable="false" />
@@ -27,19 +27,17 @@
     <Property Name="SoCCCD" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <EntityType Name="PARAMETERS">
-    <Key>
-      <PropertyRef Name="STT" />
-    </Key>
-    <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDDocGia" Type="int" Nullable="false" />
-    <Property Name="IDSach" Type="int" Nullable="false" />
-    <Property Name="IDPhMuon" Type="int" Nullable="false" />
-    <Property Name="IDPhThu" Type="int" Nullable="false" />
-    <Property Name="IDPhTra" Type="int" Nullable="false" />
-    <Property Name="SoNgMuonTD" Type="int" Nullable="false" />
-    <Property Name="TuoiTThieu" Type="int" Nullable="false" />
-  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PARAMETERs">
+          <Property Name="IDDocGia" Type="int" />
+          <Property Name="IDSach" Type="int" />
+          <Property Name="IDPhMuon" Type="int" />
+          <Property Name="IDPhThu" Type="int" />
+          <Property Name="IDPhTra" Type="int" />
+          <Property Name="SoNgMuonTD" Type="int" />
+          <Property Name="TuoiTThieu" Type="int" />
+        </EntityType>-->
   <EntityType Name="PHIEUMUON">
     <Key>
       <PropertyRef Name="MaPhMuon" />
@@ -99,7 +97,7 @@
     <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <Association Name="FK__ACCOUNT__MaDG__282DF8C2">
+  <Association Name="FK__ACCOUNT__MaDG__4CA06362">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
     <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -111,7 +109,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ACCOUNT__MaTT__29221CFB">
+  <Association Name="FK__ACCOUNT__MaTT__4D94879B">
     <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="0..1" />
     <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -123,7 +121,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUMUON__MaDG__778AC167">
+  <Association Name="FK__PHIEUMUON__MaDG__3D5E1FD2">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -135,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUMUON__MaSac__787EE5A0">
+  <Association Name="FK__PHIEUMUON__MaSac__3E52440B">
     <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -147,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTHU__MaPhTr__00200768">
+  <Association Name="FK__PHIEUTHU__MaPhTr__45F365D3">
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
     <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
     <ReferentialConstraint>
@@ -159,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRA__MaPhMu__7C4F7684">
+  <Association Name="FK__PHIEUTRA__MaPhMu__4222D4EF">
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -174,33 +172,32 @@
   <EntityContainer Name="QLTV_BETAModelStoreContainer">
     <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ACCOUNT__MaDG__282DF8C2" Association="Self.FK__ACCOUNT__MaDG__282DF8C2">
+    <AssociationSet Name="FK__ACCOUNT__MaDG__4CA06362" Association="Self.FK__ACCOUNT__MaDG__4CA06362">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
     </AssociationSet>
-    <AssociationSet Name="FK__ACCOUNT__MaTT__29221CFB" Association="Self.FK__ACCOUNT__MaTT__29221CFB">
+    <AssociationSet Name="FK__ACCOUNT__MaTT__4D94879B" Association="Self.FK__ACCOUNT__MaTT__4D94879B">
       <End Role="THUTHU" EntitySet="THUTHU" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaDG__778AC167" Association="Self.FK__PHIEUMUON__MaDG__778AC167">
+    <AssociationSet Name="FK__PHIEUMUON__MaDG__3D5E1FD2" Association="Self.FK__PHIEUMUON__MaDG__3D5E1FD2">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaSac__787EE5A0" Association="Self.FK__PHIEUMUON__MaSac__787EE5A0">
+    <AssociationSet Name="FK__PHIEUMUON__MaSac__3E52440B" Association="Self.FK__PHIEUMUON__MaSac__3E52440B">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__00200768" Association="Self.FK__PHIEUTHU__MaPhTr__00200768">
+    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__45F365D3" Association="Self.FK__PHIEUTHU__MaPhTr__45F365D3">
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__7C4F7684" Association="Self.FK__PHIEUTRA__MaPhMu__7C4F7684">
+    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__4222D4EF" Association="Self.FK__PHIEUTRA__MaPhMu__4222D4EF">
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
     </AssociationSet>

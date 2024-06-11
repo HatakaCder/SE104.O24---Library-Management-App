@@ -30,20 +30,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PARAMETERS">
-      <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETER">
-        <MappingFragment StoreEntitySet="PARAMETERS">
-          <ScalarProperty Name="STT" ColumnName="STT" />
-          <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
-          <ScalarProperty Name="IDSach" ColumnName="IDSach" />
-          <ScalarProperty Name="IDPhMuon" ColumnName="IDPhMuon" />
-          <ScalarProperty Name="IDPhThu" ColumnName="IDPhThu" />
-          <ScalarProperty Name="IDPhTra" ColumnName="IDPhTra" />
-          <ScalarProperty Name="SoNgMuonTD" ColumnName="SoNgMuonTD" />
-          <ScalarProperty Name="TuoiTThieu" ColumnName="TuoiTThieu" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PHIEUMUONs">
       <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUMUON">
         <MappingFragment StoreEntitySet="PHIEUMUON">
