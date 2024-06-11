@@ -1,0 +1,221 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\models\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\models\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\models\\mvvmdemodbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\models\\mvvmdemodbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|d:\\chinh_khoa\\se104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\viewmodels\\employeeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\viewmodels\\employeeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\views\\employeeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\views\\employeeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\models\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\models\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\views\\employeeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B44BDBBB-985F-42F2-9A0F-30BF595E3FCD}|mvvm_demo\\mvvm_demo.csproj|solutionrelative:mvvm_demo\\views\\employeeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmployeeViewModel.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\ViewModels\\EmployeeViewModel.cs",
+              "RelativeDocumentMoniker": "mvvm_demo\\ViewModels\\EmployeeViewModel.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\ViewModels\\EmployeeViewModel.cs",
+              "RelativeToolTip": "mvvm_demo\\ViewModels\\EmployeeViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T02:04:11.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Commands\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "mvvm_demo\\Commands\\RelayCommand.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Commands\\RelayCommand.cs",
+              "RelativeToolTip": "mvvm_demo\\Commands\\RelayCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T02:02:00.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\App.config",
+              "RelativeDocumentMoniker": "mvvm_demo\\App.config",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\App.config",
+              "RelativeToolTip": "mvvm_demo\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-17T15:40:15.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "mvvm_demo\\Models\\EmployeeService.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\EmployeeService.cs",
+              "RelativeToolTip": "mvvm_demo\\Models\\EmployeeService.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAhwB8AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T21:35:05.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmployeeView.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Views\\EmployeeView.xaml",
+              "RelativeDocumentMoniker": "mvvm_demo\\Views\\EmployeeView.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Views\\EmployeeView.xaml",
+              "RelativeToolTip": "mvvm_demo\\Views\\EmployeeView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-25T12:18:25.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeDTO.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\EmployeeDTO.cs",
+              "RelativeDocumentMoniker": "mvvm_demo\\Models\\EmployeeDTO.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\EmployeeDTO.cs",
+              "RelativeToolTip": "mvvm_demo\\Models\\EmployeeDTO.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T21:21:18.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MvvmDemoDbModel.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\MvvmDemoDbModel.edmx",
+              "RelativeDocumentMoniker": "mvvm_demo\\Models\\MvvmDemoDbModel.edmx",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Models\\MvvmDemoDbModel.edmx [Diagram1]",
+              "RelativeToolTip": "mvvm_demo\\Models\\MvvmDemoDbModel.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-05-23T10:20:56.457Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "mvvm_demo\\MainWindow.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\MainWindow.xaml",
+              "RelativeToolTip": "mvvm_demo\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-16T02:00:25.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EmployeeView.xaml.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Views\\EmployeeView.xaml.cs",
+              "RelativeDocumentMoniker": "mvvm_demo\\Views\\EmployeeView.xaml.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\Views\\EmployeeView.xaml.cs",
+              "RelativeToolTip": "mvvm_demo\\Views\\EmployeeView.xaml.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T15:40:06.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\App.xaml",
+              "RelativeDocumentMoniker": "mvvm_demo\\App.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\mvvm_demo\\mvvm_demo\\mvvm_demo\\App.xaml",
+              "RelativeToolTip": "mvvm_demo\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-17T15:40:26.72Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1473,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

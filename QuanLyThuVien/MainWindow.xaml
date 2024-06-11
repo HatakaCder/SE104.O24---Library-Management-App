@@ -25,11 +25,12 @@
     <Border Background="#E6FAEF" BorderThickness="0.5">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="43.647"></ColumnDefinition>
+                <ColumnDefinition Width="206.353"/>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid HorizontalAlignment="Left"
-                  Width="250">
+            <Grid HorizontalAlignment="Center"
+                  Width="250" Grid.ColumnSpan="2">
                 <Border Background="#E6FAEF">
                 </Border>
                 <Grid  Grid.Column="0">
@@ -64,7 +65,7 @@
                                         Width="250">
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
                                           Command="{Binding HomeCommand}"
-                                          IsChecked="True"> 
+                                          IsChecked="True">
                                     <Grid>
                                         <materialDesign:PackIcon Kind="Home" Height="35" 
                          Width="35" 
@@ -137,7 +138,7 @@
                                     </Grid>
                                 </Menu:Btn>
 
-                               
+
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
                   Command="{Binding ReportCommand}">
                                     <Grid>
@@ -167,13 +168,13 @@
                 Text="Cài đặt" />
                                     </Grid>
                                 </Menu:Btn>
-                                
+
                             </StackPanel>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="2">
                 <ContentControl x:Name="Pages"
                                 Content="{Binding CurrentView}"></ContentControl>
             </Grid>

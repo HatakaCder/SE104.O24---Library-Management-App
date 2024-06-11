@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QuanLyThuVien",
+    "\\QuanLyThuVien - SE104.O24\\QuanLyThuVien - SE104.O24",
+    "\\QuanLyThuVien\\UserControlQLTV",
+    "\\QuanLyThuVien\\View"
   ],
-  "SelectedNode": "\\QuanLyThuVien.sln",
+  "SelectedNode": "\\QuanLyThuVien\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

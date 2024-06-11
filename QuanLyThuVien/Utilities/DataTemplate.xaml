@@ -22,10 +22,6 @@
         <view:Librarian></view:Librarian>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:UserVM}">
-        <view:User></view:User>
-    </DataTemplate>
-
     <DataTemplate DataType="{x:Type vm:Report}">
         <view:Report/>
     </DataTemplate>
