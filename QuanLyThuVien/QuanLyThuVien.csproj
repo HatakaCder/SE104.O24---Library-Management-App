@@ -83,11 +83,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\OTP.cs" />
+    <Compile Include="Class\PasswordBoxHelper.cs" />
+    <Compile Include="Class\PasswordHashing.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="LoginWindoww.xaml.cs">
+      <DependentUpon>LoginWindoww.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ACCOUNT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DocGiaDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +116,9 @@
     </Compile>
     <Compile Include="Model\MUON.cs" />
     <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Model\PARAMETER.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PHIEUMUON.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -117,11 +131,14 @@
     <Compile Include="Model\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagram.cs">
+    <Compile Include="Model\THU.cs" />
+    <Compile Include="Model\THUTHU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\THU.cs" />
     <Compile Include="Model\TRA.cs" />
+    <Compile Include="Model\UserDTO.cs" />
+    <Compile Include="Services\ForgotPasswordService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
@@ -130,12 +147,16 @@
     <Compile Include="Utilities\ViewModelBase.cs" />
     <Compile Include="ViewModel\BookBorrowVM.cs" />
     <Compile Include="ViewModel\BookVM.cs" />
+    <Compile Include="ViewModel\ForgotPasswordVM.cs" />
     <Compile Include="ViewModel\HomeVM.cs" />
     <Compile Include="ViewModel\LibarianVM.cs" />
     <Compile Include="ViewModel\NavigationVM.cs" />
     <Compile Include="ViewModel\ReaderUCVM.cs" />
     <Compile Include="ViewModel\Report.cs" />
+    <Compile Include="ViewModel\ResetPasswordVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
+    <Compile Include="ViewModel\SignInVM.cs" />
+    <Compile Include="ViewModel\SignUpVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
@@ -148,6 +169,9 @@
     </Compile>
     <Compile Include="Reader.xaml.cs">
       <DependentUpon>Reader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForgotPassword.xaml.cs">
+      <DependentUpon>ForgotPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -171,12 +195,29 @@
     <Compile Include="View\Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ResetPassword.xaml.cs">
+      <DependentUpon>ResetPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginWindoww.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXAML\LoginResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,6 +278,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ForgotPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -265,7 +310,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ResetPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

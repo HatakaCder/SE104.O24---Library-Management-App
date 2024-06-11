@@ -18,6 +18,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Title="Đăng nhập" Height="500" Width="800">
+
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -66,17 +67,18 @@
             CornerRadius="0 10 10 0" 
             MouseDown="Border_MouseDown">
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Đăng ký tài khoản" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
+                    <TextBlock Text="Đăng ký tài khoản" 
+                               Foreground="#3AB19B" 
+                               Style="{StaticResource TitleText}" />
 
-                    <TextBox
-                        Margin="0 5 0 5"
+                    <TextBox    Margin="0 5 0 5"
                                 Width="300"
                                 VerticalAlignment="Top"
                                 materialDesign:HintAssist.Hint="Họ và tên"
                                 AcceptsReturn="True"                                
                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                 TextWrapping="Wrap"
-                                VerticalScrollBarVisibility="Auto" />
+                                VerticalScrollBarVisibility="Auto"></TextBox>
 
                     <TextBox
                         Margin="0 5 0 5"

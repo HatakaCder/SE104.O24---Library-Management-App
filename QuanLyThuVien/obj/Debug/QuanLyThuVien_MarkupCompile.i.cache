@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Software\DoAn\QuanLyThuVien\obj\Debug\
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\
 QuanLyThuVien
 none
 false
 DEBUG;TRACE
-E:\Software\DoAn\QuanLyThuVien\App.xaml
-22-768330886
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\App.xaml
+28-365307257
 2739969757
-501865130341
-25-1000618738
-SignUpWindow.xaml;Styles\Button.xaml;Styles\ComboboxItem.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Styles\TheComboBox.xaml;Utilities\DataTemplate.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\Setting.xaml;View\User.xaml;
+69-183823849
+25-430377640
+LoginWindoww.xaml;ResourceXAML\LoginResource.xaml;SignUpWindow.xaml;Styles\Button.xaml;Styles\ComboboxItem.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Styles\TheComboBox.xaml;Utilities\DataTemplate.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\ForgotPassword.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\ResetPassword.xaml;View\Setting.xaml;View\SignIn.xaml;View\SignUp.xaml;View\User.xaml;
 
-False
+True
 
