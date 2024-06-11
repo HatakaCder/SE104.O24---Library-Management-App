@@ -17,44 +17,33 @@
     </i:Interaction.Triggers>
     <Grid>
         <WrapPanel>
-            <Button  Command="{Binding MinimizeWindowCommand}"
-             CommandParameter="{Binding ElementName=ucControlBar}"
-        Height="auto" 
-        Background="Transparent"
-        BorderThickness="0" 
-        Width="30">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Ellipse Width="20" Height="20" Fill ="Green" Margin="0 0 10 0">
-                        </Ellipse>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Width="30" Height="30"
+                Command="{Binding MinimizeWindowCommand}"
+              CommandParameter="{Binding ElementName=ucControlBar}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              Style="{StaticResource MaterialDesignIconForegroundButton}"
+              ToolTip="Minimize">
+                            <materialDesign:PackIcon
+                Kind="WindowMinimize"/>
+                
             </Button>
-            <Button  Command="{Binding MaximizeWindowCommand}"
-         CommandParameter="{Binding ElementName=ucControlBar}"
-         Height="auto" 
-         Width="auto" 
-         Background="Transparent" 
-         BorderThickness="0">   
-                <Button.Template>
-                    <ControlTemplate>
-                        <Ellipse Width="20" Height="20" Fill="Yellow" Margin="0 0 10 0">
-                        </Ellipse>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Width="30" Height="30"
+                Command="{Binding MaximizeWindowCommand}"
+                CommandParameter="{Binding ElementName=ucControlBar}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              Style="{StaticResource MaterialDesignIconForegroundButton}"
+              ToolTip="Maximize">
+                            <materialDesign:PackIcon
+                Kind="WindowMaximize"/>
             </Button>
-            <Button  Command="{Binding CloseWindowCommand}"
-             CommandParameter="{Binding ElementName=ucControlBar}"
-        Height="auto" 
-             Width="auto" 
-             Background="Transparent" 
-             BorderThickness="0">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Ellipse Width="20" Height="20" Fill="Red" Margin="0 0 10 0">
-                        </Ellipse>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Width="30" Height="30"
+                Command="{Binding CloseWindowCommand}"
+                CommandParameter="{Binding ElementName=ucControlBar}"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              Style="{StaticResource MaterialDesignIconForegroundButton}"
+              ToolTip="Close">
+                            <materialDesign:PackIcon
+                Kind="Close"/>
             </Button>
         </WrapPanel>
     </Grid>

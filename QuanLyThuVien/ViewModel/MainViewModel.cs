@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace QuanLyThuVien.ViewModel
             LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 Isloaded = true;
                 LoginWindow loginWindow = new LoginWindow();
-                loginWindow.ShowDialog();
+                loginWindow.Show();
             }
               );
         }
+
+        
     }
 }
