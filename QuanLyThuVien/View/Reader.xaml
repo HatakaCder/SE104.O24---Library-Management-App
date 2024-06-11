@@ -16,7 +16,7 @@
              d:DesignHeight="800" d:DesignWidth="990"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
-        <vm:ReaderUCVM></vm:ReaderUCVM>
+        <vm:ReaderUCVM/>
     </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
@@ -130,7 +130,7 @@
 
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                    <DataGrid x:Name="dataTable" BorderBrush="Gray" BorderThickness="0.5"   
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
           Background="White"
@@ -143,10 +143,10 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding Path=ReaderList}"
           >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                            <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding Path=MaDG}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -156,35 +156,56 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=HoTen}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tên sách" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Họ tên" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=LoaiDG}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tác giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Loại ĐG" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=GioiTinh}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tình trạng" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Giới tính" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Email}" IsReadOnly="True">
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="Địa chỉ Email" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=NgayLapThe}">
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="Ngày lập thẻ" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

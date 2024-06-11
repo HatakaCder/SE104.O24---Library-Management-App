@@ -40,7 +40,7 @@
                     <Grid Grid.Column="1">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
       Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-      Text="Quản lý sách"/>
+      Text="{Binding Path=Message1}"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Button
@@ -81,7 +81,7 @@
                         VerticalAlignment="Center"
                          Margin="15"
                         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                        Text="Danh sách sách" />
+                        Text="{Binding Path=Message}" />
                     <Grid Grid.Column="1" 
                           Width="300" 
                           Background="#FFFFff"
@@ -106,11 +106,13 @@
                                     Margin="8,0,0,0"
                                     VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
+                            
+                            Text="{Binding Path=CurrentBook.MaSach}"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0" />
                         <Button
                                     Grid.Column="2"
-                                    Style="{StaticResource MaterialDesignToolButton}">
+                                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=SearchCommand}">
                                 <materialDesign:PackIcon
                                       Margin="8,0,0,0"
                                       Kind="Send"
@@ -125,9 +127,9 @@
                                Width="200"
                                materialDesign:HintAssist.Hint="Tìm kiếm theo"
                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tên sách" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Thể loại" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tác giả" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -145,10 +147,10 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}"
           >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                            <DataGridTextColumn Width="0.5*" Binding="{Binding Path=MaSach}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -158,7 +160,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TenSach, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -168,7 +170,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TheLoai, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -178,7 +180,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TacGia, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -188,7 +190,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.2*" Binding="{Binding Path=NhaXB, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -198,7 +200,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.2*" Binding="{Binding Path=NamXB, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -208,7 +210,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=NgayNhap, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -218,7 +220,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TriGia, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -228,7 +230,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TinhTrang, Mode=TwoWay}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -252,7 +254,8 @@
               Height="50"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Thêm sách" />
+              ToolTip="Thêm sách"
+                                />
                             <Button
                                 Background="#FADBD8"
               Content="Xóa"
