@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:QuanLyThuVien.View"
              xmlns:local_1="clr-namespace:QuanLyThuVien.Class"
              mc:Ignorable="d" 
+             
              d:DesignHeight="500" d:DesignWidth="500">
     <Border BorderBrush="Gray" 
     BorderThickness="1" 
@@ -28,7 +29,9 @@
                 <RowDefinition Height="80"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Style="{StaticResource TextBlock18}"
+            <TextBlock 
+               Foreground="#3AB19B" 
+               Style="{StaticResource TitleText}"
                FontSize="24"
                VerticalAlignment="Center"
                HorizontalAlignment="Center">Đăng nhập</TextBlock>
@@ -75,6 +78,7 @@
             <Button Grid.Row="6"
             FontSize="20"
             Height="55"
+                    Background="#3AB19B" Foreground="White"
             Margin="10" Style="{StaticResource Button24}" Command="{Binding Path=SignInCommand}">Đăng nhập</Button>
             <Grid Grid.Row="7">
                 <Grid.RowDefinitions>

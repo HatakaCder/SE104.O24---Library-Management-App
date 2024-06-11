@@ -1,42 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\",
+  "WorkspaceRootPath": "E:\\Software\\DoAn\\QuanLyThuVien\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\viewmodel\\forgotpasswordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\forgotpasswordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\signup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\view\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\viewmodel\\signinvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\signinvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\loginwindoww.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:loginwindoww.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\signin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\signin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|e:\\software\\doan\\quanlythuvien\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\viewmodel\\resetpasswordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\resetpasswordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\view\\resetpassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|E:\\Software\\DoAn\\QuanLyThuVien\\view\\resetpassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\resetpassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\resetpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\resetpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,12 +46,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -61,116 +57,123 @@
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SignIn.xaml.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\SignIn.xaml.cs",
-              "RelativeDocumentMoniker": "View\\SignIn.xaml.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\SignIn.xaml.cs",
-              "RelativeToolTip": "View\\SignIn.xaml.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAAwEcAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T09:02:25.818Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoginWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\LoginWindow.xaml.cs",
-              "RelativeDocumentMoniker": "LoginWindow.xaml.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\LoginWindow.xaml.cs",
-              "RelativeToolTip": "LoginWindow.xaml.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAgwCwAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T09:01:41.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SignInVM.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\SignInVM.cs",
-              "RelativeDocumentMoniker": "ViewModel\\SignInVM.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\SignInVM.cs",
-              "RelativeToolTip": "ViewModel\\SignInVM.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAWwDwAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T08:52:19.342Z",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-11T09:50:44.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SignIn.xaml",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\SignIn.xaml",
-              "RelativeDocumentMoniker": "View\\SignIn.xaml",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\SignIn.xaml",
-              "RelativeToolTip": "View\\SignIn.xaml",
+              "Title": "App.config",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-06-11T09:50:36.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-11T08:49:41.96Z",
+              "WhenOpened": "2024-06-11T09:50:29.3Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ForgotPasswordVM.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\ForgotPasswordVM.cs",
-              "RelativeDocumentMoniker": "ViewModel\\ForgotPasswordVM.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\ForgotPasswordVM.cs",
-              "RelativeToolTip": "ViewModel\\ForgotPasswordVM.cs",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAmwFgAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T08:36:53.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ResetPassword.xaml",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\ResetPassword.xaml",
-              "RelativeDocumentMoniker": "View\\ResetPassword.xaml",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\ResetPassword.xaml",
-              "RelativeToolTip": "View\\ResetPassword.xaml",
+              "DocumentIndex": 3,
+              "Title": "Book.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeDocumentMoniker": "View\\Book.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeToolTip": "View\\Book.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-11T08:16:50.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Services\\UserService.cs",
-              "RelativeToolTip": "Services\\UserService.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAgwDIAAABOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T08:05:21.843Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ResetPasswordVM.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\ResetPasswordVM.cs",
-              "RelativeDocumentMoniker": "ViewModel\\ResetPasswordVM.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\ResetPasswordVM.cs",
-              "RelativeToolTip": "ViewModel\\ResetPasswordVM.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAtwEoAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T07:46:57.432Z",
+              "WhenOpened": "2024-06-11T09:50:17.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "SignIn.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\SignIn.xaml",
+              "RelativeDocumentMoniker": "View\\SignIn.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\SignIn.xaml",
+              "RelativeToolTip": "View\\SignIn.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-11T09:35:31.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginWindoww.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindoww.xaml",
+              "RelativeDocumentMoniker": "LoginWindoww.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindoww.xaml",
+              "RelativeToolTip": "LoginWindoww.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-11T09:26:52.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "LoginWindow.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\LoginWindow.xaml",
+              "RelativeToolTip": "LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-11T09:26:46.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SignUp.xaml",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\SignUp.xaml",
+              "RelativeDocumentMoniker": "View\\SignUp.xaml",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\SignUp.xaml",
+              "RelativeToolTip": "View\\SignUp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-11T09:26:38.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ResetPassword.xaml.cs",
-              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\ResetPassword.xaml.cs",
+              "DocumentMoniker": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\ResetPassword.xaml.cs",
               "RelativeDocumentMoniker": "View\\ResetPassword.xaml.cs",
-              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\ResetPassword.xaml.cs",
+              "ToolTip": "E:\\Software\\DoAn\\QuanLyThuVien\\View\\ResetPassword.xaml.cs",
               "RelativeToolTip": "View\\ResetPassword.xaml.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAwwB8AAAAIAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAA9wB8AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-11T06:41:36.525Z",
               "EditorCaption": ""

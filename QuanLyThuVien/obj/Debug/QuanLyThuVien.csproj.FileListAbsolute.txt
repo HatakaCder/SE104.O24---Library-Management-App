@@ -209,3 +209,14 @@ D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Sign
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignUp.baml
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.g.cs
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\ResourceXAML\LoginResource.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\LoginWindoww.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\ForgotPassword.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\ResetPassword.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\SignIn.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\SignUp.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\LoginWindoww.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\ForgotPassword.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\ResetPassword.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\SignIn.baml
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\SignUp.baml

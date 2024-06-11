@@ -5,13 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="LoginWindoww" Height="800" Width="1240">
-    <Grid Background="LightGoldenrodYellow">
+    <Grid Background="Snow">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="475"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <ContentControl x:Name="contentControl" 
                     Grid.Column="0"></ContentControl>
+
+        <TextBlock 
+            Text="Quản Lý Thư Viện" 
+            Foreground="#3AB19B" 
+            Style="{StaticResource TitleText}"
+            Grid.Column="1"
+            FontSize="60"
+            Margin="0, 50, 0, 0"></TextBlock>
+        <Image 
+            Grid.Column="1"
+            Width="700"
+            Height="503"
+            Source="Images\school-software.png" Margin="0,0,0,0"/>
     </Grid>
 </Window>

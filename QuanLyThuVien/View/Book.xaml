@@ -19,7 +19,7 @@
         <vm:BookVM/>
     </UserControl.DataContext>
     <Grid>
-        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
+        <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray" Background="Snow" Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
