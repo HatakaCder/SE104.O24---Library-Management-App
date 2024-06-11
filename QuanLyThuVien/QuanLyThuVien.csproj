@@ -83,11 +83,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LIBRARIAN.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +116,7 @@
     <Compile Include="Model\PHIEUTRA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\READER.cs" />
     <Compile Include="Model\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -121,6 +124,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THU.cs" />
+    <Compile Include="Model\THUTHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TRA.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
@@ -137,6 +143,9 @@
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
+    <Compile Include="View\AddLibrarian.xaml.cs">
+      <DependentUpon>AddLibrarian.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
     </Compile>
@@ -206,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Utilities\DataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddLibrarian.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

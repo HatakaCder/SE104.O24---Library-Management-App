@@ -151,5 +151,16 @@
       <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
     </AssociationSet>
+    <EntitySet Name="THUTHUs" EntityType="QLTV_BETAModel.THUTHU" />
   </EntityContainer>
+  <EntityType Name="THUTHU">
+    <Key>
+      <PropertyRef Name="MaTT" />
+    </Key>
+    <Property Name="MaTT" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+  </EntityType>
 </Schema>

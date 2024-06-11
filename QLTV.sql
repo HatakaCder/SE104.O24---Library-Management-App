@@ -22,6 +22,15 @@ CREATE TABLE DOCGIA
 	Các đối tượng khác: Có thể bao gồm người nước ngoài, người nghiên cứu, người quan tâm đến tài liệu thư viện. - LDOCGIA_E
 	*/
 );
+
+CREATE TABLE THUTHU
+(
+	MaTT		VARCHAR(5) PRIMARY KEY,	
+	NgaySinh	DATE,
+	DiaChi		VARCHAR(255),
+	Email		VARCHAR(255),
+	IsDeleted	BIT DEFAULT 0
+)
 GO
 
 CREATE TABLE SACH 

@@ -22,7 +22,8 @@
     <Window.DataContext>
         <vm:NavigationVM/>
     </Window.DataContext>
-    <Border Background="#E6FAEF" BorderThickness="0.5">
+    <Border Background="#E6FAEF" BorderThickness="1"
+            BorderBrush="Black">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"></ColumnDefinition>

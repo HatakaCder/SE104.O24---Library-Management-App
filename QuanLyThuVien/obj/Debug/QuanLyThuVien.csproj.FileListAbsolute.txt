@@ -129,3 +129,5 @@ E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.dll
 E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.xml
 E:\Software\DoAn\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.xml
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien_Content.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\AddLibrarian.g.cs
+E:\Software\DoAn\QuanLyThuVien\obj\Debug\View\AddLibrarian.baml

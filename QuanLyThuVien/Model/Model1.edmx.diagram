@@ -15,6 +15,7 @@
         <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaSac__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTRA__MaPhMu__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTHU__MaPhTr__45F365D3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.THUTHU" Width="1.375" PointX="5.5" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

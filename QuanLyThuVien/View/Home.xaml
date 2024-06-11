@@ -125,9 +125,9 @@
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <TextBlock HorizontalAlignment="Left"
-                         VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                Text="0" />
+                                            VerticalAlignment="Center"
+                                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                            Text="0" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -194,7 +194,7 @@
                                         <TextBlock HorizontalAlignment="Left"
                                                      VerticalAlignment="Center"
                                                     Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                                                    Text="{Binding AnhDaiDien}" />
+                                                    Text="{Binding IDCount}" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -367,10 +367,10 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding Path=ReadersList, Mode=TwoWay}"
           >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                                <DataGridTextColumn Width="0.5*" Binding="{Binding Path=MaDG}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -380,7 +380,7 @@
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Path=HoTen}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -390,7 +390,7 @@
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Path=LoaiDG}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -400,7 +400,7 @@
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Path=NgaySinh}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -410,7 +410,7 @@
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Path=GioiTinh}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -420,7 +420,7 @@
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding Path=Email}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>

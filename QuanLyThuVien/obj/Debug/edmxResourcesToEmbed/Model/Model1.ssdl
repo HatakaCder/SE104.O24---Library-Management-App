@@ -17,17 +17,6 @@
     <Property Name="AnhDaiDien" Type="varchar" MaxLength="30" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PARAMETERs">
-          <Property Name="IDDocGia" Type="int" />
-          <Property Name="IDSach" Type="int" />
-          <Property Name="IDPhMuon" Type="int" />
-          <Property Name="IDPhThu" Type="int" />
-          <Property Name="IDPhTra" Type="int" />
-          <Property Name="SoNgMuonTD" Type="int" />
-          <Property Name="TuoiTThieu" Type="int" />
-        </EntityType>-->
   <EntityType Name="PHIEUMUON">
     <Key>
       <PropertyRef Name="MaPhMuon" />
@@ -82,6 +71,16 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="THUTHU">
+    <Key>
+      <PropertyRef Name="MaTT" />
+    </Key>
+    <Property Name="MaTT" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="DiaChi" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" />
   </EntityType>
   <Association Name="FK__PHIEUMUON__MaDG__3D5E1FD2">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
@@ -138,6 +137,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__PHIEUMUON__MaDG__3D5E1FD2" Association="Self.FK__PHIEUMUON__MaDG__3D5E1FD2">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
