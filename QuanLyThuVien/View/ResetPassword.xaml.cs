@@ -17,17 +17,16 @@ using QuanLyThuVien.ViewModel;
 namespace QuanLyThuVien.View
 {
     /// <summary>
-    /// Interaction logic for ForgotPassword.xaml
+    /// Interaction logic for ResetPassword.xaml
     /// </summary>
-    public partial class ForgotPassword : UserControl
+    public partial class ResetPassword : UserControl
     {
-        ForgotPasswordVM userControl;
-        public ForgotPassword()
+        private ResetPasswordVM vm;
+        public ResetPassword(string email)
         {
             InitializeComponent();
-            userControl = new ForgotPasswordVM();
-            this.DataContext = userControl;
-
+            vm = new ResetPasswordVM(email);
+            this.DataContext = vm;
         }
         private void l_signin_MouseLeave(object sender, MouseEventArgs e)
         {

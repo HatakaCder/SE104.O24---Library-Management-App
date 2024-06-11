@@ -1,5 +1,7 @@
-﻿using System;
+﻿using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,12 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class SignUp : UserControl
     {
+        SignUpVM ViewModel;
         public SignUp()
         {
             InitializeComponent();
+            ViewModel = new SignUpVM();
+            this.DataContext = ViewModel;
         }
         private void l_signin_MouseLeave(object sender, MouseEventArgs e)
         {

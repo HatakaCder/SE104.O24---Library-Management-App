@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class SignIn : UserControl
     {
+        SignInVM ViewModels;
         public SignIn()
         {
             InitializeComponent();
+            ViewModels = new SignInVM();
+            this.DataContext = ViewModels;
         }
         private void l_register_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -47,14 +51,14 @@ namespace QuanLyThuVien.View
         {
             PasswordUnmask.Visibility = Visibility.Visible;
             PasswordHidden.Visibility = Visibility.Hidden;
-            PasswordUnmask.Text = PasswordHidden.Password;
+            //PasswordUnmask.Text = PasswordHidden.Password;
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             PasswordUnmask.Visibility = Visibility.Hidden;
             PasswordHidden.Visibility = Visibility.Visible;
-            PasswordHidden.Password = PasswordUnmask.Text;
+            //PasswordHidden.Password = PasswordUnmask.Text;
         }
 
         private void l_forgot_Click(object sender, RoutedEventArgs e)
@@ -67,6 +71,21 @@ namespace QuanLyThuVien.View
         {
             var mainWindow = Application.Current.MainWindow as LoginWindoww;
             mainWindow?.SwitchToSignUp();
+        }
+
+        private void PasswordHidden_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
+        }
+
+        private void PasswordUnmask_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            PasswordHidden.Password = PasswordUnmask.Text;
+        }
+
+        private void PasswordHidden_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordUnmask.Text = PasswordHidden.Password;
         }
     }
 }

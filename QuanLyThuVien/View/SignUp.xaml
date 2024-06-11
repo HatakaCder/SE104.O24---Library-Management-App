@@ -50,19 +50,19 @@
             <TextBlock Grid.Row="9" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Xác nhận mật khẩu</TextBlock>
             <TextBlock Grid.Row="10" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">OTP</TextBlock>
 
-            <Button Grid.Row="11" Grid.Column="1" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="100" Height="30">Đăng ký</Button>
-            <Button Grid.Row="11" Grid.Column="0" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="130" Height="30">Nhận mã OTP</Button>
+            <Button Command="{Binding Path=SignUpCommand}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="100" Height="30">Đăng ký</Button>
+            <Button Command="{Binding Path=SendOTPCommand}" Grid.Row="11" Grid.Column="0" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="130" Height="30">Nhận mã OTP</Button>
 
-            <TextBox Name="txtName"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtDiaChi"  Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtEmail"  Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtSDT"  Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtUsername"  Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtPassword"  Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtPasswordConfirm"  Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
-            <TextBox Name="txtOTP"  Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtName" Text="{Binding Path=CurrentDocGia.HoTen}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtDiaChi" Text="{Binding Path=CurrentDocGia.DiaChi}" Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtEmail" Text="{Binding Path=CurrentDocGia.Email}" Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtSDT" Text="{Binding Path=CurrentDocGia.SoDT}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtUsername" Text="{Binding Path=CurrentUser.TaiKhoan}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtPassword" Text="{Binding Path=CurrentUser.MatKhau}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtPasswordConfirm" Text="{Binding Path=PasswordConfirm}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtOTP" Text="{Binding Path=CurrentOtp}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
 
-            <DatePicker Grid.Row="3" Grid.Column="1" Style="{StaticResource DateTimeBox}" Margin="10,3,10,3" FontSize="14" FontFamily="Roboto"></DatePicker>
+            <DatePicker Text="{Binding Path=CurrentDocGia.NgaySinh, Mode=TwoWay}" Name="DateOfBirth" Grid.Row="3" Grid.Column="1" Style="{StaticResource DateTimeBox}" SelectedDateFormat="Short" Margin="10,3,10,3" FontSize="14" FontFamily="Roboto"></DatePicker>
 
             <Grid Grid.Row="2" Grid.Column="1" Margin="10, 0, 10, 0">
                 <Grid.ColumnDefinitions>
@@ -70,8 +70,8 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="True" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
-                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="{Binding NamChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" IsChecked="{Binding NuChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
             </Grid>
 
 

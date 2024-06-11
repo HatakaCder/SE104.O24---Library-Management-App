@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyThuVien.View"
+             xmlns:local_1="clr-namespace:QuanLyThuVien.Class"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
     <Border BorderBrush="Gray" 
@@ -40,19 +41,20 @@
              VerticalContentAlignment="Center"
              Margin="10, 5, 10, 5"
              Padding="10"
-             Background="#f0f0f0"></TextBox>
+             Background="#f0f0f0" Text="{Binding Path=CurrentUser.TaiKhoan}"></TextBox>
             <TextBlock Grid.Row="3"
                    Style="{StaticResource TextBlock18}"
                    Margin="10">Mật khẩu</TextBlock>
 
-            <PasswordBox Name="PasswordHidden" PasswordChar="●" 
+            <PasswordBox Name="PasswordHidden" PasswordChar="●" local_1:PasswordBoxHelper.BoundPassword="{Binding CurrentUser.MatKhau, Mode=TwoWay}"
                  Grid.Row="4"
                  Style="{StaticResource PasswordBox24}"
                  FontSize="18"
                  VerticalContentAlignment="Center"
                  Margin="10, 5, 10, 5"
                  Padding="10"
-                 Background="#f0f0f0"/>
+                 Background="#f0f0f0"
+                 PasswordChanged="PasswordHidden_PasswordChanged"/>
             <TextBox Name="PasswordUnmask"
              Visibility="Hidden"
              Grid.Row="4"
@@ -61,7 +63,7 @@
              VerticalContentAlignment="Center"
              Margin="10, 5, 10, 5"
              Padding="10"
-             Background="#f0f0f0"></TextBox>
+             Background="#f0f0f0" Text="{Binding Path=CurrentUser.MatKhau}" TextChanged="PasswordUnmask_TextChanged"></TextBox>
             <CheckBox Grid.Row="5"
               Content="Hiện/Ẩn mật khẩu"
               FontSize="16" FontFamily="Roboto"
@@ -73,7 +75,7 @@
             <Button Grid.Row="6"
             FontSize="20"
             Height="55"
-            Margin="10" Style="{StaticResource Button24}">Đăng nhập</Button>
+            Margin="10" Style="{StaticResource Button24}" Command="{Binding Path=SignInCommand}">Đăng nhập</Button>
             <Grid Grid.Row="7">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
