@@ -67,111 +67,104 @@ namespace QuanLyThuVien.View
         }
         private void loadData()
         {
-            List<DOCGIA> list = new List<DOCGIA>();
-            var data = _context.DOCGIA.ToList();
+            // Lấy danh sách các MaDG có trong PHIEUMUON nhưng chỉ lấy một lần duy nhất cho mỗi MaDG
+            var maDGs = _context.PHIEUMUON
+                                .Where(pm => pm.IsDeleted==false)
+                                .Select(pm => pm.MaDG)
+                                .Distinct()  //Loại bỏ các giá trị trùng lặp
+                                .ToList();
 
-            for(int i = 0; i < data.LongCount(); i++)
-            {
-                var dataItem = data[i];
+            // Lấy thông tin độc giả dựa trên MaDG
+            var docGias = _context.DOCGIA
+                                  .Where(dg => maDGs.Contains(dg.MaDG))
+                                  .ToList();
 
-                var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaDG == dataItem.MaDG && !x.IsDeleted.Value).ToList();
-                
-                if (checkPhieuMuon.Any())
-                {
-                    foreach(var item in checkPhieuMuon)
-                    {
-                        var checlkPhieuTra = _context.PHIEUTRA.Where(x => x.MaPhMuon == item.MaPhMuon).ToList();
-                        if (checlkPhieuTra.Any())
-                        {
-                            var docgiaItem = new DOCGIA()
-                            {
-                                MaDG = dataItem.MaDG,
-                                HoTen = dataItem.HoTen,
-                                DiaChi = dataItem.DiaChi,
-                                Email = dataItem.Email,
-                                GioiTinh = dataItem.GioiTinh,
-                                LoaiDG = dataItem.LoaiDG,
-                                IsDeleted = dataItem.IsDeleted,
-                                NgayLapThe = dataItem.NgayLapThe,
-                                NgaySinh = dataItem.NgaySinh,
-                                SoDT = dataItem.SoDT,
-                                PHIEUMUON = dataItem.PHIEUMUON,
-                                ACCOUNT = dataItem.ACCOUNT
-                            };
-
-                            list.Add(docgiaItem);
-                        }
-                    }
-                    
-                }
-                
-            }
-
-            docgia.ItemsSource = list;
+            // Gán dữ liệu vào DataGrid
+            docgia.ItemsSource = docGias;
         }
 
-        private void loadSachByDocGia(string maDG)
+        private void loadSachByDocGia(DOCGIA docGia)
         {
-            List<SachDTO> list = new List<SachDTO>();
-            var dataPhieuMuon = _context.PHIEUMUON.Where(x => x.MaDG == maDG && !x.IsDeleted.Value).ToList();
+            // Tạo danh sách để chứa kết quả
+            var list = new List<object>();
 
+            // Lấy tất cả các phiếu mượn của độc giả có mã MaDG và chưa bị xóa
+            var dataPhieuMuon = _context.PHIEUMUON
+                                       .Where(x => x.MaDG == docGia.MaDG && x.IsDeleted.Value == false)
+                                       .ToList();
+
+            // Lấy thời gian hiện tại
+            DateTime currentDate = DateTime.Now;
+
+            // Duyệt qua tất cả các phiếu mượn
             foreach (var data in dataPhieuMuon)
             {
-                var checkPhieuTra = _context.PHIEUTRA.Where(x => x.MaPhMuon == data.MaPhMuon).ToList();
-                if (checkPhieuTra.Any())
+                // Lấy thông tin sách
+                var checkSach = _context.SACH
+                                        .FirstOrDefault(x => x.MaSach == data.MaSach);
+
+                // Nếu sách tồn tại
+                if (checkSach != null)
                 {
-                    var checkSach = _context.SACH.Where(x => x.MaSach == data.MaSach).FirstOrDefault();
-                    var checktenDocgia = _context.DOCGIA.Where(x => x.MaDG == data.MaDG).FirstOrDefault();
-
-                    if (checkSach != null && checktenDocgia != null)
+                    // Tạo đối tượng ẩn danh chứa thông tin cần thiết
+                    var dataItem = new
                     {
-                        var dataItem = new SachDTO();
-                        if (data.NgayPhTra < dateTime)
-                        {
-                            TimeSpan chenhlech = dateTime.Subtract(data.NgayPhTra.Value);
-                            int chuyenDoiInt = Math.Abs(chenhlech.Days);
-                            dataItem.quahan = "Sách đã quá hạn " + chuyenDoiInt + " ngày";
-                        }
-                        else
-                        {
-                            TimeSpan chenhlechChuaQuaHan = data.NgayPhTra.Value.Subtract(dateTime);
-                            int chuyenDoiIntChuaQuaHan = Math.Abs(chenhlechChuaQuaHan.Days);
-                            dataItem.quahan = "Sách chưa quá hạn, vẫn còn " + chuyenDoiIntChuaQuaHan + " ngày";
-                        }
+                        id = checkSach.MaSach,
+                        tentacgia = checkSach.TacGia,
+                        tensach = checkSach.TenSach,
+                        ngaytra = data.NgayPhTra.Value,
+                        ngaymuon = data.NgayMuon.Value,
+                        quahan = data.NgayPhTra < currentDate
+                                 ? $"Sách đã quá hạn {Math.Abs((currentDate - data.NgayPhTra.Value).Days)} ngày"
+                                 : $"Sách chưa quá hạn, vẫn còn {Math.Abs((data.NgayPhTra.Value - currentDate).Days)} ngày",
+                         maPhMuon = data.MaPhMuon
+                    };
 
-                        dataItem.id = checkSach.MaSach;
-                        dataItem.tentacgia = checkSach.TacGia;
-                        dataItem.tensach = checkSach.TenSach;
-                        dataItem.ngaytra = data.NgayPhTra.Value;
-                        dataItem.ngaymuon = data.NgayMuon.Value;
-
-                        list.Add(dataItem);
-                    }
+                    // Thêm vào danh sách
+                    list.Add(dataItem);
                 }
             }
 
+            // Gán dữ liệu vào DataGrid
             sach.ItemsSource = list;
         }
 
+        private object selectedPhieuMuon; //Dùng để truyền Mã phiếu mượn vào form mượn sách.
+        private void Data_Sach(object sender, SelectionChangedEventArgs e)
+        {
+            if (sach.SelectedItem != null)
+            {
+                selectedPhieuMuon = sach.SelectedItem;
+            }
+        }
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (docgia.SelectedItem != null)
             {
                 DOCGIA selectedDocGia = (DOCGIA)docgia.SelectedItem;
-                loadSachByDocGia(selectedDocGia.MaDG);
+
+                // Gọi hàm loadSachByDocGia để load danh sách sách mượn của độc giả này
+                loadSachByDocGia(selectedDocGia);
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            AddOrEditMuonTra muontra = new AddOrEditMuonTra(true);
+            AddOrEditMuonTra muontra;
+
+            if (selectedPhieuMuon != null)
+            {
+                string maPhMuon = ((dynamic)selectedPhieuMuon).id;
+                muontra = new AddOrEditMuonTra(true, maPhMuon);
+            }
+            else
+            {
+                muontra = new AddOrEditMuonTra(true);
+            }
+
             muontra.Show();
         }
 
-        private void Data_Sach(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void xulytimkiemchange(object sender, SelectionChangedEventArgs e)
         {

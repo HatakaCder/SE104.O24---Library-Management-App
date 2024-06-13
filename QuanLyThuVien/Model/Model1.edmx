@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="TaiKhoan" />
@@ -32,17 +32,6 @@
           <Property Name="SoCCCD" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PARAMETERs">
-          <Property Name="IDDocGia" Type="int" />
-          <Property Name="IDSach" Type="int" />
-          <Property Name="IDPhMuon" Type="int" />
-          <Property Name="IDPhThu" Type="int" />
-          <Property Name="IDPhTra" Type="int" />
-          <Property Name="SoNgMuonTD" Type="int" />
-          <Property Name="TuoiTThieu" Type="int" />
-        </EntityType>-->
         <EntityType Name="PHIEUMUON">
           <Key>
             <PropertyRef Name="MaPhMuon" />
@@ -87,6 +76,28 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="TriGia" Type="int" />
           <Property Name="TinhTrang" Type="smallint" />
           <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SETTING">
+          <Key>
+            <PropertyRef Name="TuoiToiThieu" />
+            <PropertyRef Name="TuoiToiDa" />
+            <PropertyRef Name="ThoiHanThe" />
+            <PropertyRef Name="SoNgayMuonToiDa" />
+            <PropertyRef Name="SoTienNopTre" />
+            <PropertyRef Name="SoSachMuonToiDa" />
+            <PropertyRef Name="SoLuongTheLoaiToiDa" />
+            <PropertyRef Name="ThoiGianNhapSach" />
+          </Key>
+          <Property Name="TuoiToiThieu" Type="int" Nullable="false" />
+          <Property Name="TuoiToiDa" Type="int" Nullable="false" />
+          <Property Name="ThoiHanThe" Type="int" Nullable="false" />
+          <Property Name="SoNgayMuonToiDa" Type="int" Nullable="false" />
+          <Property Name="SoTienNopTre" Type="int" Nullable="false" />
+          <Property Name="SoSachMuonToiDa" Type="int" Nullable="false" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="int" Nullable="false" />
+          <Property Name="ThoiGianNhapSach" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="THELOAI">
           <Key>
@@ -134,7 +145,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaDG__4A8310C6">
+        <Association Name="FK__PHIEUMUON__MaDG__02C769E9">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +157,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaSac__4B7734FF">
+        <Association Name="FK__PHIEUMUON__MaSac__03BB8E22">
           <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +169,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTHU__MaPhTr__531856C7">
+        <Association Name="FK__PHIEUTHU__MaPhTr__0B5CAFEA">
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
           <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +181,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTRA__MaPhMu__4F47C5E3">
+        <Association Name="FK__PHIEUTRA__MaPhMu__078C1F06">
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,6 +214,18 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SETTING].[TuoiToiThieu] AS [TuoiToiThieu], 
+    [SETTING].[TuoiToiDa] AS [TuoiToiDa], 
+    [SETTING].[ThoiHanThe] AS [ThoiHanThe], 
+    [SETTING].[SoNgayMuonToiDa] AS [SoNgayMuonToiDa], 
+    [SETTING].[SoTienNopTre] AS [SoTienNopTre], 
+    [SETTING].[SoSachMuonToiDa] AS [SoSachMuonToiDa], 
+    [SETTING].[SoLuongTheLoaiToiDa] AS [SoLuongTheLoaiToiDa], 
+    [SETTING].[ThoiGianNhapSach] AS [ThoiGianNhapSach]
+    FROM [dbo].[SETTING] AS [SETTING]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -211,19 +234,19 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             <End Role="THUTHU" EntitySet="THUTHU" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaDG__4A8310C6" Association="Self.FK__PHIEUMUON__MaDG__4A8310C6">
+          <AssociationSet Name="FK__PHIEUMUON__MaDG__02C769E9" Association="Self.FK__PHIEUMUON__MaDG__02C769E9">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaSac__4B7734FF" Association="Self.FK__PHIEUMUON__MaSac__4B7734FF">
+          <AssociationSet Name="FK__PHIEUMUON__MaSac__03BB8E22" Association="Self.FK__PHIEUMUON__MaSac__03BB8E22">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__531856C7" Association="Self.FK__PHIEUTHU__MaPhTr__531856C7">
+          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__0B5CAFEA" Association="Self.FK__PHIEUTHU__MaPhTr__0B5CAFEA">
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__4F47C5E3" Association="Self.FK__PHIEUTRA__MaPhMu__4F47C5E3">
+          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__078C1F06" Association="Self.FK__PHIEUTRA__MaPhMu__078C1F06">
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
           </AssociationSet>
@@ -232,8 +255,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLTV_BETAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -266,7 +288,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="SoCCCD" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaDG__59C55456" FromRole="DOCGIA" ToRole="ACCOUNT" />
-          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaDG__4A8310C6" FromRole="DOCGIA" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaDG__02C769E9" FromRole="DOCGIA" ToRole="PHIEUMUON" />
         </EntityType>
         <EntityType Name="PHIEUMUON">
           <Key>
@@ -278,9 +300,9 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="NgayMuon" Type="DateTime" Precision="0" />
           <Property Name="NgayPhTra" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__PHIEUMUON__MaDG__4A8310C6" FromRole="PHIEUMUON" ToRole="DOCGIA" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__PHIEUMUON__MaSac__4B7734FF" FromRole="PHIEUMUON" ToRole="SACH" />
-          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTRA__MaPhMu__4F47C5E3" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
+          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__PHIEUMUON__MaDG__02C769E9" FromRole="PHIEUMUON" ToRole="DOCGIA" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__PHIEUMUON__MaSac__03BB8E22" FromRole="PHIEUMUON" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTRA__MaPhMu__078C1F06" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
         </EntityType>
         <EntityType Name="PHIEUTHU">
           <Key>
@@ -291,7 +313,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="SoNgayQHan" Type="Int16" />
           <Property Name="SoTienThu" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTHU__MaPhTr__531856C7" FromRole="PHIEUTHU" ToRole="PHIEUTRA" />
+          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTHU__MaPhTr__0B5CAFEA" FromRole="PHIEUTHU" ToRole="PHIEUTRA" />
         </EntityType>
         <EntityType Name="PHIEUTRA">
           <Key>
@@ -301,8 +323,8 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="MaPhMuon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="NgayTra" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUTRA__MaPhMu__4F47C5E3" FromRole="PHIEUTRA" ToRole="PHIEUMUON" />
-          <NavigationProperty Name="PHIEUTHU" Relationship="Self.FK__PHIEUTHU__MaPhTr__531856C7" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUTRA__MaPhMu__078C1F06" FromRole="PHIEUTRA" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="PHIEUTHU" Relationship="Self.FK__PHIEUTHU__MaPhTr__0B5CAFEA" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -318,7 +340,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="TriGia" Type="Int32" />
           <Property Name="TinhTrang" Type="Int16" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaSac__4B7734FF" FromRole="SACH" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaSac__03BB8E22" FromRole="SACH" ToRole="PHIEUMUON" />
           <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__MaTheLoai__46B27FE2" FromRole="SACH" ToRole="THELOAI" />
         </EntityType>
         <EntityType Name="THELOAI">
@@ -345,6 +367,26 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaTT__5AB9788F" FromRole="THUTHU" ToRole="ACCOUNT" />
         </EntityType>
+        <EntityType Name="SETTING">
+          <Key>
+            <PropertyRef Name="TuoiToiThieu" />
+            <PropertyRef Name="TuoiToiDa" />
+            <PropertyRef Name="ThoiHanThe" />
+            <PropertyRef Name="SoNgayMuonToiDa" />
+            <PropertyRef Name="SoTienNopTre" />
+            <PropertyRef Name="SoSachMuonToiDa" />
+            <PropertyRef Name="SoLuongTheLoaiToiDa" />
+            <PropertyRef Name="ThoiGianNhapSach" />
+          </Key>
+          <Property Name="TuoiToiThieu" Type="Int32" Nullable="false" />
+          <Property Name="TuoiToiDa" Type="Int32" Nullable="false" />
+          <Property Name="ThoiHanThe" Type="Int32" Nullable="false" />
+          <Property Name="SoNgayMuonToiDa" Type="Int32" Nullable="false" />
+          <Property Name="SoTienNopTre" Type="Int32" Nullable="false" />
+          <Property Name="SoSachMuonToiDa" Type="Int32" Nullable="false" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="Int32" Nullable="false" />
+          <Property Name="ThoiGianNhapSach" Type="Int32" Nullable="false" />
+        </EntityType>
         <Association Name="FK__ACCOUNT__MaDG__59C55456">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
@@ -369,7 +411,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaDG__4A8310C6">
+        <Association Name="FK__PHIEUMUON__MaDG__02C769E9">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +423,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaSac__4B7734FF">
+        <Association Name="FK__PHIEUMUON__MaSac__03BB8E22">
           <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,7 +435,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTRA__MaPhMu__4F47C5E3">
+        <Association Name="FK__PHIEUTRA__MaPhMu__078C1F06">
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -405,7 +447,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTHU__MaPhTr__531856C7">
+        <Association Name="FK__PHIEUTHU__MaPhTr__0B5CAFEA">
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
           <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,6 +480,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
           <EntitySet Name="SACH" EntityType="Self.SACH" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" />
           <EntitySet Name="THUTHU" EntityType="Self.THUTHU" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" />
           <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -446,19 +489,19 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
             <End Role="THUTHU" EntitySet="THUTHU" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaDG__4A8310C6" Association="Self.FK__PHIEUMUON__MaDG__4A8310C6">
+          <AssociationSet Name="FK__PHIEUMUON__MaDG__02C769E9" Association="Self.FK__PHIEUMUON__MaDG__02C769E9">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaSac__4B7734FF" Association="Self.FK__PHIEUMUON__MaSac__4B7734FF">
+          <AssociationSet Name="FK__PHIEUMUON__MaSac__03BB8E22" Association="Self.FK__PHIEUMUON__MaSac__03BB8E22">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__4F47C5E3" Association="Self.FK__PHIEUTRA__MaPhMu__4F47C5E3">
+          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__078C1F06" Association="Self.FK__PHIEUTRA__MaPhMu__078C1F06">
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__531856C7" Association="Self.FK__PHIEUTHU__MaPhTr__531856C7">
+          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__0B5CAFEA" Association="Self.FK__PHIEUTHU__MaPhTr__0B5CAFEA">
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
           </AssociationSet>
@@ -572,6 +615,20 @@ warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary 
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SoDT" ColumnName="SoDT" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SETTING">
+            <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
+              <MappingFragment StoreEntitySet="SETTING">
+                <ScalarProperty Name="TuoiToiThieu" ColumnName="TuoiToiThieu" />
+                <ScalarProperty Name="TuoiToiDa" ColumnName="TuoiToiDa" />
+                <ScalarProperty Name="ThoiHanThe" ColumnName="ThoiHanThe" />
+                <ScalarProperty Name="SoNgayMuonToiDa" ColumnName="SoNgayMuonToiDa" />
+                <ScalarProperty Name="SoTienNopTre" ColumnName="SoTienNopTre" />
+                <ScalarProperty Name="SoSachMuonToiDa" ColumnName="SoSachMuonToiDa" />
+                <ScalarProperty Name="SoLuongTheLoaiToiDa" ColumnName="SoLuongTheLoaiToiDa" />
+                <ScalarProperty Name="ThoiGianNhapSach" ColumnName="ThoiGianNhapSach" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

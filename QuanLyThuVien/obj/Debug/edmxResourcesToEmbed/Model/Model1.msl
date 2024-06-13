@@ -103,5 +103,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SETTING">
+      <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
+        <MappingFragment StoreEntitySet="SETTING">
+          <ScalarProperty Name="TuoiToiThieu" ColumnName="TuoiToiThieu" />
+          <ScalarProperty Name="TuoiToiDa" ColumnName="TuoiToiDa" />
+          <ScalarProperty Name="ThoiHanThe" ColumnName="ThoiHanThe" />
+          <ScalarProperty Name="SoNgayMuonToiDa" ColumnName="SoNgayMuonToiDa" />
+          <ScalarProperty Name="SoTienNopTre" ColumnName="SoTienNopTre" />
+          <ScalarProperty Name="SoSachMuonToiDa" ColumnName="SoSachMuonToiDa" />
+          <ScalarProperty Name="SoLuongTheLoaiToiDa" ColumnName="SoLuongTheLoaiToiDa" />
+          <ScalarProperty Name="ThoiGianNhapSach" ColumnName="ThoiGianNhapSach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

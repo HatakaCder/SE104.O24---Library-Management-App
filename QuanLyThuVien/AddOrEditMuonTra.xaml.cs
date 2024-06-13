@@ -33,7 +33,16 @@ namespace QuanLyThuVien
             InitializeComponent();
             ExcelPackage.LicenseContext = LicenseContext.Commercial;
         }
+        public AddOrEditMuonTra(bool isEdit, string maPhMuon = null)
+        {
+            InitializeComponent();
 
+            if (isEdit && maPhMuon != null)
+            {
+                // Giả sử combobox maphieumuon1 đã được đặt tên đúng
+                maphieumuon1.SelectedItem = maPhMuon;
+            }
+        }
 
         private string sach_id = null;
         private string docgia_id = null;
@@ -70,15 +79,7 @@ namespace QuanLyThuVien
             InitializeComponent();
             this.quahan = quahanInt;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-
-            this.Close();
-
-        }
 
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -88,8 +89,6 @@ namespace QuanLyThuVien
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
 
             this.Close();
         }
@@ -99,26 +98,12 @@ namespace QuanLyThuVien
         {
             loadDataDocgia();
             loadDataSach();
-            loadPhieuTra();
             loadPhieuMuon();
 
             sotien = Application.Current.Properties["Data"] as string;
             quahan = Application.Current.Properties["ngaymuon"] as string;
             thehethan = Application.Current.Properties["hethanthe"] as string;
             soquyendcmuon = Application.Current.Properties["soquyen"] as string;
-
-            if (checkUpdateOrAdd == false)
-            {
-                maphieutra.Visibility = Visibility.Collapsed; // Ẩn ComboBox đi
-                maphieumuon.Visibility = Visibility.Collapsed; // Ẩn ComboBox đi
-                titleBlock.Visibility = Visibility.Collapsed;
-            }
-            else if (checkUpdateOrAdd == true)
-            {
-                maphieutra.Visibility = Visibility.Visible; // Hiển thị lại ComboBox
-                maphieumuon.Visibility = Visibility.Visible; // Hiển thị lại ComboBox 
-                titleBlock.Visibility = Visibility.Visible;
-            }
 
         }
 
@@ -141,29 +126,6 @@ namespace QuanLyThuVien
 
 
             docgia.ItemsSource = data;
-        }
-
-        private void loadPhieuTra()
-        {
-            List<ComboBoxItem> list = new List<ComboBoxItem>();
-
-            var data = _context.PHIEUTRA.Where(x => !x.IsDeleted.Value).ToList();
-            if (data.Count > 0 || data.Any())
-            {
-                foreach (var item in data)
-                {
-                    var comboboxItem = new ComboBoxItem
-                    {
-                        Content = item.MaPhTra,
-                        Tag = item.MaPhTra
-                    };
-
-                    list.Add(comboboxItem);
-                }
-            }
-
-
-            maphieutra.ItemsSource = list;
         }
 
         private void loadPhieuMuon()
@@ -232,20 +194,6 @@ namespace QuanLyThuVien
                     return false;
                 }
 
-            }
-            return true;
-        }
-
-        private bool checkNgayMuon()
-        {
-            var ngaymuonSach = ngaymuon.SelectedDate ?? DateTime.Now;
-            TimeSpan songay = currenDate.Subtract(ngaymuonSach); // Sử dụng "Subtract" để tính toán số ngày chênh lệch, "TimeSpan" này sẽ chứa sự chênh lệch giữa "currenDate" và "ngaymuonSach"
-            int songayInt = Math.Abs(songay.Days); // "songay.Days" trả về số ngày chênh lệch, và được hàm "Math.Abs()" này chuyển đổi thành số dương để đảm bảo tính toán chính xác
-
-            string songays = Application.Current.Properties["ngaymuon"] as string;
-            if (songayInt > int.Parse(songays))
-            {
-                return false;
             }
             return true;
         }
@@ -405,21 +353,12 @@ namespace QuanLyThuVien
 
         }
 
-        private void xulychange(object sender, SelectionChangedEventArgs e)
-        {
-            if (IsDelete.SelectedItem != null) // Kiểm tra nếu người dùng click vào ComBoBoxItem
-            {
-                ComboBoxItem selectedItem = (ComboBoxItem)IsDelete.SelectedItem;
-                IsDelete_check = selectedItem.Content.ToString();
-
-            }
-        }
 
         private bool checkComboBoxItem()
         {
             if (checkUpdateOrAdd == false)
             {
-                if (IsDelete.SelectedItem == null || sach.SelectedItem == null || docgia.SelectedItem == null) // Kiểm tra nếu người dùng chưa click vào ComBoBoxItem
+                if (sach.SelectedItem == null || docgia.SelectedItem == null) // Kiểm tra nếu người dùng chưa click vào ComBoBoxItem
                 {
                     MessageBox.Show("Bạn chưa chọn thể loại");
                     return false;
@@ -427,25 +366,11 @@ namespace QuanLyThuVien
             }
             else if (checkUpdateOrAdd == true)
             {
-                if (IsDelete.SelectedItem == null || sach.SelectedItem == null || docgia.SelectedItem == null || maphieumuon.SelectedItem == null) // Kiểm tra nếu người dùng chưa click vào ComBoBoxItem
+                if (sach.SelectedItem == null || docgia.SelectedItem == null || maphieumuon.SelectedItem == null) // Kiểm tra nếu người dùng chưa click vào ComBoBoxItem
                 {
                     MessageBox.Show("Bạn chưa chọn thể loại");
                     return false;
                 }
-            }
-
-            return true;
-        }
-
-        private bool checkNgayMuonNgayTra()
-        {
-            DateTime ngaymuonsSach = ngaymuon.SelectedDate ?? DateTime.Now;
-            DateTime ngaytraSach = ngaytra.SelectedDate ?? DateTime.Now;
-
-            if (ngaytraSach < currenDate || ngaymuonsSach < currenDate || ngaytraSach < ngaymuonsSach)
-            {
-                MessageBox.Show("Ngày không hợp lệ");
-                return false;
             }
 
             return true;
@@ -523,9 +448,8 @@ namespace QuanLyThuVien
                         MaPhMuon = generateId("PM", 3),
                         MaDG = docgia_id,
                         MaSach = sach_id,
-                        NgayMuon = ngaymuon.SelectedDate,
-                        NgayPhTra = ngaytra.SelectedDate,
-                        IsDeleted = IsDelete_check == "True" ? true : false
+                        NgayMuon = currenDate,
+                        IsDeleted = false
 
                     };
 
@@ -533,10 +457,12 @@ namespace QuanLyThuVien
                     if (_context.SaveChanges() > 0)
                     {
                         MessageBox.Show("Add thành công");
+                        this.Close();
                         return;
                     }
 
                     MessageBox.Show("Add Faild");
+
                 }
                 else if (checkUpdateOrAdd != false)
                 {
@@ -545,8 +471,7 @@ namespace QuanLyThuVien
                     {
                         checkPhieuMuon.MaDG = docgia_id;
                         checkPhieuMuon.MaSach = sach_id;
-                        checkPhieuMuon.NgayMuon = ngaymuon.SelectedDate;
-                        checkPhieuMuon.NgayPhTra = ngaytra.SelectedDate;
+                        checkPhieuMuon.NgayMuon = currenDate;
                         checkPhieuMuon.IsDeleted = IsDelete_check == "True" ? true : false;
                     }
 
@@ -554,11 +479,13 @@ namespace QuanLyThuVien
                     if (_context.SaveChanges() < 0)
                     {
                         MessageBox.Show("Edit Faild");
+                        this.Close();
                         return;
                     }
 
                     MessageBox.Show("Edit Thành Công");
                 }
+                this.Close();
 
             }
         }
@@ -576,11 +503,6 @@ namespace QuanLyThuVien
             PhieumuonId_PhieuTra = comboBoxItem.Tag.ToString();
         }
 
-        private void xulyphieutrachange(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem comboBoxItem = (ComboBoxItem)maphieutra.SelectedItem;
-            maphieutra_Id = comboBoxItem.Tag.ToString();
-        }
 
         private bool checkNgayQuaHam()
         {
@@ -621,7 +543,7 @@ namespace QuanLyThuVien
                         {
                             MaPhTra = generateId("PT", 3),
                             MaPhMuon = PhieumuonId_PhieuTra,
-                            NgayTra = ngaytra1.SelectedDate ?? DateTime.Now,
+                            NgayTra = currenDate,
                             IsDeleted = IsDelete_PhieuTra == "True" ? true : false,
                         };
 
@@ -673,16 +595,13 @@ namespace QuanLyThuVien
         {
 
             var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaPhMuon == PhieumuonId_PhieuTra).FirstOrDefault();
-            if (checkUpdateOrAdd == false) // Add
-            {
-                if (checkNgayQuaHam() && checkValiDatePhieuTra())
+                if (checkNgayQuaHam())
                 {
-
                     var data = new PHIEUTRA()
                     {
                         MaPhTra = generateId("PT", 3),
                         MaPhMuon = PhieumuonId_PhieuTra,
-                        NgayTra = ngaytra1.SelectedDate ?? DateTime.Now,
+                        NgayTra = currenDate,
                         IsDeleted = IsDelete_PhieuTra == "True" ? true : false,
                     };
 
@@ -703,69 +622,10 @@ namespace QuanLyThuVien
 
                     MessageBox.Show("Add phiếu trả Faild");
                     return;
-                }
-            }
-            else if (checkUpdateOrAdd == true) // Upadte
-            {
-                if (checkValiDatePhieuTra())
-                {
-                    var checkUpdatePhieuTra = _context.PHIEUTRA.Where(x => x.MaPhTra == maphieutra_Id).FirstOrDefault();
-                    if (checkUpdatePhieuTra != null)
-                    {
-                        checkUpdatePhieuTra.IsDeleted = IsDelete_PhieuTra == "True" ? true : false;
-                        checkUpdatePhieuTra.MaPhMuon = PhieumuonId_PhieuTra;
-                        checkUpdatePhieuTra.NgayTra = ngaytra1.SelectedDate ?? DateTime.Now;
-
-                        if (checkPhieuMuon != null)
-                        {
-                            checkPhieuMuon.IsDeleted = true;
-                            _context.PHIEUMUON.AddOrUpdate(checkPhieuMuon);
-
-                        }
-
-                        _context.PHIEUTRA.AddOrUpdate(checkUpdatePhieuTra);
-
-                        if (_context.SaveChanges() > 0)
-                        {
-                            MessageBox.Show("Edit thành công");
-                            return;
-                        }
-
-                        MessageBox.Show("Edit Faild");
-
-                    }
-                }
-            }
+                }     
         }
 
-        private bool checkValiDatePhieuTra()
-        {
-            if (checkUpdateOrAdd == false)
-            {
-                if (maphieumuon1.SelectedItem == null || IsDelete1.SelectedItem == null)
-                {
-                    MessageBox.Show("Bạn chưa chọn phiếu mượn hoặc chưa chọn IsDelete");
-                    return false;
-                }
-            }
-            if (checkUpdateOrAdd == true)
-            {
-                if (maphieumuon1.SelectedItem == null || IsDelete1.SelectedItem == null || maphieutra.SelectedItem == null)
-                {
-                    MessageBox.Show("Bạn chưa chọn phiếu mượn hoặc chưa chọn IsDelete hoặc chưa chọn phiếu trả");
-                    return false;
-                }
-            }
 
-
-            return true;
-        }
-
-        private void xulychange1(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem comboBoxItem = (ComboBoxItem)IsDelete1.SelectedItem;
-            IsDelete_PhieuTra = comboBoxItem.Content.ToString();
-        }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {

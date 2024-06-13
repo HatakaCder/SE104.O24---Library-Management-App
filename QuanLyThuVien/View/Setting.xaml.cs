@@ -26,7 +26,6 @@ namespace QuanLyThuVien.View
         private readonly QLTV_BETAEntities _context = new QLTV_BETAEntities();
         private string category_id = null;
         private Dictionary<string, string> addData = new Dictionary<string, string>();
-        private string key = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioasdfghjklzxcvbnm1234567890";
         private readonly Random random = new Random();
         public Setting()
         {

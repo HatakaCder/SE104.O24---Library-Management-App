@@ -57,7 +57,6 @@ Title="Đăng nhập" Height="800" Width="800" Loaded="Window_Loaded_1"
                     <TextBlock Text="Hãy tạo phiếu mượn khi khách hàng có nhu cầu thuê/trả sách" Opacity="0.8" 
                    Margin="35 30 20 30" 
                    Style="{StaticResource NormalText}" />
-                    <Button Content="Đăng nhập" Style="{StaticResource button}" Click="Button_Click" />
                     <Button Content="Xuất file Excel" Margin="0 50 0 0" Style="{StaticResource button}" Click="Button_Click_3" />
                 </StackPanel>
             </Grid>
@@ -69,21 +68,6 @@ Title="Đăng nhập" Height="800" Width="800" Loaded="Window_Loaded_1"
         MouseDown="Border_MouseDown" RenderTransformOrigin="0.396,0.846">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Phiếu mượn" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
-
-                    <DatePicker
-                        x:Name="ngaytra"
-                      Margin="0 5 0 5"
-                      Width="300"
-                      materialDesign:HintAssist.Hint="Ngày trả"
-                      Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
-
-
-                    <DatePicker
-                        x:Name="ngaymuon"
-                          Margin="0 5 0 5"
-                          Width="300"
-                          materialDesign:HintAssist.Hint="Ngày mượn"
-                          Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
 
                     <TextBlock Text="Mã phiếu mượn" Margin="0 10 0 0" Foreground="#3AB19B" Style="{StaticResource TitleSize}" Visibility="Collapsed"/>
                     <!-- Để trường "Visibility="Collapsed"" này để có thể ẩn được ComboBox này đi và phải cấu hình thêm ở trong Code nữa thì mới ẩn đi được-->
@@ -105,7 +89,7 @@ Title="Đăng nhập" Height="800" Width="800" Loaded="Window_Loaded_1"
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <!-- Hiển thị tên của mục -->
-                                    <TextBlock Text="{Binding Email}" />
+                                    <TextBlock Text="{Binding HoTen}" />
                                     <!-- Hiển thị ID của mục (nếu cần) -->
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
@@ -124,40 +108,12 @@ Title="Đăng nhập" Height="800" Width="800" Loaded="Window_Loaded_1"
 
                     </ComboBox>
 
-                    <TextBlock Text="Trạng thái" Margin="0 10 0 0" Foreground="#3AB19B" Style="{StaticResource TitleSize}"/>
-                    <ComboBox x:Name="IsDelete" Width="150" SelectionChanged="xulychange">
-                        <ComboBoxItem>True</ComboBoxItem>
-                        <ComboBoxItem>False</ComboBoxItem>
-                        
-                    </ComboBox>
+                    
 
                     <Button Content="Đăng ký" Style="{StaticResource mainButton}" Click="Button_Click_1" />
 
 
-                    <TextBlock Text="Phiếu trả" Margin="0 50 0 0" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
-
-
-                    <DatePicker
-    x:Name="ngaytra1"
-      Margin="0 5 0 5"
-      Width="300"
-      materialDesign:HintAssist.Hint="Ngày trả"
-      Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
-                    <TextBlock Text="Mã phiếu trả" x:Name="titleBlock" Margin="0 30 0 0" Foreground="#3AB19B" Style="{StaticResource TitleSize}" Visibility="Collapsed" />
-
-                    <!-- Để trường "Visibility="Collapsed"" này để có thể ẩn được ComboBox này đi và phải cấu hình thêm ở trong Code nữa thì mới ẩn đi được-->
-                    <!--"SelectionChanged" này là khi người dùng chọn từng item trong ComboBox thì sẽ gọi đến hàm "xulyphieutrachange" này để xử lý-->
-                    <ComboBox x:Name="maphieutra" Width="150" SelectionChanged="xulyphieutrachange" Visibility="Collapsed">
-
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <!-- Hiển thị tên của mục -->
-                                <TextBlock Text="{Binding TenSach}" />
-                                <!-- Hiển thị ID của mục (nếu cần) -->
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-
-                    </ComboBox>
+                    <TextBlock Text="Phiếu trả" Margin="0 100 0 0" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
 
                     <TextBlock Text="Mã phiếu mượn" Margin="0 10 0 0" Foreground="#3AB19B" Style="{StaticResource TitleSize}"/>
 
@@ -165,19 +121,13 @@ Title="Đăng nhập" Height="800" Width="800" Loaded="Window_Loaded_1"
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <!-- Hiển thị tên của mục -->
-                                <TextBlock Text="{Binding Email}" />
+                                <TextBlock Text="{Binding MaPhMuon}" />
                                 <!-- Hiển thị ID của mục (nếu cần) -->
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
 
                     </ComboBox>
 
-                    <TextBlock Text="Trạng thái" Margin="0 20 0 0" Foreground="#3AB19B" Style="{StaticResource TitleSize}"/>
-                    <ComboBox x:Name="IsDelete1" Width="150" SelectionChanged="xulychange1">
-                        <ComboBoxItem>True</ComboBoxItem>
-                        <ComboBoxItem>False</ComboBoxItem>
-
-                    </ComboBox>
 
                     <Button Content="Gửi" Style="{StaticResource mainButton}" Click="Button_Click_2" />
                 </StackPanel>
