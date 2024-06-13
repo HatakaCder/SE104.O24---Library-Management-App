@@ -138,7 +138,7 @@
                     </Grid>
 
                     <Grid Grid.Column="0" Grid.Row="1">
-                        <DataGrid x:Name="docgia" BorderBrush="Gray" BorderThickness="0.5"   
+                        <DataGrid x:Name="docgia"  BorderBrush="Gray" BorderThickness="0.5"  
 AutoGenerateColumns="False"
 RowStyle="{StaticResource DataGridRowStyle}" 
 Background="White"
@@ -152,7 +152,7 @@ HorizontalScrollBarVisibility="Disabled"
 HeadersVisibility="Column"
 Margin="15"
 ItemsSource="{Binding}"
-                                  SelectionChanged="Data_Item"
+                                  SelectionChanged="docgia_SelectionChanged" ScrollViewer.ScrollChanged="docgia_ScrollChanged" Grid.Row="0"
 >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding MaDG}">

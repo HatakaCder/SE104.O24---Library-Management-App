@@ -38,7 +38,7 @@ namespace QuanLyThuVien.View
             sotien.Text = "2";
             songaychomuon.Text = "2";
             dotuoi.Text = "2";
-            dotuoitoithieu.Text = "2";
+            dotuoitoithieu.Text = "13";
             soluong.Text = "2";
             nhapsach.Text = "2";
 
@@ -314,5 +314,7 @@ namespace QuanLyThuVien.View
             MessageBox.Show("Phải là số");
             return;
         }
+
+
     }
 }

@@ -32,7 +32,6 @@ namespace QuanLyThuVien.View
         {
             InitializeComponent();
             loadData();
-            dataSach();
             loadDataTimKiem();
         }
 
@@ -40,11 +39,31 @@ namespace QuanLyThuVien.View
         {
             AddOrEditMuonTra muontra = new AddOrEditMuonTra(false);
             muontra.Show();
-
-
         }
 
-
+        private void docgia_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.OriginalSource is ScrollViewer scrollViewer && e.VerticalChange != 0)
+            {
+                var offset = scrollViewer.VerticalOffset;
+                var sachScrollViewer = GetScrollViewer(sach);
+                if (sachScrollViewer != null)
+                {
+                    sachScrollViewer.ScrollToVerticalOffset(offset);
+                }
+            }
+        }
+        private ScrollViewer GetScrollViewer(DependencyObject dep)
+        {
+            if (dep is ScrollViewer) return dep as ScrollViewer;
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(dep); i++)
+            {
+                var child = VisualTreeHelper.GetChild(dep, i);
+                var result = GetScrollViewer(child);
+                if (result != null) return result;
+            }
+            return null;
+        }
         private void loadData()
         {
             List<DOCGIA> list = new List<DOCGIA>();
@@ -87,106 +106,55 @@ namespace QuanLyThuVien.View
             docgia.ItemsSource = list;
         }
 
-        private void dataSach()
+        private void loadSachByDocGia(string maDG)
         {
-            
-            
-            var dataPhieuMuon = _context.PHIEUMUONs.ToList();
-            if(dataPhieuMuon.Any())
+            List<SachDTO> list = new List<SachDTO>();
+            var dataPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaDG == maDG && !x.IsDeleted.Value).ToList();
+
+            foreach (var data in dataPhieuMuon)
             {
-                for (var i = 0; i < dataPhieuMuon.Count; i++)
+                var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == data.MaPhMuon).ToList();
+                if (checkPhieuTra.Any())
                 {
-                    var data = dataPhieuMuon[i];
+                    var checkSach = _context.SACHes.Where(x => x.MaSach == data.MaSach).FirstOrDefault();
+                    var checkTacgia = _context.DOCGIAs.Where(x => x.MaDG == data.MaDG).FirstOrDefault();
 
-                    var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == data.MaPhMuon).ToList();
-                    if (checkPhieuTra.Any())
+                    if (checkSach != null && checkTacgia != null)
                     {
-                        var checkSach = _context.SACHes.Where(x => x.MaSach == data.MaSach).FirstOrDefault();
-                        var checkTacgia = _context.DOCGIAs.Where(x => x.MaDG == data.MaDG).FirstOrDefault();
-                        if(checkSach != null && checkTacgia != null)
+                        var dataItem = new SachDTO();
+                        if (data.NgayPhTra < dateTime)
                         {
-                            var dataItem = new SachDTO();
-                            if(data.NgayPhTra < dateTime)
-                            {
-                                TimeSpan chenhlech = dateTime.Subtract(data.NgayPhTra.Value);
-                                int chuyenDoiInt = Math.Abs(chenhlech.Days);
-                                dataItem.quahan = "Sách đã quá hạn " + chuyenDoiInt + " ngày";
-                            }
-                            else
-                            {
-                                TimeSpan chenhlechChuaQuaHan = data.NgayPhTra.Value.Subtract(dateTime);
-                                int chuyenDoiIntChuaQuaHan = Math.Abs(chenhlechChuaQuaHan.Days);
-                                dataItem.quahan = "Sách chưa quá hạn, vẫn còn " + chuyenDoiIntChuaQuaHan + " ngày";
-                            }
-
-                            dataItem.id = checkSach.MaSach;
-                            dataItem.tentacgia = checkTacgia.Email;
-                            dataItem.tensach = checkSach.TenSach;
-                            dataItem.ngaytra = data.NgayPhTra.Value;
-                            dataItem.ngaymuon = data.NgayMuon.Value;
-
-                            list.Add(dataItem);
-
+                            TimeSpan chenhlech = dateTime.Subtract(data.NgayPhTra.Value);
+                            int chuyenDoiInt = Math.Abs(chenhlech.Days);
+                            dataItem.quahan = "Sách đã quá hạn " + chuyenDoiInt + " ngày";
                         }
+                        else
+                        {
+                            TimeSpan chenhlechChuaQuaHan = data.NgayPhTra.Value.Subtract(dateTime);
+                            int chuyenDoiIntChuaQuaHan = Math.Abs(chenhlechChuaQuaHan.Days);
+                            dataItem.quahan = "Sách chưa quá hạn, vẫn còn " + chuyenDoiIntChuaQuaHan + " ngày";
+                        }
+
+                        dataItem.id = checkSach.MaSach;
+                        dataItem.tentacgia = checkTacgia.Email;
+                        dataItem.tensach = checkSach.TenSach;
+                        dataItem.ngaytra = data.NgayPhTra.Value;
+                        dataItem.ngaymuon = data.NgayMuon.Value;
+
+                        list.Add(dataItem);
                     }
                 }
             }
-            
+
             sach.ItemsSource = list;
         }
 
-        // Click vào từng cột trong "DataGrid" thì sẽ hiển thị dữ liệu của cột đấy lên
-        private void Data_Item(object sender, SelectionChangedEventArgs e)
+        private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(docgia.SelectedItem != null)
+            if (docgia.SelectedItem != null)
             {
-                StringBuilder sb = new StringBuilder();
-                DOCGIA docgiaItem = (DOCGIA)docgia.SelectedItem;
-
-                string test = docgiaItem.MaDG;
-                string ten = docgiaItem.Email;
-                int count = 0;
-                var data = _context.PHIEUMUONs.Where(x => x.MaDG == test && !x.IsDeleted.Value).ToList();
-                if(data.Any())
-                {
-                    sb.AppendLine($"Khách hàng {ten} đã mượn ");
-                    foreach (var item in data)
-                    {
-                        var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == item.MaPhMuon).ToList();
-                        if (!checkPhieuTra.Any())
-                        {
-                            var checkSach = _context.SACHes.Where(x => x.MaSach == item.MaSach).FirstOrDefault();
-                            // Cách 1
-                            count++;
-                            //if(count == data.Count) // Kiểm tra xem đã lặp đến bản ghi cuối cùng chưa
-                            //{
-
-                            //}
-
-                            // Cách 2
-                            if (item.Equals(data.Last()))// Kiểm tra xem đã lặp đến bản ghi cuối cùng chưa, sử dụng "Last()" của LINQ để lấy phần tử cuối cùng trong danh sách và so sánh với phần tử hiện tại trong vòng lặp xem đã lặp đến phần tử cuối cùng chưa
-                            {
-                                if (checkSach != null)
-                                {
-                                    sb.AppendLine($"cuốn sách {checkSach.TenSach} ngày mượn là {item.NgayMuon}");
-                                }
-                            }
-                            else
-                            {
-
-                                if (checkSach != null)
-                                {
-                                    sb.AppendLine($"cuốn sách {checkSach.TenSach} ngày mượn là {item.NgayMuon} và");
-                                }
-                            }
-                        }
-                        
-                        
-                    }
-                }
-                
-
-                MessageBox.Show($"Thông tin sách đã mượn: {sb.ToString()}");
+                DOCGIA selectedDocGia = (DOCGIA)docgia.SelectedItem;
+                loadSachByDocGia(selectedDocGia.MaDG);
             }
         }
 
@@ -316,7 +284,6 @@ namespace QuanLyThuVien.View
             else
             {
                 loadData();
-                dataSach();
                 loadDataTimKiem();
             }
 

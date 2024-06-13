@@ -92,7 +92,7 @@ namespace QuanLyThuVien
             this.Close();
         }
 
-        
+
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             loadDataDocgia();
@@ -111,13 +111,13 @@ namespace QuanLyThuVien
                 maphieumuon.Visibility = Visibility.Collapsed; // Ẩn ComboBox đi
                 titleBlock.Visibility = Visibility.Collapsed;
             }
-            else if(checkUpdateOrAdd == true)
+            else if (checkUpdateOrAdd == true)
             {
                 maphieutra.Visibility = Visibility.Visible; // Hiển thị lại ComboBox
                 maphieumuon.Visibility = Visibility.Visible; // Hiển thị lại ComboBox 
                 titleBlock.Visibility = Visibility.Visible;
             }
-            
+
         }
 
         private void loadDataDocgia()
@@ -125,7 +125,7 @@ namespace QuanLyThuVien
             List<ComboBoxItem> data = new List<ComboBoxItem>();
 
             var dataDocGia = _context.DOCGIAs.ToList();
-            for(int i = 0; i < dataDocGia.Count; i++) 
+            for (int i = 0; i < dataDocGia.Count; i++)
             {
                 var item = dataDocGia[i];
 
@@ -146,9 +146,9 @@ namespace QuanLyThuVien
             List<ComboBoxItem> list = new List<ComboBoxItem>();
 
             var data = _context.PHIEUTRAs.Where(x => !x.IsDeleted.Value).ToList();
-            if(data.Count > 0 || data.Any())
+            if (data.Count > 0 || data.Any())
             {
-                foreach(var item in data)
+                foreach (var item in data)
                 {
                     var comboboxItem = new ComboBoxItem
                     {
@@ -160,8 +160,8 @@ namespace QuanLyThuVien
                 }
             }
 
-            
-            maphieutra.ItemsSource = list;  
+
+            maphieutra.ItemsSource = list;
         }
 
         private void loadPhieuMuon()
@@ -173,7 +173,7 @@ namespace QuanLyThuVien
             {
                 foreach (var item in data)
                 {
-                    if(checkUpdateOrAdd == false)
+                    if (checkUpdateOrAdd == false)
                     {
                         var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == item.MaPhMuon && !x.IsDeleted.Value).ToList();
                         if (!checkPhieuTra.Any())
@@ -187,19 +187,19 @@ namespace QuanLyThuVien
                             list.Add(comboboxItem);
                         }
                     }
-                    else if(checkUpdateOrAdd == true)
+                    else if (checkUpdateOrAdd == true)
                     {
-                            var comboboxItem = new ComboBoxItem
-                            {
-                                Content = item.MaPhMuon,
-                                Tag = item.MaPhMuon
-                            };
+                        var comboboxItem = new ComboBoxItem
+                        {
+                            Content = item.MaPhMuon,
+                            Tag = item.MaPhMuon
+                        };
 
-                            list.Add(comboboxItem);
-                        
+                        list.Add(comboboxItem);
+
                     }
-                    
-                    
+
+
                 }
             }
 
@@ -213,7 +213,7 @@ namespace QuanLyThuVien
         {
             List<ComboBoxItem> data = new List<ComboBoxItem>();
 
-            data = _context.SACHes.Select(x => new ComboBoxItem { Content = x.TenSach, Tag = x.MaSach}).ToList();
+            data = _context.SACHes.Select(x => new ComboBoxItem { Content = x.TenSach, Tag = x.MaSach }).ToList();
 
             sach.ItemsSource = data;
         }
@@ -221,10 +221,10 @@ namespace QuanLyThuVien
         private bool checkDate()
         {
             var data = _context.PHIEUMUONs.Where(x => x.MaDG == docgia_id).ToList();
-            for(var i = 0; i < data.Count; i++)
+            for (var i = 0; i < data.Count; i++)
             {
                 var item = data[i];
-                if(item.NgayPhTra < currenDate)
+                if (item.NgayPhTra < currenDate)
                 {
                     MessageBox.Show("Đã có sách quá hạn mượn cần phải trả lại để mượn tiếp");
                     return false;
@@ -251,7 +251,7 @@ namespace QuanLyThuVien
         private void SaveExcel()
         {
             // Tạo một tệp mới Excel
-            FileInfo newFile = new FileInfo(@"C:\Users\ASUS\OneDrive\Desktop\GiaoDienVueJs\DoAnCuaKhach\QuanLyThuVien\SE104.O24---Library-Management-App-main\test.xlsx");
+            FileInfo newFile = new FileInfo(@"D:\GITQLTV\SE104.O24---Library-Management-App\test.xlsx");
             using (ExcelPackage package = new ExcelPackage(newFile))
             {
                 var phieuthu = _context.PHIEUTHUs.Sum(x => x.SoTienThu);
@@ -285,7 +285,7 @@ namespace QuanLyThuVien
                     worksheet.Cells[nextRow, 1].Value = "Data";
                     worksheet.Cells[nextRow, 2].Value = phieuthu;
                 }
-                
+
 
                 // Lưu tệp Excel
                 package.Save();
@@ -336,7 +336,7 @@ namespace QuanLyThuVien
         private string generateId(int length, string chuoi)
         {
             StringBuilder sbd = new StringBuilder();
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 sbd.Append(chuoi[random.Next(chuoi.Length)]);
             }
@@ -346,7 +346,7 @@ namespace QuanLyThuVien
 
         private void xulydocgiachange(object sender, SelectionChangedEventArgs e)
         {
-            if(docgia.SelectedItem != null) 
+            if (docgia.SelectedItem != null)
             {
                 ComboBoxItem selectedItem = (ComboBoxItem)docgia.SelectedItem;
                 docgia_id = selectedItem.Tag.ToString();
@@ -382,7 +382,7 @@ namespace QuanLyThuVien
 
         private bool checkComboBoxItem()
         {
-            if(checkUpdateOrAdd == false)
+            if (checkUpdateOrAdd == false)
             {
                 if (IsDelete.SelectedItem == null || sach.SelectedItem == null || docgia.SelectedItem == null) // Kiểm tra nếu người dùng chưa click vào ComBoBoxItem
                 {
@@ -398,7 +398,7 @@ namespace QuanLyThuVien
                     return false;
                 }
             }
-            
+
             return true;
         }
 
@@ -407,7 +407,7 @@ namespace QuanLyThuVien
             DateTime ngaymuonsSach = ngaymuon.SelectedDate ?? DateTime.Now;
             DateTime ngaytraSach = ngaytra.SelectedDate ?? DateTime.Now;
 
-            if(ngaytraSach < currenDate || ngaymuonsSach < currenDate || ngaytraSach < ngaymuonsSach)
+            if (ngaytraSach < currenDate || ngaymuonsSach < currenDate || ngaytraSach < ngaymuonsSach)
             {
                 MessageBox.Show("Ngày không hợp lệ");
                 return false;
@@ -418,9 +418,9 @@ namespace QuanLyThuVien
 
         private bool checkSachDangMuon()
         {
-            
+
             var checkDocGia = _context.DOCGIAs.Where(x => x.MaDG == docgia_id).FirstOrDefault();
-            if(checkDocGia == null)
+            if (checkDocGia == null)
             {
                 MessageBox.Show("Bạn chưa chọn Đọc giả");
                 return false;
@@ -428,7 +428,7 @@ namespace QuanLyThuVien
 
             var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaDG == checkDocGia.MaDG && !x.IsDeleted.Value).ToList();
             var checkCout = _context.PHIEUMUONs.Where(x => x.MaDG == checkDocGia.MaDG && !x.IsDeleted.Value).Count();
-            
+
             if (checkCout > int.Parse(soquyendcmuon))
             {
                 StringBuilder str = new StringBuilder();
@@ -468,20 +468,20 @@ namespace QuanLyThuVien
                     return false;
                 }
             }
-            
 
-            
+
+
 
             return true;
         }
-        
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
-            if(checkTheDocGia() && checkSachDangMuon() && checkSelect() && checkDate() && checkNgayMuon() && checkNgayMuonNgayTra() && checkComboBoxItem())
+
+           // if (checkSachDangMuon() && checkSelect()  && checkNgayMuonNgayTra() && checkNgayMuon() && checkTheDocGia())
             {
-                if(checkUpdateOrAdd == false)
+                if (checkUpdateOrAdd == false)
                 {
                     var data = new PHIEUMUON()
                     {
@@ -503,10 +503,10 @@ namespace QuanLyThuVien
 
                     MessageBox.Show("Add Faild");
                 }
-                else if(checkUpdateOrAdd != false)
+                else if (checkUpdateOrAdd != false)
                 {
                     var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaPhMuon == phieumuon_id).FirstOrDefault();
-                    if(checkPhieuMuon != null)
+                    if (checkPhieuMuon != null)
                     {
                         checkPhieuMuon.MaDG = docgia_id;
                         checkPhieuMuon.MaSach = sach_id;
@@ -516,7 +516,7 @@ namespace QuanLyThuVien
                     }
 
                     _context.PHIEUMUONs.AddOrUpdate(checkPhieuMuon);
-                    if(_context.SaveChanges() < 0)
+                    if (_context.SaveChanges() < 0)
                     {
                         MessageBox.Show("Edit Faild");
                         return;
@@ -524,7 +524,7 @@ namespace QuanLyThuVien
 
                     MessageBox.Show("Edit Thành Công");
                 }
-                
+
             }
         }
 
@@ -550,32 +550,33 @@ namespace QuanLyThuVien
         private bool checkNgayQuaHam()
         {
             long sum = 0;
-            if(PhieumuonId_PhieuTra == null)
+            if (PhieumuonId_PhieuTra == null)
             {
                 MessageBox.Show("Chọn chưa chọn phiếu mượn");
                 return false;
             }
 
             var checkPhieu = _context.PHIEUMUONs.Where(x => x.MaPhMuon == PhieumuonId_PhieuTra).FirstOrDefault();
-            if(checkPhieu == null)
+            if (checkPhieu == null)
             {
                 MessageBox.Show("Phiếu mượn không tồn tại");
                 return false;
             }
 
-            TimeSpan timspan =currenDate.Subtract(checkPhieu.NgayPhTra.Value);
+            TimeSpan timspan = currenDate.Subtract(checkPhieu.NgayPhTra.Value);
             int songay = Math.Abs(timspan.Days);
 
-            if(currenDate > checkPhieu.NgayPhTra ) {
+            if (currenDate > checkPhieu.NgayPhTra)
+            {
                 // string quahans = Application.Current.Properties["songay"] as string; // Lấy ra dữ liệu lưu trong "Application.Current.Properties" còn "["Data"]" này là tên đại diện cho dữ liệu được lưu
                 if (songay > int.Parse(quahan))
                 {
                     sum = int.Parse(sotien) * songay;
-                    MessageBoxResult resul = MessageBox.Show($"Bạn đã quá hạn số ngày là {songay} ngày, bạn mượn từ ngày {checkPhieu.NgayMuon} đến ngày {checkPhieu.NgayPhTra}, số tiền phạt là {sum}VNĐ", "Xác nhận" ,MessageBoxButton.OKCancel);
+                    MessageBoxResult resul = MessageBox.Show($"Bạn đã quá hạn số ngày là {songay} ngày, bạn mượn từ ngày {checkPhieu.NgayMuon} đến ngày {checkPhieu.NgayPhTra}, số tiền phạt là {sum}VNĐ", "Xác nhận", MessageBoxButton.OKCancel);
                     if (resul == MessageBoxResult.OK) // Xử lý khi người dùng ấn vào nút "OK"
                     {
                         var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaPhMuon == PhieumuonId_PhieuTra && !x.IsDeleted.Value).FirstOrDefault();
-                        if(checkPhieuMuon == null)
+                        if (checkPhieuMuon == null)
                         {
                             MessageBox.Show("Phiếu mượn không tồn tại");
                             return false;
@@ -594,10 +595,10 @@ namespace QuanLyThuVien
                         _context.PHIEUTRAs.Add(data);
                         _context.PHIEUMUONs.AddOrUpdate(checkPhieuMuon);
 
-                        if(_context.SaveChanges() > 0)
+                        if (_context.SaveChanges() > 0)
                         {
                             var checkPhieutra = _context.PHIEUTRAs.Where(x => x.MaPhTra == data.MaPhTra && !x.IsDeleted.Value).FirstOrDefault();
-                            if(checkPhieutra == null)
+                            if (checkPhieutra == null)
                             {
                                 MessageBox.Show("Phiếu trả không hợp lệ");
                                 return false;
@@ -614,7 +615,7 @@ namespace QuanLyThuVien
                             _context.PHIEUTHUs.Add(dataPhieuThu);
 
 
-                            if(_context.SaveChanges() > 0)
+                            if (_context.SaveChanges() > 0)
                             {
                                 MessageBox.Show("Thanh toán thành công");
                                 return false;
@@ -627,7 +628,7 @@ namespace QuanLyThuVien
                     }
                     return false;
                 }
-                
+
             }
 
             return true;
@@ -641,7 +642,7 @@ namespace QuanLyThuVien
             {
                 if (checkNgayQuaHam() && checkValiDatePhieuTra())
                 {
-                    
+
                     var data = new PHIEUTRA()
                     {
                         MaPhTra = generateId(5, key),
@@ -650,8 +651,8 @@ namespace QuanLyThuVien
                         IsDeleted = IsDelete_PhieuTra == "True" ? true : false,
                     };
 
-                    
-                    if(checkPhieuMuon != null)
+
+                    if (checkPhieuMuon != null)
                     {
                         checkPhieuMuon.IsDeleted = true;
                         _context.PHIEUMUONs.AddOrUpdate(checkPhieuMuon);
@@ -668,12 +669,13 @@ namespace QuanLyThuVien
                     MessageBox.Show("Add phiếu trả Faild");
                     return;
                 }
-            }else if(checkUpdateOrAdd == true) // Upadte
+            }
+            else if (checkUpdateOrAdd == true) // Upadte
             {
                 if (checkValiDatePhieuTra())
                 {
                     var checkUpdatePhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhTra == maphieutra_Id).FirstOrDefault();
-                    if(checkUpdatePhieuTra != null)
+                    if (checkUpdatePhieuTra != null)
                     {
                         checkUpdatePhieuTra.IsDeleted = IsDelete_PhieuTra == "True" ? true : false;
                         checkUpdatePhieuTra.MaPhMuon = PhieumuonId_PhieuTra;
@@ -688,7 +690,7 @@ namespace QuanLyThuVien
 
                         _context.PHIEUTRAs.AddOrUpdate(checkUpdatePhieuTra);
 
-                        if(_context.SaveChanges() > 0)
+                        if (_context.SaveChanges() > 0)
                         {
                             MessageBox.Show("Edit thành công");
                             return;
@@ -703,14 +705,15 @@ namespace QuanLyThuVien
 
         private bool checkValiDatePhieuTra()
         {
-            if(checkUpdateOrAdd == false) {
+            if (checkUpdateOrAdd == false)
+            {
                 if (maphieumuon1.SelectedItem == null || IsDelete1.SelectedItem == null)
                 {
                     MessageBox.Show("Bạn chưa chọn phiếu mượn hoặc chưa chọn IsDelete");
                     return false;
                 }
             }
-            if(checkUpdateOrAdd == true)
+            if (checkUpdateOrAdd == true)
             {
                 if (maphieumuon1.SelectedItem == null || IsDelete1.SelectedItem == null || maphieutra.SelectedItem == null)
                 {
@@ -718,7 +721,7 @@ namespace QuanLyThuVien
                     return false;
                 }
             }
-            
+
 
             return true;
         }
