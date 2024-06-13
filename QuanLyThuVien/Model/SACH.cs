@@ -22,7 +22,7 @@ namespace QuanLyThuVien.Model
     
         public string MaSach { get; set; }
         public string TenSach { get; set; }
-        public string TheLoai { get; set; }
+        public string MaTheLoai { get; set; }
         public string TacGia { get; set; }
         public Nullable<short> NamXB { get; set; }
         public string NhaXB { get; set; }
@@ -33,5 +33,6 @@ namespace QuanLyThuVien.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUMUON> PHIEUMUON { get; set; }
+        public virtual THELOAI THELOAI { get; set; }
     }
 }

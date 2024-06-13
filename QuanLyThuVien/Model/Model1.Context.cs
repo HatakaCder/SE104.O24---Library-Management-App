@@ -26,12 +26,12 @@ namespace QuanLyThuVien.Model
         }
     
         public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<DOCGIA> DOCGIA { get; set; }
         public virtual DbSet<PHIEUMUON> PHIEUMUON { get; set; }
         public virtual DbSet<PHIEUTHU> PHIEUTHU { get; set; }
         public virtual DbSet<PHIEUTRA> PHIEUTRA { get; set; }
         public virtual DbSet<SACH> SACH { get; set; }
+        public virtual DbSet<THELOAI> THELOAI { get; set; }
         public virtual DbSet<THUTHU> THUTHU { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLTV_BETAModelStoreContainer" CdmEntityContainer="QLTV_BETAEntities2">
+  <EntityContainerMapping StorageEntityContainer="QLTV_BETAModelStoreContainer" CdmEntityContainer="QLTV_BETAEntities">
     <EntitySetMapping Name="ACCOUNT">
       <EntityTypeMapping TypeName="QLTV_BETAModel.ACCOUNT">
         <MappingFragment StoreEntitySet="ACCOUNT">
@@ -9,16 +9,6 @@
           <ScalarProperty Name="MaDG" ColumnName="MaDG" />
           <ScalarProperty Name="MaTT" ColumnName="MaTT" />
           <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Category">
-      <EntityTypeMapping TypeName="QLTV_BETAModel.Category">
-        <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="NgayLapThe" ColumnName="NgayLapThe" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -78,13 +68,22 @@
         <MappingFragment StoreEntitySet="SACH">
           <ScalarProperty Name="MaSach" ColumnName="MaSach" />
           <ScalarProperty Name="TenSach" ColumnName="TenSach" />
-          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
           <ScalarProperty Name="TacGia" ColumnName="TacGia" />
           <ScalarProperty Name="NamXB" ColumnName="NamXB" />
           <ScalarProperty Name="NhaXB" ColumnName="NhaXB" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="TriGia" ColumnName="TriGia" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THELOAI">
+      <EntityTypeMapping TypeName="QLTV_BETAModel.THELOAI">
+        <MappingFragment StoreEntitySet="THELOAI">
+          <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>

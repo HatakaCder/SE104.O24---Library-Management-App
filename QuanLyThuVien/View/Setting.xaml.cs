@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,16 +63,16 @@ namespace QuanLyThuVien.View
 
         private void loadData()
         {
-            var data = _context.Category.Where(x => !x.IsDeleted.Value).ToList();
+            var data = _context.THELOAI.Where(x => !x.IsDeleted.Value).ToList();
             category.ItemsSource = data;
         }
 
         private void loadDataCategory()
         {
-            var datas = _context.Category.Select(x => new ComboBoxItem
+            var datas = _context.THELOAI.Select(x => new ComboBoxItem
             {
-                Content = x.Ten,
-                Tag = x.Id,
+                Content = x.TenTheLoai,
+                Tag = x.MaTheLoai,
                 IsTabStop = x.IsDeleted.Value
             }).Where(x => !x.IsTabStop).ToList();
             id_Category.ItemsSource = datas;
@@ -82,11 +83,11 @@ namespace QuanLyThuVien.View
             if(category.SelectedItem != null)
             {
                 id_Category.Visibility = Visibility.Visible;
-                Category categorys = (Category)category.SelectedItem;
+                THELOAI categorys = (THELOAI)category.SelectedItem;
 
                 foreach(var item in id_Category.Items)
                 {
-                    if(item is ComboBoxItem categoryItem && categoryItem.Content.ToString() == categorys.Ten)
+                    if(item is ComboBoxItem categoryItem && categoryItem.Content.ToString() == categorys.TenTheLoai)
                     {
                         id_Category.SelectedItem = item;
                         category_id = categoryItem.Tag.ToString();
@@ -94,7 +95,7 @@ namespace QuanLyThuVien.View
                     }
                 }
 
-                ten.Text = categorys.Ten;
+                tenTheLoai.Text = categorys.TenTheLoai;
             }
         }
 
@@ -106,29 +107,62 @@ namespace QuanLyThuVien.View
             }
             
         }
+        private string connectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
+                                            provider=System.Data.SqlClient;
+                                            provider connection string='data source=.;
+                                            initial catalog=QLTV_BETA;
+                                            integrated security=True;
+                                            encrypt=False;
+                                            application name=EntityFramework;
+                                            MultipleActiveResultSets=True'";
+
+        public string GenerateTLId()
+        {
+            string prefix = "TL";
+            int length = 3; // Độ dài phần số (001, 002,...)
+            int currentMaxNumber = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT MAX(CAST(SUBSTRING(MaTheLoai, 3, LEN(MaTheLoai) - 2) AS INT)) FROM THELOAI";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    var result = command.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        currentMaxNumber = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            int newNumber = currentMaxNumber + 1;
+            string newId = prefix + newNumber.ToString().PadLeft(length, '0');
+            return newId;
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            addData.Add("ten", ten.Text);
+            addData.Add("ten", tenTheLoai.Text);
 
             if (checkValueNull(addData))
             {
-                var cehckName = _context.Category.Where(x => x.Ten == ten.Text).FirstOrDefault();
+                var cehckName = _context.THELOAI.Where(x => x.TenTheLoai == tenTheLoai.Text).FirstOrDefault();
                 if (cehckName != null)
                 {
                     MessageBox.Show("Category đã tồn tại");
                     return;
                 }
 
-                var data = new Category()
+                var data = new THELOAI()
                 {
-                    Id = rondomId(5, key),
-                    Ten = ten.Text,
-                    NgayLapThe = DateTime.Now,
+                    MaTheLoai = GenerateTLId(),
+                    TenTheLoai = tenTheLoai.Text,
                     IsDeleted = false,
                 };
 
-                _context.Category.Add(data);
+                _context.THELOAI.Add(data);
                 if(_context.SaveChanges() > 0)
                 {
                     MessageBox.Show("Add category Success");
@@ -176,23 +210,23 @@ namespace QuanLyThuVien.View
                 return;
             }
 
-            var checkData = _context.Category.Where(x => x.Id == category_id).FirstOrDefault();
+            var checkData = _context.THELOAI.Where(x => x.MaTheLoai == category_id).FirstOrDefault();
             if(checkData == null) {
                 MessageBox.Show("id không tồn tại");
                 return;
             }
 
-            // Kiểm tra xem key "Tên" này đã có tronng Dictionnary chưa
+            // Kiểm tra xem key "Tên" này đã có trong THELOAI chưa
             if (addData.ContainsKey("Tên"))
             {
-                addData.Add("Tên", ten.Text);
+                addData.Add("Tên", tenTheLoai.Text);
             }
             
             if (checkValueNull(addData))
             {
-                checkData.Ten = ten.Text;
+                checkData.TenTheLoai = tenTheLoai.Text;
 
-                _context.Category.AddOrUpdate(checkData);
+                _context.THELOAI.AddOrUpdate(checkData);
                 if(_context.SaveChanges() > 0)
                 {
                     id_Category.Visibility = Visibility.Visible;
@@ -221,7 +255,7 @@ namespace QuanLyThuVien.View
         {
             if (checkValidate())
             {
-                var checkCategory = _context.Category.Where(x => x.Id == category_id).SingleOrDefault();
+                var checkCategory = _context.THELOAI.Where(x => x.MaTheLoai == category_id).SingleOrDefault();
                 if (checkCategory == null)
                 {
                     MessageBox.Show("null");
@@ -230,7 +264,7 @@ namespace QuanLyThuVien.View
 
                 checkCategory.IsDeleted = true;
 
-                _context.Category.AddOrUpdate(checkCategory);
+                _context.THELOAI.AddOrUpdate(checkCategory);
 
                 if(_context.SaveChanges() > 0)
                 {

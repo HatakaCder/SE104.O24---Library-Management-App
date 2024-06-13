@@ -331,7 +331,7 @@
                                               SelectionChanged="Data_Item"
           >
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Width="0.5*" Binding="{Binding Id}" IsReadOnly="True">
+                                            <DataGridTextColumn Width="0.25*" Binding="{Binding MaTheLoai}" IsReadOnly="True">
                                                 <DataGridTextColumn.HeaderTemplate>
                                                     <DataTemplate>
                                                         <Grid>
@@ -341,7 +341,7 @@
                                                 </DataGridTextColumn.HeaderTemplate>
                                             </DataGridTextColumn>
 
-                                            <DataGridTextColumn Width="*" Binding="{Binding Ten}" IsReadOnly="True">
+                                            <DataGridTextColumn Width="*" Binding="{Binding TenTheLoai}" IsReadOnly="True">
                                                 <DataGridTextColumn.HeaderTemplate>
                                                     <DataTemplate>
                                                         <Grid>
@@ -351,15 +351,7 @@
                                                 </DataGridTextColumn.HeaderTemplate>
                                             </DataGridTextColumn>
 
-                                            <DataGridTextColumn Width="*" Binding="{Binding NgayLapThe}" IsReadOnly="True">
-                                                <DataGridTextColumn.HeaderTemplate>
-                                                    <DataTemplate>
-                                                        <Grid>
-                                                            <TextBlock Text="Ngày tạo" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </DataGridTextColumn.HeaderTemplate>
-                                            </DataGridTextColumn>
+                                          
 
 
                                         </DataGrid.Columns>
@@ -389,7 +381,7 @@
                                      Height="25"
                                      Width="200"
                                      BorderThickness="1"
-                                    x:Name="ten"
+                                    x:Name="tenTheLoai"
                                      >
                                 </TextBox>
                                 <!--Tìm kiếm bằng ComboBox-->
