@@ -62,13 +62,13 @@ namespace QuanLyThuVien.View
 
         private void loadData()
         {
-            var data = _context.Categories.Where(x => !x.IsDeleted.Value).ToList();
+            var data = _context.Category.Where(x => !x.IsDeleted.Value).ToList();
             category.ItemsSource = data;
         }
 
         private void loadDataCategory()
         {
-            var datas = _context.Categories.Select(x => new ComboBoxItem
+            var datas = _context.Category.Select(x => new ComboBoxItem
             {
                 Content = x.Ten,
                 Tag = x.Id,
@@ -113,7 +113,7 @@ namespace QuanLyThuVien.View
 
             if (checkValueNull(addData))
             {
-                var cehckName = _context.Categories.Where(x => x.Ten == ten.Text).FirstOrDefault();
+                var cehckName = _context.Category.Where(x => x.Ten == ten.Text).FirstOrDefault();
                 if (cehckName != null)
                 {
                     MessageBox.Show("Category đã tồn tại");
@@ -128,7 +128,7 @@ namespace QuanLyThuVien.View
                     IsDeleted = false,
                 };
 
-                _context.Categories.Add(data);
+                _context.Category.Add(data);
                 if(_context.SaveChanges() > 0)
                 {
                     MessageBox.Show("Add category Success");
@@ -176,7 +176,7 @@ namespace QuanLyThuVien.View
                 return;
             }
 
-            var checkData = _context.Categories.Where(x => x.Id == category_id).FirstOrDefault();
+            var checkData = _context.Category.Where(x => x.Id == category_id).FirstOrDefault();
             if(checkData == null) {
                 MessageBox.Show("id không tồn tại");
                 return;
@@ -192,7 +192,7 @@ namespace QuanLyThuVien.View
             {
                 checkData.Ten = ten.Text;
 
-                _context.Categories.AddOrUpdate(checkData);
+                _context.Category.AddOrUpdate(checkData);
                 if(_context.SaveChanges() > 0)
                 {
                     id_Category.Visibility = Visibility.Visible;
@@ -221,7 +221,7 @@ namespace QuanLyThuVien.View
         {
             if (checkValidate())
             {
-                var checkCategory = _context.Categories.Where(x => x.Id == category_id).SingleOrDefault();
+                var checkCategory = _context.Category.Where(x => x.Id == category_id).SingleOrDefault();
                 if (checkCategory == null)
                 {
                     MessageBox.Show("null");
@@ -230,7 +230,7 @@ namespace QuanLyThuVien.View
 
                 checkCategory.IsDeleted = true;
 
-                _context.Categories.AddOrUpdate(checkCategory);
+                _context.Category.AddOrUpdate(checkCategory);
 
                 if(_context.SaveChanges() > 0)
                 {

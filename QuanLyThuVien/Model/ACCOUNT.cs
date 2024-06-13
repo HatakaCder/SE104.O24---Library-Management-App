@@ -14,12 +14,14 @@ namespace QuanLyThuVien.Model
     
     public partial class ACCOUNT
     {
-        public int ID { get; set; }
         public string TaiKhoan { get; set; }
         public string MatKhau { get; set; }
         public string MaDG { get; set; }
+        public string MaTT { get; set; }
+        public short VaiTro { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         public virtual DOCGIA DOCGIA { get; set; }
+        public virtual THUTHU THUTHU { get; set; }
     }
 }

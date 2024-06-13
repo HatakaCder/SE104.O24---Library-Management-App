@@ -36,7 +36,7 @@ namespace QuanLyThuVien
         {
             List<ComboBoxItem> list = new List<ComboBoxItem>();
 
-            var data = _context.PHIEUTRAs.Where(x => !x.IsDeleted.Value).ToList();
+            var data = _context.PHIEUTRA.Where(x => !x.IsDeleted.Value).ToList();
             if (data.Count > 0 || data.Any())
             {
                 foreach (var item in data)
@@ -70,7 +70,7 @@ namespace QuanLyThuVien
                 return;
             }
 
-            var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhTra == maphieutra_Id && !x.IsDeleted.Value).FirstOrDefault();
+            var checkPhieuTra = _context.PHIEUTRA.Where(x => x.MaPhTra == maphieutra_Id && !x.IsDeleted.Value).FirstOrDefault();
             if(checkPhieuTra == null)
             {
                 MessageBox.Show("Mã phiếu trả không hợp lệ");
@@ -84,7 +84,7 @@ namespace QuanLyThuVien
                 SoTienThu = (short)sotienPhat,
             };
 
-            _context.PHIEUTHUs.Add(phieuThu);
+            _context.PHIEUTHU.Add(phieuThu);
             if(_context.SaveChanges() > 0)
             {
                 MessageBox.Show("Add thành công");

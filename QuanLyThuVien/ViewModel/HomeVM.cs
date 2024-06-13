@@ -11,7 +11,7 @@ namespace QuanLyThuVien.ViewModel
     public class HomeVM 
     {
         private List<DOCGIA> _readers;
-        public List<DOCGIA> DOCGIAs
+        public List<DOCGIA> DOCGIA
         {
             get { return _readers; }
             set { _readers = value; }
@@ -22,7 +22,7 @@ namespace QuanLyThuVien.ViewModel
         public void LoadData()
         {
            QLTV_BETAEntities db = new QLTV_BETAEntities();
-           DOCGIAs =  db.DOCGIAs.ToList();
+           DOCGIA =  db.DOCGIA.ToList();
         }
     }
 }

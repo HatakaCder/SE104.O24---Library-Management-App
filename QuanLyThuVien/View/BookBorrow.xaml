@@ -139,19 +139,19 @@
 
                     <Grid Grid.Column="0" Grid.Row="1">
                         <DataGrid x:Name="docgia"  BorderBrush="Gray" BorderThickness="0.5"  
-AutoGenerateColumns="False"
-RowStyle="{StaticResource DataGridRowStyle}" 
-Background="White"
-ScrollViewer.CanContentScroll="True" 
-ScrollViewer.VerticalScrollBarVisibility="Auto" 
-ScrollViewer.HorizontalScrollBarVisibility="Auto"
-CanUserAddRows="False"
-CanUserDeleteRows="False"
-CanUserReorderColumns="False"   
-HorizontalScrollBarVisibility="Disabled"
-HeadersVisibility="Column"
-Margin="15"
-ItemsSource="{Binding}"
+                                    AutoGenerateColumns="False"
+                                    RowStyle="{StaticResource DataGridRowStyle}" 
+                                    Background="White"
+                                    ScrollViewer.CanContentScroll="True" 
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    CanUserReorderColumns="False"   
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    HeadersVisibility="Column"
+                                    Margin="15"
+                                    ItemsSource="{Binding}"
                                   SelectionChanged="docgia_SelectionChanged" ScrollViewer.ScrollChanged="docgia_ScrollChanged" Grid.Row="0"
 >
                             <DataGrid.Columns>
@@ -165,7 +165,7 @@ ItemsSource="{Binding}"
                                     </DataGridTextColumn.HeaderTemplate>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*" Binding="{Binding Email}" IsReadOnly="True">
+                                <DataGridTextColumn Width="*" Binding="{Binding HoTen}" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -191,19 +191,19 @@ ItemsSource="{Binding}"
 
                     <Grid Grid.Column="1" Grid.Row="1">
                         <DataGrid x:Name="sach" SelectionChanged="Data_Sach" BorderBrush="Gray" BorderThickness="0.5"   
-AutoGenerateColumns="False"
-RowStyle="{StaticResource DataGridRowStyle}" 
-Background="White"
-ScrollViewer.CanContentScroll="True" 
-ScrollViewer.VerticalScrollBarVisibility="Auto" 
-ScrollViewer.HorizontalScrollBarVisibility="Auto"
-CanUserAddRows="False"
-CanUserDeleteRows="False"
-CanUserReorderColumns="False"   
-HorizontalScrollBarVisibility="Disabled"
-HeadersVisibility="Column"
-Margin="15"
-ItemsSource="{Binding}"
+                                    AutoGenerateColumns="False"
+                                    RowStyle="{StaticResource DataGridRowStyle}" 
+                                    Background="White"
+                                    ScrollViewer.CanContentScroll="True" 
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    CanUserReorderColumns="False"   
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    HeadersVisibility="Column"
+                                    Margin="15"
+                                    ItemsSource="{Binding}"
 >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding id}">

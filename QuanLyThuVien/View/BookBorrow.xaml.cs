@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
 using QuanLyThuVien.Model;
 using QuanLyThuVien.ViewModel;
 using System;
@@ -67,32 +68,35 @@ namespace QuanLyThuVien.View
         private void loadData()
         {
             List<DOCGIA> list = new List<DOCGIA>();
-            var data = _context.DOCGIAs.ToList();
+            var data = _context.DOCGIA.ToList();
 
             for(int i = 0; i < data.LongCount(); i++)
             {
                 var dataItem = data[i];
 
-                var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaDG == dataItem.MaDG && !x.IsDeleted.Value).ToList();
+                var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaDG == dataItem.MaDG && !x.IsDeleted.Value).ToList();
                 
                 if (checkPhieuMuon.Any())
                 {
                     foreach(var item in checkPhieuMuon)
                     {
-                        var checlkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == item.MaPhMuon).ToList();
+                        var checlkPhieuTra = _context.PHIEUTRA.Where(x => x.MaPhMuon == item.MaPhMuon).ToList();
                         if (checlkPhieuTra.Any())
                         {
                             var docgiaItem = new DOCGIA()
                             {
                                 MaDG = dataItem.MaDG,
+                                HoTen = dataItem.HoTen,
                                 DiaChi = dataItem.DiaChi,
                                 Email = dataItem.Email,
+                                GioiTinh = dataItem.GioiTinh,
                                 LoaiDG = dataItem.LoaiDG,
                                 IsDeleted = dataItem.IsDeleted,
                                 NgayLapThe = dataItem.NgayLapThe,
                                 NgaySinh = dataItem.NgaySinh,
-                                PHIEUMUONs = dataItem.PHIEUMUONs,
-                                ACCOUNTs = dataItem.ACCOUNTs
+                                SoDT = dataItem.SoDT,
+                                PHIEUMUON = dataItem.PHIEUMUON,
+                                ACCOUNT = dataItem.ACCOUNT
                             };
 
                             list.Add(docgiaItem);
@@ -109,17 +113,17 @@ namespace QuanLyThuVien.View
         private void loadSachByDocGia(string maDG)
         {
             List<SachDTO> list = new List<SachDTO>();
-            var dataPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaDG == maDG && !x.IsDeleted.Value).ToList();
+            var dataPhieuMuon = _context.PHIEUMUON.Where(x => x.MaDG == maDG && !x.IsDeleted.Value).ToList();
 
             foreach (var data in dataPhieuMuon)
             {
-                var checkPhieuTra = _context.PHIEUTRAs.Where(x => x.MaPhMuon == data.MaPhMuon).ToList();
+                var checkPhieuTra = _context.PHIEUTRA.Where(x => x.MaPhMuon == data.MaPhMuon).ToList();
                 if (checkPhieuTra.Any())
                 {
-                    var checkSach = _context.SACHes.Where(x => x.MaSach == data.MaSach).FirstOrDefault();
-                    var checkTacgia = _context.DOCGIAs.Where(x => x.MaDG == data.MaDG).FirstOrDefault();
+                    var checkSach = _context.SACH.Where(x => x.MaSach == data.MaSach).FirstOrDefault();
+                    var checktenDocgia = _context.DOCGIA.Where(x => x.MaDG == data.MaDG).FirstOrDefault();
 
-                    if (checkSach != null && checkTacgia != null)
+                    if (checkSach != null && checktenDocgia != null)
                     {
                         var dataItem = new SachDTO();
                         if (data.NgayPhTra < dateTime)
@@ -136,7 +140,7 @@ namespace QuanLyThuVien.View
                         }
 
                         dataItem.id = checkSach.MaSach;
-                        dataItem.tentacgia = checkTacgia.Email;
+                        dataItem.tentacgia = checkSach.TacGia;
                         dataItem.tensach = checkSach.TenSach;
                         dataItem.ngaytra = data.NgayPhTra.Value;
                         dataItem.ngaymuon = data.NgayMuon.Value;
@@ -182,23 +186,26 @@ namespace QuanLyThuVien.View
                     for(var i = 0; i < data.LongCount(); i++)
                     {
                         var dataItem = data[i];
-                        var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaSach == dataItem.id).ToList();
+                        var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaSach == dataItem.id).ToList();
                         foreach(var item in checkPhieuMuon)
                         {
-                            var checkDocGia = _context.DOCGIAs.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
+                            var checkDocGia = _context.DOCGIA.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
                             if(checkDocGia != null)
                             {
                                 var docgiaItem = new DOCGIA()
                                 {
                                     MaDG = checkDocGia.MaDG,
+                                    HoTen = checkDocGia.HoTen,
                                     DiaChi = checkDocGia.DiaChi,
                                     Email = checkDocGia.Email,
+                                    GioiTinh = checkDocGia.GioiTinh,
                                     LoaiDG = checkDocGia.LoaiDG,
                                     IsDeleted = checkDocGia.IsDeleted,
                                     NgayLapThe = checkDocGia.NgayLapThe,
                                     NgaySinh = checkDocGia.NgaySinh,
-                                    PHIEUMUONs = checkDocGia.PHIEUMUONs,
-                                    ACCOUNTs = checkDocGia.ACCOUNTs
+                                    SoDT = checkDocGia.SoDT,
+                                    PHIEUMUON = checkDocGia.PHIEUMUON,
+                                    ACCOUNT = checkDocGia.ACCOUNT
                                 };
 
                                 dataDocGia.Add(docgiaItem);
@@ -222,7 +229,7 @@ namespace QuanLyThuVien.View
         private void loadDataTimKiem()
         {
             List<ComboBoxItem> listItem = new List<ComboBoxItem>();
-            var data = _context.SACHes.ToList();
+            var data = _context.SACH.ToList();
             for(int i = 0; i < data.Count; i++)
             {
                 var item = data[i];
@@ -252,23 +259,26 @@ namespace QuanLyThuVien.View
                     for (var i = 0; i < data.LongCount(); i++)
                     {
                         var dataItem = data[i];
-                        var checkPhieuMuon = _context.PHIEUMUONs.Where(x => x.MaSach == dataItem.id && !x.IsDeleted.Value).ToList();
+                        var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaSach == dataItem.id && !x.IsDeleted.Value).ToList();
                         foreach (var item in checkPhieuMuon)
                         {
-                            var checkDocGia = _context.DOCGIAs.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
+                            var checkDocGia = _context.DOCGIA.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
                             if (checkDocGia != null)
                             {
                                 var docgiaItem = new DOCGIA()
                                 {
                                     MaDG = checkDocGia.MaDG,
+                                    HoTen = checkDocGia.HoTen,
                                     DiaChi = checkDocGia.DiaChi,
                                     Email = checkDocGia.Email,
+                                    GioiTinh = checkDocGia.GioiTinh,
                                     LoaiDG = checkDocGia.LoaiDG,
                                     IsDeleted = checkDocGia.IsDeleted,
                                     NgayLapThe = checkDocGia.NgayLapThe,
                                     NgaySinh = checkDocGia.NgaySinh,
-                                    PHIEUMUONs = checkDocGia.PHIEUMUONs,
-                                    ACCOUNTs = checkDocGia.ACCOUNTs
+                                    SoDT = checkDocGia.SoDT,
+                                    PHIEUMUON = checkDocGia.PHIEUMUON,
+                                    ACCOUNT = checkDocGia.ACCOUNT
                                 };
 
                                 dataDocGia.Add(docgiaItem);
