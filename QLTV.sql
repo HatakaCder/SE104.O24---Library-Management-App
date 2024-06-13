@@ -36,7 +36,7 @@ CREATE TABLE SACH
 	NhaXB		NVARCHAR(255),
 	NgayNhap	DATE,
 	TriGia		INT,
-	TinhTrang	BIT DEFAULT 1,
+	TinhTrang	SMALLINT DEFAULT 1,
 	IsDeleted	BIT DEFAULT 0
 );
 GO
