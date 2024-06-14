@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien.Model
 {
+    // SoCCCD and LoaiDG: remove
     public class READER: INotifyPropertyChanged
     {
         #region PropertyChanged
@@ -33,13 +34,6 @@ namespace QuanLyThuVien.Model
         {
             get { return hoTen; }
             set { hoTen = value; OnPropertyChanged("HoTen"); }
-        }
-        private string loaiDG;
-
-        public string LoaiDG
-        {
-            get { return loaiDG; }
-            set { loaiDG = value; OnPropertyChanged("LoaiDG"); }
         }
 
         private string gioiTinh;
@@ -85,20 +79,5 @@ namespace QuanLyThuVien.Model
             get { return ngayLapThe; }
             set { ngayLapThe = value; OnPropertyChanged("NgayLapThe"); }
         }
-        private string soCCCD;
-
-        public string SoCCCD
-        {
-            get { return soCCCD; }
-            set { soCCCD = value; OnPropertyChanged("SoCCCD"); }
-        }
-
-        //private string anhDaiDien;
-
-        //public string AnhDaiDien
-        //{
-        //    get { return anhDaiDien;}
-        //    set { anhDaiDien = value; OnPropertyChanged("AnhDaiDien"); }
-        //}
     }
 }

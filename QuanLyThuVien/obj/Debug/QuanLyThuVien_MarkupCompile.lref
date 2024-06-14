@@ -2,6 +2,8 @@
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\App.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\SignUpWindow.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\Utilities\DataTemplate.xaml;;
+FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\AddBook.xaml;;
+FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\AddReader.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\Book.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\BookBorrow.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\LoginWindow.xaml;;
@@ -15,4 +17,6 @@ FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\UserControlQLTV\LeftOptions.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\Reader.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\Report.xaml;;
 FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\Setting.xaml;;
+FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\UpdateBook.xaml;;
+FD:\Chinh_Khoa\SE104_1\QuanLyThuVien\View\UpdateReader.xaml;;
 

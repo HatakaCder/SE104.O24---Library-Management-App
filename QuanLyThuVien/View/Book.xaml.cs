@@ -1,5 +1,8 @@
-﻿using System;
+﻿using QuanLyThuVien.Model;
+using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +26,24 @@ namespace QuanLyThuVien.View
         public Book()
         {
             InitializeComponent();
+        }
+
+        private void dgView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BookVM bookVm = (BookVM)DataContext;
+            bookVm.selectedBooks = new ObservableCollection<BOOK>(dgView.SelectedItems.Cast<BOOK>());
+        }
+
+        private void btThemSach_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook addBook = new AddBook();
+            addBook.Show();
+        }
+
+        private void btSuaSach_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateBook updateBook = new UpdateBook();
+            updateBook.Show();
         }
     }
 }

@@ -84,26 +84,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ACCOUNT.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="adoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>adoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="adoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>adoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="adoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>adoModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="DataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="DOCGIA.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataOperation.cs" />
@@ -111,28 +111,32 @@
     <Compile Include="Model\MUON.cs" />
     <Compile Include="Model\PageModel.cs" />
     <Compile Include="Model\READER.cs" />
+    <Compile Include="Model\THELOAI.cs" />
     <Compile Include="Model\THU.cs" />
     <Compile Include="Model\TRA.cs" />
     <Compile Include="PHIEUMUON.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTHU.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTRA.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SACH.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THELOAI.cs">
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="THUTHU.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>adoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Btn.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
@@ -145,6 +149,12 @@
     <Compile Include="ViewModel\ReaderUCVM.cs" />
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
+    <Compile Include="View\AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddReader.xaml.cs">
+      <DependentUpon>AddReader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
     </Compile>
@@ -182,6 +192,12 @@
     <Compile Include="View\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateBook.xaml.cs">
+      <DependentUpon>UpdateBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateReader.xaml.cs">
+      <DependentUpon>UpdateReader.xaml</DependentUpon>
+    </Compile>
     <Page Include="SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +227,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Utilities\DataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddReader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +298,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UpdateBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateReader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -293,12 +325,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataModel.edmx">
+    <EntityDeploy Include="adoModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>adoModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
+    <None Include="adoModel.edmx.diagram">
+      <DependentUpon>adoModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -335,15 +367,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataModel.Context.tt">
+    <Content Include="adoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+      <DependentUpon>adoModel.edmx</DependentUpon>
+      <LastGenOutput>adoModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataModel.tt">
+    <Content Include="adoModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
+      <DependentUpon>adoModel.edmx</DependentUpon>
+      <LastGenOutput>adoModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

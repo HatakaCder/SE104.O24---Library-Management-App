@@ -32,6 +32,7 @@ namespace QuanLyThuVien
         public virtual DbSet<PHIEUTRA> PHIEUTRAs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<THELOAI> THELOAIs { get; set; }
         public virtual DbSet<THUTHU> THUTHUs { get; set; }
     }
 }

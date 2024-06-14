@@ -196,3 +196,11 @@ D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.CoreCompileIn
 D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\AddBook.g.cs
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\AddReader.g.cs
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\AddBook.baml
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\AddReader.baml
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\UpdateBook.g.cs
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\UpdateBook.baml
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\UpdateReader.g.cs
+D:\Chinh_Khoa\SE104_1\QuanLyThuVien\obj\Debug\View\UpdateReader.baml

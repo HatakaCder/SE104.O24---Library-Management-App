@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="TaiKhoan" />
+    </Key>
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MaDG" Type="varchar" MaxLength="5" />
+    <Property Name="MaTT" Type="varchar" MaxLength="5" />
+    <Property Name="VaiTro" Type="smallint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="DOCGIA">
+    <Key>
+      <PropertyRef Name="MaDG" />
+    </Key>
+    <Property Name="MaDG" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="30" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NgayLapThe" Type="date" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="PHIEUMUON">
+    <Key>
+      <PropertyRef Name="MaPhMuon" />
+    </Key>
+    <Property Name="MaPhMuon" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="MaDG" Type="varchar" MaxLength="5" />
+    <Property Name="MaSach" Type="varchar" MaxLength="5" />
+    <Property Name="NgayMuon" Type="date" />
+    <Property Name="NgayPhTra" Type="date" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="PHIEUTHU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaPhTra" Type="varchar" MaxLength="5" />
+    <Property Name="SoNgayQHan" Type="smallint" />
+    <Property Name="SoTienThu" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="PHIEUTRA">
+    <Key>
+      <PropertyRef Name="MaPhTra" />
+    </Key>
+    <Property Name="MaPhTra" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="MaPhMuon" Type="varchar" MaxLength="5" />
+    <Property Name="NgayTra" Type="date" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="SACH">
+    <Key>
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaSach" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TenSach" Type="nvarchar" MaxLength="255" />
+    <Property Name="TenTheLoai" Type="nvarchar" MaxLength="225" />
+    <Property Name="TacGia" Type="nvarchar" MaxLength="255" />
+    <Property Name="NamXB" Type="smallint" />
+    <Property Name="NhaXB" Type="nvarchar" MaxLength="255" />
+    <Property Name="NgayNhap" Type="date" />
+    <Property Name="TriGia" Type="int" />
+    <Property Name="TinhTrang" Type="smallint" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SETTING">
+          <Property Name="TuoiToiTieu" Type="int" />
+          <Property Name="TuoiToiDa" Type="int" />
+          <Property Name="ThoiHanThe" Type="int" />
+          <Property Name="SoNgayMuonToiDa" Type="int" />
+          <Property Name="SoTienNopTre" Type="int" />
+          <Property Name="SoSachMuonToiDa" Type="int" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="int" />
+          <Property Name="ThoiGianNhapSach" Type="int" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="TenTheLoai" />
+    </Key>
+    <Property Name="TenTheLoai" Type="nvarchar" MaxLength="225" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="THUTHU">
+    <Key>
+      <PropertyRef Name="MaTT" />
+    </Key>
+    <Property Name="MaTT" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="30" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" />
+    <Property Name="NgayVLam" Type="date" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <Association Name="FK__ACCOUNT__MaDG__5B78929E">
+    <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCGIA">
+        <PropertyRef Name="MaDG" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="MaDG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ACCOUNT__MaTT__5C6CB6D7">
+    <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="0..1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THUTHU">
+        <PropertyRef Name="MaTT" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="MaTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUMUON__MaDG__4C364F0E">
+    <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCGIA">
+        <PropertyRef Name="MaDG" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MaDG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUMUON__MaSac__4D2A7347">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTHU__MaPhTr__54CB950F">
+    <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
+    <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUTRA">
+        <PropertyRef Name="MaPhTra" />
+      </Principal>
+      <Dependent Role="PHIEUTHU">
+        <PropertyRef Name="MaPhTra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTRA__MaPhMu__50FB042B">
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
+    <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUMUON">
+        <PropertyRef Name="MaPhMuon" />
+      </Principal>
+      <Dependent Role="PHIEUTRA">
+        <PropertyRef Name="MaPhMuon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SACH__TenTheLoai__477199F1">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="TenTheLoai" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="TenTheLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLTV_BETAModelStoreContainer">
+    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ACCOUNT__MaDG__5B78929E" Association="Self.FK__ACCOUNT__MaDG__5B78929E">
+      <End Role="DOCGIA" EntitySet="DOCGIA" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ACCOUNT__MaTT__5C6CB6D7" Association="Self.FK__ACCOUNT__MaTT__5C6CB6D7">
+      <End Role="THUTHU" EntitySet="THUTHU" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUMUON__MaDG__4C364F0E" Association="Self.FK__PHIEUMUON__MaDG__4C364F0E">
+      <End Role="DOCGIA" EntitySet="DOCGIA" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUMUON__MaSac__4D2A7347" Association="Self.FK__PHIEUMUON__MaSac__4D2A7347">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__54CB950F" Association="Self.FK__PHIEUTHU__MaPhTr__54CB950F">
+      <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
+      <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__50FB042B" Association="Self.FK__PHIEUTRA__MaPhMu__50FB042B">
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+      <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SACH__TenTheLoai__477199F1" Association="Self.FK__SACH__TenTheLoai__477199F1">
+      <End Role="THELOAI" EntitySet="THELOAI" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

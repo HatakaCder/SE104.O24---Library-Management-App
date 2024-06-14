@@ -12,6 +12,8 @@ using System.CodeDom;
 using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using QuanLyThuVien.View;
+using System.Windows;
+using System.Windows.Input;
 
 namespace QuanLyThuVien.ViewModel
 {
@@ -34,22 +36,99 @@ namespace QuanLyThuVien.ViewModel
             CurrentBook = new BOOK();
             saveCommand = new RelayCommand(Save);
             searchCommand = new RelayCommand(Search);
-            Message1 = BooksList.Count.ToString();
+            deleteCommand = new RelayCommand(Delete);
+            updateCommand = new RelayCommand(Update);
+            selectedBooks = new ObservableCollection<BOOK>();
         }
 
-        private void LoadData()
+        // Khai báo RelayCommands
+        #region RelayCommand
+
+        private RelayCommand saveCommand;
+        public RelayCommand SaveCommand
         {
-            BooksList = new ObservableCollection<BOOK>(ObjDataOperation.getAllBook());
+            get { return saveCommand; }
         }
 
-        #region DisplayData
+        private RelayCommand searchCommand;
+
+        public RelayCommand SearchCommand
+        {
+            get { return searchCommand; }
+        }
+
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
+        {
+            get { return deleteCommand; }
+        }
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get { return updateCommand; }
+        }
+        #endregion
+
+        // Khai báo một số biến cho việc Data Binding
+        #region Variables for data binding
+        // For loading all books
         private ObservableCollection<BOOK> bookList;
         public ObservableCollection<BOOK> BooksList
         {
             get { return bookList; }
-            set { bookList = value; OnPropertyChanged("ReaderList"); }
+            set { bookList = value; OnPropertyChanged(nameof(BooksList)); }
+        }
+
+        // For adding, updating book
+        private BOOK currentBook;
+        public BOOK CurrentBook
+        {
+            get { return currentBook; }
+            set { currentBook = value; OnPropertyChanged(nameof(CurrentBook)); }
+        }
+
+        // For searching books
+        private string items;
+        public string Items
+        {
+            get { return items; }
+            set { items = value; OnPropertyChanged(nameof(Items)); }
+        }
+
+        private string _selectedItem;
+        public string SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
+
+        // For deleting books
+        private ObservableCollection<BOOK> _books;
+        public ObservableCollection<BOOK> selectedBooks
+        {
+            get { return _books; }
+            set { _books = value; OnPropertyChanged(nameof(selectedBooks)); }
+        }
+
+        private ObservableCollection<string> _bookTypes;
+        public ObservableCollection<string> bookTypes
+        {
+            get { return _bookTypes; }
+            set { _bookTypes = value; OnPropertyChanged(nameof(_bookTypes)); }
         }
         #endregion
+
+        // Get all Book into BooksList
+        public void LoadData()
+        {
+            BooksList = new ObservableCollection<BOOK>(ObjDataOperation.getAllBook());
+            bookTypes = new ObservableCollection<string>(ObjDataOperation.getAllBookTypes());
+        }
 
         #region SetProperty
 
@@ -66,102 +145,74 @@ namespace QuanLyThuVien.ViewModel
         }
         #endregion
 
-        private BOOK currentBook;
-        public BOOK CurrentBook
+        public void Update() 
         {
-            get { return currentBook; }
-            set { currentBook = value; OnPropertyChanged("CurrentBook"); }
-        }
-        private string message;
-        public string Message
-        {
-            get { return message; }
-            set {  message = value; OnPropertyChanged("Message"); } 
+            if (selectedBooks.Count == 0) return;
+
+            try
+            {
+                CurrentBook = selectedBooks[selectedBooks.Count - 1];
+                var isUpdated = ObjDataOperation.update(CurrentBook);
+                
+                if (isUpdated)
+                    LoadData();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
+        public void Delete()
+        {
+            try
+            {
+                var isSaved = ObjDataOperation.Delete_Book(new List<BOOK>(selectedBooks));
+                if (isSaved)
+                    LoadData();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         
-        private RelayCommand deleteCommand;
-        private RelayCommand relayCommand;
-
-        #region SaveCommand
-        private RelayCommand saveCommand;
-        public RelayCommand SaveCommand
-        {
-            get { return saveCommand; }
-        }
         public void Save()
         {
             try
             {
                 var IsSaved = ObjDataOperation.Add(CurrentBook);
-                LoadData();
                 if (IsSaved)
-                    Message = "Book saved";
-                else
-                    Message = "Save operation failed";
+                    LoadData();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-        }
-
-        #endregion
-
-        #region SearchCommand
-        private RelayCommand searchCommand;
-
-        public RelayCommand SearchCommand
-        {
-            get { return searchCommand; }
         }
 
         public void Search()
         {
-            BOOK book = null;
-            try
+            string Item_to_Search = SelectedItem.Split(':')[1];
+            Item_to_Search = Item_to_Search.Substring(1, Item_to_Search.Length - 1);
+
+            if (Item_to_Search == "Tất cả")
             {
-                var ObjBook = ObjDataOperation.Search_Book(CurrentBook.MaSach);
-
-                if (ObjBook != null)
-                {
-                    book = new BOOK()
-                    {
-                        MaSach = ObjBook.MaSach,
-                        TenSach = ObjBook.TenSach,
-                        TheLoai = ObjBook.TheLoai,
-                        TacGia = ObjBook.TacGia,
-                        NamXB = (short)ObjBook.NamXB,
-                        NhaXB = ObjBook.NhaXB,
-                        NgayNhap = (DateTime)ObjBook.NgayNhap,
-                        TinhTrang = (short)ObjBook.TinhTrang
-                    };
-                    Message = "Search sucessfully";
-                    
-
-                    BooksList = new ObservableCollection<BOOK>() { book};
-                }
-                else
-                    Message = "Search failed";
+                LoadData();
             }
-            catch (Exception ex)
+            else if (Item_to_Search == "Tên sách")
             {
-                throw ex;
+                BooksList = new ObservableCollection<BOOK>( ObjDataOperation.search_book_by_TenSach(Items));
             }
-
-            Message1 = BooksList.Count.ToString();
+            else if (Item_to_Search == "Thể loại")
+            {
+                BooksList = new ObservableCollection<BOOK>(ObjDataOperation.search_book_by_TheLoai(Items));
+            }
+            else
+            {
+                BooksList = new ObservableCollection<BOOK>(ObjDataOperation.search_book_by_TacGia(Items));
+            }
         }
-        #endregion
-
-        // Một số biến để kiểm tra lỗi sai
-        #region Test_variables
-        private string message1;
-        public string Message1
-        {
-            get { return message1; }
-            set { message1 = value; OnPropertyChanged("Message1"); }
-        }
-        #endregion
 
         private System.Collections.IEnumerable sACHes;
 

@@ -1,0 +1,116 @@
+﻿<Window x:Class="QuanLyThuVien.View.AddBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien.View"
+      xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
+      mc:Ignorable="d" 
+      Height="850" Width="1240"
+        Background="White"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+      >
+    <Window.DataContext>
+        <vm:BookVM />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="560*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center" Height="733" Grid.ColumnSpan="4">
+            <TextBlock Text="Thêm sách" Foreground="#3AB19B" Style="{StaticResource TitleText}"
+                       />
+
+            <TextBox
+        Margin="0 5 0 5"
+                Width="300"
+                VerticalAlignment="Top"
+                materialDesign:HintAssist.Hint="Mã sách"
+                AcceptsReturn="True"  
+                Text="{Binding Path=CurrentBook.MaSach, Mode=TwoWay}"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto" />
+
+            <TextBox
+        Margin="0 5 0 5"
+            Width="300"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Tên sách"
+                Text="{Binding Path=CurrentBook.TenSach, Mode=TwoWay}"
+            AcceptsReturn="True"                                
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto" />
+
+            <ComboBox                           
+   Margin="2"
+   Width="300"
+ItemsSource="{Binding bookTypes}"
+SelectedItem="{Binding CurrentBook.TheLoai, Mode=TwoWay}"
+
+   materialDesign:HintAssist.Hint="Thể loại"
+   Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+
+            <TextBox
+Margin="0 5 0 5"
+    Width="300"
+    VerticalAlignment="Top"
+    materialDesign:HintAssist.Hint="Tác giả"
+                Text="{Binding Path=CurrentBook.TacGia, Mode=TwoWay}"
+    AcceptsReturn="True"                                
+    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto" />
+
+
+            <TextBox
+        Margin="0 5 0 5"
+            Width="300"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Năm xuất bản"
+                Text="{Binding Path=CurrentBook.NamXB, Mode=TwoWay}"
+            AcceptsReturn="True"                                
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto" />
+
+            <TextBox
+Margin="0 5 0 5"
+    Width="300"
+    VerticalAlignment="Top"
+    materialDesign:HintAssist.Hint="Nhà xuất bản"
+                Text="{Binding Path=CurrentBook.NhaXB, Mode=TwoWay}"
+    AcceptsReturn="True"                                
+    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto" />
+
+            <TextBox
+Margin="0 5 0 5"
+    Width="300"
+    VerticalAlignment="Top"
+    materialDesign:HintAssist.Hint="Trị giá"
+                Text="{Binding Path=CurrentBook.TriGia, Mode=TwoWay}"
+    AcceptsReturn="True"                                
+    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto" />
+
+            <Button Content="Thêm" Style="{StaticResource mainButton}" Command="{Binding Path=SaveCommand}" />
+
+
+        </StackPanel>
+    </Grid>
+</Window>

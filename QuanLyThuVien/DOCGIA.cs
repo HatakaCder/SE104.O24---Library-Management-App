@@ -23,14 +23,12 @@ namespace QuanLyThuVien
     
         public string MaDG { get; set; }
         public string HoTen { get; set; }
-        public string LoaiDG { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public string SoDT { get; set; }
         public Nullable<System.DateTime> NgayLapThe { get; set; }
-        public string SoCCCD { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
