@@ -27,6 +27,7 @@ namespace QuanLyThuVien.Model
     
         public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
         public virtual DbSet<DOCGIA> DOCGIA { get; set; }
+        public virtual DbSet<PARAMETERS> PARAMETERS { get; set; }
         public virtual DbSet<PHIEUMUON> PHIEUMUON { get; set; }
         public virtual DbSet<PHIEUTHU> PHIEUTHU { get; set; }
         public virtual DbSet<PHIEUTRA> PHIEUTRA { get; set; }

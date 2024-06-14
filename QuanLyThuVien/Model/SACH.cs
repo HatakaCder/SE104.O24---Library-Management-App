@@ -22,7 +22,7 @@ namespace QuanLyThuVien.Model
     
         public string MaSach { get; set; }
         public string TenSach { get; set; }
-        public string MaTheLoai { get; set; }
+        public string TenTheLoai { get; set; }
         public string TacGia { get; set; }
         public Nullable<short> NamXB { get; set; }
         public string NhaXB { get; set; }

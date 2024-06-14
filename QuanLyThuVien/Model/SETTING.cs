@@ -14,14 +14,16 @@ namespace QuanLyThuVien.Model
     
     public partial class SETTING
     {
-        public string IDSetting { get; set; }
-        public int TuoiToiThieu { get; set; }
-        public int TuoiToiDa { get; set; }
-        public int ThoiHanThe { get; set; }
-        public int SoNgayMuonToiDa { get; set; }
-        public int SoTienNopTre { get; set; }
-        public int SoSachMuonToiDa { get; set; }
-        public int SoLuongTheLoaiToiDa { get; set; }
-        public int ThoiGianNhapSach { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> TuoiToiTieuDocGia { get; set; }
+        public Nullable<int> TuoiToiDaDocGia { get; set; }
+        public Nullable<int> TuoiToiTieuThuThu { get; set; }
+        public Nullable<int> TuoiToiDaThuThu { get; set; }
+        public Nullable<int> ThoiHanThe { get; set; }
+        public Nullable<int> SoNgayMuonToiDa { get; set; }
+        public Nullable<int> SoTienNopTre { get; set; }
+        public Nullable<int> SoSachMuonToiDa { get; set; }
+        public Nullable<int> SoLuongTheLoaiToiDa { get; set; }
+        public Nullable<int> ThoiGianNhapSach { get; set; }
     }
 }

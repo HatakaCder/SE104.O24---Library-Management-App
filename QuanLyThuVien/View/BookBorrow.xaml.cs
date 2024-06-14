@@ -33,15 +33,7 @@ namespace QuanLyThuVien.View
         {
             InitializeComponent();
             loadData();
-            loadDataTimKiem();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var formPhieuMuon = new FormPhieuMuon();
-            formPhieuMuon.Show();
-        }
-
-
         private void docgia_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (e.OriginalSource is ScrollViewer scrollViewer && e.VerticalChange != 0)
@@ -65,10 +57,12 @@ namespace QuanLyThuVien.View
             }
             return null;
         }
+        
+        //Load dữ liệu Dộc giả hiện lên grid bên trái
         private void loadData()
         {
             var maDGs = _context.PHIEUMUON
-                                .Where(pm => pm.IsDeleted==false)
+                                .Where(pm => pm.IsDeleted == false)
                                 .Select(pm => pm.MaDG)
                                 .Distinct()  //Loại bỏ các giá trị trùng lặp
                                 .ToList();
@@ -80,6 +74,7 @@ namespace QuanLyThuVien.View
             docgia.ItemsSource = docGias;
         }
 
+        //Load dữ liệu sách hiện lên list bên phải khi nhấn vào độc giả
         private void loadSachByDocGia(DOCGIA docGia)
         {
             var list = new List<object>();
@@ -99,7 +94,7 @@ namespace QuanLyThuVien.View
                 {
                     var dataItem = new
                     {
-                        id = checkSach.MaSach,
+                        MaPhMuon = data.MaPhMuon,
                         tentacgia = checkSach.TacGia,
                         tensach = checkSach.TenSach,
                         ngaytra = data.NgayPhTra.Value,
@@ -107,7 +102,7 @@ namespace QuanLyThuVien.View
                         quahan = data.NgayPhTra < currentDate
                                  ? $"Sách đã quá hạn {Math.Abs((currentDate - data.NgayPhTra.Value).Days)} ngày"
                                  : $"Sách chưa quá hạn, vẫn còn {Math.Abs((data.NgayPhTra.Value - currentDate).Days)} ngày",
-                         maPhMuon = data.MaPhMuon
+                        maPhMuon = data.MaPhMuon
                     };
 
                     list.Add(dataItem);
@@ -115,6 +110,8 @@ namespace QuanLyThuVien.View
             }
             sach.ItemsSource = list;
         }
+
+        //Khi nhấn vào tên độc giả ở grid bên trái, load danh sách các sách mà độc giả đang mượn
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (docgia.SelectedItem != null)
@@ -124,130 +121,11 @@ namespace QuanLyThuVien.View
             }
         }
 
-        private void xulytimkiemchange(object sender, SelectionChangedEventArgs e)
+        //Mở Form điền phiếu mượn
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem comboBoxItem = (ComboBoxItem)timkiem.SelectedItem;
-            timkiems = comboBoxItem.Content.ToString();
-            if (!timkiems.Equals(""))
-            {
-                var data = list.Where(x => x.tensach == timkiems).ToList();
-                if (data.Any())
-                {
-                    List<DOCGIA> dataDocGia = new List<DOCGIA>();
-                    for(var i = 0; i < data.LongCount(); i++)
-                    {
-                        var dataItem = data[i];
-                        var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaSach == dataItem.id).ToList();
-                        foreach(var item in checkPhieuMuon)
-                        {
-                            var checkDocGia = _context.DOCGIA.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
-                            if(checkDocGia != null)
-                            {
-                                var docgiaItem = new DOCGIA()
-                                {
-                                    MaDG = checkDocGia.MaDG,
-                                    HoTen = checkDocGia.HoTen,
-                                    DiaChi = checkDocGia.DiaChi,
-                                    Email = checkDocGia.Email,
-                                    GioiTinh = checkDocGia.GioiTinh,
-                                    LoaiDG = checkDocGia.LoaiDG,
-                                    IsDeleted = checkDocGia.IsDeleted,
-                                    NgayLapThe = checkDocGia.NgayLapThe,
-                                    NgaySinh = checkDocGia.NgaySinh,
-                                    SoDT = checkDocGia.SoDT,
-                                    PHIEUMUON = checkDocGia.PHIEUMUON,
-                                    ACCOUNT = checkDocGia.ACCOUNT
-                                };
-
-                                dataDocGia.Add(docgiaItem);
-                            }
-                        }
-                        //var checkTacgia
-                    }
-
-                    docgia.ItemsSource = dataDocGia;
-                }
-                sach.ItemsSource = data;
-            }
-            else
-            {
-                sach.ItemsSource = list;
-            }
-
-
-        }
-
-        private void loadDataTimKiem()
-        {
-            List<ComboBoxItem> listItem = new List<ComboBoxItem>();
-            var data = _context.SACH.ToList();
-            for(int i = 0; i < data.Count; i++)
-            {
-                var item = data[i];
-
-                var comboBox = new ComboBoxItem
-                {
-                    Content = item.TenSach,
-                    Tag = item.MaSach
-                };
-
-                listItem.Add(comboBox);
-            }
-            timkiem.ItemsSource = listItem;
-        }
-
-        private void findSerch(object sender, TextChangedEventArgs e)
-        {
-            TextBox text = sender as TextBox;
-            string dataItemFind = text.Text;
-
-            if (dataItemFind != null && dataItemFind != "" && !dataItemFind.Equals(""))
-            {
-                var data = list.Where(x => x.tensach.Contains(dataItemFind)).ToList();
-                if (data.Any())
-                {
-                    List<DOCGIA> dataDocGia = new List<DOCGIA>();
-                    for (var i = 0; i < data.LongCount(); i++)
-                    {
-                        var dataItem = data[i];
-                        var checkPhieuMuon = _context.PHIEUMUON.Where(x => x.MaSach == dataItem.id && !x.IsDeleted.Value).ToList();
-                        foreach (var item in checkPhieuMuon)
-                        {
-                            var checkDocGia = _context.DOCGIA.Where(x => x.MaDG == item.MaDG).FirstOrDefault();
-                            if (checkDocGia != null)
-                            {
-                                var docgiaItem = new DOCGIA()
-                                {
-                                    MaDG = checkDocGia.MaDG,
-                                    HoTen = checkDocGia.HoTen,
-                                    DiaChi = checkDocGia.DiaChi,
-                                    Email = checkDocGia.Email,
-                                    GioiTinh = checkDocGia.GioiTinh,
-                                    LoaiDG = checkDocGia.LoaiDG,
-                                    IsDeleted = checkDocGia.IsDeleted,
-                                    NgayLapThe = checkDocGia.NgayLapThe,
-                                    NgaySinh = checkDocGia.NgaySinh,
-                                    SoDT = checkDocGia.SoDT,
-                                    PHIEUMUON = checkDocGia.PHIEUMUON,
-                                    ACCOUNT = checkDocGia.ACCOUNT
-                                };
-
-                                dataDocGia.Add(docgiaItem);
-                            }
-                        }
-                        //var checkTacgia
-                    }
-
-                    docgia.ItemsSource = dataDocGia;
-                }
-                sach.ItemsSource = data;
-            }
-            else
-            {
-                loadData();
-                loadDataTimKiem();
-            }
-
+            var formPhieuMuon = new FormPhieuMuon();
+            formPhieuMuon.Show();
         }
 
         //Xuat du lieu PHIEUTHU ra file excel

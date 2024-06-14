@@ -20,7 +20,6 @@ namespace QuanLyThuVien.Model
             this.SACH = new HashSet<SACH>();
         }
     
-        public string MaTheLoai { get; set; }
         public string TenTheLoai { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     

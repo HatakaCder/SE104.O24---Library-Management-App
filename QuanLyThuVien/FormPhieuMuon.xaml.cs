@@ -47,6 +47,8 @@ namespace QuanLyThuVien
             LoadDataSach();
             LoadMaPhieuMuon();
         }
+
+        //Hiển thị data độc giả để chọn trong combobox
         private void LoadDataDocGia()
         {
             try
@@ -60,6 +62,7 @@ namespace QuanLyThuVien
             }
         }
 
+        //Hiển thị data sách để chọn trong combobox
         private void LoadDataSach()
         {
             try
@@ -73,6 +76,7 @@ namespace QuanLyThuVien
             }
         }
 
+        //Hiển thị mã phiếu mượn để chọn trong combobox cho phiếu trả
         private void LoadMaPhieuMuon()
         {
             try
@@ -118,10 +122,10 @@ namespace QuanLyThuVien
                 }
             }
         }
+
         // Hàm Random
         public string generateId(string prefix, int length) //prefix là PM cho Phiếu mượn, PT cho phiếu trả
         {
-            // Lấy số ID hiện tại từ cơ sở dữ liệu
             int currentNumber = GetCurrentIdNumberFromDatabase(prefix);
             string newId;
             do
@@ -134,12 +138,12 @@ namespace QuanLyThuVien
 
             return newId;
         }
-        // Kiểm tra số lượng sách đang mượn của độc giả
+
+        // Kiểm tra điều kiện số lượng sách đang mượn của độc giả
         private bool KiemTraSoLuongSachDangMuon(string maDG)
         {
             int soSachDangMuon = _context.PHIEUMUON.Where(p => p.MaDG == maDG && p.IsDeleted == false).Count();
-            int soSachMuonToiDa = _context.SETTING.Select(s => s.SoSachMuonToiDa).FirstOrDefault();
-
+            int soSachMuonToiDa = _context.SETTING.Select(s => s.SoSachMuonToiDa).FirstOrDefault().GetValueOrDefault();
             if (soSachDangMuon >= soSachMuonToiDa)
             {
                 MessageBox.Show("Vui lòng trả sách cũ trước khi mượn thêm.");
@@ -171,7 +175,7 @@ namespace QuanLyThuVien
                 return false;
             }
 
-            int thoiHanThe = _context.SETTING.Select(s => s.ThoiHanThe).FirstOrDefault();
+            int thoiHanThe = _context.SETTING.Select(s => s.ThoiHanThe).FirstOrDefault().GetValueOrDefault();
             DateTime ngayHetHan = ngayLapThe.AddMonths(thoiHanThe);
 
             if (DateTime.Today > ngayHetHan)
@@ -200,7 +204,8 @@ namespace QuanLyThuVien
 
             return false;
         }
-        //Đăng ký sách mới
+
+        //Đăng ký mượn sách
         private void Button_Click_DangKy(object sender, RoutedEventArgs e)
         {
             if (docgia.SelectedValue == null || sach.SelectedValue == null)
@@ -252,50 +257,32 @@ namespace QuanLyThuVien
             }
         }
 
+        //Kiểm tra sách có mượn quá hạn khi trả sách không
         private bool KiemTraQuaHan(string maPhMuon)
         {
-            // Lấy thông tin phiếu mượn từ cơ sở dữ liệu
             var phieuMuon = _context.PHIEUMUON
                                     .Where(pm => pm.MaPhMuon == maPhMuon)
                                     .FirstOrDefault();
-
             if (phieuMuon == null)
             {
                 MessageBox.Show("Không tìm thấy thông tin phiếu mượn.");
                 return false;
             }
-
-            // Lấy ngày hiện tại
             DateTime ngayTra = DateTime.Today;
-
-            // Kiểm tra xem có quá hạn trả sách hay không
             if (phieuMuon.NgayPhTra.HasValue && phieuMuon.NgayPhTra.Value < ngayTra)
             {
-                // Tính số ngày quá hạn
                 int soNgayQuaHan = (ngayTra - phieuMuon.NgayPhTra.Value).Days;
-
-                // Lấy giá trị tiền phạt từ bảng SETTING
-                int soTienNopTre = _context.SETTING
-                                          .Select(s => s.SoTienNopTre)
-                                          .FirstOrDefault();
-
-                // Hiển thị MessageBox cùng với các nút "Thanh toán" và "Không thanh toán"
+                int soTienNopTre = _context.SETTING.Select(s => s.SoTienNopTre).FirstOrDefault().GetValueOrDefault();
                 MessageBoxResult result = MessageBox.Show($"Đã quá hạn {soNgayQuaHan} ngày, vui lòng thanh toán {soNgayQuaHan * soTienNopTre} VND.", "Thông báo", MessageBoxButton.YesNo);
-
-                // Xử lý theo kết quả của MessageBox
                 if (result == MessageBoxResult.Yes)
                 {
-                    // Nếu người dùng chọn "Thanh toán", cho phép tạo phiếu trả
                     return true;
                 }
                 else
                 {
-                    // Nếu người dùng chọn "Không thanh toán", không cho phép tạo phiếu trả
                     return false;
                 }
             }
-
-            // Nếu không quá hạn, cho phép thực hiện trả sách bình thường
             return true;
         }
 
@@ -327,6 +314,11 @@ namespace QuanLyThuVien
                 try
                 {
                     _context.PHIEUTRA.Add(phieuTra);
+                    var phieuMuon = _context.PHIEUMUON.FirstOrDefault(pm => pm.MaPhMuon == maPhMuon);
+                    if (phieuMuon != null)
+                    {
+                        phieuMuon.IsDeleted = true;
+                    }
                     _context.SaveChanges();
 
                     MessageBox.Show("Lập phiếu trả sách thành công!");
@@ -335,7 +327,7 @@ namespace QuanLyThuVien
                 }
                 catch (Exception ex)
                 {
-                    // Bắt và hiển thị chi tiết lỗi InnerException
+                    // Bắt và hiển thị chi tiết lỗi InnerException để debug
                     string errorMessage = $"Đã xảy ra lỗi khi lập phiếu trả sách: {ex.Message}";
                     Exception innerException = ex.InnerException;
                     while (innerException != null)
