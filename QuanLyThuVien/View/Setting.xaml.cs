@@ -5,40 +5,29 @@ using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace QuanLyThuVien.View
 {
-    /// <summary>
-    /// Interaction logic for Setting.xaml
-    /// </summary>
     public partial class Setting : UserControl
     {
         private readonly QLTV_BETAEntities _context = new QLTV_BETAEntities();
         private string category_id = null;
-        private Dictionary<string, string> addData = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> addData = new Dictionary<string, string>();
         private readonly Random random = new Random();
+        private string connectionString = @"Data Source=.;Initial Catalog=QLTV_BETA;Integrated Security=True";
+
         public Setting()
         {
-            InitializeComponent();    
-            loadData();
-            loadDataCategory();
+            InitializeComponent();
+            LoadData();
+            LoadDataCategory();
+        }
 
-            id_Category.Visibility = Visibility.Collapsed;
-        }       
-
-        private void loadData()
+        private void LoadData()
         {
-            //Lấy Setting từ Database
+            // Load settings from database
             var setting = _context.SETTING.FirstOrDefault();
             if (setting != null)
             {
@@ -52,14 +41,15 @@ namespace QuanLyThuVien.View
                 ThoiGianNhapSach.Text = setting.ThoiGianNhapSach.ToString();
             }
 
-            //Hiển thị danh sách thể loại
+            // Display categories
             var data = _context.THELOAI.Where(x => !x.IsDeleted.Value).ToList();
             category.ItemsSource = data;
         }
 
+        //Luu quy dinh vao Database
         private void Button_Click_Luu(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra có ô nào trống không
+            // Validate input
             if (string.IsNullOrWhiteSpace(TuoiToiThieu.Text) ||
                 string.IsNullOrWhiteSpace(TuoiToiDa.Text) ||
                 string.IsNullOrWhiteSpace(ThoiHanThe.Text) ||
@@ -75,6 +65,7 @@ namespace QuanLyThuVien.View
 
             try
             {
+                // Save settings
                 int tuoiToiThieu = int.Parse(TuoiToiThieu.Text);
                 int tuoiToiDa = int.Parse(TuoiToiDa.Text);
                 int thoiHanThe = int.Parse(ThoiHanThe.Text);
@@ -84,13 +75,55 @@ namespace QuanLyThuVien.View
                 int soLuongTheLoaiToiDa = int.Parse(SoLuongTheLoaiToiDa.Text);
                 int thoiGianNhapSach = int.Parse(ThoiGianNhapSach.Text);
 
-                var setting = _context.SETTING.FirstOrDefault();
-
-                if (setting == null)
+                if (tuoiToiThieu <= 0)
                 {
-                    setting = new SETTING();
-                    _context.SETTING.Add(setting);
+                    MessageBox.Show("Tuổi tối thiểu phải lớn hơn 0.");
+                    return;
                 }
+
+                if (tuoiToiDa <= 0 || tuoiToiDa <= tuoiToiThieu)
+                {
+                    MessageBox.Show("Tuổi tối đa phải lớn hơn 0 và lớn hơn Tuổi tối thiểu.");
+                    return;
+                }
+
+                if (thoiHanThe <= 0)
+                {
+                    MessageBox.Show("Thời hạn thẻ phải lớn hơn 0.");
+                    return;
+                }
+
+                if (soNgayMuonToiDa <= 0)
+                {
+                    MessageBox.Show("Số ngày mượn tối đa phải lớn hơn 0.");
+                    return;
+                }
+
+                if (soTienNopTre < 0)
+                {
+                    MessageBox.Show("Số tiền nộp trễ không được âm.");
+                    return;
+                }
+
+                if (soSachMuonToiDa <= 1)
+                {
+                    MessageBox.Show("Số sách mượn tối đa phải lớn hơn 1.");
+                    return;
+                }
+
+                if (soLuongTheLoaiToiDa <= 0)
+                {
+                    MessageBox.Show("Số lượng thể loại tối đa phải lớn hơn 0.");
+                    return;
+                }
+
+                if (thoiGianNhapSach <= 0)
+                {
+                    MessageBox.Show("Thời gian nhập sách phải lớn hơn 0.");
+                    return;
+                }
+
+                var setting = _context.SETTING.FirstOrDefault() ?? new SETTING();
 
                 setting.TuoiToiThieu = tuoiToiThieu;
                 setting.TuoiToiDa = tuoiToiDa;
@@ -111,7 +144,8 @@ namespace QuanLyThuVien.View
                 MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
             }
         }
-        private void loadDataCategory()
+
+        private void LoadDataCategory()
         {
             var datas = _context.THELOAI.Select(x => new ComboBoxItem
             {
@@ -124,14 +158,13 @@ namespace QuanLyThuVien.View
 
         private void Data_Item(object sender, SelectionChangedEventArgs e)
         {
-            if(category.SelectedItem != null)
+            if (category.SelectedItem != null)
             {
-                id_Category.Visibility = Visibility.Visible;
+                var selectedCategory = (THELOAI)category.SelectedItem;
                 THELOAI categorys = (THELOAI)category.SelectedItem;
-
-                foreach(var item in id_Category.Items)
+                foreach (var item in id_Category.Items)
                 {
-                    if(item is ComboBoxItem categoryItem && categoryItem.Content.ToString() == categorys.TenTheLoai)
+                    if (item is ComboBoxItem categoryItem && categoryItem.Content.ToString() == categorys.TenTheLoai)
                     {
                         id_Category.SelectedItem = item;
                         category_id = categoryItem.Tag.ToString();
@@ -139,39 +172,31 @@ namespace QuanLyThuVien.View
                     }
                 }
 
-                tenTheLoai.Text = categorys.TenTheLoai;
+                tenTheLoai.Text = selectedCategory.TenTheLoai;
             }
         }
-
         private void xulycategorychange(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem comboBoxItem = (ComboBoxItem)id_Category.SelectedItem;
-            if(comboBoxItem != null) {
+            if (comboBoxItem != null)
+            {
                 category_id = comboBoxItem.Tag.ToString();
+                tenTheLoai.Text = comboBoxItem.Content.ToString(); // Hiển thị tên thể loại lên TextBox tenTheLoai
             }
-            
         }
-        private string connectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
-                                            provider=System.Data.SqlClient;
-                                            provider connection string='data source=.;
-                                            initial catalog=QLTV_BETA;
-                                            integrated security=True;
-                                            encrypt=False;
-                                            application name=EntityFramework;
-                                            MultipleActiveResultSets=True'";
 
-        public string GenerateTLId()
+        private string GenerateTLId()
         {
-            string prefix = "TL";
-            int length = 3; // Độ dài phần số (001, 002,...)
+            const string prefix = "TL";
+            const int length = 3;
             int currentMaxNumber = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT MAX(CAST(SUBSTRING(MaTheLoai, 3, LEN(MaTheLoai) - 2) AS INT)) FROM THELOAI";
+                var query = "SELECT MAX(CAST(SUBSTRING(MaTheLoai, 3, LEN(MaTheLoai) - 2) AS INT)) FROM THELOAI";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     var result = command.ExecuteScalar();
                     if (result != DBNull.Value)
@@ -182,48 +207,13 @@ namespace QuanLyThuVien.View
             }
 
             int newNumber = currentMaxNumber + 1;
-            string newId = prefix + newNumber.ToString().PadLeft(length, '0');
-            return newId;
+            return $"{prefix}{newNumber.ToString().PadLeft(length, '0')}";
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private bool CheckValueNull(Dictionary<string, string> check)
         {
-            addData.Add("ten", tenTheLoai.Text);
-
-            if (checkValueNull(addData))
+            foreach (var item in check)
             {
-                var cehckName = _context.THELOAI.Where(x => x.TenTheLoai == tenTheLoai.Text).FirstOrDefault();
-                if (cehckName != null)
-                {
-                    MessageBox.Show("Category đã tồn tại");
-                    return;
-                }
-
-                var data = new THELOAI()
-                {
-                    MaTheLoai = GenerateTLId(),
-                    TenTheLoai = tenTheLoai.Text,
-                    IsDeleted = false,
-                };
-
-                _context.THELOAI.Add(data);
-                if(_context.SaveChanges() > 0)
-                {
-                    MessageBox.Show("Add category Success");
-                    loadData();
-                    loadDataCategory();
-                    return;
-                }
-
-                MessageBox.Show("Add category fald");
-            }
-        }
-
-        private bool checkValueNull(Dictionary<string, string> check)
-        {
-            foreach(var item in check)
-            {
-                if (item.Value == null || item.Value.Equals(string.Empty))
+                if (string.IsNullOrWhiteSpace(item.Value))
                 {
                     MessageBox.Show($"Dữ liệu ở {item.Key} đang bị null");
                     return false;
@@ -232,62 +222,78 @@ namespace QuanLyThuVien.View
 
             return true;
         }
-
-        private string rondomId(int n, string key)
+        private void Button_Click_Them(object sender, RoutedEventArgs e)
         {
-            StringBuilder stb = new StringBuilder();
+            addData["ten"] = tenTheLoai.Text;
 
-            for(int i = 0; i < n; i++)
+            if (CheckValueNull(addData))
             {
-                stb.Append(key[random.Next(key.Length)]);
-            }
+                // Kiểm tra xem thể loại đã tồn tại hay chưa
+                var checkName = _context.THELOAI.FirstOrDefault(x => x.TenTheLoai == tenTheLoai.Text);
+                if (checkName != null)
+                {
+                    MessageBox.Show("Thể loại đã tồn tại");
+                    return;
+                }
 
-            return stb.ToString();
+                // Tạo thể loại mới
+                var newCategory = new THELOAI
+                {
+                    MaTheLoai = GenerateTLId(),
+                    TenTheLoai = tenTheLoai.Text,
+                    IsDeleted = false,
+                };
+
+                // Thêm thể loại mới vào cơ sở dữ liệu
+                _context.THELOAI.Add(newCategory);
+                if (_context.SaveChanges() > 0)
+                {
+                    MessageBox.Show("Add category Success");
+                    LoadData();
+                    LoadDataCategory();
+                    return;
+                }
+
+                MessageBox.Show("Add category failed");
+            }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_Sua(object sender, RoutedEventArgs e)
         {
-            
-            if(!checkValidate())
+            if (!CheckValidate())
             {
                 MessageBox.Show("id bị null");
                 return;
             }
 
-            var checkData = _context.THELOAI.Where(x => x.MaTheLoai == category_id).FirstOrDefault();
-            if(checkData == null) {
+            var categoryData = _context.THELOAI.FirstOrDefault(x => x.MaTheLoai == category_id);
+            if (categoryData == null)
+            {
                 MessageBox.Show("id không tồn tại");
                 return;
             }
 
-            // Kiểm tra xem key "Tên" này đã có trong THELOAI chưa
-            if (addData.ContainsKey("Tên"))
-            {
-                addData.Add("Tên", tenTheLoai.Text);
-            }
-            
-            if (checkValueNull(addData))
-            {
-                checkData.TenTheLoai = tenTheLoai.Text;
+            addData["Tên"] = tenTheLoai.Text;
 
-                _context.THELOAI.AddOrUpdate(checkData);
-                if(_context.SaveChanges() > 0)
+            if (CheckValueNull(addData))
+            {
+                categoryData.TenTheLoai = tenTheLoai.Text;
+                _context.THELOAI.AddOrUpdate(categoryData);
+                if (_context.SaveChanges() > 0)
                 {
-                    id_Category.Visibility = Visibility.Visible;
                     MessageBox.Show("Update thành công");
-                    loadData();
-                    loadDataCategory();
+                    LoadData();
+                    LoadDataCategory();
                     return;
                 }
 
-                MessageBox.Show("Update Faid");
-                return;
+                MessageBox.Show("Update failed");
             }
         }
 
-        private bool checkValidate()
+        private bool CheckValidate()
         {
-            if (category_id == null || category_id.Equals(string.Empty) || category_id == "")
+            if (string.IsNullOrWhiteSpace(category_id))
             {
                 MessageBox.Show("id bị null");
                 return false;
@@ -295,85 +301,71 @@ namespace QuanLyThuVien.View
 
             return true;
         }
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Xoa(object sender, RoutedEventArgs e)
         {
-            if (checkValidate())
+            if (CheckValidate())
             {
-                var checkCategory = _context.THELOAI.Where(x => x.MaTheLoai == category_id).SingleOrDefault();
-                if (checkCategory == null)
+                var categoryData = _context.THELOAI.SingleOrDefault(x => x.MaTheLoai == category_id);
+                if (categoryData == null)
                 {
                     MessageBox.Show("null");
                     return;
                 }
 
-                checkCategory.IsDeleted = true;
+                categoryData.IsDeleted = true;
+                _context.THELOAI.AddOrUpdate(categoryData);
 
-                _context.THELOAI.AddOrUpdate(checkCategory);
-
-                if(_context.SaveChanges() > 0)
+                if (_context.SaveChanges() > 0)
                 {
                     MessageBox.Show("Delete thành công");
-                    //category_id = id_Category.Items[0].ToString();
-                    loadData();
-                    loadDataCategory();
+                    LoadData();
+                    LoadDataCategory();
                     return;
                 }
-                MessageBox.Show("Delete Faild");
-
+                MessageBox.Show("Delete failed");
             }
-        }
-
-        private void Border_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void gioihanngaymuon(object sender, TextChangedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            string data = textBox.Text;
-            if(int.TryParse(data, out int so))
+            if (sender is TextBox textBox && int.TryParse(textBox.Text, out int days))
             {
-                Application.Current.Properties["ngaymuon"] = so.ToString();
-                return;
+                Application.Current.Properties["ngaymuon"] = days.ToString();
             }
-            MessageBox.Show("Phải là số");
+            else
+            {
+                MessageBox.Show("Phải là số");
+            }
         }
 
         private void thecogiatri_docgia(object sender, TextChangedEventArgs e)
         {
-            TextBox data = sender as TextBox;
-            string dataItem = data.Text;
-
-            if(int.TryParse(dataItem, out int so))
+            if (sender is TextBox textBox && int.TryParse(textBox.Text, out int value))
             {
-                Application.Current.Properties["hethanthe"] = so.ToString();
-                return;
+                Application.Current.Properties["hethanthe"] = value.ToString();
             }
-
-            MessageBox.Show("Phải là số");
-            return;
+            else
+            {
+                MessageBox.Show("Phải là số");
+            }
         }
 
         private void soquyenmuon(object sender, TextChangedEventArgs e)
         {
-            TextBox data = sender as TextBox;
-            string dataItem = data.Text;
-
-            if(int.TryParse(dataItem, out int so))
+            if (sender is TextBox textBox && int.TryParse(textBox.Text, out int quantity))
             {
-                Application.Current.Properties["soquyen"] = so.ToString();
-                return;
+                Application.Current.Properties["soquyen"] = quantity.ToString();
             }
-
-            MessageBox.Show("Phải là số");
-            return;
+            else
+            {
+                MessageBox.Show("Phải là số");
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var data = matkhaucu.Password.Trim();
-
             MessageBox.Show($"Data: " + data);
         }
     }

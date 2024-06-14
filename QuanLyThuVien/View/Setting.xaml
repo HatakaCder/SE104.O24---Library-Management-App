@@ -19,7 +19,7 @@
         <vm:SettingVM></vm:SettingVM>
     </UserControl.DataContext>
     <Grid>
-        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15" Loaded="Border_Loaded">
+        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
@@ -299,20 +299,20 @@
                                Text="Danh sách thể loại" />
                                 <Grid Grid.Row="2">
                                     <DataGrid BorderBrush="Gray" x:Name="category" BorderThickness="0.5"   
-          AutoGenerateColumns="False"
-          RowStyle="{StaticResource DataGridRowStyle}" 
-          Background="White"
-          ScrollViewer.CanContentScroll="True" 
-          ScrollViewer.VerticalScrollBarVisibility="Auto" 
-          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-          CanUserAddRows="False"
-          CanUserDeleteRows="False"
-          CanUserReorderColumns="False"   
-          HorizontalScrollBarVisibility="Disabled"
-          HeadersVisibility="Column"
-          Margin="15"
-          ItemsSource="{Binding}"
-                                              SelectionChanged="Data_Item"
+                                      AutoGenerateColumns="False"
+                                      RowStyle="{StaticResource DataGridRowStyle}" 
+                                      Background="White"
+                                      ScrollViewer.CanContentScroll="True" 
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                      CanUserAddRows="False"
+                                      CanUserDeleteRows="False"
+                                      CanUserReorderColumns="False"   
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      HeadersVisibility="Column"
+                                      Margin="15"
+                                      ItemsSource="{Binding}"
+                                      SelectionChanged="Data_Item"
           >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Width="0.25*" Binding="{Binding MaTheLoai}" IsReadOnly="True">
@@ -369,23 +369,18 @@
                                      >
                                 </TextBox>
                                 <!--Tìm kiếm bằng ComboBox-->
-                                <ComboBox x:Name="id_Category" SelectionChanged="xulycategorychange"
-            Margin="2"
-            Width="200"
-            materialDesign:HintAssist.Hint="Category"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}">
-
+                                <ComboBox   x:Name="id_Category"
+                                            Margin="2"
+                                            Width="200"
+                                            materialDesign:HintAssist.Hint="Category"
+                                            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                            SelectionChanged="xulycategorychange">    
 
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                            <!-- Hiển thị tên của mục -->
-                                            <TextBlock Text="{Binding Ten}" />
-                                            <!-- Hiển thị ID của mục (nếu cần) -->
+                                            <TextBlock Text="{Binding TenTheLoai}" />
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
-
-                                    <!--Tìm kiếm bằng ô textBox sử dụng thuộc tính "TextChanged" để khi người dùng vừa nhập dữ liệu vào thì sẽ lấy được dữ liệu đấy và bắt đầu tự động tìm kiếm, và dữ liệu sẽ được chuyền vào hàm "SearchTextBox_TextChanged" này để xử lý tìm kiếm -->
-                                    <!--<TextBox x:Name="searchTextBox" TextChanged="SearchTextBox_TextChanged" />-->
 
 
                                 </ComboBox>
@@ -394,13 +389,13 @@
                                         <StackPanel Orientation="Vertical">
                                             <Button
                                               Background="#FADBD8"
-                                    Content="Thêm"
-                                    Margin="10"
-                                    Width="100"
-                                    Height="30"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="Thêm độc giả" Click="Button_Click_1" />
+                                            Content="Thêm"
+                                            Margin="10"
+                                            Width="100"
+                                            Height="30"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="Thêm độc giả" Click="Button_Click_Them" />    
                                             <Button
                                               Background="#FADBD8"
                                             Content="Xóa"
@@ -409,16 +404,16 @@
                                             Margin="10"
                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                             Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="Xóa độc giả" Click="Button_Click_3" />
+                                            ToolTip="Xóa độc giả" Click="Button_Click_Xoa" />
                                             <Button
                                               Background="#FADBD8"
-                                    Content="Sửa"
-                                    Width="100"
-                                    Height="30"                                      
-                                    Margin="10"                                      
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="Sửa độc giả" Click="Button_Click_2" />
+                                            Content="Sửa"
+                                            Width="100"
+                                            Height="30"                                      
+                                            Margin="10"                                      
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="Sửa độc giả" Click="Button_Click_Sua" />
                                         </StackPanel>
                                     </DockPanel>
                                 </Grid>

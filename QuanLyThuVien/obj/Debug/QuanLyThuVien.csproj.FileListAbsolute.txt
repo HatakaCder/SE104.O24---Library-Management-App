@@ -345,8 +345,6 @@ D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Styles\Ima
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Styles\Page.baml
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Styles\Text.baml
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Styles\TheComboBox.baml
-D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\AddOrEditMuonTra.g.cs
-D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\PhieuThu.g.cs
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.g.cs
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\AddOrEdit.g.cs
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Book.g.cs
@@ -368,8 +366,6 @@ D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\GeneratedI
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien_MarkupCompile.cache
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien_MarkupCompile.lref
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\App.baml
-D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\AddOrEditMuonTra.baml
-D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\PhieuThu.baml
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\SignUpWindow.baml
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\Utilities\DataTemplate.baml
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\AddOrEdit.baml
@@ -394,3 +390,5 @@ D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuV
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\FormPhieuMuon.g.cs
+D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\FormPhieuMuon.baml

@@ -21,13 +21,11 @@ using System.Data.Entity.Core.EntityClient;
 
 namespace QuanLyThuVien
 {
-    /// <summary>
-    /// Interaction logic for AddOrEditMuonTra.xaml
-    /// </summary>
-    public partial class AddOrEditMuonTra : Window
+
+    public partial class FormPhieuMuon : Window
     {
         private QLTV_BETAEntities _context = new QLTV_BETAEntities();
-        public AddOrEditMuonTra()
+        public FormPhieuMuon()
         {
             InitializeComponent();
         }
@@ -77,14 +75,20 @@ namespace QuanLyThuVien
 
         private void LoadMaPhieuMuon()
         {
-            // Lấy danh sách các mã phiếu mượn có IsDeleted = false từ database
-            var listMaPhieuMuon = _context.PHIEUMUON
-                                        .Where(p => p.IsDeleted == false)
-                                        .Select(p => p.MaPhMuon)
-                                        .ToList();
+            try
+            {
+                var listPhieuMuon = _context.PHIEUMUON
+                                            .Where(pm => pm.IsDeleted == false)
+                                            .Select(pm => new { pm.MaPhMuon })
+                                            .ToList();
 
-            // Đặt ItemSource của ComboBox maphieumuon1 bằng danh sách vừa lấy
-            maphieumuon1.ItemsSource = listMaPhieuMuon;
+                maphieumuon1.ItemsSource = listPhieuMuon;
+                maphieumuon1.DisplayMemberPath = "MaPhMuon";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu phiếu mượn: " + ex.Message);
+            }
         }
         //Hàm tạo ID
         //Lấy id cao nhất hiện tại trong database để tạo id mới
@@ -119,15 +123,14 @@ namespace QuanLyThuVien
         {
             // Lấy số ID hiện tại từ cơ sở dữ liệu
             int currentNumber = GetCurrentIdNumberFromDatabase(prefix);
-
-            // Tăng số lên 1
-            currentNumber++;
-
-            // Định dạng số với độ dài yêu cầu (có thể dùng PadLeft)
-            string numberPart = currentNumber.ToString().PadLeft(length, '0'); //Nếu là PM001 thì length là 3, PM01 thì length là 2.
-
-            // Kết hợp tiền tố và số để tạo ID mới
-            string newId = prefix + numberPart;
+            string newId;
+            do
+            {
+                currentNumber++;
+                string numberPart = currentNumber.ToString().PadLeft(length, '0');
+                newId = prefix + numberPart;
+            }
+            while (_context.PHIEUTRA.Any(p => p.MaPhTra == newId));
 
             return newId;
         }
@@ -299,48 +302,48 @@ namespace QuanLyThuVien
         //Trả sách
         private void Button_Click_TraSach(object sender, RoutedEventArgs e)
         {
-            // Lấy MaPhMuon từ ComboBox maphieumuon1
-            string maPhMuon = maphieumuon1.SelectedItem as string;
-
-            if (maPhMuon == null)
+            var selectedItem = maphieumuon1.SelectedItem;
+            if (selectedItem == null)
             {
                 MessageBox.Show("Vui lòng chọn mã phiếu mượn.");
                 return;
             }
 
-            // Kiểm tra quá hạn khi trả sách
+            string maPhMuon = (selectedItem as dynamic).MaPhMuon;
+
             if (KiemTraQuaHan(maPhMuon))
             {
-                // Tạo MaPhTra mới
                 string maPhTra = generateId("PT", 3);
-
-                // Lấy ngày hiện tại làm NgayTra
                 DateTime ngayTra = DateTime.Now;
 
-                // Tạo đối tượng PHIEUTRA mới
                 PHIEUTRA phieuTra = new PHIEUTRA
                 {
                     MaPhTra = maPhTra,
                     MaPhMuon = maPhMuon,
                     NgayTra = ngayTra,
-                    IsDeleted = false // Mặc định không bị xóa khi tạo mới
+                    IsDeleted = false
                 };
 
                 try
                 {
-                    // Thêm PHIEUTRA vào cơ sở dữ liệu
                     _context.PHIEUTRA.Add(phieuTra);
                     _context.SaveChanges();
 
-                    // Hiển thị thông báo thành công
                     MessageBox.Show("Lập phiếu trả sách thành công!");
 
-                    // Đóng form sau khi lưu thành công
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Đã xảy ra lỗi khi lập phiếu trả sách: {ex.Message}");
+                    // Bắt và hiển thị chi tiết lỗi InnerException
+                    string errorMessage = $"Đã xảy ra lỗi khi lập phiếu trả sách: {ex.Message}";
+                    Exception innerException = ex.InnerException;
+                    while (innerException != null)
+                    {
+                        errorMessage += $"\nInner Exception: {innerException.Message}";
+                        innerException = innerException.InnerException;
+                    }
+                    MessageBox.Show(errorMessage);
                 }
             }
         }

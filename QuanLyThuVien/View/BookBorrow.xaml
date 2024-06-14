@@ -104,12 +104,7 @@
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0" />
-                            <Button Grid.Column="2">
-                                <materialDesign:PackIcon
-              Margin="8,0,0,0"
-              Kind="Send"
-              Opacity=".56" />
-                            </Button>
+
                         </Grid>
                         <Grid Grid.Column="2">
 
@@ -117,21 +112,14 @@
                             <ComboBox x:Name="timkiem" SelectionChanged="xulytimkiemchange"
                                         Margin="2"
                                         Width="200"
-                                        materialDesign:HintAssist.Hint="Tìm kiếm theo">            
+                                        materialDesign:HintAssist.Hint="Tìm kiếm theo">
 
-                                
+
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <!-- Hiển thị tên của mục -->
                                         <TextBlock Text="{Binding TenSach}" />
-                                        <!-- Hiển thị ID của mục (nếu cần) -->
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
-
-                                <!--Tìm kiếm bằng ô textBox sử dụng thuộc tính "TextChanged" để khi người dùng vừa nhập dữ liệu vào thì sẽ lấy được dữ liệu đấy và bắt đầu tự động tìm kiếm, và dữ liệu sẽ được chuyền vào hàm "SearchTextBox_TextChanged" này để xử lý tìm kiếm -->
-                                <!--<TextBox x:Name="searchTextBox" TextChanged="SearchTextBox_TextChanged" />-->
-                                
-
                             </ComboBox>
 
                         </Grid>
@@ -190,7 +178,9 @@
                     </Grid>
 
                     <Grid Grid.Column="1" Grid.Row="1">
-                        <DataGrid x:Name="sach" SelectionChanged="Data_Sach" BorderBrush="Gray" BorderThickness="0.5"   
+                        <DataGrid x:Name="sach" 
+                                  BorderBrush="Gray" 
+                                  BorderThickness="0.5"   
                                     AutoGenerateColumns="False"
                                     RowStyle="{StaticResource DataGridRowStyle}" 
                                     Background="White"
@@ -272,24 +262,26 @@
                 <Grid Grid.Row="3">
                     <DockPanel >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-            HorizontalAlignment="Center">
+                            HorizontalAlignment="Center">
                             <Button
-                Background="#FADBD8"
-      Content="Add Phiếu mượn/Trả"
-      Margin="15"
-      Width="150"
-      Height="50"
-      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      ToolTip="Thêm độc giả" Click="Button_Click" />
+                                Background="#FADBD8"
+                                Foreground="Black"
+                                Content="Tạo Phiếu mượn/Trả"
+                                Margin="15"
+                                Width="200"
+                                Height="50"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                ToolTip="Thêm phiếu mượn" Click="Button_Click" />
 
                             <Button
                                 Background="#FADBD8"
-                              Content="Phiếu thu"
-                              Width="150"
+                                Foreground="Black"
+                              Content="Xuất danh sách phiếu thu"
+                              Width="200"
                               Height="50"                                      
                               Margin="15"                                      
                                  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                ToolTip="Sửa độc giả" Click="Button_Click_2" />
+                                ToolTip="Tạo file excel" Click="Button_Click_2" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>
