@@ -15,9 +15,6 @@
                FontFamily="{DynamicResource MaterialDesignFont}"
             d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:LibarianVM></vm:LibarianVM>
-    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
@@ -97,7 +94,7 @@ ToolTip="Đăng xuất">
                        Kind="Search"
                        Opacity=".56" />
                         </Button>
-                        <TextBox
+                        <TextBox Text="{Binding Path=SearchContent}"
                      Grid.Column="1"
                      MinWidth="200"
                      Margin="8,0,0,0"
@@ -106,7 +103,7 @@ ToolTip="Đăng xuất">
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                      BorderThickness="0" />
                         <Button
-                     Grid.Column="2"
+                     Grid.Column="2" Command="{Binding Path=SearchCommand}"
                      Style="{StaticResource MaterialDesignToolButton}">
                             <materialDesign:PackIcon
                        Margin="8,0,0,0"
@@ -116,20 +113,10 @@ ToolTip="Đăng xuất">
 
                     </Grid>
 
-                    <Grid Grid.Column="2">
-                        <ComboBox                           
-                                       Margin="2"
-                                       Width="200"
-                                       materialDesign:HintAssist.Hint="Tìm kiếm theo"
-                                       Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
-                        </ComboBox>
-                    </Grid>
+                    
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                    <DataGrid BorderBrush="Gray" BorderThickness="0.5" SelectedItem="{Binding Path=SelectedLibrarian, Mode=TwoWay}" 
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
           Background="White"
@@ -142,10 +129,10 @@ ToolTip="Đăng xuất">
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding Path=LibrariansList, Mode=TwoWay}"
           >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+                            <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding Path=MaTT}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -155,7 +142,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=HoTen}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -164,8 +151,28 @@ ToolTip="Đăng xuất">
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+                            
+                            <DataGridTextColumn Width="*" Binding="{Binding GioiTinh}" IsReadOnly="True">
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="Giới tính" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding NgayVLam}" IsReadOnly="True">
+                                <DataGridTextColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="Ngày vô làm" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTextColumn.HeaderTemplate>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="*" Binding="{Binding NgaySinh}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -175,7 +182,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding DiaChi}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -185,7 +192,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Email}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -194,6 +201,16 @@ ToolTip="Đăng xuất">
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
+                            <DataGridCheckBoxColumn Binding="{Binding IsChecked}" IsReadOnly="False">
+                                <DataGridCheckBoxColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="Check" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
+                            </DataGridCheckBoxColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -202,32 +219,32 @@ ToolTip="Đăng xuất">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
             HorizontalAlignment="Center">
                             <Button
-                Background="#FADBD8"
+                Background="#FADBD8" Command="{Binding Path=AddPopUpCommand}"
       Content="Thêm"
       Margin="15"
       Width="150"
       Height="50"
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
       Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Thêm độc giả" />
+      ToolTip="Thêm độc giả" Click="Button_Click" />
                             <Button
-                Background="#FADBD8"
+                Background="#FADBD8" Command="{Binding Path=DeleteCommand}"
       Content="Xóa"
       Width="150"
       Height="50"                                      
       Margin="15"
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
       Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Xóa độc giả" />
+      ToolTip="Xóa độc giả" Click="Button_Click_2" />
                             <Button
-                Background="#FADBD8"
+                Background="#FADBD8" Command="{Binding Path=UpdatePopUpCommand}"
       Content="Sửa"
       Width="150"
       Height="50"                                      
       Margin="15"                                      
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
       Style="{StaticResource MaterialDesignRaisedLightButton}"
-      ToolTip="Sửa độc giả" />
+      ToolTip="Sửa độc giả" Click="Button_Click_1" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>

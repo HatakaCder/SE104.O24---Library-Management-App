@@ -18,7 +18,6 @@
         <MappingFragment StoreEntitySet="DOCGIA">
           <ScalarProperty Name="MaDG" ColumnName="MaDG" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="LoaiDG" ColumnName="LoaiDG" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
@@ -34,6 +33,7 @@
         <MappingFragment StoreEntitySet="PARAMETERs">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
+          <ScalarProperty Name="IDThuThu" ColumnName="IDThuThu" />
           <ScalarProperty Name="IDSach" ColumnName="IDSach" />
           <ScalarProperty Name="IDPhMuon" ColumnName="IDPhMuon" />
           <ScalarProperty Name="IDPhThu" ColumnName="IDPhThu" />
@@ -81,13 +81,21 @@
         <MappingFragment StoreEntitySet="SACH">
           <ScalarProperty Name="MaSach" ColumnName="MaSach" />
           <ScalarProperty Name="TenSach" ColumnName="TenSach" />
-          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
           <ScalarProperty Name="TacGia" ColumnName="TacGia" />
           <ScalarProperty Name="NamXB" ColumnName="NamXB" />
           <ScalarProperty Name="NhaXB" ColumnName="NhaXB" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="TriGia" ColumnName="TriGia" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THELOAIs">
+      <EntityTypeMapping TypeName="QLTV_BETAModel.THELOAI">
+        <MappingFragment StoreEntitySet="THELOAI">
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
         </MappingFragment>
       </EntityTypeMapping>

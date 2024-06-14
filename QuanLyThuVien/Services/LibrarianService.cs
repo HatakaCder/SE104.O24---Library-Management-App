@@ -1,0 +1,181 @@
+﻿using QuanLyThuVien.Class;
+using QuanLyThuVien.Model;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Security.Policy;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace QuanLyThuVien.Services
+{
+    public class LibrarianService
+    {
+        QLTV_BETAEntities ObjContext;
+        List<LibrarianDTO> ObjLibrariansList;
+        PasswordHashing Convert_pw;
+        string datePattern = @"^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/(\d{4})$";
+        public LibrarianService()
+        {
+            ObjContext = new QLTV_BETAEntities();
+            ObjLibrariansList = new List<LibrarianDTO>();
+            Convert_pw = new PasswordHashing();
+        }
+        public List<LibrarianDTO> GetAll()
+        {
+            ObjLibrariansList = new List<LibrarianDTO>();
+            try
+            {
+                var ObjQuery = from thuthu in ObjContext.THUTHUs select thuthu;
+                foreach (var thuthu in ObjQuery)
+                {
+                    if (thuthu.IsDeleted == false)
+                    {
+                        ObjLibrariansList.Add(new LibrarianDTO
+                        {
+                            MaTT = thuthu.MaTT,
+                            HoTen = thuthu.HoTen,
+                            GioiTinh = thuthu.GioiTinh,
+                            NgayVLam = (DateTime)thuthu.NgayVLam,
+                            NgaySinh = (DateTime)thuthu.NgaySinh,
+                            DiaChi = thuthu.DiaChi,
+                            Email = thuthu.Email,
+                            SoDT = thuthu.SoDT,
+                            IsChecked = false
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ObjLibrariansList;
+        }
+        public bool Add(LibrarianDTO objNewLibrarian, UserDTO objNewUser)
+        {
+            bool IsAdded = false;
+            try
+            {
+                Regex regex = new Regex(datePattern);
+                if (!regex.IsMatch(objNewLibrarian.NgaySinh.ToString("dd/MM/yyyy")))
+                {
+                    MessageBox.Show("Ngày sinh không hợp lệ!");
+                    return IsAdded;
+                }
+                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == objNewLibrarian.Email) != null)
+                {
+                    MessageBox.Show("Email này đã tồn tại!");
+                    return IsAdded;
+                }
+                else if (ObjContext.ACCOUNTs.FirstOrDefault(l => l.TaiKhoan == objNewUser.TaiKhoan) != null)
+                {
+                    MessageBox.Show("Tài khoản này đã tồn tại!");
+                    return IsAdded;
+                }
+                var ObjLibrarian = new THUTHU();
+                var ObjUser = new ACCOUNT();
+                var ObjParameter = ObjContext.PARAMETERs.First();
+
+                ObjLibrarian.MaTT = "TT" + ObjParameter.IDThuThu.ToString("000");
+                ObjLibrarian.HoTen = objNewLibrarian.HoTen;
+                ObjLibrarian.Email = objNewLibrarian.Email;
+                ObjLibrarian.DiaChi = objNewLibrarian.DiaChi;
+                ObjLibrarian.GioiTinh = objNewLibrarian.GioiTinh;
+                ObjLibrarian.IsDeleted = false;
+                ObjLibrarian.NgaySinh = objNewLibrarian.NgaySinh;
+                ObjLibrarian.NgayVLam = DateTime.Now;
+                ObjLibrarian.SoDT = objNewLibrarian.SoDT;
+
+                ObjUser.MaTT = ObjLibrarian.MaTT;
+                ObjUser.TaiKhoan = objNewUser.TaiKhoan;
+                ObjUser.MatKhau = Convert_pw.HashPassword(objNewUser.MatKhau);
+                ObjUser.IsDeleted = false;
+
+                ObjContext.THUTHUs.Add(ObjLibrarian);
+                ObjContext.ACCOUNTs.Add(ObjUser);
+
+                ObjParameter.IDThuThu += 1;
+
+                var NoOfRowsAffected = ObjContext.SaveChanges();
+                IsAdded = NoOfRowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return IsAdded;
+        }
+
+        public bool Update(LibrarianDTO obj_l, UserDTO obj_u, bool changePw)
+        {
+            bool IsUpdated = false;
+
+            try
+            {
+                var ObjLibrarian = ObjContext.THUTHUs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
+                var ObjUser = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
+
+                ObjLibrarian.HoTen = obj_l.HoTen;
+                ObjLibrarian.Email = obj_l.Email;
+                ObjLibrarian.DiaChi = obj_l.DiaChi;
+                ObjLibrarian.GioiTinh = obj_l.GioiTinh;
+                ObjLibrarian.NgaySinh = obj_l.NgaySinh;
+                ObjLibrarian.NgayVLam = DateTime.Now;
+                ObjLibrarian.SoDT = obj_l.SoDT;
+                if (changePw)
+                {
+                    ObjUser.MatKhau = Convert_pw.HashPassword(obj_u.MatKhau);
+                }
+                var NoOfRowsAffected = ObjContext.SaveChanges();
+                IsUpdated = NoOfRowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return IsUpdated;
+        }
+        public ACCOUNT findUserTT(string MaTT) {
+            ACCOUNT us = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == MaTT);
+            return us;
+        }
+        
+        public bool Delete(List<string> listId)
+        {
+            bool IsDeleted = false;
+            try
+            {
+                foreach (var item in listId)
+                {
+                    var obj = ObjContext.THUTHUs.Find(item);
+                    obj.ACCOUNTs.First().IsDeleted = true;
+                    obj.IsDeleted = true;
+                }
+                var NoOfRowsAffected = ObjContext.SaveChanges();
+                IsDeleted = NoOfRowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return IsDeleted;
+        }
+
+        public List<LibrarianDTO> Search(string text, string type)
+        {
+            List<LibrarianDTO> results = new List<LibrarianDTO>();
+            text = text.ToLower();
+            if (type == "Name")
+            {
+                results = ObjLibrariansList.Where(p => p.HoTen.ToLower().Contains(text)).ToList();
+            }
+            return results;
+        }
+    }
+}

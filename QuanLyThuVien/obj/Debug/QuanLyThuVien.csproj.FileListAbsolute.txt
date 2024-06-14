@@ -209,3 +209,7 @@ D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Sign
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\SignUp.baml
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.g.cs
 D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\ResetPassword.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\AddLibrarian.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\AddLibrarian.baml
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\UpdateLibrarian.g.cs
+D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\UpdateLibrarian.baml

@@ -23,7 +23,6 @@ namespace QuanLyThuVien.Model
     
         public string MaDG { get; set; }
         public string HoTen { get; set; }
-        public string LoaiDG { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string DiaChi { get; set; }

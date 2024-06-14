@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien.Model
 {
-    public class DocGiaDTO : INotifyPropertyChanged
+    public class LibrarianDTO
     {
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -19,28 +19,19 @@ namespace QuanLyThuVien.Model
             }
         }
         #endregion 
-        private string maDG;
+        private string maTT;
 
-        public string MaDG
+        public string MaTT
         {
-            get { return maDG; }
-            set { maDG = value; OnPropertyChanged("MaDG"); }
+            get { return maTT; }
+            set { maTT = value; OnPropertyChanged("MaTT"); }
         }
-
         private string hoTen;
 
         public string HoTen
         {
             get { return hoTen; }
             set { hoTen = value; OnPropertyChanged("HoTen"); }
-        }
-
-        private string gioiTinh;
-
-        public string GioiTinh
-        {
-            get { return gioiTinh; }
-            set { gioiTinh = value; OnPropertyChanged("GioiTinh"); }
         }
         private DateTime ngaySinh;
 
@@ -63,12 +54,40 @@ namespace QuanLyThuVien.Model
             get { return email; }
             set { email = value; OnPropertyChanged("Email"); }
         }
+        private string gioiTinh;
+
+        public string GioiTinh
+        {
+            get { return gioiTinh; }
+            set { gioiTinh = value; OnPropertyChanged("GioiTinh"); }
+        }
+        private DateTime ngayVLam;
+
+        public DateTime NgayVLam
+        {
+            get { return ngayVLam; }
+            set { ngayVLam = value; OnPropertyChanged("NgayVLam"); }
+        }
         private string soDT;
 
         public string SoDT
         {
             get { return soDT; }
             set { soDT = value; OnPropertyChanged("SoDT"); }
+        }
+        private bool isDeleted;
+
+        public bool IsDeleted
+        {
+            get { return isDeleted; }
+            set { isDeleted = value; }
+        }
+        private bool isChecked;
+
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set { isChecked= value; }
         }
     }
 }
