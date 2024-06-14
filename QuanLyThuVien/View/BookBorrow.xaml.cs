@@ -38,7 +38,7 @@ namespace QuanLyThuVien.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddOrEditMuonTra muontra = new AddOrEditMuonTra(false);
+            AddOrEditMuonTra muontra = new AddOrEditMuonTra();
             muontra.Show();
         }
 
@@ -147,24 +147,6 @@ namespace QuanLyThuVien.View
                 loadSachByDocGia(selectedDocGia);
             }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AddOrEditMuonTra muontra;
-
-            if (selectedPhieuMuon != null)
-            {
-                string maPhMuon = ((dynamic)selectedPhieuMuon).id;
-                muontra = new AddOrEditMuonTra(true, maPhMuon);
-            }
-            else
-            {
-                muontra = new AddOrEditMuonTra(true);
-            }
-
-            muontra.Show();
-        }
-
 
         private void xulytimkiemchange(object sender, SelectionChangedEventArgs e)
         {

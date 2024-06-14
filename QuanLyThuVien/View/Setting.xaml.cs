@@ -328,29 +328,6 @@ namespace QuanLyThuVien.View
 
         }
 
-        // Đây là lấy dữ liệu luôn khi vừa nhập 1 ký tự nào đấy
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Lấy ra nội dung vừa được nhập vào TextBox
-            TextBox textBox = sender as TextBox;
-            string text = textBox.Text;
-            if (int.TryParse(text, out int so))
-            {
-                AddOrEditMuonTra data = new AddOrEditMuonTra(text);
-                Application.Current.Properties["Data"] = text; // Lưu dữ liệu "text" này vào trong "Application.Current.Properties", "["Data"]" này là đặt tên đại diện cho dữ liệu đấy
-                return;
-            }
-
-            MessageBox.Show("Phải là số");
-            return;
-            
-
-            
-
-            // Hiển thị thông báo để kiểm tra xem dữ liệu có được lấy ra đúng không
-            //MessageBox.Show("Dữ liệu vừa nhập: " + text);
-        }
-
         private void gioihanngaymuon(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;

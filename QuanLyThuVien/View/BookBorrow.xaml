@@ -281,22 +281,15 @@
       Height="50"
       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
       ToolTip="Thêm độc giả" Click="Button_Click" />
+
                             <Button
-                Background="#FADBD8"
-      Content="Edit Phiếu mượn/Trả"
-      Width="150"
-      Height="50"                                      
-      Margin="15"
-      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      ToolTip="Xóa độc giả" Click="Button_Click_1"/>
-                            <Button
-                Background="#FADBD8"
-      Content="Phiếu thu"
-      Width="150"
-      Height="50"                                      
-      Margin="15"                                      
-      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-      ToolTip="Sửa độc giả" Click="Button_Click_2" />
+                                Background="#FADBD8"
+                              Content="Phiếu thu"
+                              Width="150"
+                              Height="50"                                      
+                              Margin="15"                                      
+                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                ToolTip="Sửa độc giả" Click="Button_Click_2" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>
