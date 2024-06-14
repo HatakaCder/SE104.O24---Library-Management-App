@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLTV_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="TaiKhoan" />
@@ -32,6 +32,17 @@
           <Property Name="SoCCCD" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PARAMETERs">
+          <Property Name="IDDocGia" Type="int" />
+          <Property Name="IDSach" Type="int" />
+          <Property Name="IDPhMuon" Type="int" />
+          <Property Name="IDPhThu" Type="int" />
+          <Property Name="IDPhTra" Type="int" />
+          <Property Name="SoNgMuonTD" Type="int" />
+          <Property Name="TuoiTThieu" Type="int" />
+        </EntityType>-->
         <EntityType Name="PHIEUMUON">
           <Key>
             <PropertyRef Name="MaPhMuon" />
@@ -77,19 +88,11 @@
           <Property Name="TinhTrang" Type="smallint" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SETTING">
           <Key>
-            <PropertyRef Name="TuoiToiThieu" />
-            <PropertyRef Name="TuoiToiDa" />
-            <PropertyRef Name="ThoiHanThe" />
-            <PropertyRef Name="SoNgayMuonToiDa" />
-            <PropertyRef Name="SoTienNopTre" />
-            <PropertyRef Name="SoSachMuonToiDa" />
-            <PropertyRef Name="SoLuongTheLoaiToiDa" />
-            <PropertyRef Name="ThoiGianNhapSach" />
+            <PropertyRef Name="IDSetting" />
           </Key>
+          <Property Name="IDSetting" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="TuoiToiThieu" Type="int" Nullable="false" />
           <Property Name="TuoiToiDa" Type="int" Nullable="false" />
           <Property Name="ThoiHanThe" Type="int" Nullable="false" />
@@ -212,20 +215,9 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
           <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SETTING" EntityType="Self.SETTING" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SETTING].[TuoiToiThieu] AS [TuoiToiThieu], 
-    [SETTING].[TuoiToiDa] AS [TuoiToiDa], 
-    [SETTING].[ThoiHanThe] AS [ThoiHanThe], 
-    [SETTING].[SoNgayMuonToiDa] AS [SoNgayMuonToiDa], 
-    [SETTING].[SoTienNopTre] AS [SoTienNopTre], 
-    [SETTING].[SoSachMuonToiDa] AS [SoSachMuonToiDa], 
-    [SETTING].[SoLuongTheLoaiToiDa] AS [SoLuongTheLoaiToiDa], 
-    [SETTING].[ThoiGianNhapSach] AS [ThoiGianNhapSach]
-    FROM [dbo].[SETTING] AS [SETTING]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -255,7 +247,8 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLTV_BETAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -343,6 +336,20 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
           <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaSac__03BB8E22" FromRole="SACH" ToRole="PHIEUMUON" />
           <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__MaTheLoai__46B27FE2" FromRole="SACH" ToRole="THELOAI" />
         </EntityType>
+        <EntityType Name="SETTING">
+          <Key>
+            <PropertyRef Name="IDSetting" />
+          </Key>
+          <Property Name="IDSetting" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TuoiToiThieu" Type="Int32" Nullable="false" />
+          <Property Name="TuoiToiDa" Type="Int32" Nullable="false" />
+          <Property Name="ThoiHanThe" Type="Int32" Nullable="false" />
+          <Property Name="SoNgayMuonToiDa" Type="Int32" Nullable="false" />
+          <Property Name="SoTienNopTre" Type="Int32" Nullable="false" />
+          <Property Name="SoSachMuonToiDa" Type="Int32" Nullable="false" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="Int32" Nullable="false" />
+          <Property Name="ThoiGianNhapSach" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="THELOAI">
           <Key>
             <PropertyRef Name="MaTheLoai" />
@@ -366,26 +373,6 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
           <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaTT__5AB9788F" FromRole="THUTHU" ToRole="ACCOUNT" />
-        </EntityType>
-        <EntityType Name="SETTING">
-          <Key>
-            <PropertyRef Name="TuoiToiThieu" />
-            <PropertyRef Name="TuoiToiDa" />
-            <PropertyRef Name="ThoiHanThe" />
-            <PropertyRef Name="SoNgayMuonToiDa" />
-            <PropertyRef Name="SoTienNopTre" />
-            <PropertyRef Name="SoSachMuonToiDa" />
-            <PropertyRef Name="SoLuongTheLoaiToiDa" />
-            <PropertyRef Name="ThoiGianNhapSach" />
-          </Key>
-          <Property Name="TuoiToiThieu" Type="Int32" Nullable="false" />
-          <Property Name="TuoiToiDa" Type="Int32" Nullable="false" />
-          <Property Name="ThoiHanThe" Type="Int32" Nullable="false" />
-          <Property Name="SoNgayMuonToiDa" Type="Int32" Nullable="false" />
-          <Property Name="SoTienNopTre" Type="Int32" Nullable="false" />
-          <Property Name="SoSachMuonToiDa" Type="Int32" Nullable="false" />
-          <Property Name="SoLuongTheLoaiToiDa" Type="Int32" Nullable="false" />
-          <Property Name="ThoiGianNhapSach" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK__ACCOUNT__MaDG__59C55456">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
@@ -478,9 +465,9 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
           <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" />
           <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" />
           <EntitySet Name="SACH" EntityType="Self.SACH" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" />
           <EntitySet Name="THUTHU" EntityType="Self.THUTHU" />
-          <EntitySet Name="SETTING" EntityType="Self.SETTING" />
           <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -594,6 +581,21 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SETTING">
+            <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
+              <MappingFragment StoreEntitySet="SETTING">
+                <ScalarProperty Name="IDSetting" ColumnName="IDSetting" />
+                <ScalarProperty Name="TuoiToiThieu" ColumnName="TuoiToiThieu" />
+                <ScalarProperty Name="TuoiToiDa" ColumnName="TuoiToiDa" />
+                <ScalarProperty Name="ThoiHanThe" ColumnName="ThoiHanThe" />
+                <ScalarProperty Name="SoNgayMuonToiDa" ColumnName="SoNgayMuonToiDa" />
+                <ScalarProperty Name="SoTienNopTre" ColumnName="SoTienNopTre" />
+                <ScalarProperty Name="SoSachMuonToiDa" ColumnName="SoSachMuonToiDa" />
+                <ScalarProperty Name="SoLuongTheLoaiToiDa" ColumnName="SoLuongTheLoaiToiDa" />
+                <ScalarProperty Name="ThoiGianNhapSach" ColumnName="ThoiGianNhapSach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="THELOAI">
             <EntityTypeMapping TypeName="QLTV_BETAModel.THELOAI">
               <MappingFragment StoreEntitySet="THELOAI">
@@ -615,20 +617,6 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SoDT" ColumnName="SoDT" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SETTING">
-            <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
-              <MappingFragment StoreEntitySet="SETTING">
-                <ScalarProperty Name="TuoiToiThieu" ColumnName="TuoiToiThieu" />
-                <ScalarProperty Name="TuoiToiDa" ColumnName="TuoiToiDa" />
-                <ScalarProperty Name="ThoiHanThe" ColumnName="ThoiHanThe" />
-                <ScalarProperty Name="SoNgayMuonToiDa" ColumnName="SoNgayMuonToiDa" />
-                <ScalarProperty Name="SoTienNopTre" ColumnName="SoTienNopTre" />
-                <ScalarProperty Name="SoSachMuonToiDa" ColumnName="SoSachMuonToiDa" />
-                <ScalarProperty Name="SoLuongTheLoaiToiDa" ColumnName="SoLuongTheLoaiToiDa" />
-                <ScalarProperty Name="ThoiGianNhapSach" ColumnName="ThoiGianNhapSach" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

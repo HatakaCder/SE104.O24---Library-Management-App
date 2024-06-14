@@ -27,6 +27,17 @@
     <Property Name="SoCCCD" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QLTV_BETA.dbo.PARAMETERs' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PARAMETERs">
+          <Property Name="IDDocGia" Type="int" />
+          <Property Name="IDSach" Type="int" />
+          <Property Name="IDPhMuon" Type="int" />
+          <Property Name="IDPhThu" Type="int" />
+          <Property Name="IDPhTra" Type="int" />
+          <Property Name="SoNgMuonTD" Type="int" />
+          <Property Name="TuoiTThieu" Type="int" />
+        </EntityType>-->
   <EntityType Name="PHIEUMUON">
     <Key>
       <PropertyRef Name="MaPhMuon" />
@@ -72,19 +83,11 @@
     <Property Name="TinhTrang" Type="smallint" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="SETTING">
     <Key>
-      <PropertyRef Name="TuoiToiThieu" />
-      <PropertyRef Name="TuoiToiDa" />
-      <PropertyRef Name="ThoiHanThe" />
-      <PropertyRef Name="SoNgayMuonToiDa" />
-      <PropertyRef Name="SoTienNopTre" />
-      <PropertyRef Name="SoSachMuonToiDa" />
-      <PropertyRef Name="SoLuongTheLoaiToiDa" />
-      <PropertyRef Name="ThoiGianNhapSach" />
+      <PropertyRef Name="IDSetting" />
     </Key>
+    <Property Name="IDSetting" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="TuoiToiThieu" Type="int" Nullable="false" />
     <Property Name="TuoiToiDa" Type="int" Nullable="false" />
     <Property Name="ThoiHanThe" Type="int" Nullable="false" />
@@ -207,20 +210,9 @@ warning 6002: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SETTING" EntityType="Self.SETTING" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SETTING" EntityType="Self.SETTING" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [SETTING].[TuoiToiThieu] AS [TuoiToiThieu], 
-    [SETTING].[TuoiToiDa] AS [TuoiToiDa], 
-    [SETTING].[ThoiHanThe] AS [ThoiHanThe], 
-    [SETTING].[SoNgayMuonToiDa] AS [SoNgayMuonToiDa], 
-    [SETTING].[SoTienNopTre] AS [SoTienNopTre], 
-    [SETTING].[SoSachMuonToiDa] AS [SoSachMuonToiDa], 
-    [SETTING].[SoLuongTheLoaiToiDa] AS [SoLuongTheLoaiToiDa], 
-    [SETTING].[ThoiGianNhapSach] AS [ThoiGianNhapSach]
-    FROM [dbo].[SETTING] AS [SETTING]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />

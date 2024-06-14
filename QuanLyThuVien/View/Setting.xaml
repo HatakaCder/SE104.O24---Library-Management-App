@@ -99,7 +99,7 @@
                                     Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                     Text="Độ tuổi tối thiểu của độc giả" />
                                 <TextBox
-                                    x:Name="dotuoitoithieu"
+                                    x:Name="TuoiToiThieu"
                                          Margin="0 0 15 0"
                                          HorizontalAlignment="Right"
                                          VerticalAlignment="Center"
@@ -110,20 +110,24 @@
                                 </TextBox>
                             </Grid>
                             <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="197*"/>
+                                    <ColumnDefinition Width="263*"/>
+                                </Grid.ColumnDefinitions>
                                 <TextBlock
-                                Margin="15 0 0 0"
+                                Margin="15,0,0,0"
                                 HorizontalAlignment="Left"
                                          VerticalAlignment="Center"
                                 Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                 Text="Độ tuổi tối đa của độc giả" />
                                 <TextBox
-                                    x:Name="dotuoi"
-                                 Margin="0 0 15 0"
-                                 HorizontalAlignment="Right"
+                                    x:Name="TuoiToiDa"
+                                 Margin="168,0,0,0"
+                                 HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  Height="25"
                                  Width="80"
-                                 BorderThickness="1"
+                                 BorderThickness="1" Grid.Column="1"
                                  >
                                 </TextBox>
                             </Grid>
@@ -135,8 +139,7 @@
                                 Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                 Text="Thời gian thẻ độc giả còn giá trị (tháng)" />
                                 <TextBox
-                                    TextChanged="thecogiatri_docgia"
-                                    x:Name="thecogiatri"
+                                 x:Name="ThoiHanThe"
                                  Margin="0 0 15 0"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Center"
@@ -154,8 +157,7 @@
                                 Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                 Text="Số ngày dộc giả mượn tối đa" />
                                 <TextBox
-                                    x:Name="songay"
-                                 TextChanged="gioihanngaymuon"
+                                 x:Name="SoNgayMuonToiDa"
                                  Margin="0 0 15 0"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Center"
@@ -165,7 +167,7 @@
                                  >
                                 </TextBox>
                             </Grid>
-                            <Grid Grid.Row="5">
+                            <Grid Grid.Row="1" Grid.Column="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="189*"/>
                                     <ColumnDefinition Width="4*"/>
@@ -178,9 +180,8 @@
                                 Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                 Text="Số tiền phải nộp theo ngày khi trả trễ sách" />
                                 <TextBox
-                                    x:Name="sotien"
+                                 x:Name="SoTienNopTre"
                                  Margin="365,0,0,0"
-                                 TextChanged="TextBox_TextChanged"
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Center"
                                  Height="25"
@@ -189,7 +190,7 @@
                                  >
                                 </TextBox>
                             </Grid>
-                            <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid Grid.Row="2" Grid.Column="1">
                                 <TextBlock
                                 Margin="15 0 0 0"
                                 HorizontalAlignment="Left"
@@ -197,8 +198,8 @@
                                 Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                 Text="Số sách độc giả được mượn tối đa" />
                                 <TextBox
-                                    TextChanged="soquyenmuon"
-                                    x:Name="soquyen"
+                                    
+                                 x:Name="SoSachMuonToiDa"
                                  Margin="0 0 15 0"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Center"
@@ -208,7 +209,7 @@
                                  >
                                 </TextBox>
                             </Grid>
-                            <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid Grid.Row="3" Grid.Column="1">
                                 <TextBlock
                                     Margin="15 0 0 0"
                                     HorizontalAlignment="Left"
@@ -216,25 +217,7 @@
                                     Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                     Text="Số lượng tối đa thể loại sách" />
                                 <TextBox
-                                    x:Name="soluong"
-                                     Margin="0 0 15 0"
-                                     HorizontalAlignment="Right"
-                                     VerticalAlignment="Center"
-                                     Height="25"
-                                     Width="80"
-                                     BorderThickness="1"
-                                     >
-                                </TextBox>
-                            </Grid>
-                            <Grid Grid.Row="3" Grid.Column="1">
-                                <TextBlock
-                                Margin="15 0 0 0"
-                                HorizontalAlignment="Left"
-                                         VerticalAlignment="Center"
-                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                                Text="Chỉ nhập sách trong vòng (năm)" />
-                                <TextBox
-                                    x:Name="nhapsach"
+                                    x:Name="SoLuongTheLoaiToiDa"
                                      Margin="0 0 15 0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Center"
@@ -246,13 +229,13 @@
                             </Grid>
                             <Grid Grid.Row="4" Grid.Column="1">
                                 <TextBlock
-                                    Margin="15 0 0 0"
-                                    HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                                    Text="Số ngày khởi tạo số lượng sách cho phép mượn" />
+                                Margin="15 0 0 0"
+                                HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                Text="Chỉ nhập sách trong vòng (năm)" />
                                 <TextBox
-                                    x:Name="songaychomuon"
+                                    x:Name="ThoiGianNhapSach"
                                      Margin="0 0 15 0"
                                      HorizontalAlignment="Right"
                                      VerticalAlignment="Center"
@@ -277,6 +260,7 @@
                                 Margin="0 0 15 0"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                Click="Button_Click_Luu"
                                 ToolTip="Xóa sách" />
                             </Grid>
                         </Grid>
@@ -351,7 +335,7 @@
                                                 </DataGridTextColumn.HeaderTemplate>
                                             </DataGridTextColumn>
 
-                                          
+
 
 
                                         </DataGrid.Columns>
@@ -419,13 +403,13 @@
                                     ToolTip="Thêm độc giả" Click="Button_Click_1" />
                                             <Button
                                               Background="#FADBD8"
-                                    Content="Xóa"
-                                    Width="100"
-                                    Height="30"                                      
-                                    Margin="10"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="Xóa độc giả" Click="Button_Click_3" />
+                                            Content="Xóa"
+                                            Width="100"
+                                            Height="30"                                      
+                                            Margin="10"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="Xóa độc giả" Click="Button_Click_3" />
                                             <Button
                                               Background="#FADBD8"
                                     Content="Sửa"

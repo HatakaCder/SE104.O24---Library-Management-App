@@ -31,8 +31,8 @@ namespace QuanLyThuVien.Model
         public virtual DbSet<PHIEUTHU> PHIEUTHU { get; set; }
         public virtual DbSet<PHIEUTRA> PHIEUTRA { get; set; }
         public virtual DbSet<SACH> SACH { get; set; }
+        public virtual DbSet<SETTING> SETTING { get; set; }
         public virtual DbSet<THELOAI> THELOAI { get; set; }
         public virtual DbSet<THUTHU> THUTHU { get; set; }
-        public virtual DbSet<SETTING> SETTING { get; set; }
     }
 }

@@ -29,43 +29,88 @@ namespace QuanLyThuVien.View
         private readonly Random random = new Random();
         public Setting()
         {
-            InitializeComponent();
+            InitializeComponent();    
             loadData();
             loadDataCategory();
-            soquyen.Text = "2";
-            thecogiatri.Text = "2";
-            songay.Text = "2";
-            sotien.Text = "2";
-            songaychomuon.Text = "2";
-            dotuoi.Text = "2";
-            dotuoitoithieu.Text = "13";
-            soluong.Text = "2";
-            nhapsach.Text = "2";
-
-
-            Application.Current.Properties["Data"] = "2";
-            Application.Current.Properties["ngaymuon"] = songay.Text;
-            Application.Current.Properties["hethanthe"] = "2";
-            Application.Current.Properties["soquyen"] = "2";
-            Application.Current.Properties["songaychomuon"] = "2";
-            Application.Current.Properties["soluong"] = "2";
 
             id_Category.Visibility = Visibility.Collapsed;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var data = matkhaucu.Password.Trim();
-
-            MessageBox.Show($"Data: " + data);
-        }
+        }       
 
         private void loadData()
         {
+            //Lấy Setting từ Database
+            var setting = _context.SETTING.FirstOrDefault();
+            if (setting != null)
+            {
+                TuoiToiThieu.Text = setting.TuoiToiThieu.ToString();
+                TuoiToiDa.Text = setting.TuoiToiDa.ToString();
+                ThoiHanThe.Text = setting.ThoiHanThe.ToString();
+                SoNgayMuonToiDa.Text = setting.SoNgayMuonToiDa.ToString();
+                SoTienNopTre.Text = setting.SoTienNopTre.ToString();
+                SoSachMuonToiDa.Text = setting.SoSachMuonToiDa.ToString();
+                SoLuongTheLoaiToiDa.Text = setting.SoLuongTheLoaiToiDa.ToString();
+                ThoiGianNhapSach.Text = setting.ThoiGianNhapSach.ToString();
+            }
+
+            //Hiển thị danh sách thể loại
             var data = _context.THELOAI.Where(x => !x.IsDeleted.Value).ToList();
             category.ItemsSource = data;
         }
 
+        private void Button_Click_Luu(object sender, RoutedEventArgs e)
+        {
+            // Kiểm tra có ô nào trống không
+            if (string.IsNullOrWhiteSpace(TuoiToiThieu.Text) ||
+                string.IsNullOrWhiteSpace(TuoiToiDa.Text) ||
+                string.IsNullOrWhiteSpace(ThoiHanThe.Text) ||
+                string.IsNullOrWhiteSpace(SoNgayMuonToiDa.Text) ||
+                string.IsNullOrWhiteSpace(SoTienNopTre.Text) ||
+                string.IsNullOrWhiteSpace(SoSachMuonToiDa.Text) ||
+                string.IsNullOrWhiteSpace(SoLuongTheLoaiToiDa.Text) ||
+                string.IsNullOrWhiteSpace(ThoiGianNhapSach.Text))
+            {
+                MessageBox.Show("Không được bỏ trống bất kỳ ô nào.");
+                return;
+            }
+
+            try
+            {
+                int tuoiToiThieu = int.Parse(TuoiToiThieu.Text);
+                int tuoiToiDa = int.Parse(TuoiToiDa.Text);
+                int thoiHanThe = int.Parse(ThoiHanThe.Text);
+                int soNgayMuonToiDa = int.Parse(SoNgayMuonToiDa.Text);
+                int soTienNopTre = int.Parse(SoTienNopTre.Text);
+                int soSachMuonToiDa = int.Parse(SoSachMuonToiDa.Text);
+                int soLuongTheLoaiToiDa = int.Parse(SoLuongTheLoaiToiDa.Text);
+                int thoiGianNhapSach = int.Parse(ThoiGianNhapSach.Text);
+
+                var setting = _context.SETTING.FirstOrDefault();
+
+                if (setting == null)
+                {
+                    setting = new SETTING();
+                    _context.SETTING.Add(setting);
+                }
+
+                setting.TuoiToiThieu = tuoiToiThieu;
+                setting.TuoiToiDa = tuoiToiDa;
+                setting.ThoiHanThe = thoiHanThe;
+                setting.SoNgayMuonToiDa = soNgayMuonToiDa;
+                setting.SoTienNopTre = soTienNopTre;
+                setting.SoSachMuonToiDa = soSachMuonToiDa;
+                setting.SoLuongTheLoaiToiDa = soLuongTheLoaiToiDa;
+                setting.ThoiGianNhapSach = thoiGianNhapSach;
+
+                _context.SETTING.AddOrUpdate(setting);
+                _context.SaveChanges();
+
+                MessageBox.Show("Đã lưu thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
+            }
+        }
         private void loadDataCategory()
         {
             var datas = _context.THELOAI.Select(x => new ComboBoxItem
@@ -348,6 +393,11 @@ namespace QuanLyThuVien.View
             return;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var data = matkhaucu.Password.Trim();
 
+            MessageBox.Show($"Data: " + data);
+        }
     }
 }

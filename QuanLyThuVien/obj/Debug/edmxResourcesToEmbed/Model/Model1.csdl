@@ -84,6 +84,20 @@
     <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaSac__03BB8E22" FromRole="SACH" ToRole="PHIEUMUON" />
     <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__MaTheLoai__46B27FE2" FromRole="SACH" ToRole="THELOAI" />
   </EntityType>
+  <EntityType Name="SETTING">
+    <Key>
+      <PropertyRef Name="IDSetting" />
+    </Key>
+    <Property Name="IDSetting" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TuoiToiThieu" Type="Int32" Nullable="false" />
+    <Property Name="TuoiToiDa" Type="Int32" Nullable="false" />
+    <Property Name="ThoiHanThe" Type="Int32" Nullable="false" />
+    <Property Name="SoNgayMuonToiDa" Type="Int32" Nullable="false" />
+    <Property Name="SoTienNopTre" Type="Int32" Nullable="false" />
+    <Property Name="SoSachMuonToiDa" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongTheLoaiToiDa" Type="Int32" Nullable="false" />
+    <Property Name="ThoiGianNhapSach" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="THELOAI">
     <Key>
       <PropertyRef Name="MaTheLoai" />
@@ -107,26 +121,6 @@
     <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" />
     <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaTT__5AB9788F" FromRole="THUTHU" ToRole="ACCOUNT" />
-  </EntityType>
-  <EntityType Name="SETTING">
-    <Key>
-      <PropertyRef Name="TuoiToiThieu" />
-      <PropertyRef Name="TuoiToiDa" />
-      <PropertyRef Name="ThoiHanThe" />
-      <PropertyRef Name="SoNgayMuonToiDa" />
-      <PropertyRef Name="SoTienNopTre" />
-      <PropertyRef Name="SoSachMuonToiDa" />
-      <PropertyRef Name="SoLuongTheLoaiToiDa" />
-      <PropertyRef Name="ThoiGianNhapSach" />
-    </Key>
-    <Property Name="TuoiToiThieu" Type="Int32" Nullable="false" />
-    <Property Name="TuoiToiDa" Type="Int32" Nullable="false" />
-    <Property Name="ThoiHanThe" Type="Int32" Nullable="false" />
-    <Property Name="SoNgayMuonToiDa" Type="Int32" Nullable="false" />
-    <Property Name="SoTienNopTre" Type="Int32" Nullable="false" />
-    <Property Name="SoSachMuonToiDa" Type="Int32" Nullable="false" />
-    <Property Name="SoLuongTheLoaiToiDa" Type="Int32" Nullable="false" />
-    <Property Name="ThoiGianNhapSach" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK__ACCOUNT__MaDG__59C55456">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
@@ -219,9 +213,9 @@
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" />
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" />
     <EntitySet Name="SACH" EntityType="Self.SACH" />
+    <EntitySet Name="SETTING" EntityType="Self.SETTING" />
     <EntitySet Name="THELOAI" EntityType="Self.THELOAI" />
     <EntitySet Name="THUTHU" EntityType="Self.THUTHU" />
-    <EntitySet Name="SETTING" EntityType="Self.SETTING" />
     <AssociationSet Name="FK__ACCOUNT__MaDG__59C55456" Association="Self.FK__ACCOUNT__MaDG__59C55456">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
