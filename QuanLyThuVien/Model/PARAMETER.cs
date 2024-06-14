@@ -16,6 +16,7 @@ namespace QuanLyThuVien.Model
     {
         public int ID { get; set; }
         public int IDDocGia { get; set; }
+        public int IDThuThu { get; set; }
         public int IDSach { get; set; }
         public int IDPhMuon { get; set; }
         public int IDPhThu { get; set; }
