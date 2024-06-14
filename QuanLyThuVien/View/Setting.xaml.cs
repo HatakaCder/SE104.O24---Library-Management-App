@@ -228,6 +228,14 @@ namespace QuanLyThuVien.View
                     TenTheLoai = tenTheLoai.Text,
                     IsDeleted = false,
                 };
+                int currentCategoryCount = _context.THELOAI.Count(x => x.IsDeleted == false);
+                int? maxCategoryCountNullable = _context.SETTING.Select(s => (int?)s.SoLuongTheLoaiToiDa).FirstOrDefault();
+                int maxCategoryCount = maxCategoryCountNullable ?? 20; // Gán giá trị mặc định nếu null
+                if (currentCategoryCount >= maxCategoryCount)
+                {
+                    MessageBox.Show("Số lượng thể loại đã đạt giới hạn tối đa.");
+                    return;
+                }
 
                 _context.THELOAI.Add(newCategory);
                 if (_context.SaveChanges() > 0)

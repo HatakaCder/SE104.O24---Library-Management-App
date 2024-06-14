@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.IO;
+using System.Globalization;
 
 namespace QuanLyThuVien.View
 {
@@ -57,10 +58,11 @@ namespace QuanLyThuVien.View
             }
             return null;
         }
-        
-        //Load dữ liệu Dộc giả hiện lên grid bên trái
-        private void loadData()
+
+        //Load dữ liệu Dộc giả hiện lên grid bên trái kèm tìm kiếm
+        private void loadData(string searchText = "")
         {
+            searchText = RemoveDiacritics(searchText.ToLower());
             var maDGs = _context.PHIEUMUON
                                 .Where(pm => pm.IsDeleted == false)
                                 .Select(pm => pm.MaDG)
@@ -68,14 +70,16 @@ namespace QuanLyThuVien.View
                                 .ToList();
 
             var docGias = _context.DOCGIA
-                                  .Where(dg => maDGs.Contains(dg.MaDG))
-                                  .ToList();
+                           .Where(dg => maDGs.Contains(dg.MaDG))
+                           .ToList()
+                           .Where(dg => string.IsNullOrEmpty(searchText) || RemoveDiacritics(dg.HoTen.ToLower()).Contains(searchText))
+                           .ToList();
 
             docgia.ItemsSource = docGias;
         }
 
         //Load dữ liệu sách hiện lên list bên phải khi nhấn vào độc giả
-        private void loadSachByDocGia(DOCGIA docGia)
+        private void loadSachByDocGia(DOCGIA docGia, string searchText = "")
         {
             var list = new List<object>();
 
@@ -85,12 +89,13 @@ namespace QuanLyThuVien.View
 
             DateTime currentDate = DateTime.Now;
 
+            var sachList = _context.SACH.ToList(); // Load all books into memory to use RemoveDiacritics
+
             foreach (var data in dataPhieuMuon)
             {
-                var checkSach = _context.SACH
-                                        .FirstOrDefault(x => x.MaSach == data.MaSach);
+                var checkSach = sachList.FirstOrDefault(x => x.MaSach == data.MaSach);
 
-                if (checkSach != null)
+                if (checkSach != null && (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))))
                 {
                     var dataItem = new
                     {
@@ -117,10 +122,53 @@ namespace QuanLyThuVien.View
             if (docgia.SelectedItem != null)
             {
                 DOCGIA selectedDocGia = (DOCGIA)docgia.SelectedItem;
-                loadSachByDocGia(selectedDocGia);
+                string searchText = timKiemBox.Text;
+                loadSachByDocGia(selectedDocGia, searchText);
             }
         }
 
+        //Chức năng nhập tìm kiếm
+        private void timKiemBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (timkiemSelector.SelectedItem != null)
+            {
+                var selectedOption = (timkiemSelector.SelectedItem as ComboBoxItem)?.Content.ToString();
+                string searchText = timKiemBox.Text;
+
+                if (selectedOption == "Tên độc giả")
+                {
+                    loadData(searchText);
+                }
+                else if (selectedOption == "Tên sách" && docgia.SelectedItem != null)
+                {
+                    DOCGIA selectedDocGia = (DOCGIA)docgia.SelectedItem;
+                    loadSachByDocGia(selectedDocGia, searchText);
+                }
+            }
+        }
+
+        //Dùng để chọn tiêu chí tìm kiếm. Gọi lại tìm kiếm khi tiêu chí tìm kiếm thay đổi
+        private void timkiemSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            timKiemBox_TextChanged(sender, null);
+        }
+
+        //Chức năng bỏ dấu của chuỗi tìm kiếm, dùng để tìm kiếm khi nhập không dấu
+        private string RemoveDiacritics(string text)
+        {
+            string normalizedString = text.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char c in normalizedString)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
         //Mở Form điền phiếu mượn
         private void Button_Click(object sender, RoutedEventArgs e)
         {

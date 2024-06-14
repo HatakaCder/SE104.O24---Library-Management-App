@@ -120,7 +120,7 @@
                                 materialDesign:HintAssist.Hint="Tìm kiếm"
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
-                                />
+                                TextChanged="timKiemBox_TextChanged"/>
 
                         </Grid>
                         <Grid Grid.Column="2">
@@ -128,7 +128,10 @@
                                 x:Name="timkiemSelector"
                                 Margin="2"
                                 Width="200"
-                                materialDesign:HintAssist.Hint="Tìm kiếm theo">>
+                                materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                                SelectionChanged="timkiemSelector_SelectionChanged">
+                                <ComboBoxItem Content="Tên độc giả"/>
+                                <ComboBoxItem Content="Tên sách"/>
                             </ComboBox>
                         </Grid>
                     </Grid>
