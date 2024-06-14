@@ -123,6 +123,7 @@
                                 SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
                                    materialDesign:HintAssist.Hint="Tìm kiếm theo"
                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            <ComboBoxItem Content="Tất cả" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Họ tên" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Ngày lập thẻ" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
@@ -144,11 +145,11 @@
           HeadersVisibility="Column"
           Margin="15"
           ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}"
-                        SelectedItem="{Binding selectedReaders}"
-                              SelectionMode="Extended" SelectionChanged="dataTable_SelectionChanged"
+                              SelectedItem="{Binding Path=UpdateReader}"
+                              SelectionMode="Extended" 
           >
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Binding="{Binding IsChecked}" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
                             
                             <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=MaDG}">
                                 <DataGridTextColumn.HeaderTemplate>
@@ -219,14 +220,14 @@
                             HorizontalAlignment="Center">
                             <Button
                                 Name="btAddReader"
-                                Background="#FADBD8"
+                                Background="#FADBD8" 
                       Content="Thêm"
                       Margin="15"
                       Width="150"
                       Height="50"
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      ToolTip="Thêm độc giả" Click="btAddReader_Click" />
+                      ToolTip="Thêm độc giả" Command="{Binding Path=SavePopUpCommand}" />
                             <Button
                                 Background="#FADBD8"
                       Content="Xóa"
@@ -247,7 +248,7 @@
                                 
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      ToolTip="Sửa độc giả" Click="btUpdateReader_Click" />
+                      ToolTip="Sửa độc giả" Command="{Binding Path=UpdatePopUpCommand}" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>

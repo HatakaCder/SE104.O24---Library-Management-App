@@ -22,15 +22,14 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class AddBook : Window
     {
-        public AddBook()
+        public AddBook(BookVM vm)
         {
+            this.DataContext = vm;
             InitializeComponent();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            BookVM bookVM = new BookVM();
-            bookVM.LoadData();
         }
     }
 }

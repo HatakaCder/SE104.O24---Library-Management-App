@@ -23,27 +23,27 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class Book : UserControl
     {
+        BookVM vm;
         public Book()
         {
+            vm = new BookVM();
+            this.DataContext = vm;
             InitializeComponent();
         }
 
         private void dgView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BookVM bookVm = (BookVM)DataContext;
-            bookVm.selectedBooks = new ObservableCollection<BOOK>(dgView.SelectedItems.Cast<BOOK>());
+
         }
 
         private void btThemSach_Click(object sender, RoutedEventArgs e)
         {
-            AddBook addBook = new AddBook();
-            addBook.Show();
+            
         }
 
         private void btSuaSach_Click(object sender, RoutedEventArgs e)
         {
-            UpdateBook updateBook = new UpdateBook();
-            updateBook.Show();
+            
         }
     }
 }

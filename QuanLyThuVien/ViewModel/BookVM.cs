@@ -33,11 +33,14 @@ namespace QuanLyThuVien.ViewModel
         {
             ObjDataOperation = new DataOperation();
             LoadData();
-            CurrentBook = new BOOK();
+            UpdateBook = new BOOK();
+            AddBook = new BOOK();
             saveCommand = new RelayCommand(Save);
+            savePopUpCommand = new RelayCommand(SavePopUp);
             searchCommand = new RelayCommand(Search);
             deleteCommand = new RelayCommand(Delete);
             updateCommand = new RelayCommand(Update);
+            updatePopUpCommand = new RelayCommand(UpdatePopUp);
             selectedBooks = new ObservableCollection<BOOK>();
         }
 
@@ -68,6 +71,18 @@ namespace QuanLyThuVien.ViewModel
         {
             get { return updateCommand; }
         }
+
+        private RelayCommand updatePopUpCommand;
+        public RelayCommand UpdatePopUpCommand
+        {
+            get { return updatePopUpCommand; }
+        }
+
+        private RelayCommand savePopUpCommand;
+        public RelayCommand SavePopUpCommand
+        {
+            get { return savePopUpCommand;}
+        }
         #endregion
 
         // Khai báo một số biến cho việc Data Binding
@@ -81,11 +96,18 @@ namespace QuanLyThuVien.ViewModel
         }
 
         // For adding, updating book
-        private BOOK currentBook;
-        public BOOK CurrentBook
+        private BOOK updateBook;
+        public BOOK UpdateBook
         {
-            get { return currentBook; }
-            set { currentBook = value; OnPropertyChanged(nameof(CurrentBook)); }
+            get { return updateBook; }
+            set { updateBook = value; OnPropertyChanged(nameof(UpdateBook)); }
+        }
+
+        private BOOK addBook;
+        public BOOK AddBook
+        {
+            get { return addBook; }
+            set { addBook = value; OnPropertyChanged(nameof(AddBook)); }   
         }
 
         // For searching books
@@ -145,14 +167,31 @@ namespace QuanLyThuVien.ViewModel
         }
         #endregion
 
-        public void Update() 
+        public void Save()
         {
-            if (selectedBooks.Count == 0) return;
-
             try
             {
-                CurrentBook = selectedBooks[selectedBooks.Count - 1];
-                var isUpdated = ObjDataOperation.update(CurrentBook);
+                var IsSaved = ObjDataOperation.Add_Book(AddBook);
+                if (IsSaved)
+                    LoadData();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void SavePopUp()
+        {
+            AddBook addBook = new AddBook(this);
+            addBook.ShowDialog();
+        }
+
+        public void Update() 
+        {
+            try
+            {
+                var isUpdated = ObjDataOperation.update(UpdateBook);
                 
                 if (isUpdated)
                     LoadData();
@@ -163,26 +202,18 @@ namespace QuanLyThuVien.ViewModel
             }
         }
 
+        public void UpdatePopUp()
+        {
+            UpdateBook updateBook = new UpdateBook(this);
+            updateBook.ShowDialog();
+        }
         public void Delete()
         {
             try
             {
+                selectedBooks = new ObservableCollection<BOOK>(ObjDataOperation.getSelectedBooks());
                 var isSaved = ObjDataOperation.Delete_Book(new List<BOOK>(selectedBooks));
                 if (isSaved)
-                    LoadData();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        
-        public void Save()
-        {
-            try
-            {
-                var IsSaved = ObjDataOperation.Add(CurrentBook);
-                if (IsSaved)
                     LoadData();
             }
             catch (Exception ex)
@@ -208,11 +239,18 @@ namespace QuanLyThuVien.ViewModel
             {
                 BooksList = new ObservableCollection<BOOK>(ObjDataOperation.search_book_by_TheLoai(Items));
             }
-            else
+            else if (Item_to_Search == "Tác giả")
             {
                 BooksList = new ObservableCollection<BOOK>(ObjDataOperation.search_book_by_TacGia(Items));
             }
+            else
+            {
+                BooksList = new ObservableCollection<BOOK>(ObjDataOperation.search_available_book());
+            }
         }
+
+        #region Test
+        #endregion
 
         private System.Collections.IEnumerable sACHes;
 

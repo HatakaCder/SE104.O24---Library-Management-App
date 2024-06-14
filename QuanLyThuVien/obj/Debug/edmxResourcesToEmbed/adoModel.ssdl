@@ -25,6 +25,17 @@
     <Property Name="NgayLapThe" Type="date" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
+  <EntityType Name="PARAMETERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDDocGia" Type="smallint" Nullable="false" />
+    <Property Name="IDSach" Type="smallint" Nullable="false" />
+    <Property Name="IDPhieuMuon" Type="smallint" Nullable="false" />
+    <Property Name="IDPhieuTra" Type="smallint" Nullable="false" />
+    <Property Name="IDMaTT" Type="smallint" Nullable="false" />
+  </EntityType>
   <EntityType Name="PHIEUMUON">
     <Key>
       <PropertyRef Name="MaPhMuon" />
@@ -70,27 +81,19 @@
     <Property Name="TinhTrang" Type="smallint" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SETTING">
-          <Property Name="TuoiToiTieu" Type="int" />
-          <Property Name="TuoiToiDa" Type="int" />
-          <Property Name="ThoiHanThe" Type="int" />
-          <Property Name="SoNgayMuonToiDa" Type="int" />
-          <Property Name="SoTienNopTre" Type="int" />
-          <Property Name="SoSachMuonToiDa" Type="int" />
-          <Property Name="SoLuongTheLoaiToiDa" Type="int" />
-          <Property Name="ThoiGianNhapSach" Type="int" />
-        </EntityType>-->
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="SETTING">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="TuoiToiTieu" Type="int" Nullable="false" />
+    <Property Name="TuoiToiDa" Type="int" Nullable="false" />
+    <Property Name="ThoiHanThe" Type="int" Nullable="false" />
+    <Property Name="SoNgayMuonToiDa" Type="int" Nullable="false" />
+    <Property Name="SoTienNopTre" Type="int" Nullable="false" />
+    <Property Name="SoSachMuonToiDa" Type="int" Nullable="false" />
+    <Property Name="SoLuongTheLoaiToiDa" Type="int" Nullable="false" />
+    <Property Name="ThoiGianNhapSach" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="THELOAI">
     <Key>
@@ -113,7 +116,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
     <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <Association Name="FK__ACCOUNT__MaDG__5B78929E">
+  <Association Name="FK__ACCOUNT__MaDG__656C112C">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
     <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -125,7 +128,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ACCOUNT__MaTT__5C6CB6D7">
+  <Association Name="FK__ACCOUNT__MaTT__66603565">
     <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="0..1" />
     <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -137,7 +140,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUMUON__MaDG__4C364F0E">
+  <Association Name="FK__PHIEUMUON__MaDG__59063A47">
     <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -149,7 +152,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUMUON__MaSac__4D2A7347">
+  <Association Name="FK__PHIEUMUON__MaSac__59FA5E80">
     <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -161,7 +164,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTHU__MaPhTr__54CB950F">
+  <Association Name="FK__PHIEUTHU__MaPhTr__619B8048">
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
     <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
     <ReferentialConstraint>
@@ -173,7 +176,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRA__MaPhMu__50FB042B">
+  <Association Name="FK__PHIEUTRA__MaPhMu__5DCAEF64">
     <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
     <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -185,7 +188,7 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SACH__TenTheLoai__477199F1">
+  <Association Name="FK__SACH__TenTheLoai__3A81B327">
     <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
     <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -200,38 +203,39 @@ warning 6013: The table/view 'QLTV_BETA.dbo.SETTING' does not have a primary key
   <EntityContainer Name="QLTV_BETAModelStoreContainer">
     <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SETTING" EntityType="Self.SETTING" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ACCOUNT__MaDG__5B78929E" Association="Self.FK__ACCOUNT__MaDG__5B78929E">
+    <AssociationSet Name="FK__ACCOUNT__MaDG__656C112C" Association="Self.FK__ACCOUNT__MaDG__656C112C">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
     </AssociationSet>
-    <AssociationSet Name="FK__ACCOUNT__MaTT__5C6CB6D7" Association="Self.FK__ACCOUNT__MaTT__5C6CB6D7">
+    <AssociationSet Name="FK__ACCOUNT__MaTT__66603565" Association="Self.FK__ACCOUNT__MaTT__66603565">
       <End Role="THUTHU" EntitySet="THUTHU" />
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaDG__4C364F0E" Association="Self.FK__PHIEUMUON__MaDG__4C364F0E">
+    <AssociationSet Name="FK__PHIEUMUON__MaDG__59063A47" Association="Self.FK__PHIEUMUON__MaDG__59063A47">
       <End Role="DOCGIA" EntitySet="DOCGIA" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUMUON__MaSac__4D2A7347" Association="Self.FK__PHIEUMUON__MaSac__4D2A7347">
+    <AssociationSet Name="FK__PHIEUMUON__MaSac__59FA5E80" Association="Self.FK__PHIEUMUON__MaSac__59FA5E80">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__54CB950F" Association="Self.FK__PHIEUTHU__MaPhTr__54CB950F">
+    <AssociationSet Name="FK__PHIEUTHU__MaPhTr__619B8048" Association="Self.FK__PHIEUTHU__MaPhTr__619B8048">
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__50FB042B" Association="Self.FK__PHIEUTRA__MaPhMu__50FB042B">
+    <AssociationSet Name="FK__PHIEUTRA__MaPhMu__5DCAEF64" Association="Self.FK__PHIEUTRA__MaPhMu__5DCAEF64">
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
     </AssociationSet>
-    <AssociationSet Name="FK__SACH__TenTheLoai__477199F1" Association="Self.FK__SACH__TenTheLoai__477199F1">
+    <AssociationSet Name="FK__SACH__TenTheLoai__3A81B327" Association="Self.FK__SACH__TenTheLoai__3A81B327">
       <End Role="THELOAI" EntitySet="THELOAI" />
       <End Role="SACH" EntitySet="SACH" />
     </AssociationSet>

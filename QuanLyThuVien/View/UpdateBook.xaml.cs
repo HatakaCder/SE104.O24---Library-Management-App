@@ -20,8 +20,9 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class UpdateBook : Window
     {
-        public UpdateBook()
+        public UpdateBook(BookVM vm)
         {
+            this.DataContext = vm;
             InitializeComponent();
         }
     }

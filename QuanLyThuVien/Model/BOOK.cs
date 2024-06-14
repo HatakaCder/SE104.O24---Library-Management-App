@@ -75,5 +75,11 @@ namespace QuanLyThuVien.Model
             set { tinhTrang = value; OnPropertyChanged("TinhTrang"); }
         }
 
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { isSelected = value; OnPropertyChanged(nameof(IsSelected)); }
+        }
     }
 }

@@ -15,11 +15,8 @@
     TextElement.FontSize="13"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen"
       >
-    <Window.DataContext>
-        <vm:BookVM />
-    </Window.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -34,21 +31,10 @@
 
             <TextBox
         Margin="0 5 0 5"
-                Width="300"
-                VerticalAlignment="Top"
-                materialDesign:HintAssist.Hint="Mã sách"
-                AcceptsReturn="True"  
-                Text="{Binding Path=CurrentBook.MaSach, Mode=TwoWay}"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto" />
-
-            <TextBox
-        Margin="0 5 0 5"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Tên sách"
-                Text="{Binding Path=CurrentBook.TenSach, Mode=TwoWay}"
+                Text="{Binding Path=AddBook.TenSach, Mode=TwoWay}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -58,7 +44,7 @@
    Margin="2"
    Width="300"
 ItemsSource="{Binding bookTypes}"
-SelectedItem="{Binding CurrentBook.TheLoai, Mode=TwoWay}"
+SelectedItem="{Binding Path=AddBook.TheLoai, Mode=TwoWay}"
 
    materialDesign:HintAssist.Hint="Thể loại"
    Style="{StaticResource MaterialDesignOutlinedComboBox}" />
@@ -68,19 +54,18 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Tác giả"
-                Text="{Binding Path=CurrentBook.TacGia, Mode=TwoWay}"
+                Text="{Binding Path=AddBook.TacGia, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto" />
-
 
             <TextBox
         Margin="0 5 0 5"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Năm xuất bản"
-                Text="{Binding Path=CurrentBook.NamXB, Mode=TwoWay}"
+                Text="{Binding Path=AddBook.NamXB, Mode=TwoWay}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -91,7 +76,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Nhà xuất bản"
-                Text="{Binding Path=CurrentBook.NhaXB, Mode=TwoWay}"
+                Text="{Binding Path=AddBook.NhaXB, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -102,7 +87,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Trị giá"
-                Text="{Binding Path=CurrentBook.TriGia, Mode=TwoWay}"
+                Text="{Binding Path=AddBook.TriGia, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"

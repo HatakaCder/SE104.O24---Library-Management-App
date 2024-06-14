@@ -79,5 +79,12 @@ namespace QuanLyThuVien.Model
             get { return ngayLapThe; }
             set { ngayLapThe = value; OnPropertyChanged("NgayLapThe"); }
         }
+
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { isSelected = value; OnPropertyChanged(nameof(isSelected)); }
+        }
     }
 }

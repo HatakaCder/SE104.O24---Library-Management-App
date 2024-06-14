@@ -12,12 +12,16 @@ namespace QuanLyThuVien
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class SETTING
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int ID { get; set; }
+        public int TuoiToiTieu { get; set; }
+        public int TuoiToiDa { get; set; }
+        public int ThoiHanThe { get; set; }
+        public int SoNgayMuonToiDa { get; set; }
+        public int SoTienNopTre { get; set; }
+        public int SoSachMuonToiDa { get; set; }
+        public int SoLuongTheLoaiToiDa { get; set; }
+        public int ThoiGianNhapSach { get; set; }
     }
 }

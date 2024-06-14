@@ -84,26 +84,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ACCOUNT.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="adoModel.Context.cs">
+    <Compile Include="ADOModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>adoModel.Context.tt</DependentUpon>
+      <DependentUpon>ADOModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="adoModel.cs">
+    <Compile Include="ADOModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="adoModel.Designer.cs">
+    <Compile Include="ADOModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>adoModel.edmx</DependentUpon>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DOCGIA.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BOOK.cs" />
     <Compile Include="Model\DataOperation.cs" />
@@ -114,29 +114,32 @@
     <Compile Include="Model\THELOAI.cs" />
     <Compile Include="Model\THU.cs" />
     <Compile Include="Model\TRA.cs" />
+    <Compile Include="PARAMETER.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PHIEUMUON.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTHU.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTRA.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SACH.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTING.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="THELOAI.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="THUTHU.cs">
-      <DependentUpon>adoModel.tt</DependentUpon>
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Btn.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
@@ -325,12 +328,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="adoModel.edmx">
+    <EntityDeploy Include="ADOModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>adoModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ADOModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="adoModel.edmx.diagram">
-      <DependentUpon>adoModel.edmx</DependentUpon>
+    <None Include="ADOModel.edmx.diagram">
+      <DependentUpon>ADOModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -367,15 +370,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="adoModel.Context.tt">
+    <Content Include="ADOModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>adoModel.edmx</DependentUpon>
-      <LastGenOutput>adoModel.Context.cs</LastGenOutput>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
+      <LastGenOutput>ADOModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="adoModel.tt">
+    <Content Include="ADOModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>adoModel.edmx</DependentUpon>
-      <LastGenOutput>adoModel.cs</LastGenOutput>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
+      <LastGenOutput>ADOModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

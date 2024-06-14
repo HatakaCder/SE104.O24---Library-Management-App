@@ -137,6 +137,7 @@
                             <ComboBoxItem Content="Tên sách" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Thể loại" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Tác giả" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Có sẵn" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -159,11 +160,12 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15,15,15,15"
-          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}" SelectedItem="{Binding selectedBooks}" SelectionMode="Extended" Grid.ColumnSpan="2" SelectionChanged="dgView_SelectionChanged"
+          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
+                              SelectedItem="{Binding Path=UpdateBook}"
           >
                         <DataGrid.Columns>
 
-                            <DataGridCheckBoxColumn Binding="{Binding IsChecked}" />
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
 
                             <DataGridTextColumn Width="*" Binding="{Binding Path=MaSach}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
@@ -262,7 +264,7 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                             <Button
-                                Background="#FADBD8"
+                                Background="#FADBD8" Command="{Binding Path=SavePopUpCommand}"
               Content="Thêm"
               Margin="15"
               Width="150"
@@ -270,7 +272,6 @@
                                 Name="btThemSach"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Thêm sách" Click="btThemSach_Click"
                                 />
                             <Button
                                 Background="#FADBD8"
@@ -291,7 +292,7 @@
                                 Name="btSuaSach"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Sửa sách" Click="btSuaSach_Click" />
+              ToolTip="Sửa sách"  Command="{Binding Path=UpdatePopUpCommand}" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>

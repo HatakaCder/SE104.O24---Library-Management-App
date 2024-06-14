@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class UpdateReader : Window
     {
-        public UpdateReader()
+        public UpdateReader(ReaderUCVM vm)
         {
+            this.DataContext = vm;
             InitializeComponent();
         }
     }

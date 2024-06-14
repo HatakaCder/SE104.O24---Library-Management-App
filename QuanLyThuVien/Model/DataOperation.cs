@@ -47,6 +47,7 @@ namespace QuanLyThuVien.Model
 
                 foreach (var sach in ObjQuery)
                 {
+                    if ((bool)sach.IsDeleted) continue;
                     ObjBooksList.Add(new BOOK
                     {
                         MaSach = sach.MaSach,
@@ -57,8 +58,9 @@ namespace QuanLyThuVien.Model
                         NhaXB = sach.NhaXB,
                         TriGia = (int)sach.TriGia,
                         NgayNhap = DateTime.Parse(sach.NgayNhap.ToString()),
-                        TinhTrang = (short)sach.TinhTrang
-                    });
+                        TinhTrang = (short)sach.TinhTrang,
+                        IsSelected = false
+                    }) ;
                 }
             }
             catch (Exception ex)
@@ -67,6 +69,19 @@ namespace QuanLyThuVien.Model
             }
 
             return ObjBooksList;
+        }
+        public List<BOOK> getSelectedBooks()
+        {
+            List<BOOK> books;
+            books = ObjBooksList.FindAll(x => x.IsSelected);
+            return books;
+        }
+
+        public List<READER> getAllSelectedReaders()
+        {
+            List<READER> readers;
+            readers = ObjReadersList.FindAll(x => x.IsSelected);
+            return readers;
         }
 
         #region Check_Book_Information
@@ -104,7 +119,7 @@ namespace QuanLyThuVien.Model
 
         #region AddBook_Operation
 
-        public bool Add(BOOK objBook)
+        public bool Add_Book(BOOK objBook)
         {
             bool IsAdded = false;
             objBook.NgayNhap = DateTime.Now;
@@ -131,7 +146,6 @@ namespace QuanLyThuVien.Model
             try
             {
                 var ObjBook = new SACH();
-                ObjBook.MaSach = objBook.MaSach;
                 ObjBook.TenSach = objBook.TenSach;
                 ObjBook.TheLoai = objBook.TheLoai;
                 ObjBook.TacGia = objBook.TacGia;
@@ -140,10 +154,31 @@ namespace QuanLyThuVien.Model
                 ObjBook.NgayNhap = objBook.NgayNhap;
                 ObjBook.TriGia = objBook.TriGia;
                 ObjBook.TinhTrang = 1;
+                ObjBook.IsDeleted = false;
+                objBook.IsSelected = false;
+
+                var ObjQuery = from IdItems in ObjContext.PARAMETERS select IdItems;
+
+                foreach (var IDItems in ObjQuery)
+                {
+                    string idSach = IDItems.IDSach.ToString();
+                    while (idSach.Length < 3) idSach = '0' + idSach;
+
+                    ObjBook.MaSach = "SS" + idSach;
+                    objBook.MaSach = "SS" + idSach;
+
+                    break;
+                }
+
                 ObjContext.SACHes.Add(ObjBook);
                 ObjBooksList.Add(objBook);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
+
+                // Update IDSach in PARAMETERS table
+                var para = ObjContext.PARAMETERS.Find(1);
+                para.IDSach += 1;
+                ObjContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -208,6 +243,13 @@ namespace QuanLyThuVien.Model
             books = ObjBooksList.FindAll(x => x.TacGia.ToLower().Contains(tacgia.ToLower()));
             return books;
         }
+
+        public List<BOOK> search_available_book()
+        {
+            List<BOOK> books;
+            books = ObjBooksList.FindAll(x => x.TinhTrang == 1);
+            return books;
+        }
         #endregion
 
         #region BookDelete_Operation
@@ -220,7 +262,7 @@ namespace QuanLyThuVien.Model
                 foreach (var book in need_to_delete)
                 {
                     var objBookToDelete = ObjContext.SACHes.Find(book.MaSach);
-                    ObjContext.SACHes.Remove(objBookToDelete);
+                    objBookToDelete.IsDeleted = true;
                     ObjBooksList.Remove(book);
                 }
                 var NoOfRowsAffected = ObjContext.SaveChanges();
@@ -259,6 +301,17 @@ namespace QuanLyThuVien.Model
 
                     var NoOfRowAffected = ObjContext.SaveChanges();
                     IsUpdated = NoOfRowAffected > 0;
+
+                    // Update book in ObjBooksList
+                    int index = ObjBooksList.FindIndex(x => x.MaSach == objBookToUpdate.MaSach);
+                    ObjBooksList[index].TenSach = objBookToUpdate.TenSach;
+                    ObjBooksList[index].TheLoai = objBookToUpdate.TheLoai;
+                    ObjBooksList[index].TacGia = objBookToUpdate.TacGia;
+                    ObjBooksList[index].NamXB = objBookToUpdate.NamXB;
+                    ObjBooksList[index].NhaXB = objBookToUpdate.NhaXB;
+                    ObjBooksList[index].NgayNhap = objBookToUpdate.NgayNhap;
+                    ObjBooksList[index].TriGia = objBookToUpdate.TriGia;
+                    ObjBooksList[index].TinhTrang = objBookToUpdate.TinhTrang;
                 }
             }
             catch (Exception ex)
@@ -281,6 +334,8 @@ namespace QuanLyThuVien.Model
 
                 foreach (var reader in ObjQuery)
                 {
+                    if ((bool)reader.IsDeleted) continue;
+
                     ObjReadersList.Add(new READER
                     {
                         MaDG = reader.MaDG,
@@ -291,6 +346,7 @@ namespace QuanLyThuVien.Model
                         Email = reader.Email,
                         SoDT = reader.SoDT,
                         NgayLapThe = DateTime.Parse(reader.NgayLapThe.ToString()),
+                        IsSelected = false
                     });
                 }
             }
@@ -349,7 +405,7 @@ namespace QuanLyThuVien.Model
 
         #region AddReader_Operation
 
-        public bool Add(READER objReader)
+        public bool Add_Reader(READER objReader)
         {
             bool IsAdded = false;
 
@@ -378,7 +434,6 @@ namespace QuanLyThuVien.Model
             try
             {
                 var ObjReader = new DOCGIA();
-                ObjReader.MaDG = objReader.MaDG;
                 ObjReader.HoTen = objReader.HoTen;
                 ObjReader.GioiTinh = objReader.GioiTinh;
                 ObjReader.DiaChi = objReader.DiaChi;
@@ -386,9 +441,31 @@ namespace QuanLyThuVien.Model
                 ObjReader.NgayLapThe = objReader.NgayLapThe;
                 ObjReader.SoDT = objReader.SoDT;
                 ObjReader.NgaySinh = objReader.NgaySinh;
+                ObjReader.IsDeleted = false;
+                objReader.IsSelected = false;
+
+                var ObjQuery = from IdItems in ObjContext.PARAMETERS select IdItems;
+
+                foreach (var IDItems in ObjQuery)
+                {
+                    string idDocgia = IDItems.IDDocGia.ToString();
+                    while (idDocgia.Length < 3) idDocgia = '0' + idDocgia;
+
+                    ObjReader.MaDG = "DG" + idDocgia;
+                    objReader.MaDG = "DG" + idDocgia;
+                    break;
+                }
+
                 ObjContext.DOCGIAs.Add(ObjReader);
+                ObjReadersList.Add(objReader);
+
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
+
+                // Update IDDocGia in PARAMETERS table
+                var para = ObjContext.PARAMETERS.Find(1);
+                para.IDDocGia += 1;
+                ObjContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -470,6 +547,16 @@ namespace QuanLyThuVien.Model
 
                     var NoOfRowsAffected = ObjContext.SaveChanges();
                     IsUpdated = NoOfRowsAffected > 0;
+
+                    // Update reader in ObjReadersList
+                    int index = ObjReadersList.FindIndex(x => x.MaDG == objReaderToUpdate.MaDG);
+                    ObjReadersList[index].HoTen = objReaderToUpdate.HoTen;
+                    ObjReadersList[index].GioiTinh = objReaderToUpdate.GioiTinh;
+                    ObjReadersList[index].NgaySinh = objReaderToUpdate.NgaySinh;
+                    ObjReadersList[index].DiaChi = objReaderToUpdate.DiaChi;
+                    ObjReadersList[index].Email = objReaderToUpdate.Email;
+                    ObjReadersList[index].SoDT = objReaderToUpdate.SoDT;
+                    ObjReadersList[index].NgayLapThe = objReaderToUpdate.NgayLapThe;
                 }
             }
             catch (Exception ex)
@@ -491,7 +578,7 @@ namespace QuanLyThuVien.Model
                 foreach (var reader in need_to_delete)
                 {
                     var objReaderToDelete = ObjContext.DOCGIAs.Find(reader.MaDG);
-                    ObjContext.DOCGIAs.Remove(objReaderToDelete);
+                    objReaderToDelete.IsDeleted = true;
                     ObjReadersList.Remove(reader);
                 }
                 var NoOfRowsAffected = ObjContext.SaveChanges();

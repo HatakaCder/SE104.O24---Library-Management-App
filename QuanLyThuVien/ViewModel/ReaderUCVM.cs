@@ -2,13 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using QuanLyThuVien.Commands;
-using System.Windows.Markup;
+using System.CodeDom;
+using System.Text.RegularExpressions;
+using System.Collections.Specialized;
+using QuanLyThuVien.View;
+using System.Windows;
+using System.Windows.Input;
+using System.Runtime.Remoting.Proxies;
 
 namespace QuanLyThuVien.ViewModel
 {
@@ -28,11 +34,14 @@ namespace QuanLyThuVien.ViewModel
         {
             ObjDataOperation = new DataOperation();
             LoadData();
-            CurrentReader = new READER();
+            UpdateReader = new READER();
+            AddReader = new READER();
             selectedReaders = new ObservableCollection<READER>();
             searchCommand = new RelayCommand(Search);
             saveCommand = new RelayCommand(Save);
+            savePopUpCommand = new RelayCommand(SavePopUp);
             updateCommand = new RelayCommand(Update);
+            updatePopUpCommand = new RelayCommand(UpdatePopUp);
             deleteCommand = new RelayCommand(Delete);
         }
 
@@ -41,32 +50,36 @@ namespace QuanLyThuVien.ViewModel
         public RelayCommand SaveCommand
         {
             get { return saveCommand; }
-            set
-            {
-                saveCommand = value;
-                OnPropertyChanged(nameof(SaveCommand));
-            }
         }
 
         private RelayCommand deleteCommand;
         public RelayCommand DeleteCommand
         {
             get { return deleteCommand; }
-            set { deleteCommand = value; OnPropertyChanged(nameof(DeleteCommand)); }
         }
 
         private RelayCommand searchCommand;
         public RelayCommand SearchCommand
         {
             get { return searchCommand; }
-            set { searchCommand = value; OnPropertyChanged(nameof(SearchCommand)); }
         }
 
         private RelayCommand updateCommand;
         public RelayCommand UpdateCommand
         {
             get { return updateCommand; }
-            set { updateCommand = value; OnPropertyChanged(nameof(UpdateCommand)); }
+        }
+
+        private RelayCommand updatePopUpCommand;
+        public RelayCommand UpdatePopUpCommand
+        {
+            get { return updatePopUpCommand; }
+        }
+
+        private RelayCommand savePopUpCommand;
+        public RelayCommand SavePopUpCommand
+        {
+            get { return savePopUpCommand; }
         }
         #endregion
 
@@ -78,11 +91,18 @@ namespace QuanLyThuVien.ViewModel
             set { readerList = value; OnPropertyChanged("ReaderList"); }
         }
 
-        private READER currentReader;
-        public READER CurrentReader
+        private READER updateReader;
+        public READER UpdateReader
         {
-            get { return currentReader; }
-            set { currentReader = value; OnPropertyChanged(nameof(CurrentReader)); }
+            get { return updateReader; }
+            set { updateReader = value; OnPropertyChanged(nameof(UpdateReader)); }
+        }
+
+        private READER addReader;
+        public READER AddReader
+        {
+            get { return addReader; }
+            set { addReader = value; OnPropertyChanged(nameof(AddReader)); }
         }
 
         private string items;
@@ -111,16 +131,38 @@ namespace QuanLyThuVien.ViewModel
         }
         #endregion
 
+        #region SetProperty
+
+        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        {
+            if (!Equals(field, newValue))
+            {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
+
         private void LoadData()
         {
             ReaderList = new ObservableCollection<READER>(ObjDataOperation.getAllReader());
+            selectedReaders = new ObservableCollection<READER>(ObjDataOperation.getAllSelectedReaders());
         }
 
         public void Save() 
         {
-            bool isSaved = ObjDataOperation.Add(currentReader);
+            bool isSaved = ObjDataOperation.Add_Reader(AddReader);
             if (isSaved)
                 LoadData();
+        }
+
+        public void SavePopUp()
+        {
+            AddReader addReader = new AddReader(this);
+            addReader.ShowDialog();
         }
 
         public void Search()
@@ -144,12 +186,9 @@ namespace QuanLyThuVien.ViewModel
 
         public void Update()
         {
-            if (selectedReaders.Count == 0) return;
-
             try
             {
-                currentReader = selectedReaders[selectedReaders.Count - 1];
-                var isUpdated = ObjDataOperation.update(currentReader);
+                var isUpdated = ObjDataOperation.update(UpdateReader);
 
                 if (isUpdated)
                     LoadData();
@@ -160,10 +199,17 @@ namespace QuanLyThuVien.ViewModel
             }
         }
 
+        public void UpdatePopUp()
+        {
+            UpdateReader updateReader = new UpdateReader(this);
+            updateReader.ShowDialog();
+        }
+
         public void Delete()
         {
             try
             {
+                selectedReaders = new ObservableCollection<READER>(ObjDataOperation.getAllSelectedReaders());
                 var isDeleted = ObjDataOperation.Delete_Reader(new List<READER>(selectedReaders));
                 if (isDeleted)
                     LoadData();
@@ -173,5 +219,9 @@ namespace QuanLyThuVien.ViewModel
                 throw ex;
             }
         }
+
+        private System.Collections.IEnumerable dOCGIAs;
+
+        public System.Collections.IEnumerable DOCGIAs { get => dOCGIAs; set => SetProperty(ref dOCGIAs, value); }
     }
 }
