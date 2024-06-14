@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\ItemTemplateSelector.cs" />
     <Compile Include="Class\OTP.cs" />
     <Compile Include="Class\PasswordBoxHelper.cs" />
     <Compile Include="Class\PasswordHashing.cs" />
@@ -129,6 +130,9 @@
     <Compile Include="Model\PHIEUTRA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ReportDTO.cs" />
+    <Compile Include="Model\Report_1.cs" />
+    <Compile Include="Model\Report_2.cs" />
     <Compile Include="Model\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -143,6 +147,7 @@
     <Compile Include="Model\UserDTO.cs" />
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
