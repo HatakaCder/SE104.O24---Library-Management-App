@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QuanLyThuVien.ViewModel;
+using System.Collections.ObjectModel;
 
 namespace QuanLyThuVien.View
 {

@@ -2,39 +2,41 @@
 GO
 USE QLTV_BETA
 GO
-SET DATEFORMAT DMY
-GO
+SET DATEFORMAT DMY -- dateformat: dd/mm/yyyy
+GO﻿
 
-CREATE TABLE DOCGIA
+CREATE TABLE DOCGIA 
 (
-	MaDG		VARCHAR(5) PRIMARY KEY,
-	LoaiDG		VARCHAR(255),
+	MaDG		VARCHAR(5) NOT NULL PRIMARY KEY,
+	HoTen		NVARCHAR(30),
+	GioiTinh	NVARCHAR(3),
 	NgaySinh	DATE,
-	DiaChi		VARCHAR(255),
-	Email		VARCHAR(255),
+	DiaChi		NVARCHAR(255),
+	Email		VARCHAR(255) NOT NULL,
+	SoDT		VARCHAR(10) NOT NULL,
 	NgayLapThe	DATE,
 	IsDeleted	BIT DEFAULT 0
-	/* Các loại độc giả
-	Độc giả sinh viên: Bao gồm các sinh viên đang học tại trường hoặc các cơ sở giáo dục. - LDOCGIA_A
-	Độc giả học sinh: Bao gồm học sinh đang theo học tại các trường cấp 1, 2, 3. - LDOCGIA_B
-	Cán bộ giáo viên: Bao gồm giáo viên, nhân viên trong ngành giáo dục. - LDOCGIA_C
-	Người đã đi làm: Độc giả không thuộc các nhóm trên, đã đi làm và có nhu cầu sử dụng thư viện. - LDOCGIA_D
-	Các đối tượng khác: Có thể bao gồm người nước ngoài, người nghiên cứu, người quan tâm đến tài liệu thư viện. - LDOCGIA_E
-	*/
+);
+GO
+
+CREATE TABLE THELOAI
+(
+	TenTheLoai	NVARCHAR(225) PRIMARY KEY,
+	IsDeleted	BIT DEFAULT 0
 );
 GO
 
 CREATE TABLE SACH 
 (
-	MaSach		VARCHAR(5) PRIMARY KEY,
-	TenSach		VARCHAR(255),
-	TheLoai		VARCHAR(255),
-	TacGia		VARCHAR(255),
+	MaSach		VARCHAR(5) NOT NULL PRIMARY KEY,
+	TenSach		NVARCHAR(255),
+	TenTheLoai	NVARCHAR(225) FOREIGN KEY REFERENCES THELOAI(TenTheLoai),
+	TacGia		NVARCHAR(255),
 	NamXB		SMALLINT,
-	NhaXB		VARCHAR(255),
+	NhaXB		NVARCHAR(255),
 	NgayNhap	DATE,
 	TriGia		INT,
-	TinhTrang	BIT,
+	TinhTrang	SMALLINT DEFAULT 1,
 	IsDeleted	BIT DEFAULT 0
 );
 GO
@@ -61,71 +63,102 @@ GO
 
 CREATE TABLE PHIEUTHU
 (
-	--Phiếu thu chỉ được tạo khi sách trả quá hạn, tạo trigger để kiểm tra việc trả quá hạn và tự lập phiếu thu nếu có. Việc truy xuất phiếu thu sẽ được thực hiện thông qua MaPhTra trong bảng PHIEUTHU
 	ID			INT IDENTITY(1, 1) PRIMARY KEY,
 	MaPhTra		VARCHAR(5) FOREIGN KEY REFERENCES PHIEUTRA(MaPhTra),
 	SoNgayQHan	SMALLINT,
-	SoTienThu	INT
-);
-GO
-
-CREATE TABLE ACCOUNT
-(
-	ID			INT IDENTITY(1, 1) PRIMARY KEY,
-	TaiKhoan	VARCHAR(100) NOT NULL,
-	MatKhau		VARCHAR(50) NOT NULL,
-	-- Để phục vụ cho việc thay đổi tên tài khoản, mật khẩu, không nên để tài khoản và mật khẩu làm thuộc tính khóa chính
-	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
+	SoTienThu	INT,
 	IsDeleted	BIT DEFAULT 0
 );
 GO
 
 CREATE TABLE THUTHU
 (
-	ID			INT IDENTITY(1, 1) PRIMARY KEY,
-	TaiKhoan	VARCHAR(100) NOT NULL,
-	MatKhau		VARCHAR(50) NOT NULL,
-	SDT			VARCHAR(11) NOT NULL,
-	Email		VARCHAR(50) NOT NULL,
-	DiaChi		VARCHAR(50) NOT NULL
+	MaTT		VARCHAR(5) PRIMARY KEY,
+	HoTen		NVARCHAR(30),
+	GioiTinh	NVARCHAR(3),
+	NgayVLam	DATE,
+	NgaySinh	DATE,
+	DiaChi		NVARCHAR(255),
+	Email		VARCHAR(255) NOT NULL,
+	SoDT		VARCHAR(10) NOT NULL,
+	IsDeleted	BIT DEFAULT 0
 )
 GO
 
-CREATE TABLE PARAMETERs
+CREATE TABLE ACCOUNT
 (
-	IDDocGia	INT 	DEFAULT 0,
-	IDSach		INT 	DEFAULT 0,
-	IDPhMuon	INT 	DEFAULT 0,
-	IDPhThu		INT 	DEFAULT 0,
-	IDPhTra		INT 	DEFAULT 5000,
-	SoNgMuonTD	INT 	DEFAULT 30
+	TaiKhoan	VARCHAR(30) PRIMARY KEY,
+	MatKhau		VARCHAR(255) NOT NULL,
+	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
+	MaTT		VARCHAR(5) FOREIGN KEY REFERENCES THUTHU(MaTT),
+	VaiTro		SMALLINT NOT NULL,
+	IsDeleted	BIT DEFAULT 0
+);
+GO
+
+CREATE TABLE SETTING
+(
+	ID			INT PRIMARY KEY,
+	TuoiToiTieu			INT	DEFAULT 13,
+	TuoiToiDa			INT	DEFAULT 70,
+	ThoiHanThe			INT DEFAULT 24,
+	SoNgayMuonToiDa		INT DEFAULT 30,
+	SoTienNopTre		INT DEFAULT 2000,
+	SoSachMuonToiDa		INT	DEFAULT 5,
+	SoLuongTheLoaiToiDa INT DEFAULT 30,
+	ThoiGianNhapSach	INT DEFAULT 5
 )
 GO
 
--- INSERT DATA INTO PARAMETERS
-INSERT INTO PARAMETERs VALUES(DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+CREATE TABLE PARAMETERS
+(
+	ID 		INT PRIMARY KEY,
+	IDDocGia	SMALLINT DEFAULT 6,
+	IDSach		SMALLINT DEFAULT 8,
+	IDPhieuMuon	SMALLINT DEFAULT 11,
+	IDPhieuTra	SMALLINT DEFAULT 9,
+	IDMaTT		SMALLINT DEFAULT 3
+)
+
+-- Luôn cần một dòng dữ liệu trong bảng SETTING và PARAMETERs để truy xuất thông tin sau này
+INSERT INTO SETTING VALUES(1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+GO
+INSERT INTO PARAMETERS VALUES(1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 GO
 
--- Update IDDocGia when we insert a new row in table DOCGIA
-CREATE TRIGGER INSERT_INTO_DOCGIA
-ON DOCGIA
-FOR INSERT
-AS
-BEGIN
-	UPDATE PARAMETERs
-	SET IDDocGia = IDDocGia + 1
-END
-GO
-
--- Update
-CREATE TRIGGER INSERT_INTO_SACH
+-- Trigger nếu muốn thêm sách với thể loại không phụ thuộc vào thể loại đã có
+/*
+CREATE TRIGGER THEM_SACH_VOI_THELOAI
 ON SACH
-FOR INSERT
+FOR INSERT, UPDATE
 AS
 BEGIN
-	UPDATE PARAMETERs
-	SET IDSach = IDSach + 1
-END
+	DECLARE @MaSach VARCHAR(5), @TheLoai VARCHAR(225)
+
+	SELECT @MaSach = MaSach from INSERTED
+	SELECT @TheLoai = TheLoai from INSERTED
+
+	IF NOT EXISTS (
+		SELECT * FROM THELOAI
+		WHERE LOWER(TenTheLoai) = LOWER(@TheLoai)
+	)
+	BEGIN
+		INSERT INTO THELOAI VALUES (@TheLoai, 0)
+	END
+	ELSE IF NOT EXISTS (
+		SELECT * FROM THELOAI
+		WHERE TenTheLoai = @TheLoai
+	)
+	BEGIN
+		UPDATE SACH
+		SET TheLoai = (
+			SELECT TenTheLoai
+			FROM THELOAI
+			WHERE LOWER(TenTheLoai) = LOWER(@TheLoai)
+		)
+		WHERE SACH.MaSach = @MaSach
+	END
+END*/
 GO
 
 -- Tạo TRIGGER để tính ngày phải trả của cuốn sách
@@ -135,21 +168,27 @@ FOR INSERT, UPDATE
 AS
 BEGIN
 	DECLARE @MaPhMuon VARCHAR(5), @MAXDAY INT = 30
+	DECLARE @MaSach VARCHAR(5), @TinhTrang SMALLINT
 	
 	SELECT @MaPhMuon = MaPhMuon FROM INSERTED
+	SELECT @MaSach = MaSach FROM INSERTED
+	SELECT @TinhTrang = TinhTrang FROM SACH WHERE MaSach = @MaSach
+
+	IF (@TinhTrang = 0) 
+	BEGIN
+		ROLLBACK;
+		RAISERROR('Cuốn sách này đã được mượn!', 10, 1)
+	END
 
 	-- Tính toán hạn trả trong phiếu mượn
-	UPDATE PHIEUMUON
+	UPDATE PHIEUMUON 
 	SET NgayPhTra = DATEADD(day, @MAXDAY, NgayMuon)
 	WHERE PHIEUMUON.MaPhMuon = @MaPhMuon
 
-	PRINT('Thông tin phiếu mượn đã được thêm/chỉnh sửa hoàn tất!')
-
-	IF EXISTS (SELECT * FROM INSERTED) 
-	BEGIN
-		UPDATE PARAMETERs
-		SET IDPhMuon = IDPhMuon + 1
-	END
+	-- Điều chỉnh lại thuộc tính tình trạng của sách được mượn thành 0
+	UPDATE SACH
+	SET TinhTrang = 0
+	WHERE SACH.MaSach = @MaSach
 END;
 GO
 
@@ -161,31 +200,97 @@ AS
 BEGIN
 	-- Lấy dữ liệu để kiểm tra điều kiện
 	DECLARE @NgayPhTra DATE, @NgayTra DATE
+	DECLARE @MaSach VARCHAR(5)
 
 	SELECT @NgayPhTra = NgayPhTra
 	FROM INSERTED INNER JOIN PHIEUMUON ON INSERTED.MaPhMuon = PHIEUMUON.MaPhMuon
 	SELECT @NgayTra = NgayTra FROM INSERTED
 
+	SELECT @MaSach = PHIEUMUON.MaSach
+	FROM INSERTED 
+	INNER JOIN PHIEUMUON ON INSERTED.MaPhMuon = PHIEUMUON.MaPhMuon
+	INNER JOIN SACH ON SACH.MaSach = PHIEUMUON.MaSach
+
+	UPDATE SACH
+	SET TinhTrang = 1
+	WHERE MaSach = @MaSach
+
 	IF (@NgayTra > @NgayPhTra)
 	BEGIN
-		DECLARE @MaPhTra VARCHAR(5), @IDPhTra INT = 5000, @SoNgQuaHan INT
+		DECLARE @MaPhTra VARCHAR(5), @IDPhTra INT = 2000, @SoNgQuaHan INT
 
 		SELECT @MaPhTra = MaPhTra FROM INSERTED
 		SELECT @SoNgQuaHan = DATEDIFF(day, @NgayPhTra, @NgayTra)
 
 		-- Tổng tiền = Số ngày * Tiền nộp 1 ngày
-		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @IDPhTra)
-	
-		PRINT('Trả sách quá thời hạn, đã lập phiếu thu!')
-
-		-- Update IDPhTra
-		UPDATE PARAMETERs
-		SET IDPhTra = IDPhTra + 1
+		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @IDPhTra, DEFAULT);
 	END
 END;
 GO
 
--- Phần INSERT DATA ở đây chỉ nhằm phục vụ cho việc demo các chức năng sau này, còn trong quá trình mượn sách, việc INSERT sẽ được thực hiện thông qua mã C#
-/*
-Hoàn thành phần dữ liệu của các bảng trong file CSDL_Excel rồi sau đó sẽ thêm vào file chính thức này.
-*/
+-- INSERT DATA: Dữ liệu để test các chức năng của app
+
+-- DOCGIA TABLE
+INSERT INTO DOCGIA VALUES ('DG001', N'Nguyễn Thanh Hưng', N'Nam', '2002-06-15', N'135 Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1', 'hungnt@gmail.com', '0392511342', '2024-02-07', DEFAULT);
+INSERT INTO DOCGIA VALUES ('DG002', N'Trần Nguyễn Yến Nhi', N'Nữ', '2008-11-14', N'Đường Lê Lợi, phường Bến Thành, quận 1', 'nhitran08@gmail.com', '0867455258', '2024-03-07', DEFAULT);
+INSERT INTO DOCGIA VALUES ('DG003', N'Trần Lê Tuyết Mai', N'Nữ', '2004-10-14', N'số 2 Nguyễn Bỉnh Khiêm, Quận 1', 'lmaiq1@gmail.com', '0914567842', '2024-03-12', DEFAULT);
+INSERT INTO DOCGIA VALUES ('DG004', N'Lê Thị Ngọc Ánh', N'Nữ', '2004-12-02', N'số 2 Khu Him Lam, quận 7', 'anhngoc@gmail.com', '0392411748', '2024-04-14', DEFAULT);
+INSERT INTO DOCGIA VALUES ('DG005', N'Phan Minh Long', N'Nam', '2009-05-07', N'Số 3 Hòa Bình, phường 3, quận 11', 'longSia@gmail.com', '0974373212', '2024-05-07', DEFAULT);
+GO
+
+-- THELOAI TABLE
+INSERT INTO THELOAI VALUES (N'Tin học', DEFAULT);
+INSERT INTO THELOAI VALUES (N'Vật lý', DEFAULT);
+INSERT INTO THELOAI VALUES (N'Toán', DEFAULT);
+INSERT INTO THELOAI VALUES (N'Y học', DEFAULT);
+INSERT INTO THELOAI VALUES (N'Văn học', DEFAULT);
+INSERT INTO THELOAI VALUES (N'Lịch sử', DEFAULT);
+GO
+
+-- SACH TABLE
+INSERT INTO SACH VALUES ('SS001', N'Giáo trình toán cao cấp', N'Toán', N'Nhóm tác giả từ UIT', 2015, N'NXB Đại học quốc gia HCM', '2020-06-12', 60000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS002', N'Giáo trình Hệ điều hành', N'Tin học', N'Nhóm tác giả từ UIT', 2015, N'NXB Đại học quốc gia HCM', '2020-05-12', 53000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS003', N'Toán học và ứng dụng', N'Toán', N'Nhóm tác giả từ viện toán học Việt Nam', 2014, N'Viện toán học Việt Nam', '2020-07-12', 72000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS004', N'Cẩm nang chăm sóc sức khỏe', N'Y học', N'Nguyễn Ngọc Hân, Đặng Huy Hoàng', 2014, N'NXB thông tin và truyền thông', '2020-05-12', 50000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS005', N'Ngôn ngữ lập trình C#', N'Tin học', N'Phan Văn Thúc', 2010, N'NXB Giáo dục', '2020-05-12', 54000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS006', N'Đại số tuyến tính', N'Toán', N'Phạm Công Ngô', 2015, N'NXB Đại học quốc gia HCM', '2020-06-12', 65000, DEFAULT, DEFAULT);
+INSERT INTO SACH VALUES ('SS007', N'Vật lý đại cương', N'Vật lý', N'Trần Văn Lượng', 2014, N'NXB Đại học quốc gia HCM', '2020-06-12', 65000, DEFAULT, DEFAULT);
+GO
+
+-- PHIEUMUON TABLE
+INSERT INTO PHIEUMUON VALUES ('PM001', 'DG001', 'SS001', '7/05/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM002', 'DG005', 'SS004', '7/05/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM003', 'DG005', 'SS003', '7/05/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM004', 'DG003', 'SS006', '15/04/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM005', 'DG002', 'SS004', '5/04/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM006', 'DG002', 'SS003', '5/04/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM007', 'DG004', 'SS005', '25/04/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM008', 'DG001', 'SS002', '14/05/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM009', 'DG001', 'SS006', '14/05/2024', NULL, DEFAULT);
+INSERT INTO PHIEUMUON VALUES ('PM010', 'DG002', 'SS005', '7/04/2024', NULL, DEFAULT);
+GO
+
+-- PHIEUTRA TABLE
+INSERT INTO PHIEUTRA VALUES ('PT001', 'PM003', '21/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT002', 'PM005', '22/5/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT003', 'PM007', '10/5/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT004', 'PM002', '15/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT005', 'PM001', '18/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT006', 'PM004', '15/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT007', 'PM006', '14/05/2024', DEFAULT);
+INSERT INTO PHIEUTRA VALUES ('PT008', 'PM009', '20/05/2024', DEFAULT);
+GO
+
+-- THUTHU TABLE
+INSERT INTO THUTHU VALUES ('TT001', N'Lương Ngọc Huyền', N'Nữ', '5/01/2024', '12/03/2003', N'Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh', 'huyenlb@gmail.com', '0369442256', DEFAULT);
+INSERT INTO THUTHU VALUES ('TT002', N'Cao Văn Thành', N'Nam', '12/01/2024', '22/05/2003', N'Đường Lê Duẩn, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh', 'thanhcv03@gmail.com', '0973464756', DEFAULT);
+GO
+
+-- ACOUNT TABLE
+INSERT INTO ACCOUNT VALUES ('TaiKhoan1', 'MatKhau1', 'DG001', NULL, 1, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan2', 'MatKhau2', 'DG002', NULL, 1, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan3', 'MatKhau3', 'DG003', NULL, 1, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan4', 'MatKhau4', 'DG004', NULL, 1, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan5', 'MatKhau5', 'DG005', NULL, 1, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan6', 'MatKhau6', NULL, 'TT001', 2, DEFAULT);
+INSERT INTO ACCOUNT VALUES ('TaiKhoan7', 'MatKhau7', NULL, 'TT002', 2, DEFAULT);

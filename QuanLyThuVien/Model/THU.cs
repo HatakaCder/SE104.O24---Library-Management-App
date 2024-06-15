@@ -33,14 +33,14 @@ namespace QuanLyThuVien.Model
             set { maPhTra = value; OnPropertyChanged("MaPhTra"); }
         }
 
-        private string soNgayQuahan;
-        public string SoNgayQuahan
+        private int soNgayQuahan;
+        public int SoNgayQuahan
         {
             get { return soNgayQuahan; }
             set { soNgayQuahan = value; OnPropertyChanged("SoNgayQuahan"); }
         }
-        private string soTienThu;
-        public string SoTienThu
+        private int soTienThu;
+        public int SoTienThu
         {
             get { return soTienThu; }
             set { soTienThu = value; OnPropertyChanged("SoTienThu"); }

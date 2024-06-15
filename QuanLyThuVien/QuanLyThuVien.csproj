@@ -83,6 +83,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
+    <Compile Include="ACCOUNT.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADOModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADOModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DOCGIA.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+=======
     <Compile Include="Class\OTP.cs" />
     <Compile Include="Class\PasswordBoxHelper.cs" />
     <Compile Include="Class\PasswordHashing.cs" />
@@ -92,9 +115,17 @@
     </Compile>
     <Compile Include="Model\ACCOUNT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+>>>>>>> main
     </Compile>
     <Compile Include="Model\BOOK.cs" />
+    <Compile Include="Model\DataOperation.cs" />
     <Compile Include="Model\DataProvider.cs" />
+<<<<<<< HEAD
+    <Compile Include="Model\MUON.cs" />
+    <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Model\READER.cs" />
+    <Compile Include="Model\THELOAI.cs" />
+=======
     <Compile Include="Model\DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -135,17 +166,45 @@
     <Compile Include="Model\THELOAI.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+>>>>>>> main
     <Compile Include="Model\THU.cs" />
     <Compile Include="Model\THUTHU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TRA.cs" />
+<<<<<<< HEAD
+    <Compile Include="PARAMETER.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHIEUMUON.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHIEUTHU.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHIEUTRA.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SACH.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTING.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+=======
     <Compile Include="Model\UserDTO.cs" />
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
     <Compile Include="Services\UserService.cs" />
+>>>>>>> main
     <Compile Include="SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="THELOAI.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THUTHU.cs">
+      <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Btn.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
@@ -162,11 +221,19 @@
     <Compile Include="ViewModel\ReportVM.cs" />
     <Compile Include="ViewModel\ResetPasswordVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
+<<<<<<< HEAD
+    <Compile Include="View\AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddReader.xaml.cs">
+      <DependentUpon>AddReader.xaml</DependentUpon>
+=======
     <Compile Include="ViewModel\SignInVM.cs" />
     <Compile Include="ViewModel\SignUpVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
     <Compile Include="View\AddLibrarian.xaml.cs">
       <DependentUpon>AddLibrarian.xaml</DependentUpon>
+>>>>>>> main
     </Compile>
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
@@ -211,6 +278,13 @@
     <Compile Include="View\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="View\UpdateBook.xaml.cs">
+      <DependentUpon>UpdateBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateReader.xaml.cs">
+      <DependentUpon>UpdateReader.xaml</DependentUpon>
+=======
     <Compile Include="View\SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
     </Compile>
@@ -222,6 +296,7 @@
     </Compile>
     <Compile Include="View\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
+>>>>>>> main
     </Compile>
     <Page Include="LoginWindoww.xaml">
       <SubType>Designer</SubType>
@@ -263,7 +338,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
+    <Page Include="View\AddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddReader.xaml">
+=======
     <Page Include="View\AddLibrarian.xaml">
+>>>>>>> main
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -335,6 +418,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
+    <Page Include="View\UpdateBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateReader.xaml">
+=======
     <Page Include="View\SignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -348,6 +438,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\User.xaml">
+>>>>>>> main
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,12 +461,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\Model1.edmx">
+    <EntityDeploy Include="ADOModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ADOModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="ADOModel.edmx.diagram">
+      <DependentUpon>ADOModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -412,17 +503,21 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="ADOModel.Context.tt">
+=======
     <Resource Include="Images\Login-removebg-preview.png" />
     <Resource Include="Images\school-software.png" />
     <Content Include="Model\Model1.Context.tt">
+>>>>>>> main
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
+      <LastGenOutput>ADOModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Model1.tt">
+    <Content Include="ADOModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>ADOModel.edmx</DependentUpon>
+      <LastGenOutput>ADOModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

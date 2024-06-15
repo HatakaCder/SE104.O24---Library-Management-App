@@ -22,7 +22,6 @@ namespace QuanLyThuVien.ViewModel
         public ICommand BookBorrowCommand { get; set; }
         public ICommand ReaderCommand { get; set; }
         public ICommand LibraianCommand { get; set; }
-        public ICommand UserCommand { get; set; }  
         public ICommand ReportCommand { get; set; }
         public ICommand SettingsCommand { get; set; }
 
@@ -30,8 +29,12 @@ namespace QuanLyThuVien.ViewModel
         private void Book(object obj) => CurrentView = new BookVM();
         private void BookBorrow(object obj) => CurrentView = new BookBorrowVM();
         private void Reader(object obj) => CurrentView = new ReaderUCVM();
+<<<<<<< HEAD
+        private void Libarian(object obj) => CurrentView = new LibarianVM();
+=======
         private void Libarian(object obj) => CurrentView = new LibrarianVM();
         private void User(object obj) => CurrentView = new UserVM();
+>>>>>>> main
         private void Report(object obj) => CurrentView = new Report();
         private void Setting(object obj) => CurrentView = new SettingVM();
 
@@ -42,7 +45,6 @@ namespace QuanLyThuVien.ViewModel
             BookBorrowCommand = new RelayCommand(BookBorrow);
             ReaderCommand = new RelayCommand(Reader);
             LibraianCommand = new RelayCommand(Libarian);
-            UserCommand = new RelayCommand(User);
             ReportCommand = new RelayCommand(Report);
             SettingsCommand = new RelayCommand(Setting);
 

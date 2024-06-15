@@ -168,7 +168,7 @@
                         <materialDesign:Card Margin="5 15 5 15" Width="210">
                             <Grid>
                                 <Grid.DataContext>
-                                    <m:DOCGIA></m:DOCGIA>
+                                    <m:READER />
                                 </Grid.DataContext>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60"></ColumnDefinition>

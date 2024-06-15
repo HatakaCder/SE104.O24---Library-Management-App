@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7e90610b51d4653b83ef6249afd215e" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTV_BETAModel.ACCOUNT" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.DOCGIA" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PARAMETER" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUMUON" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTHU" Width="1.5" PointX="10.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.PHIEUTRA" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.SACH" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.SETTING" Width="1.5" PointX="7.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.THELOAI" Width="1.5" PointX="1.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTV_BETAModel.THUTHU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__ACCOUNT__MaDG__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__ACCOUNT__MaTT__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaDG__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUMUON__MaSac__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTRA__MaPhMu__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__PHIEUTHU__MaPhTr__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTV_BETAModel.FK__SACH__TenTheLoai__3A81B327" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

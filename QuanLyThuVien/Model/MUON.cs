@@ -37,14 +37,14 @@ namespace QuanLyThuVien.Model
             get { return maSach; }
             set { maSach = value; OnPropertyChanged("MaSach"); }
         }
-        private string ngayMuon;
-        public string NgayMuon
+        private DateTime ngayMuon;
+        public DateTime NgayMuon
         {
             get { return ngayMuon; }
             set { ngayMuon = value; OnPropertyChanged("NgayMuon"); }
         }
-        private string ngayPhTra;
-        public string NgayPhTra
+        private DateTime ngayPhTra;
+        public DateTime NgayPhTra
         {
             get { return ngayPhTra; }
             set { ngayPhTra = value; OnPropertyChanged("NgayPhTra"); }
