@@ -18,7 +18,7 @@
         <view:BookBorrow/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:LibarianVM}">
+    <DataTemplate DataType="{x:Type vm:LibrarianVM}">
         <view:Librarian></view:Librarian>
     </DataTemplate>
 

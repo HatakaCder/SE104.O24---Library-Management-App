@@ -22,13 +22,13 @@ namespace QuanLyThuVien
     
         public string MaSach { get; set; }
         public string TenSach { get; set; }
-        public string TheLoai { get; set; }
+        public string TenTheLoai { get; set; }
         public string TacGia { get; set; }
         public Nullable<short> NamXB { get; set; }
         public string NhaXB { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public Nullable<int> TriGia { get; set; }
-        public Nullable<short> TinhTrang { get; set; }
+        public Nullable<bool> TinhTrang { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

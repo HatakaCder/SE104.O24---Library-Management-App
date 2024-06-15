@@ -27,12 +27,19 @@ namespace QuanLyThuVien
     
         public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
         public virtual DbSet<DOCGIA> DOCGIAs { get; set; }
+<<<<<<< HEAD:QuanLyThuVien/adoModel.Context.cs
         public virtual DbSet<PARAMETER> PARAMETERS { get; set; }
+=======
+        public virtual DbSet<PARAMETER> PARAMETERs { get; set; }
+>>>>>>> main:QuanLyThuVien/Model/Model1.Context.cs
         public virtual DbSet<PHIEUMUON> PHIEUMUONs { get; set; }
         public virtual DbSet<PHIEUTHU> PHIEUTHUs { get; set; }
         public virtual DbSet<PHIEUTRA> PHIEUTRAs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
+<<<<<<< HEAD:QuanLyThuVien/adoModel.Context.cs
         public virtual DbSet<SETTING> SETTINGs { get; set; }
+=======
+>>>>>>> main:QuanLyThuVien/Model/Model1.Context.cs
         public virtual DbSet<THELOAI> THELOAIs { get; set; }
         public virtual DbSet<THUTHU> THUTHUs { get; set; }
     }

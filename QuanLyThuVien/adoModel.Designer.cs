@@ -1,4 +1,8 @@
+<<<<<<< HEAD:QuanLyThuVien/adoModel.Designer.cs
 ﻿// T4 code generation is enabled for model 'D:\Chinh_Khoa\SE104_1\QuanLyThuVien\ADOModel.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'D:\Projects\SE104.O24---Library-Management-App\QuanLyThuVien\Model\Model1.edmx'. 
+>>>>>>> main:QuanLyThuVien/Model/Model1.Designer.cs
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

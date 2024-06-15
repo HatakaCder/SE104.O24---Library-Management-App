@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="QuanLyThuVien.View.SignUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyThuVien.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="500">
+    <Border BorderBrush="Gray" 
+        BorderThickness="1" 
+        Margin="10"
+        CornerRadius="10"
+        Height="500"
+        Width="350"
+        Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                <TextBlock Grid.Row="0" Margin="10, 2, 0, 0"> 
+                <Hyperlink Foreground="#808080" 
+                           TextDecorations="{x:Null}" 
+                           Name="l_signin" 
+                           MouseLeave="l_signin_MouseLeave" 
+                           MouseEnter="l_signin_MouseEnter" 
+                           Click="l_signin_Click" 
+                           FontFamily="Roboto">&lt; Đăng nhập</Hyperlink>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Foreground="#3AB19B"                          
+                           Style="{StaticResource TitleText}" 
+                           FontSize="24">Đăng ký</TextBlock>
+            </Grid>
+            <TextBlock Grid.Row="1" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Họ và tên</TextBlock>
+            <TextBlock Grid.Row="2" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Giới tính</TextBlock>
+            <TextBlock Grid.Row="3" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Ngày sinh</TextBlock>
+            <TextBlock Grid.Row="4" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Địa chỉ</TextBlock>
+            <TextBlock Grid.Row="5" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Email</TextBlock>
+            <TextBlock Grid.Row="6" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Số điện thoại</TextBlock>
+            <TextBlock Grid.Row="7" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Tên đăng nhập</TextBlock>
+            <TextBlock Grid.Row="8" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Mật khẩu</TextBlock>
+            <TextBlock Grid.Row="9" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">Xác nhận mật khẩu</TextBlock>
+            <TextBlock Grid.Row="10" Style="{StaticResource TextBlock18}" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0">OTP</TextBlock>
+
+            <Button Command="{Binding Path=SignUpCommand}" Grid.Row="11" Grid.Column="1" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="100" Height="30" Background="#3AB19B" Foreground="White">Đăng ký</Button>
+            <Button Command="{Binding Path=SendOTPCommand}" Grid.Row="11" Grid.Column="0" Style="{StaticResource Button24}" Margin="22, 11" FontSize="16" Width="130" Height="30" Background="#3AB19B" Foreground="White">Nhận mã OTP</Button>
+
+            <TextBox Name="txtName" Text="{Binding Path=CurrentDocGia.HoTen}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtDiaChi" Text="{Binding Path=CurrentDocGia.DiaChi}" Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtEmail" Text="{Binding Path=CurrentDocGia.Email}" Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtSDT" Text="{Binding Path=CurrentDocGia.SoDT}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtUsername" Text="{Binding Path=CurrentUser.TaiKhoan}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtPassword" Text="{Binding Path=CurrentUser.MatKhau}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtPasswordConfirm" Text="{Binding Path=PasswordConfirm}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+            <TextBox Name="txtOTP" Text="{Binding Path=CurrentOtp}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBox24}" Margin="10,3,10,3" FontFamily="Roboto" FontSize="14" VerticalContentAlignment="Center"/>
+
+            <DatePicker Text="{Binding Path=CurrentDocGia.NgaySinh, Mode=TwoWay}" Name="DateOfBirth" Grid.Row="3" Grid.Column="1" Style="{StaticResource DateTimeBox}" SelectedDateFormat="Short" Margin="10,3,10,3" FontSize="14" FontFamily="Roboto"></DatePicker>
+
+            <Grid Grid.Row="2" Grid.Column="1" Margin="10, 0, 10, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="{Binding NamChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" IsChecked="{Binding NuChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</UserControl>

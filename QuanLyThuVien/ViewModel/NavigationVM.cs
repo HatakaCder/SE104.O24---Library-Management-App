@@ -29,7 +29,12 @@ namespace QuanLyThuVien.ViewModel
         private void Book(object obj) => CurrentView = new BookVM();
         private void BookBorrow(object obj) => CurrentView = new BookBorrowVM();
         private void Reader(object obj) => CurrentView = new ReaderUCVM();
+<<<<<<< HEAD
         private void Libarian(object obj) => CurrentView = new LibarianVM();
+=======
+        private void Libarian(object obj) => CurrentView = new LibrarianVM();
+        private void User(object obj) => CurrentView = new UserVM();
+>>>>>>> main
         private void Report(object obj) => CurrentView = new Report();
         private void Setting(object obj) => CurrentView = new SettingVM();
 

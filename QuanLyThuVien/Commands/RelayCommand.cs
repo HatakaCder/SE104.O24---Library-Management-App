@@ -7,7 +7,11 @@ using System.Windows.Input;
 
 namespace QuanLyThuVien.Commands
 {
+<<<<<<< HEAD
     public class RelayCommand: ICommand
+=======
+    public class RelayCommand : ICommand
+>>>>>>> main
     {
         public event EventHandler CanExecuteChanged;
         private Action DoWork;
@@ -18,7 +22,10 @@ namespace QuanLyThuVien.Commands
 
         public bool CanExecute(object parameter)
         {
+<<<<<<< HEAD
             //return DoWork != null;
+=======
+>>>>>>> main
             return true;
         }
 

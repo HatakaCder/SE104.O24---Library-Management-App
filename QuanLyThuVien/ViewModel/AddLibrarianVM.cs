@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien.ViewModel
 {
-    class LibarianVM
+    public class AddLibrarianVM
     {
     }
 }
