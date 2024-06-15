@@ -156,7 +156,10 @@ namespace QuanLyThuVien.ViewModel
         {
             bool isSaved = ObjDataOperation.Add_Reader(AddReader);
             if (isSaved)
+            {
+                System.Windows.MessageBox.Show("Thêm độc giả thành công");
                 LoadData();
+            }
         }
 
         public void SavePopUp()
@@ -191,7 +194,10 @@ namespace QuanLyThuVien.ViewModel
                 var isUpdated = ObjDataOperation.update(UpdateReader);
 
                 if (isUpdated)
+                {
+                    System.Windows.MessageBox.Show("Chỉnh sửa thông tin độc giả thành công!");
                     LoadData();
+                }
             }
             catch (Exception ex)
             {
@@ -210,6 +216,13 @@ namespace QuanLyThuVien.ViewModel
             try
             {
                 selectedReaders = new ObservableCollection<READER>(ObjDataOperation.getAllSelectedReaders());
+
+                if (selectedReaders.Count == 0) return;
+
+                MessageBoxResult confirm = System.Windows.MessageBox.Show("Bạn có chắc chắn muốn xóa những độc giả này?", "Xác nhận", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
+                if (confirm == MessageBoxResult.Cancel) return;
+
                 var isDeleted = ObjDataOperation.Delete_Reader(new List<READER>(selectedReaders));
                 if (isDeleted)
                     LoadData();

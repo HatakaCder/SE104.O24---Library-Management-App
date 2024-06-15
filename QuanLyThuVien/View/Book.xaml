@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
-             xmlns:v="clt-namespace:QuanLyThuVien.View"
+             xmlns:local="clt-namespace:QuanLyThuVien.Converters"
              mc:Ignorable="d" 
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,8 +18,12 @@
             Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:BookVM/>
-        
+
     </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <local:DateFormatConverter x:Key="DateFormatConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
@@ -227,7 +231,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding Path=NgayNhap}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding NgayNhap, Converter={StaticResource DateFormatConverter}}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>

@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Net.Mail;
 using System.Diagnostics.Eventing.Reader;
+using System.Media;
 
 namespace QuanLyThuVien.Model
 {
@@ -87,6 +88,7 @@ namespace QuanLyThuVien.Model
         #region Check_Book_Information
         private int CheckInformation(BOOK objBook)
         {
+            if (objBook.NhaXB == null || objBook.TheLoai == null || objBook.TenSach == null || objBook.TacGia == null) return 6;
             // Năm xuất bản bé hơn hoặc bằng năm nhập
             int NamXB_Less_NamNhap = objBook.NgayNhap.Year - objBook.NamXB; // >= 0
             if (NamXB_Less_NamNhap < 0) return 1;
@@ -130,15 +132,23 @@ namespace QuanLyThuVien.Model
             switch (check)
             {
                 case 1:
-                    throw new ArgumentException("Năm xuất bản phải bé hơn hoặc bằng năm nhập.");
+                    System.Windows.MessageBox.Show("Năm xuất bản phải bé hơn hoặc bằng năm nhập!");
+                    return false;
                 case 2:
-                    throw new ArgumentException("Ngày nhập phải bé hơn hoặc bằng ngày hiện tại.");
+                    System.Windows.MessageBox.Show("Ngày nhập phải bé hơn hoặc bằng ngày hiện tại!");
+                    return false;
                 case 3:
-                    throw new ArgumentException("Năm xuất bản phải là số nguyên dương.");
+                    System.Windows.MessageBox.Show("Năm xuất bản phải là số nguyên dương!");
+                    return false;
                 case 4:
-                    throw new ArgumentException("Trị giá phải là số nguyên dương.");
+                    System.Windows.MessageBox.Show("Trị giá phải là số nguyên dương!");
+                    return false;
                 case 5:
-                    throw new ArgumentException("Định dạng kiểu ngày tháng chưa đúng.");
+                    System.Windows.MessageBox.Show("Định dạng kiểu ngày tháng chưa đúng!");
+                    return false;
+                case 6:
+                    System.Windows.MessageBox.Show("Vui lòng điền đẩy đủ thông tin để thêm sách!");
+                    return false;
             }
             #endregion
 
@@ -361,6 +371,8 @@ namespace QuanLyThuVien.Model
         #region Check_Reader_Information
         private int CheckInformation(READER objReader)
         {
+            if (objReader.HoTen == null || objReader.GioiTinh == null || objReader.NgaySinh == null || objReader.SoDT == null || objReader.Email == null) return 7;
+
             // Giới tính phải thuộc nam hoặc nữ
             if (objReader.GioiTinh != "Nam" && objReader.GioiTinh != "Nữ" && objReader.GioiTinh != "nam" && objReader.GioiTinh != "nữ") return 1;
 
@@ -416,17 +428,26 @@ namespace QuanLyThuVien.Model
             switch (check)
             {
                 case 1:
-                    throw new ArgumentException("Giới tính chưa hợp lệ.");
+                    System.Windows.MessageBox.Show("Giới tính chưa hợp lệ!");
+                    return false;
                 case 2:
-                    throw new ArgumentException("Định dạng ngày sinh chưa hợp lệ.");
+                    System.Windows.MessageBox.Show("Định dạng ngày sinh chưa hợp lệ!");
+                    return false;
                 case 3:
-                    throw new ArgumentException("Định dạng ngày lập thẻ chưa hợp lệ.");
+                    System.Windows.MessageBox.Show("Định dạng ngày lập thẻ chưa hợp lệ!");
+                    return false;
                 case 4:
-                    throw new ArgumentException("Chưa đủ tuổi đăng ký thẻ độc giả.");
+                    System.Windows.MessageBox.Show("Chưa đủ tuổi đăng ký thẻ độc giả!");
+                    return false;
                 case 5:
-                    throw new ArgumentException("Định dạng email chưa hợp lệ.");
+                    System.Windows.MessageBox.Show("Định dạng email chưa hợp lệ!");
+                    return false;
                 case 6:
-                    throw new ArgumentException("Số điện thoại chưa hợp lệ.");
+                    System.Windows.MessageBox.Show("Số điện thoại chưa hợp lệ!");
+                    return false;
+                case 7:
+                    System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để thêm độc giả!");
+                    return false;
             }
             #endregion
 

@@ -102,6 +102,7 @@
       <DependentUpon>ADOModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="DOCGIA.cs">
       <DependentUpon>ADOModel.tt</DependentUpon>
     </Compile>

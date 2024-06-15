@@ -173,7 +173,10 @@ namespace QuanLyThuVien.ViewModel
             {
                 var IsSaved = ObjDataOperation.Add_Book(AddBook);
                 if (IsSaved)
+                {
+                    System.Windows.MessageBox.Show("Thêm sách thành công!");
                     LoadData();
+                }
             }
             catch (Exception ex)
             {
@@ -192,9 +195,12 @@ namespace QuanLyThuVien.ViewModel
             try
             {
                 var isUpdated = ObjDataOperation.update(UpdateBook);
-                
+
                 if (isUpdated)
+                {
+                    System.Windows.MessageBox.Show("Chỉnh sửa sách thành công!");
                     LoadData();
+                }
             }
             catch (Exception ex)
             {
@@ -212,6 +218,13 @@ namespace QuanLyThuVien.ViewModel
             try
             {
                 selectedBooks = new ObservableCollection<BOOK>(ObjDataOperation.getSelectedBooks());
+
+                if (selectedBooks.Count == 0) return;
+
+                MessageBoxResult confirm = System.Windows.MessageBox.Show("Bạn có chắc chắn muốn xóa những cuốn sách này?", "Xác nhận", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
+                if (confirm == MessageBoxResult.Cancel) return;
+
                 var isSaved = ObjDataOperation.Delete_Book(new List<BOOK>(selectedBooks));
                 if (isSaved)
                     LoadData();
