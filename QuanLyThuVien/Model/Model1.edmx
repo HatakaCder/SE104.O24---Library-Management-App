@@ -30,19 +30,17 @@
           <Property Name="NgayLapThe" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <EntityType Name="PARAMETERs">
+        <EntityType Name="PARAMETERS">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDDocGia" Type="int" Nullable="false" />
-          <Property Name="IDThuThu" Type="int" Nullable="false" />
-          <Property Name="IDSach" Type="int" Nullable="false" />
-          <Property Name="IDPhMuon" Type="int" Nullable="false" />
-          <Property Name="IDPhThu" Type="int" Nullable="false" />
-          <Property Name="IDPhTra" Type="int" Nullable="false" />
-          <Property Name="SoNgMuonTD" Type="int" Nullable="false" />
-          <Property Name="TuoiTThieu" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDDocGia" Type="smallint" Nullable="false" />
+          <Property Name="IDThuThu" Type="smallint" Nullable="false" />
+          <Property Name="IDSach" Type="smallint" Nullable="false" />
+          <Property Name="IDPhieuMuon" Type="smallint" Nullable="false" />
+          <Property Name="IDPhieuTra" Type="smallint" Nullable="false" />
+          <Property Name="IDMaTT" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUMUON">
           <Key>
@@ -86,8 +84,24 @@
           <Property Name="NhaXB" Type="nvarchar" MaxLength="255" />
           <Property Name="NgayNhap" Type="date" />
           <Property Name="TriGia" Type="int" />
-          <Property Name="TinhTrang" Type="bit" />
+          <Property Name="TinhTrang" Type="smallint" />
           <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TuoiToiTieuDocGia" Type="int" />
+          <Property Name="TuoiToiDaDocGia" Type="int" />
+          <Property Name="TuoiToiTieuThuThu" Type="int" />
+          <Property Name="TuoiToiDaThuThu" Type="int" />
+          <Property Name="ThoiHanThe" Type="int" />
+          <Property Name="SoNgayMuonToiDa" Type="int" />
+          <Property Name="SoTienNopTre" Type="int" />
+          <Property Name="SoSachMuonToiDa" Type="int" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="int" />
+          <Property Name="ThoiGianNhapSach" Type="int" />
         </EntityType>
         <EntityType Name="THELOAI">
           <Key>
@@ -110,7 +124,7 @@
           <Property Name="SoDT" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <Association Name="FK__ACCOUNT__MaDG__6754599E">
+        <Association Name="FK__ACCOUNT__MaDG__5165187F">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACCOUNT__MaTT__68487DD7">
+        <Association Name="FK__ACCOUNT__MaTT__52593CB8">
           <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="0..1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaDG__59FA5E80">
+        <Association Name="FK__PHIEUMUON__MaDG__4222D4EF">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaSac__5AEE82B9">
+        <Association Name="FK__PHIEUMUON__MaSac__4316F928">
           <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTHU__MaPhTr__628FA481">
+        <Association Name="FK__PHIEUTHU__MaPhTr__4AB81AF0">
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
           <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTRA__MaPhMu__5EBF139D">
+        <Association Name="FK__PHIEUTRA__MaPhMu__46E78A0C">
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__TenTheLoai__3A81B327">
+        <Association Name="FK__SACH__TenTheLoai__3D5E1FD2">
           <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,38 +211,39 @@
         <EntityContainer Name="QLTV_BETAModelStoreContainer">
           <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PARAMETERs" EntityType="Self.PARAMETERs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ACCOUNT__MaDG__6754599E" Association="Self.FK__ACCOUNT__MaDG__6754599E">
+          <AssociationSet Name="FK__ACCOUNT__MaDG__5165187F" Association="Self.FK__ACCOUNT__MaDG__5165187F">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACCOUNT__MaTT__68487DD7" Association="Self.FK__ACCOUNT__MaTT__68487DD7">
+          <AssociationSet Name="FK__ACCOUNT__MaTT__52593CB8" Association="Self.FK__ACCOUNT__MaTT__52593CB8">
             <End Role="THUTHU" EntitySet="THUTHU" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaDG__59FA5E80" Association="Self.FK__PHIEUMUON__MaDG__59FA5E80">
+          <AssociationSet Name="FK__PHIEUMUON__MaDG__4222D4EF" Association="Self.FK__PHIEUMUON__MaDG__4222D4EF">
             <End Role="DOCGIA" EntitySet="DOCGIA" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaSac__5AEE82B9" Association="Self.FK__PHIEUMUON__MaSac__5AEE82B9">
+          <AssociationSet Name="FK__PHIEUMUON__MaSac__4316F928" Association="Self.FK__PHIEUMUON__MaSac__4316F928">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__628FA481" Association="Self.FK__PHIEUTHU__MaPhTr__628FA481">
+          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__4AB81AF0" Association="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0">
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__5EBF139D" Association="Self.FK__PHIEUTRA__MaPhMu__5EBF139D">
+          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__46E78A0C" Association="Self.FK__PHIEUTRA__MaPhMu__46E78A0C">
             <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
             <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__TenTheLoai__3A81B327" Association="Self.FK__SACH__TenTheLoai__3A81B327">
+          <AssociationSet Name="FK__SACH__TenTheLoai__3D5E1FD2" Association="Self.FK__SACH__TenTheLoai__3D5E1FD2">
             <End Role="THELOAI" EntitySet="THELOAI" />
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
@@ -248,8 +263,8 @@
           <Property Name="MaTT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="VaiTro" Type="Int16" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__ACCOUNT__MaDG__6754599E" FromRole="ACCOUNT" ToRole="DOCGIA" />
-          <NavigationProperty Name="THUTHU" Relationship="Self.FK__ACCOUNT__MaTT__68487DD7" FromRole="ACCOUNT" ToRole="THUTHU" />
+          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__ACCOUNT__MaDG__5165187F" FromRole="ACCOUNT" ToRole="DOCGIA" />
+          <NavigationProperty Name="THUTHU" Relationship="Self.FK__ACCOUNT__MaTT__52593CB8" FromRole="ACCOUNT" ToRole="THUTHU" />
         </EntityType>
         <EntityType Name="DOCGIA">
           <Key>
@@ -264,22 +279,20 @@
           <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NgayLapThe" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaDG__6754599E" FromRole="DOCGIA" ToRole="ACCOUNT" />
-          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaDG__59FA5E80" FromRole="DOCGIA" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaDG__5165187F" FromRole="DOCGIA" ToRole="ACCOUNT" />
+          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaDG__4222D4EF" FromRole="DOCGIA" ToRole="PHIEUMUON" />
         </EntityType>
         <EntityType Name="PARAMETER">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDDocGia" Type="Int32" Nullable="false" />
-          <Property Name="IDThuThu" Type="Int32" Nullable="false" />
-          <Property Name="IDSach" Type="Int32" Nullable="false" />
-          <Property Name="IDPhMuon" Type="Int32" Nullable="false" />
-          <Property Name="IDPhThu" Type="Int32" Nullable="false" />
-          <Property Name="IDPhTra" Type="Int32" Nullable="false" />
-          <Property Name="SoNgMuonTD" Type="Int32" Nullable="false" />
-          <Property Name="TuoiTThieu" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDDocGia" Type="Int16" Nullable="false" />
+          <Property Name="IDThuThu" Type="Int16" Nullable="false" />
+          <Property Name="IDSach" Type="Int16" Nullable="false" />
+          <Property Name="IDPhieuMuon" Type="Int16" Nullable="false" />
+          <Property Name="IDPhieuTra" Type="Int16" Nullable="false" />
+          <Property Name="IDMaTT" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUMUON">
           <Key>
@@ -291,9 +304,9 @@
           <Property Name="NgayMuon" Type="DateTime" Precision="0" />
           <Property Name="NgayPhTra" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__PHIEUMUON__MaDG__59FA5E80" FromRole="PHIEUMUON" ToRole="DOCGIA" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__PHIEUMUON__MaSac__5AEE82B9" FromRole="PHIEUMUON" ToRole="SACH" />
-          <NavigationProperty Name="PHIEUTRAs" Relationship="Self.FK__PHIEUTRA__MaPhMu__5EBF139D" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
+          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__PHIEUMUON__MaDG__4222D4EF" FromRole="PHIEUMUON" ToRole="DOCGIA" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="PHIEUMUON" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUTRAs" Relationship="Self.FK__PHIEUTRA__MaPhMu__46E78A0C" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
         </EntityType>
         <EntityType Name="PHIEUTHU">
           <Key>
@@ -304,7 +317,7 @@
           <Property Name="SoNgayQHan" Type="Int16" />
           <Property Name="SoTienThu" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTHU__MaPhTr__628FA481" FromRole="PHIEUTHU" ToRole="PHIEUTRA" />
+          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0" FromRole="PHIEUTHU" ToRole="PHIEUTRA" />
         </EntityType>
         <EntityType Name="PHIEUTRA">
           <Key>
@@ -314,8 +327,8 @@
           <Property Name="MaPhMuon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="NgayTra" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUTRA__MaPhMu__5EBF139D" FromRole="PHIEUTRA" ToRole="PHIEUMUON" />
-          <NavigationProperty Name="PHIEUTHUs" Relationship="Self.FK__PHIEUTHU__MaPhTr__628FA481" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUTRA__MaPhMu__46E78A0C" FromRole="PHIEUTRA" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="PHIEUTHUs" Relationship="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -329,10 +342,26 @@
           <Property Name="NhaXB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NgayNhap" Type="DateTime" Precision="0" />
           <Property Name="TriGia" Type="Int32" />
-          <Property Name="TinhTrang" Type="Boolean" />
+          <Property Name="TinhTrang" Type="Int16" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaSac__5AEE82B9" FromRole="SACH" ToRole="PHIEUMUON" />
-          <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__TenTheLoai__3A81B327" FromRole="SACH" ToRole="THELOAI" />
+          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="SACH" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="SACH" ToRole="THELOAI" />
+        </EntityType>
+        <EntityType Name="SETTING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TuoiToiTieuDocGia" Type="Int32" />
+          <Property Name="TuoiToiDaDocGia" Type="Int32" />
+          <Property Name="TuoiToiTieuThuThu" Type="Int32" />
+          <Property Name="TuoiToiDaThuThu" Type="Int32" />
+          <Property Name="ThoiHanThe" Type="Int32" />
+          <Property Name="SoNgayMuonToiDa" Type="Int32" />
+          <Property Name="SoTienNopTre" Type="Int32" />
+          <Property Name="SoSachMuonToiDa" Type="Int32" />
+          <Property Name="SoLuongTheLoaiToiDa" Type="Int32" />
+          <Property Name="ThoiGianNhapSach" Type="Int32" />
         </EntityType>
         <EntityType Name="THELOAI">
           <Key>
@@ -340,7 +369,7 @@
           </Key>
           <Property Name="TenTheLoai" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__TenTheLoai__3A81B327" FromRole="THELOAI" ToRole="SACH" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="THELOAI" ToRole="SACH" />
         </EntityType>
         <EntityType Name="THUTHU">
           <Key>
@@ -355,9 +384,9 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaTT__68487DD7" FromRole="THUTHU" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaTT__52593CB8" FromRole="THUTHU" ToRole="ACCOUNT" />
         </EntityType>
-        <Association Name="FK__ACCOUNT__MaDG__6754599E">
+        <Association Name="FK__ACCOUNT__MaDG__5165187F">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -369,7 +398,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACCOUNT__MaTT__68487DD7">
+        <Association Name="FK__ACCOUNT__MaTT__52593CB8">
           <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="0..1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaDG__59FA5E80">
+        <Association Name="FK__PHIEUMUON__MaDG__4222D4EF">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,7 +422,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUMUON__MaSac__5AEE82B9">
+        <Association Name="FK__PHIEUMUON__MaSac__4316F928">
           <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -405,7 +434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTRA__MaPhMu__5EBF139D">
+        <Association Name="FK__PHIEUTRA__MaPhMu__46E78A0C">
           <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="0..1" />
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -417,7 +446,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUTHU__MaPhTr__628FA481">
+        <Association Name="FK__PHIEUTHU__MaPhTr__4AB81AF0">
           <End Role="PHIEUTRA" Type="Self.PHIEUTRA" Multiplicity="0..1" />
           <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -429,7 +458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__TenTheLoai__3A81B327">
+        <Association Name="FK__SACH__TenTheLoai__3D5E1FD2">
           <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,38 +473,39 @@
         <EntityContainer Name="QLTV_BETAEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
           <EntitySet Name="DOCGIAs" EntityType="Self.DOCGIA" />
-          <EntitySet Name="PARAMETERs" EntityType="Self.PARAMETER" />
+          <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETER" />
           <EntitySet Name="PHIEUMUONs" EntityType="Self.PHIEUMUON" />
           <EntitySet Name="PHIEUTHUs" EntityType="Self.PHIEUTHU" />
           <EntitySet Name="PHIEUTRAs" EntityType="Self.PHIEUTRA" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="SETTINGs" EntityType="Self.SETTING" />
           <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
           <EntitySet Name="THUTHUs" EntityType="Self.THUTHU" />
-          <AssociationSet Name="FK__ACCOUNT__MaDG__6754599E" Association="Self.FK__ACCOUNT__MaDG__6754599E">
+          <AssociationSet Name="FK__ACCOUNT__MaDG__5165187F" Association="Self.FK__ACCOUNT__MaDG__5165187F">
             <End Role="DOCGIA" EntitySet="DOCGIAs" />
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACCOUNT__MaTT__68487DD7" Association="Self.FK__ACCOUNT__MaTT__68487DD7">
+          <AssociationSet Name="FK__ACCOUNT__MaTT__52593CB8" Association="Self.FK__ACCOUNT__MaTT__52593CB8">
             <End Role="THUTHU" EntitySet="THUTHUs" />
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaDG__59FA5E80" Association="Self.FK__PHIEUMUON__MaDG__59FA5E80">
+          <AssociationSet Name="FK__PHIEUMUON__MaDG__4222D4EF" Association="Self.FK__PHIEUMUON__MaDG__4222D4EF">
             <End Role="DOCGIA" EntitySet="DOCGIAs" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUMUON__MaSac__5AEE82B9" Association="Self.FK__PHIEUMUON__MaSac__5AEE82B9">
+          <AssociationSet Name="FK__PHIEUMUON__MaSac__4316F928" Association="Self.FK__PHIEUMUON__MaSac__4316F928">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__5EBF139D" Association="Self.FK__PHIEUTRA__MaPhMu__5EBF139D">
+          <AssociationSet Name="FK__PHIEUTRA__MaPhMu__46E78A0C" Association="Self.FK__PHIEUTRA__MaPhMu__46E78A0C">
             <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
             <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__628FA481" Association="Self.FK__PHIEUTHU__MaPhTr__628FA481">
+          <AssociationSet Name="FK__PHIEUTHU__MaPhTr__4AB81AF0" Association="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0">
             <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__TenTheLoai__3A81B327" Association="Self.FK__SACH__TenTheLoai__3A81B327">
+          <AssociationSet Name="FK__SACH__TenTheLoai__3D5E1FD2" Association="Self.FK__SACH__TenTheLoai__3D5E1FD2">
             <End Role="THELOAI" EntitySet="THELOAIs" />
             <End Role="SACH" EntitySet="SACHes" />
           </AssociationSet>
@@ -513,18 +543,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PARAMETERs">
+          <EntitySetMapping Name="PARAMETERS">
             <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETER">
-              <MappingFragment StoreEntitySet="PARAMETERs">
+              <MappingFragment StoreEntitySet="PARAMETERS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
                 <ScalarProperty Name="IDThuThu" ColumnName="IDThuThu" />
                 <ScalarProperty Name="IDSach" ColumnName="IDSach" />
-                <ScalarProperty Name="IDPhMuon" ColumnName="IDPhMuon" />
-                <ScalarProperty Name="IDPhThu" ColumnName="IDPhThu" />
-                <ScalarProperty Name="IDPhTra" ColumnName="IDPhTra" />
-                <ScalarProperty Name="SoNgMuonTD" ColumnName="SoNgMuonTD" />
-                <ScalarProperty Name="TuoiTThieu" ColumnName="TuoiTThieu" />
+                <ScalarProperty Name="IDPhieuMuon" ColumnName="IDPhieuMuon" />
+                <ScalarProperty Name="IDPhieuTra" ColumnName="IDPhieuTra" />
+                <ScalarProperty Name="IDMaTT" ColumnName="IDMaTT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -574,6 +602,23 @@
                 <ScalarProperty Name="TriGia" ColumnName="TriGia" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SETTINGs">
+            <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
+              <MappingFragment StoreEntitySet="SETTING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TuoiToiTieuDocGia" ColumnName="TuoiToiTieuDocGia" />
+                <ScalarProperty Name="TuoiToiDaDocGia" ColumnName="TuoiToiDaDocGia" />
+                <ScalarProperty Name="TuoiToiTieuThuThu" ColumnName="TuoiToiTieuThuThu" />
+                <ScalarProperty Name="TuoiToiDaThuThu" ColumnName="TuoiToiDaThuThu" />
+                <ScalarProperty Name="ThoiHanThe" ColumnName="ThoiHanThe" />
+                <ScalarProperty Name="SoNgayMuonToiDa" ColumnName="SoNgayMuonToiDa" />
+                <ScalarProperty Name="SoTienNopTre" ColumnName="SoTienNopTre" />
+                <ScalarProperty Name="SoSachMuonToiDa" ColumnName="SoSachMuonToiDa" />
+                <ScalarProperty Name="SoLuongTheLoaiToiDa" ColumnName="SoLuongTheLoaiToiDa" />
+                <ScalarProperty Name="ThoiGianNhapSach" ColumnName="ThoiGianNhapSach" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
