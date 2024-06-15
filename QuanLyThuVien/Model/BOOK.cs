@@ -44,8 +44,8 @@ namespace QuanLyThuVien.Model
             get { return tacGia; }
             set { tacGia = value; OnPropertyChanged("TacGia"); }
         }
-        private short namXB;
-        public short NamXB
+        private string namXB;
+        public string NamXB
         {
             get { return namXB; }
             set { namXB = value; OnPropertyChanged("NamXB"); }
@@ -56,30 +56,24 @@ namespace QuanLyThuVien.Model
             get { return nhaXB; }
             set { nhaXB = value; OnPropertyChanged("NhaXB"); }
         }
-        private DateTime ngayNhap;
-        public DateTime NgayNhap
+        private string ngayNhap;
+        public string NgayNhap
         {
             get { return ngayNhap; }
             set { ngayNhap = value; OnPropertyChanged("NgayNhap"); }
         }
-        private int triGia;
-        public int TriGia
+        private string triGia;
+        public string TriGia
         {
             get { return triGia; }
             set { triGia = value; OnPropertyChanged("TriGia"); }
         }
-        private short tinhTrang;
-        public short TinhTrang
+        private string tinhTrang;
+        public string TinhTrang
         {
             get { return tinhTrang; }
             set { tinhTrang = value; OnPropertyChanged("TinhTrang"); }
         }
 
-        private bool isSelected;
-        public bool IsSelected
-        {
-            get { return isSelected; }
-            set { isSelected = value; OnPropertyChanged(nameof(IsSelected)); }
-        }
     }
 }

@@ -16,7 +16,7 @@
              d:DesignHeight="800" d:DesignWidth="990"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
-        <vm:ReaderUCVM/>
+        <vm:ReaderUCVM></vm:ReaderUCVM>
     </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray" Background="Snow" Margin="15">
@@ -103,11 +103,11 @@
                     Margin="8,0,0,0"
                     VerticalAlignment="Center"
                     materialDesign:HintAssist.Hint="Tìm kiếm"
-                    Text="{Binding Path=Items}"                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0" />
                         <Button
                     Grid.Column="2"
-                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=SearchCommand}">
+                    Style="{StaticResource MaterialDesignToolButton}">
                             <materialDesign:PackIcon
                       Margin="8,0,0,0"
                       Kind="Send"
@@ -120,18 +120,17 @@
                             <ComboBox                           
                                    Margin="2"
                                    Width="200"
-                                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
                                    materialDesign:HintAssist.Hint="Tìm kiếm theo"
                                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Tất cả" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Họ tên" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Ngày lập thẻ" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
 
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid Name="dataTable" BorderBrush="Gray" BorderThickness="0.5"   
+                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
           Background="White"
@@ -144,14 +143,10 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}"
-                              SelectedItem="{Binding Path=UpdateReader}"
-                              SelectionMode="Extended" 
+          ItemsSource="{Binding}"
           >
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
-                            
-                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=MaDG}">
+                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -161,56 +156,35 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=HoTen}">
+                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Họ tên" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Tên sách" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding Path=GioiTinh}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Giới tính" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Tác giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=NgaySinh}">
+                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Ngày sinh" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="Tình trạng" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
-
-                            <DataGridTextColumn Width="*" Binding="{Binding Path=Email}" IsReadOnly="True">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="Địa chỉ Email" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=NgayLapThe}">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="Ngày lập thẻ" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -219,15 +193,14 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                             <Button
-                                Name="btAddReader"
-                                Background="#FADBD8" 
+                                Background="#FADBD8"
                       Content="Thêm"
                       Margin="15"
                       Width="150"
                       Height="50"
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      ToolTip="Thêm độc giả" Command="{Binding Path=SavePopUpCommand}" />
+                      ToolTip="Thêm độc giả" />
                             <Button
                                 Background="#FADBD8"
                       Content="Xóa"
@@ -235,20 +208,17 @@
                       Height="50"                                      
                       Margin="15"
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Command="{Binding Path=DeleteCommand}"
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
                       ToolTip="Xóa độc giả" />
                             <Button
-                                Name="btUpdateReader"
                                 Background="#FADBD8"
                       Content="Sửa"
                       Width="150"
                       Height="50"                                      
-                      Margin="15"  
-                                
+                      Margin="15"                                      
                       IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                       Style="{StaticResource MaterialDesignRaisedLightButton}"
-                      ToolTip="Sửa độc giả" Command="{Binding Path=UpdatePopUpCommand}" />
+                      ToolTip="Sửa độc giả" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>

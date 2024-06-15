@@ -7,18 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mvvm_demo.Models
+namespace QuanLyThuVien.Model
 {
     using System;
     using System.Collections.Generic;
     
-<<<<<<<< HEAD:mvvm_demo/mvvm_demo/mvvm_demo/Models/Employee.cs
-    public partial class Employee
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-========
     public partial class ACCOUNT
     {
         public string TaiKhoan { get; set; }
@@ -30,6 +23,5 @@ namespace mvvm_demo.Models
     
         public virtual DOCGIA DOCGIA { get; set; }
         public virtual THUTHU THUTHU { get; set; }
->>>>>>>> main:QuanLyThuVien/Model/ACCOUNT.cs
     }
 }
