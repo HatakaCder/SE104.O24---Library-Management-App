@@ -179,31 +179,39 @@ namespace QuanLyThuVien.View
         //Xuat du lieu PHIEUTHU ra file excel
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            string fileName = "PHIEUTHULIST.xlsx";
+            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
+
             try
             {
-                string fileName = "PHIEUTHULIST.xlsx";
-                string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
+                // Ensure the directory exists
+                string directory = System.IO.Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
 
                 FileInfo file = new FileInfo(filePath);
                 bool fileExists = file.Exists;
 
-                using (ExcelPackage package = fileExists ? new ExcelPackage(file) : new ExcelPackage())
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                using (ExcelPackage package = new ExcelPackage(file))
                 {
-                    ExcelWorksheet worksheet;
-                    if (fileExists)
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault(ws => ws.Name == "PHIEUTHU");
+
+                    if (worksheet == null)
                     {
-                        worksheet = package.Workbook.Worksheets.FirstOrDefault(ws => ws.Name == "PHIEUTHU");
-                        if (worksheet != null)
-                        {
-                            worksheet.Cells["A2:E1048576"].Clear();
-                        }
+                        // Add new worksheet
+                        worksheet = package.Workbook.Worksheets.Add("PHIEUTHU");
                     }
                     else
                     {
-
-                        worksheet = package.Workbook.Worksheets.Add("PHIEUTHU");
+                        // Clear existing content
+                        worksheet.Cells["A2:E1048576"].Clear();
                     }
 
+                    // Set header information
                     worksheet.Cells["A1:E1"].Merge = true;
                     worksheet.Cells["A1"].Value = "Danh sách phiếu thu";
                     worksheet.Cells["A1"].Style.Font.Size = 18;
@@ -231,6 +239,7 @@ namespace QuanLyThuVien.View
                                     SoTienThu = pt.SoTienThu
                                 };
 
+                    // Write data to worksheet
                     int row = 4;
                     foreach (var item in query)
                     {
@@ -242,6 +251,7 @@ namespace QuanLyThuVien.View
                         row++;
                     }
 
+                    // Apply border styles
                     using (ExcelRange headerCells = worksheet.Cells["A3:E3"])
                     {
                         headerCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
@@ -258,8 +268,10 @@ namespace QuanLyThuVien.View
                         dataCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
                     }
 
+                    // Auto fit columns
                     worksheet.Cells.AutoFitColumns();
 
+                    // Save the package
                     package.Save();
 
                     MessageBox.Show("Đã cập nhật file Excel thành công: " + filePath, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);

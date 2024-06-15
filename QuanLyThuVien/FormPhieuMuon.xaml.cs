@@ -100,7 +100,7 @@ namespace QuanLyThuVien
         {
             string entityConnectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
                                             provider=System.Data.SqlClient;
-                                            provider connection string='data source=.;
+                                            provider connection string='data source=LAPTOP-I0RDQ5NR\SQLEXPRESS01;
                                             initial catalog=QLTV_BETA;
                                             integrated security=True;
                                             encrypt=False;

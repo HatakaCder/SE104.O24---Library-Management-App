@@ -177,6 +177,7 @@
     <Compile Include="Class\PasswordBoxHelper.cs" />
     <Compile Include="Class\PasswordHashing.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="FormPhieuMuon.xaml.cs">
       <DependentUpon>FormPhieuMuon.xaml</DependentUpon>
     </Compile>
@@ -532,6 +533,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

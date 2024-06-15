@@ -47,6 +47,7 @@ namespace QuanLyThuVien.ViewModel
             passwordHashing = new PasswordHashing();
             deleteCommand = new RelayCommand(Delete);
             searchCommand = new RelayCommand(Search);
+            
         }
         #region DisplayOperation
         private ObservableCollection<LibrarianDTO> librariansList;
@@ -122,6 +123,7 @@ namespace QuanLyThuVien.ViewModel
         {
             CurrentLibrarian = new LibrarianDTO();
             CurrentLibrarian.GioiTinh = selectedOption;
+            CurrentLibrarian.NgaySinh = DateTime.Now;
             AddLibrarian v = new AddLibrarian(this);
             v.Show();
         }
@@ -246,6 +248,7 @@ namespace QuanLyThuVien.ViewModel
                 if (IsDeleted)
                 {
                     MessageBox.Show("Xoá dữ liệu được chọn thành công!");
+                    LoadData();
                 }
             }
             catch (Exception)

@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:QuanLyThuVien.Converters"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
@@ -15,6 +16,9 @@
              FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="800" d:DesignWidth="990"
              Style="{StaticResource Page_Style}">
+    <UserControl.Resources>
+        <local:DateFormatConverter x:Key="DateFormatConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Border 
             CornerRadius="10" 
@@ -194,7 +198,7 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding NgayLapThe}" 
+                                    Binding="{Binding NgayLapThe, Converter={StaticResource DateFormatConverter}}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -285,7 +289,7 @@
 
                                 <DataGridTextColumn 
                                     Width="1.2*" 
-                                    Binding="{Binding ngaymuon}" 
+                                    Binding="{Binding ngaymuon, Converter={StaticResource DateFormatConverter}}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -302,7 +306,7 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding ngaytra}" 
+                                    Binding="{Binding ngaytra, Converter={StaticResource DateFormatConverter}}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>

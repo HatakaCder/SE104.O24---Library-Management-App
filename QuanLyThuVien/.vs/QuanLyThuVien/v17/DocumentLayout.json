@@ -1,0 +1,273 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\services\\librarianservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\librarianservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\viewmodel\\librarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\librarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\addlibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addlibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\viewmodel\\addlibrarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\addlibrarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\bookborrow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\bookborrow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\formphieumuon.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:formphieumuon.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\obj\\Debug\\View\\BookBorrow.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\View\\BookBorrow.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\view\\librarian.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\librarian.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\model\\librariandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:model\\librariandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\projects\\se104.o24---library-management-app\\quanlythuvien\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LibrarianService.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Services\\LibrarianService.cs",
+              "RelativeDocumentMoniker": "Services\\LibrarianService.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Services\\LibrarianService.cs",
+              "RelativeToolTip": "Services\\LibrarianService.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAAAwLcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:43:59.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddLibrarian.xaml",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\AddLibrarian.xaml",
+              "RelativeDocumentMoniker": "View\\AddLibrarian.xaml",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\AddLibrarian.xaml",
+              "RelativeToolTip": "View\\AddLibrarian.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-15T05:43:02.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddLibrarianVM.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\AddLibrarianVM.cs",
+              "RelativeDocumentMoniker": "ViewModel\\AddLibrarianVM.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\AddLibrarianVM.cs",
+              "RelativeToolTip": "ViewModel\\AddLibrarianVM.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:42:14.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-15T05:30:11.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Librarian.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\Librarian.xaml.cs",
+              "RelativeDocumentMoniker": "View\\Librarian.xaml.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\Librarian.xaml.cs",
+              "RelativeToolTip": "View\\Librarian.xaml.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAmwEAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:23:57.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookBorrow.g.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\obj\\Debug\\View\\BookBorrow.g.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\View\\BookBorrow.g.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\obj\\Debug\\View\\BookBorrow.g.cs",
+              "RelativeToolTip": "obj\\Debug\\View\\BookBorrow.g.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAD4vw4AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:18:52.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormPhieuMuon.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\FormPhieuMuon.xaml.cs",
+              "RelativeDocumentMoniker": "FormPhieuMuon.xaml.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\FormPhieuMuon.xaml.cs",
+              "RelativeToolTip": "FormPhieuMuon.xaml.cs",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAowGYAAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:10:29.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookBorrow.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\BookBorrow.xaml.cs",
+              "RelativeDocumentMoniker": "View\\BookBorrow.xaml.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\BookBorrow.xaml.cs",
+              "RelativeToolTip": "View\\BookBorrow.xaml.cs",
+              "ViewState": "AQIAAJwAAAAAAAAAAAA4wHAAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T05:11:33.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Librarian.xaml",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeDocumentMoniker": "View\\Librarian.xaml",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeToolTip": "View\\Librarian.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-15T04:20:52.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookBorrow.xaml",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\BookBorrow.xaml",
+              "RelativeDocumentMoniker": "View\\BookBorrow.xaml",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\BookBorrow.xaml",
+              "RelativeToolTip": "View\\BookBorrow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-15T05:11:31.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAD6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-06-15T05:10:59.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateLibrarian.xaml",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\UpdateLibrarian.xaml",
+              "RelativeDocumentMoniker": "View\\UpdateLibrarian.xaml",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\View\\UpdateLibrarian.xaml",
+              "RelativeToolTip": "View\\UpdateLibrarian.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-15T05:08:28.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LibrarianDTO.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Model\\LibrarianDTO.cs",
+              "RelativeDocumentMoniker": "Model\\LibrarianDTO.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\Model\\LibrarianDTO.cs",
+              "RelativeToolTip": "Model\\LibrarianDTO.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T04:11:03.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LibrarianVM.cs",
+              "DocumentMoniker": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\LibrarianVM.cs",
+              "RelativeDocumentMoniker": "ViewModel\\LibrarianVM.cs",
+              "ToolTip": "D:\\Projects\\SE104.O24---Library-Management-App\\QuanLyThuVien\\ViewModel\\LibrarianVM.cs",
+              "RelativeToolTip": "ViewModel\\LibrarianVM.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAuwJIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T04:06:06.123Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

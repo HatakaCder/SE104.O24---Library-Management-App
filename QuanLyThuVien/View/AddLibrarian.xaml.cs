@@ -25,5 +25,10 @@ namespace QuanLyThuVien.View
             this.DataContext = vm;
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

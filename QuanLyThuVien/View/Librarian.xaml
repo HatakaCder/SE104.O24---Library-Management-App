@@ -116,10 +116,12 @@ ToolTip="Đăng xuất">
                     
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5" SelectedItem="{Binding Path=SelectedLibrarian, Mode=TwoWay}" 
+                    <DataGrid BorderBrush="Gray" 
+                              BorderThickness="0.5" 
+                              SelectedItem="{Binding Path=SelectedLibrarian, Mode=TwoWay}" 
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
-          Background="White"
+          Background="White"  
           ScrollViewer.CanContentScroll="True" 
           ScrollViewer.VerticalScrollBarVisibility="Auto" 
           ScrollViewer.HorizontalScrollBarVisibility="Auto"
@@ -127,12 +129,17 @@ ToolTip="Đăng xuất">
           CanUserDeleteRows="False"
           CanUserReorderColumns="False"   
           HorizontalScrollBarVisibility="Disabled"
+          VerticalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding Path=LibrariansList, Mode=TwoWay}"
+                              x:Name="myDataGrid"
+          ItemsSource="{Binding Path=LibrariansList, Mode=TwoWay}" SelectionChanged="myDataGrid_SelectionChanged" AutomationProperties.IsRowHeader="True" RowHeight="100"                           
           >
+                        <DataGrid.RowStyleSelector>
+                            <StyleSelector/>
+                        </DataGrid.RowStyleSelector>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding Path=MaTT}">
+                            <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=MaTT}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -142,7 +149,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding Path=HoTen}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.7*" Binding="{Binding Path=HoTen}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -151,7 +158,7 @@ ToolTip="Đăng xuất">
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
-                            
+
                             <DataGridTextColumn Width="*" Binding="{Binding GioiTinh}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
@@ -162,7 +169,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding NgayVLam}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.2*" Binding="{Binding NgayVLam, StringFormat=\{0:dd/MM/yyyy\}}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -172,7 +179,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding NgaySinh}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.2*" Binding="{Binding NgaySinh, StringFormat=\{0:dd/MM/yyyy\}}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -182,7 +189,14 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding DiaChi}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.5*" Binding="{Binding DiaChi}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                        <Setter Property="VerticalAlignment" Value="Top"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -192,7 +206,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding Email}" IsReadOnly="True">
+                            <DataGridTextColumn Width="1.1*" Binding="{Binding Email}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -202,7 +216,7 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridCheckBoxColumn Binding="{Binding IsChecked}" IsReadOnly="False">
+                            <DataGridCheckBoxColumn Width ="0.7*" Binding="{Binding IsChecked}" IsReadOnly="False">
                                 <DataGridCheckBoxColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
