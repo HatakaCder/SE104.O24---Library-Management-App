@@ -78,7 +78,7 @@ namespace QuanLyThuVien.Services
                 }
                 var ObjLibrarian = new THUTHU();
                 var ObjUser = new ACCOUNT();
-                var ObjParameter = ObjContext.PARAMETERs.First();
+                var ObjParameter = ObjContext.PARAMETERS.First();
 
                 ObjLibrarian.MaTT = "TT" + ObjParameter.IDThuThu.ToString("000");
                 ObjLibrarian.HoTen = objNewLibrarian.HoTen;

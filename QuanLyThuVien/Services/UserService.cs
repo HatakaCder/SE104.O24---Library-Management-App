@@ -24,7 +24,7 @@ namespace QuanLyThuVien.Services
             {
                 var ObjUser = new ACCOUNT(); // khởi tạo user mới
                 var ObjDG = new DOCGIA();
-                var ObjParameter = ObjContext.PARAMETERs.First(); // lấy giá trị đầu từ bảng parameters
+                var ObjParameter = ObjContext.PARAMETERS.First(); // lấy giá trị đầu từ bảng parameters
 
                 ObjDG.MaDG = "DG" + ObjParameter.IDDocGia.ToString("000");
                 ObjDG.HoTen = objNewDG.HoTen;

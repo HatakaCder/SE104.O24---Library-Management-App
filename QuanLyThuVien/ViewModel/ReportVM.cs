@@ -58,7 +58,6 @@ namespace QuanLyThuVien.ViewModel
         public ObservableCollection<Report_2> rp_2;
         private void LoadData_1()
         {
-            rp_1
         }
         public void SwitchToReport1()
         {
@@ -69,6 +68,5 @@ namespace QuanLyThuVien.ViewModel
             Items = new ObservableCollection<object>(rp_2);
         }
         #endregion
-        #region AddOperation
     }
 }
