@@ -8,18 +8,58 @@ using System.Configuration;
 using System.Data;
 using QuanLyThuVien.View;
 using QLTVDemo.Models;
+using System.Data.Entity;
 
 namespace QuanLyThuVien.Model
 {
     public class DataProvider
     {
         QLTV_BETAEntities1 ObjContext;
+        private static List<READER> ObjReadersList;
+        private static List<BOOK> ObjBooksList;
+        private static List<PHIEUMUON> Objphieumuon;
+        private static List<PhieuTraDTO> Objphieutra;
 
         public DataProvider()
         {
             ObjContext = new QLTV_BETAEntities1();
+            ObjReadersList = new List<READER>();
+            ObjBooksList = new List<BOOK>();
+            Objphieumuon = new List<PHIEUMUON>();
+            Objphieutra = new List<PhieuTraDTO>();
+
         }
         #region LIBRARIAN
+
+        public List<PhieuTraDTO> GetPHIEUTHUs()
+        {
+            Objphieutra = new List<PhieuTraDTO>();
+
+            try
+            {
+                var ObjQuery = from phieutra in ObjContext.PHIEUTRAs
+                               join phieumuon in ObjContext.PHIEUMUONs on phieutra.MaPhMuon equals phieumuon.MaPhMuon
+                               join docgia in ObjContext.DOCGIAs on phieumuon.MaDG equals docgia.MaDG
+                               join sach in ObjContext.SACHes on phieumuon.MaSach equals sach.MaSach
+                               select new PhieuTraDTO
+                               {
+                                   MaPhTra = phieutra.MaPhTra,
+                                   MaPhMuon = phieutra.MaPhMuon,
+                                   NgayTra = (DateTime)phieutra.NgayTra,
+                                   MaDG = docgia.MaDG,
+                                   MaSach = sach.MaSach
+                               };
+
+                Objphieutra.AddRange(ObjQuery.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while retrieving PHIEUTRAs.", ex);
+            }
+
+            return Objphieutra;
+        }
+        
         public List<LIBRARIAN> GetTHUTHUs()
         {
             List<LIBRARIAN> ObjThuthuList = new List<LIBRARIAN>();
@@ -75,15 +115,12 @@ namespace QuanLyThuVien.Model
                     {
                         MaDG = reader.MaDG,
                         HoTen = reader.HoTen,
-                        LoaiDG = reader.LoaiDG,
                         GioiTinh = reader.GioiTinh,
                         NgaySinh = (DateTime)reader.NgaySinh,
                         DiaChi = reader.DiaChi,
                         Email = reader.Email,
                         NgayLapThe = (DateTime)reader.NgayLapThe,
                         SoDT = reader.SoDT,   
-                        SoCCCD = reader.SoCCCD,
-                        AnhDaiDien  = reader.AnhDaiDien,
                     });
                 }
 
@@ -95,6 +132,99 @@ namespace QuanLyThuVien.Model
             }
             return ObjReaderList;               
         }
+        public List<ListQuaHanModel> GetListQuaHan()
+        {
+            List<ListQuaHanModel> ObjList = new List<ListQuaHanModel>();
+            try
+            {
+                var query =  from phieumuon in ObjContext.PHIEUMUONs
+                                        where phieumuon.NgayPhTra < DateTime.Now && phieumuon.IsDeleted == false
+                                        select new ListQuaHanModel
+                            {
+                                MaPhMuon = phieumuon.MaPhMuon,
+                                MaDG = phieumuon.MaDG,
+                                MaSach = phieumuon.MaSach,
+                                DateQuaHan= DbFunctions.DiffDays(phieumuon.NgayPhTra, DateTime.Now) ?? 0,
+                                TienPhat = 1000 * DbFunctions.DiffDays(phieumuon.NgayPhTra, DateTime.Now) ?? 0
+                            };
+                ObjList.AddRange(query);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return ObjList;
+        }
+        public List<BOOK> getAllBook()
+        {
+            ObjBooksList.Clear();
+
+            try
+            {
+                var ObjQuery = from sach in ObjContext.SACHes select sach;
+
+                foreach (var sach in ObjQuery)
+                {
+                    if ((bool)sach.IsDeleted) continue;
+                    ObjBooksList.Add(new BOOK
+                    {
+                        MaSach = sach.MaSach,
+                        TenSach = sach.TenSach,
+                        TacGia = sach.TacGia,
+                        NamXB = (short)sach.NamXB,
+                        TheLoai = sach.TenTheLoai,
+                        NhaXB = sach.NhaXB,
+                        TriGia = (int)sach.TriGia,
+                        NgayNhap = DateTime.Parse(sach.NgayNhap.ToString()),
+                        TinhTrang = (bool)sach.TinhTrang,
+                        IsSelected = false
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return ObjBooksList;
+        }
+
+        public List<PHIEUMUON> GetPHIEUMUONs()
+        {
+            Objphieumuon.Clear();
+
+            try
+            {
+                var ObjQuery = from phieumuon in ObjContext.PHIEUMUONs select phieumuon;
+
+                foreach (var phieumuon in ObjQuery)
+                {
+                    if ((bool)phieumuon.IsDeleted) continue;
+                    Objphieumuon.Add(new PHIEUMUON
+                    {
+                        MaPhMuon = phieumuon.MaPhMuon,
+                        MaDG = phieumuon.MaDG,
+                        MaSach = phieumuon.MaSach,
+                        NgayMuon = (DateTime)phieumuon.NgayMuon,
+                        NgayPhTra = (DateTime)phieumuon.NgayPhTra,
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Objphieumuon;
+        }
+
+        public List<BOOK> getSelectedBooks()
+        {
+            List<BOOK> books;
+            books = ObjBooksList.FindAll(x => x.IsSelected);
+            return books;
+        }
         public bool Add(READER objNewReader)
         {
             bool IsAdded = false;
@@ -103,15 +233,12 @@ namespace QuanLyThuVien.Model
                 var ObjReader = new DOCGIA();
                 ObjReader.MaDG = objNewReader.MaDG;
                 ObjReader.HoTen = objNewReader.HoTen;
-                ObjReader.LoaiDG = objNewReader.LoaiDG;
                 ObjReader.GioiTinh = objNewReader.GioiTinh;
                 ObjReader.NgaySinh = objNewReader.NgaySinh;
                 ObjReader.DiaChi = objNewReader.DiaChi;
                 ObjReader.Email = objNewReader.Email;
                 ObjReader.NgayLapThe = objNewReader.NgayLapThe;
                 ObjReader.SoDT = objNewReader.SoDT;
-                ObjReader.SoCCCD = objNewReader.SoCCCD;
-                ObjReader.AnhDaiDien = objNewReader.AnhDaiDien;
 
                 ObjContext.DOCGIAs.Add(ObjReader);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
@@ -132,15 +259,13 @@ namespace QuanLyThuVien.Model
                 var ObjReader = ObjContext.DOCGIAs.Find(objReaderToUpdate.MaDG);
                 ObjReader.MaDG = objReaderToUpdate.MaDG;
                 ObjReader.HoTen = objReaderToUpdate.HoTen;
-                ObjReader.LoaiDG = objReaderToUpdate.LoaiDG;
                 ObjReader.GioiTinh = objReaderToUpdate.GioiTinh;
                 ObjReader.NgaySinh = objReaderToUpdate.NgaySinh;
                 ObjReader.DiaChi = objReaderToUpdate.DiaChi;
                 ObjReader.Email = objReaderToUpdate.Email;
                 ObjReader.NgayLapThe = objReaderToUpdate.NgayLapThe;
                 ObjReader.SoDT = objReaderToUpdate.SoDT;
-                ObjReader.SoCCCD = objReaderToUpdate.SoCCCD;
-                ObjReader.AnhDaiDien = objReaderToUpdate.AnhDaiDien;
+
 
 
                 var NoOfRowsAffected = ObjContext.SaveChanges();
@@ -185,15 +310,12 @@ namespace QuanLyThuVien.Model
                     {
                         MaDG = ObjReaderToFind.MaDG,
                         HoTen = ObjReaderToFind.HoTen,
-                        LoaiDG = ObjReaderToFind.LoaiDG,
                         GioiTinh = ObjReaderToFind.GioiTinh,
                         NgaySinh = (DateTime)ObjReaderToFind.NgaySinh,
                         DiaChi = ObjReaderToFind.DiaChi,
                         Email = ObjReaderToFind.Email,
                         NgayLapThe = (DateTime)ObjReaderToFind.NgayLapThe,
                         SoDT = ObjReaderToFind.SoDT,
-                        SoCCCD = ObjReaderToFind.SoCCCD,
-                        AnhDaiDien = ObjReaderToFind.AnhDaiDien,
                     };
                 }
             }

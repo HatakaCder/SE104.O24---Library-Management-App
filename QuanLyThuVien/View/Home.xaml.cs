@@ -1,6 +1,8 @@
-﻿using QuanLyThuVien.ViewModel;
+﻿using QuanLyThuVien.Model;
+using QuanLyThuVien.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +23,15 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class Home : UserControl
     {
+        private HomeVM vm;
+
         public Home()
         {
             InitializeComponent();
-            DataContext = new HomeVM();
+            
+            vm = new HomeVM();
+            this.DataContext = vm;
         }
+        
     }
 }

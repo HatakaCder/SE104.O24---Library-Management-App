@@ -130,10 +130,9 @@ ToolTip="Đăng xuất">
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"
           AutoGenerateColumns="False"
-          Name ="Data"
-          RowStyle="{StaticResource DataGridRowStyle}" 
+          Name="Data"
           Background="White"
           ScrollViewer.CanContentScroll="True" 
           ScrollViewer.VerticalScrollBarVisibility="Auto" 
@@ -144,7 +143,17 @@ ToolTip="Đăng xuất">
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding Path=LibrariansList}">
+          ItemsSource="{Binding Path=LibrariansList}" SelectionChanged="Data_SelectionChanged">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Height" Value="Auto"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextWrapping" Value="Wrap"/>
+                                <Setter Property="VerticalAlignment" Value="Top"/>
+                            </Style>
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="0.25*" IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -159,16 +168,13 @@ ToolTip="Đăng xuất">
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.HeaderTemplate>
-
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True"
-                                                Binding="{Binding Path=MaTT}">
+
+                            <DataGridTextColumn Width="0.5*" IsReadOnly="True" Binding="{Binding Path=MaTT}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock 
-                                                Text="ID" 
-                                                FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="ID" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
@@ -194,7 +200,14 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
+                            <!-- Cột Địa chỉ với TextWrapping và VerticalAlignment -->
                             <DataGridTextColumn Width="*" Binding="{Binding Path=DiaChi}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                        <Setter Property="VerticalAlignment" Value="Top"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -204,7 +217,14 @@ ToolTip="Đăng xuất">
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
+                            <!-- Cột Email với TextWrapping và VerticalAlignment -->
                             <DataGridTextColumn Width="*" Binding="{Binding Path=Email}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                        <Setter Property="VerticalAlignment" Value="Top"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -215,6 +235,8 @@ ToolTip="Đăng xuất">
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+
+
                 </Grid>
                 <Grid Grid.Row="3">
                     <DockPanel >

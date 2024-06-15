@@ -85,5 +85,10 @@ namespace QuanLyThuVien.View
             }
             return null;
         }
+
+        private void Data_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

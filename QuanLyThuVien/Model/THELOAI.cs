@@ -12,25 +12,18 @@ namespace QuanLyThuVien.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class THUTHU
+    public partial class THELOAI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public THUTHU()
+        public THELOAI()
         {
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
+            this.SACHes = new HashSet<SACH>();
         }
     
-        public string MaTT { get; set; }
-        public string HoTen { get; set; }
-        public string GioiTinh { get; set; }
-        public Nullable<System.DateTime> NgayVLam { get; set; }
-        public Nullable<System.DateTime> NgaySinh { get; set; }
-        public string DiaChi { get; set; }
-        public string Email { get; set; }
-        public string SoDT { get; set; }
+        public string TenTheLoai { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual ICollection<SACH> SACHes { get; set; }
     }
 }

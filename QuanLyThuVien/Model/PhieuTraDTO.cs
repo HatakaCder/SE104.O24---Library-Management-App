@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien.Model
 {
-    public class TRA : INotifyPropertyChanged
+    public class PhieuTraDTO : INotifyPropertyChanged
     {
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,24 +18,41 @@ namespace QuanLyThuVien.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        #endregion
+        #endregion 
         private string maPhTra;
+
         public string MaPhTra
         {
             get { return maPhTra; }
             set { maPhTra = value; OnPropertyChanged("MaPhTra"); }
         }
         private string maPhMuon;
+
         public string MaPhMuon
         {
             get { return maPhMuon; }
             set { maPhMuon = value; OnPropertyChanged("MaPhMuon"); }
         }
+        private string maDG;
+
+        public string MaDG
+        {
+            get { return maDG; }
+            set { maDG = value; OnPropertyChanged("MaDG"); }
+        }
         private DateTime ngayTra;
+
         public DateTime NgayTra
         {
             get { return ngayTra; }
             set { ngayTra = value; OnPropertyChanged("NgayTra"); }
+        }
+        private string maSach;
+
+        public string MaSach
+        {
+            get { return maSach; }
+            set { maSach = value; OnPropertyChanged("MaSach"); }
         }
     }
 }

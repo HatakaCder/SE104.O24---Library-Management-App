@@ -2,6 +2,7 @@
 FE:\Software\DoAn\QuanLyThuVien\App.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\SignUpWindow.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\Utilities\DataTemplate.xaml;;
+FE:\Software\DoAn\QuanLyThuVien\View\AddLibrarian.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\View\Book.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\View\BookBorrow.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\LoginWindow.xaml;;
@@ -16,5 +17,4 @@ FE:\Software\DoAn\QuanLyThuVien\View\Reader.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\View\Report.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\View\Setting.xaml;;
 FE:\Software\DoAn\QuanLyThuVien\View\User.xaml;;
-FE:\Software\DoAn\QuanLyThuVien\View\AddLibrarian.xaml;;
 

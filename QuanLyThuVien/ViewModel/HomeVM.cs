@@ -1,13 +1,18 @@
 ﻿using MaterialDesignColors;
 using QuanLyThuVien.Model;
+using QuanLyThuVien.Sevice;
 using QuanLyThuVien.Utilities;
+using QuanLyThuVien.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace QuanLyThuVien.ViewModel
@@ -27,9 +32,13 @@ namespace QuanLyThuVien.ViewModel
 
         DataProvider ObjDataProvider;
 
+        CountService CountService;
+
         public HomeVM()
         {
+            Console.WriteLine("DataContext is HomeVM");
             ObjDataProvider = new DataProvider();
+            CountService = new CountService();
             LoadData();
             CurrentReader = new READER();
             saveCommand = new RelayCommand(Save);
@@ -38,7 +47,6 @@ namespace QuanLyThuVien.ViewModel
             deleteCommand = new RelayCommand(Delete);
             LoadDataCommand = new RelayCommand(LoadData);
         }
-
         #region DisplayOperation
         private ObservableCollection<READER> readersList;
 
@@ -49,25 +57,98 @@ namespace QuanLyThuVien.ViewModel
             get { return readersList; }
             set { readersList = value; OnPropertyChanged("ReadersList"); }
         }
-        private void LoadData()
-        {
-            ReadersList = new ObservableCollection<READER>(ObjDataProvider.GetREADERs());
-            using(var ObjContext = new QLTV_BETAEntities1())
-            {
-                IDCount = ObjContext.DOCGIAs.Count();
-            }    
 
-
-        }
-        private int _idCount;
-        public int IDCount
+        private ObservableCollection<BOOK> booksList;
+        public ObservableCollection<BOOK> BooksList
         {
-            get { return _idCount; }
+            get { return booksList; }
             set
             {
-                _idCount = value;
-                OnPropertyChanged("IDCount");
+                booksList = value;
+                OnPropertyChanged(nameof(BooksList));
             }
+        }
+        private void UpdateRecentBooks()
+        {
+            RecentBooks = new ObservableCollection<BOOK>(BooksList.Where(book => (DateTime.Now - book.NgayNhap).TotalDays <= 7));
+            OnPropertyChanged(nameof(RecentBooks));
+        }
+        public ObservableCollection<BOOK> RecentBooks { get; set; }
+        private ObservableCollection<PHIEUMUON> pHIEUMUONs;
+        public ObservableCollection<PHIEUMUON> PHIEUMUONs
+        {
+            get { return pHIEUMUONs; }
+            set {  pHIEUMUONs = value; OnPropertyChanged("PHIEUMUONs"); }
+        }
+        private ObservableCollection<PhieuTraDTO> pHIEUTHUS;
+        public ObservableCollection<PhieuTraDTO> PHIEUTHUS
+        {
+            get { return pHIEUTHUS; }
+            set { pHIEUTHUS = value; OnPropertyChanged("PHIEUTHUS"); }
+        }
+
+        #endregion
+        private ObservableCollection<ListQuaHanModel> listQuaHan;
+
+        public ObservableCollection<ListQuaHanModel> ListQuaHan
+        {
+            get { return listQuaHan; }
+            set { listQuaHan = value; OnPropertyChanged("ListQuaHan"); }
+        }
+        private void LoadData()
+        {
+            BooksList = new ObservableCollection<BOOK>(ObjDataProvider.getAllBook());
+            ReadersList = new ObservableCollection<READER>(ObjDataProvider.GetREADERs());
+            pHIEUMUONs = new ObservableCollection<PHIEUMUON>(ObjDataProvider.GetPHIEUMUONs());
+            pHIEUTHUS = new ObservableCollection<PhieuTraDTO>(ObjDataProvider.GetPHIEUTHUs());
+            listQuaHan = new ObservableCollection<ListQuaHanModel>(ObjDataProvider.GetListQuaHan());
+            Count = CountService.getCount();
+            bCount = CountService.getCountBook();
+            countBorrowed = CountService.getCountBookBorrowed();
+            countOutDate = CountService.getOutDateBook();
+            UpdateRecentBooks();
+
+        }
+
+        #region Count
+        private int count;
+        public int Count
+        {
+            get { return count; }
+            set { count = value; OnPropertyChanged("Count"); }
+
+        }
+        private int countBorrowed;
+
+        public int CountBorrowed
+        {
+            get { return countBorrowed; }
+            set { countBorrowed = value; OnPropertyChanged("CountBorrowed"); }
+        }
+
+        private int bcount;
+        public int bCount
+        {
+            get { return bcount; }
+            set { bcount = value; OnPropertyChanged("bCount"); }
+
+        }
+
+        private int countOutDate;
+        public int CountOutDate
+        {
+            get { return countOutDate; }
+            set { countOutDate = value; OnPropertyChanged("CountOutDate"); }
+
+        }
+
+
+        private int getOverdueBooksCount;
+        public int GetOverdueBooksCount
+        {
+            get { return getOverdueBooksCount; }
+            set { getOverdueBooksCount = value; OnPropertyChanged("GetOverdueBooksCount"); }
+
         }
         #endregion
 
@@ -85,6 +166,7 @@ namespace QuanLyThuVien.ViewModel
             get { return message; }
             set { message = value; OnPropertyChanged("Message"); }
         }
+
 
         #region SaveOperation
         private RelayCommand saveCommand;
@@ -126,14 +208,15 @@ namespace QuanLyThuVien.ViewModel
         public void Search()
         {
             try
-            {   int MaDG = int.Parse(currentReader.MaDG);
+            {
+                int MaDG = int.Parse(currentReader.MaDG);
                 var ObjReader = ObjDataProvider.Search(MaDG);
                 if (ObjReader != null)
                 {
                     CurrentReader.HoTen = ObjReader.HoTen;
                     CurrentReader.LoaiDG = ObjReader.LoaiDG;
                     CurrentReader.GioiTinh = ObjReader.GioiTinh;
-                    CurrentReader.NgaySinh = ObjReader.NgaySinh;  
+                    CurrentReader.NgaySinh = ObjReader.NgaySinh;
                     CurrentReader.DiaChi = ObjReader.DiaChi;
                     CurrentReader.Email = ObjReader.Email;
                     CurrentReader.SoDT = ObjReader.SoDT;
