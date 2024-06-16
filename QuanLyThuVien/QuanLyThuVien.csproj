@@ -210,7 +210,7 @@
     </Compile>
     <Compile Include="Model\MUON.cs" />
     <Compile Include="Model\PageModel.cs" />
-    <Compile Include="Model\PARAMETER.cs">
+    <Compile Include="Model\PARAMETERS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PHIEUMUON.cs">

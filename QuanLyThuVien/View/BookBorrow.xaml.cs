@@ -63,13 +63,13 @@ namespace QuanLyThuVien.View
         private void loadData(string searchText = "")
         {
             searchText = RemoveDiacritics(searchText.ToLower());
-            var maDGs = _context.PHIEUMUONs
+            var maDGs = _context.PHIEUMUON
                                 .Where(pm => pm.IsDeleted == false)
                                 .Select(pm => pm.MaDG)
                                 .Distinct()  //Loại bỏ các giá trị trùng lặp
                                 .ToList();
 
-            var docGias = _context.DOCGIAs
+            var docGias = _context.DOCGIA
                            .Where(dg => maDGs.Contains(dg.MaDG))
                            .ToList()
                            .Where(dg => string.IsNullOrEmpty(searchText) || RemoveDiacritics(dg.HoTen.ToLower()).Contains(searchText))
@@ -83,13 +83,13 @@ namespace QuanLyThuVien.View
         {
             var list = new List<object>();
 
-            var dataPhieuMuon = _context.PHIEUMUONs
+            var dataPhieuMuon = _context.PHIEUMUON
                                        .Where(x => x.MaDG == docGia.MaDG && x.IsDeleted.Value == false)
                                        .ToList();
 
             DateTime currentDate = DateTime.Now;
 
-            var sachList = _context.SACHes.ToList(); // Load all books into memory to use RemoveDiacritics
+            var sachList = _context.SACH.ToList(); // Load all books into memory to use RemoveDiacritics
 
             foreach (var data in dataPhieuMuon)
             {
@@ -217,10 +217,10 @@ namespace QuanLyThuVien.View
                     worksheet.Cells[3, 4].Value = "Ngày quá hạn";
                     worksheet.Cells[3, 5].Value = "Số tiền thu";
 
-                    var query = from pt in _context.PHIEUTHUs
-                                join ptr in _context.PHIEUTRAs on pt.MaPhTra equals ptr.MaPhTra
-                                join pm in _context.PHIEUMUONs on ptr.MaPhMuon equals pm.MaPhMuon
-                                join dg in _context.DOCGIAs on pm.MaDG equals dg.MaDG
+                    var query = from pt in _context.PHIEUTHU
+                                join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
+                                join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
+                                join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
                                 where pt.IsDeleted == false
                                 select new
                                 {

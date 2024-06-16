@@ -53,7 +53,7 @@ namespace QuanLyThuVien
         {
             try
             {
-                var listDocGia = _context.DOCGIAs.ToList();
+                var listDocGia = _context.DOCGIA.ToList();
                 docgia.ItemsSource = listDocGia;
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace QuanLyThuVien
         {
             try
             {
-                var listSach = _context.SACHes.Where(s => s.IsDeleted == false).ToList();
+                var listSach = _context.SACH.Where(s => s.IsDeleted == false).ToList();
                 sach.ItemsSource = listSach;
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace QuanLyThuVien
         {
             try
             {
-                var listPhieuMuon = _context.PHIEUMUONs
+                var listPhieuMuon = _context.PHIEUMUON
                                             .Where(pm => pm.IsDeleted == false)
                                             .Select(pm => new { pm.MaPhMuon })
                                             .ToList();
@@ -99,13 +99,13 @@ namespace QuanLyThuVien
         private int GetCurrentIdNumberFromDatabase(string prefix)
         {
             string entityConnectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
-                                            provider=System.Data.SqlClient;
-                                            provider connection string='data source=.;
-                                            initial catalog=QLTV_BETA;
-                                            integrated security=True;
-                                            encrypt=False;
-                                            application name=EntityFramework;
-                                            MultipleActiveResultSets=True'";
+                                     provider=System.Data.SqlClient;
+                                     provider connection string=&quot;data source=LAPTOP_OF_LAN;
+                                     initial catalog=QLTV_BETA;
+                                     integrated security=True;
+                                     encrypt=False;
+                                     MultipleActiveResultSets=True;
+                                     App=EntityFramework&quot;";
 
             string sqlConnectionString = new EntityConnectionStringBuilder(entityConnectionString).ProviderConnectionString;
 
@@ -134,7 +134,7 @@ namespace QuanLyThuVien
                 string numberPart = currentNumber.ToString().PadLeft(length, '0');
                 newId = prefix + numberPart;
             }
-            while (_context.PHIEUTRAs.Any(p => p.MaPhTra == newId));
+            while (_context.PHIEUTRA.Any(p => p.MaPhTra == newId));
 
             return newId;
         }
@@ -142,8 +142,8 @@ namespace QuanLyThuVien
         // Kiểm tra điều kiện số lượng sách đang mượn của độc giả
         private bool KiemTraSoLuongSachDangMuon(string maDG)
         {
-            int soSachDangMuon = _context.PHIEUMUONs.Where(p => p.MaDG == maDG && p.IsDeleted == false).Count();
-            int soSachMuonToiDa = _context.SETTINGs.Select(s => s.SoSachMuonToiDa).FirstOrDefault().GetValueOrDefault();
+            int soSachDangMuon = _context.PHIEUMUON.Where(p => p.MaDG == maDG && p.IsDeleted == false).Count();
+            int soSachMuonToiDa = _context.SETTING.Select(s => s.SoSachMuonToiDa).FirstOrDefault().GetValueOrDefault();
             if (soSachDangMuon >= soSachMuonToiDa)
             {
                 MessageBox.Show("Vui lòng trả sách cũ trước khi mượn thêm.");
@@ -156,7 +156,7 @@ namespace QuanLyThuVien
         // Kiểm tra hạn của thẻ độc giả
         private bool KiemTraTheDocGia(string maDG)
         {
-            var docGia = _context.DOCGIAs.Where(dg => dg.MaDG == maDG).FirstOrDefault();
+            var docGia = _context.DOCGIA.Where(dg => dg.MaDG == maDG).FirstOrDefault();
 
             if (docGia == null)
             {
@@ -175,7 +175,7 @@ namespace QuanLyThuVien
                 return false;
             }
 
-            int thoiHanThe = _context.SETTINGs.Select(s => s.ThoiHanThe).FirstOrDefault().GetValueOrDefault();
+            int thoiHanThe = _context.SETTING.Select(s => s.ThoiHanThe).FirstOrDefault().GetValueOrDefault();
             DateTime ngayHetHan = ngayLapThe.AddMonths(thoiHanThe);
 
             if (DateTime.Today > ngayHetHan)
@@ -191,7 +191,7 @@ namespace QuanLyThuVien
         private bool KiemTraSachMuonQuaHan(string maDG)
         {
             DateTime ngayHienTai = DateTime.Today;
-            var listPhieuMuon = _context.PHIEUMUONs.Where(pm => pm.MaDG == maDG && pm.IsDeleted == false).ToList();
+            var listPhieuMuon = _context.PHIEUMUON.Where(pm => pm.MaDG == maDG && pm.IsDeleted == false).ToList();
 
             foreach (var phieuMuon in listPhieuMuon)
             {
@@ -246,7 +246,7 @@ namespace QuanLyThuVien
 
             try
             {
-                _context.PHIEUMUONs.Add(phieuMuon);
+                _context.PHIEUMUON.Add(phieuMuon);
                 _context.SaveChanges();
                 MessageBox.Show("Đăng ký phiếu mượn thành công!");
                 this.Close();
@@ -260,7 +260,7 @@ namespace QuanLyThuVien
         //Kiểm tra sách có mượn quá hạn khi trả sách không
         private bool KiemTraQuaHan(string maPhMuon)
         {
-            var phieuMuon = _context.PHIEUMUONs
+            var phieuMuon = _context.PHIEUMUON
                                     .Where(pm => pm.MaPhMuon == maPhMuon)
                                     .FirstOrDefault();
             if (phieuMuon == null)
@@ -272,7 +272,7 @@ namespace QuanLyThuVien
             if (phieuMuon.NgayPhTra.HasValue && phieuMuon.NgayPhTra.Value < ngayTra)
             {
                 int soNgayQuaHan = (ngayTra - phieuMuon.NgayPhTra.Value).Days;
-                int soTienNopTre = _context.SETTINGs.Select(s => s.SoTienNopTre).FirstOrDefault().GetValueOrDefault();
+                int soTienNopTre = _context.SETTING.Select(s => s.SoTienNopTre).FirstOrDefault().GetValueOrDefault();
                 MessageBoxResult result = MessageBox.Show($"Đã quá hạn {soNgayQuaHan} ngày, vui lòng thanh toán {soNgayQuaHan * soTienNopTre} VND.", "Thông báo", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
@@ -313,8 +313,8 @@ namespace QuanLyThuVien
 
                 try
                 {
-                    _context.PHIEUTRAs.Add(phieuTra);
-                    var phieuMuon = _context.PHIEUMUONs.FirstOrDefault(pm => pm.MaPhMuon == maPhMuon);
+                    _context.PHIEUTRA.Add(phieuTra);
+                    var phieuMuon = _context.PHIEUMUON.FirstOrDefault(pm => pm.MaPhMuon == maPhMuon);
                     if (phieuMuon != null)
                     {
                         phieuMuon.IsDeleted = true;

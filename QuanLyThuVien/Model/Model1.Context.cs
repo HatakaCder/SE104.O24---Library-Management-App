@@ -25,15 +25,15 @@ namespace QuanLyThuVien.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
-        public virtual DbSet<DOCGIA> DOCGIAs { get; set; }
-        public virtual DbSet<PARAMETER> PARAMETERS { get; set; }
-        public virtual DbSet<PHIEUMUON> PHIEUMUONs { get; set; }
-        public virtual DbSet<PHIEUTHU> PHIEUTHUs { get; set; }
-        public virtual DbSet<PHIEUTRA> PHIEUTRAs { get; set; }
-        public virtual DbSet<SACH> SACHes { get; set; }
-        public virtual DbSet<SETTING> SETTINGs { get; set; }
-        public virtual DbSet<THELOAI> THELOAIs { get; set; }
-        public virtual DbSet<THUTHU> THUTHUs { get; set; }
+        public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
+        public virtual DbSet<DOCGIA> DOCGIA { get; set; }
+        public virtual DbSet<PARAMETERS> PARAMETERS { get; set; }
+        public virtual DbSet<PHIEUMUON> PHIEUMUON { get; set; }
+        public virtual DbSet<PHIEUTHU> PHIEUTHU { get; set; }
+        public virtual DbSet<PHIEUTRA> PHIEUTRA { get; set; }
+        public virtual DbSet<SACH> SACH { get; set; }
+        public virtual DbSet<SETTING> SETTING { get; set; }
+        public virtual DbSet<THELOAI> THELOAI { get; set; }
+        public virtual DbSet<THUTHU> THUTHU { get; set; }
     }
 }

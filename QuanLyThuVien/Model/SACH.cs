@@ -17,7 +17,7 @@ namespace QuanLyThuVien.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SACH()
         {
-            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
+            this.PHIEUMUON = new HashSet<PHIEUMUON>();
         }
     
         public string MaSach { get; set; }
@@ -32,7 +32,7 @@ namespace QuanLyThuVien.Model
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUON { get; set; }
         public virtual THELOAI THELOAI { get; set; }
     }
 }

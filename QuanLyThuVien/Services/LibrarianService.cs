@@ -29,7 +29,7 @@ namespace QuanLyThuVien.Services
             ObjLibrariansList = new List<LibrarianDTO>();
             try
             {
-                var ObjQuery = from thuthu in ObjContext.THUTHUs select thuthu;
+                var ObjQuery = from thuthu in ObjContext.THUTHU select thuthu;
                 foreach (var thuthu in ObjQuery)
                 {
                     if (thuthu.IsDeleted == false)
@@ -71,7 +71,7 @@ namespace QuanLyThuVien.Services
                     MessageBox.Show("Email này đã tồn tại!");
                     return IsAdded;
                 }
-                else if (ObjContext.ACCOUNTs.FirstOrDefault(l => l.TaiKhoan == objNewUser.TaiKhoan) != null)
+                else if (ObjContext.ACCOUNT.FirstOrDefault(l => l.TaiKhoan == objNewUser.TaiKhoan) != null)
                 {
                     MessageBox.Show("Tài khoản này đã tồn tại!");
                     return IsAdded;
@@ -95,8 +95,8 @@ namespace QuanLyThuVien.Services
                 ObjUser.MatKhau = Convert_pw.HashPassword(objNewUser.MatKhau);
                 ObjUser.IsDeleted = false;
 
-                ObjContext.THUTHUs.Add(ObjLibrarian);
-                ObjContext.ACCOUNTs.Add(ObjUser);
+                ObjContext.THUTHU.Add(ObjLibrarian);
+                ObjContext.ACCOUNT.Add(ObjUser);
 
                 ObjParameter.IDThuThu += 1;
 
@@ -117,8 +117,8 @@ namespace QuanLyThuVien.Services
 
             try
             {
-                var ObjLibrarian = ObjContext.THUTHUs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
-                var ObjUser = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
+                var ObjLibrarian = ObjContext.THUTHU.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
+                var ObjUser = ObjContext.ACCOUNT.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
 
                 ObjLibrarian.HoTen = obj_l.HoTen;
                 ObjLibrarian.Email = obj_l.Email;
@@ -142,7 +142,7 @@ namespace QuanLyThuVien.Services
             return IsUpdated;
         }
         public ACCOUNT findUserTT(string MaTT) {
-            ACCOUNT us = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == MaTT);
+            ACCOUNT us = ObjContext.ACCOUNT.FirstOrDefault(l => l.MaTT == MaTT);
             return us;
         }
         
@@ -153,8 +153,8 @@ namespace QuanLyThuVien.Services
             {
                 foreach (var item in listId)
                 {
-                    var obj = ObjContext.THUTHUs.Find(item);
-                    obj.ACCOUNTs.First().IsDeleted = true;
+                    var obj = ObjContext.THUTHU.Find(item);
+                    obj.ACCOUNT.First().IsDeleted = true;
                     obj.IsDeleted = true;
                 }
                 var NoOfRowsAffected = ObjContext.SaveChanges();

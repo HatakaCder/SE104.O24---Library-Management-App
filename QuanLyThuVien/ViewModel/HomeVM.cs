@@ -22,7 +22,7 @@ namespace QuanLyThuVien.ViewModel
         public void LoadData()
         {
            QLTV_BETAEntities db = new QLTV_BETAEntities();
-           DOCGIAs =  db.DOCGIAs.ToList();
+           DOCGIAs =  db.DOCGIA.ToList();
         }
     }
 }

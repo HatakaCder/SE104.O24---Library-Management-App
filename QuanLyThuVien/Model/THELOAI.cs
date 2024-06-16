@@ -17,13 +17,13 @@ namespace QuanLyThuVien.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THELOAI()
         {
-            this.SACHes = new HashSet<SACH>();
+            this.SACH = new HashSet<SACH>();
         }
     
         public string TenTheLoai { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACH> SACHes { get; set; }
+        public virtual ICollection<SACH> SACH { get; set; }
     }
 }
