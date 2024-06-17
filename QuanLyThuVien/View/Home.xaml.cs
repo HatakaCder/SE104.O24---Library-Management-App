@@ -21,10 +21,14 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class Home : UserControl
     {
+        private HomeVM vm;
+
         public Home()
         {
             InitializeComponent();
-            DataContext = new HomeVM();
+
+            vm = new HomeVM();
+            this.DataContext = vm;
         }
     }
 }

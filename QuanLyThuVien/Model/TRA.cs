@@ -31,8 +31,8 @@ namespace QuanLyThuVien.Model
             get { return maPhMuon; }
             set { maPhMuon = value; OnPropertyChanged("MaPhMuon"); }
         }
-        private DateTime ngayTra;
-        public DateTime NgayTra
+        private string ngayTra;
+        public string NgayTra
         {
             get { return ngayTra; }
             set { ngayTra = value; OnPropertyChanged("NgayTra"); }

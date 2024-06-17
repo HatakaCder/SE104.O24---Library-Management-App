@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
-             xmlns:local="clt-namespace:QuanLyThuVien.Converters"
+             xmlns:local="clr-namespace:QuanLyThuVien.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -121,7 +121,7 @@
                     </Grid>
 
                     <Grid Grid.Column="2">
-                            <ComboBox                           
+                        <ComboBox                           
                                    Margin="2"
                                    Width="200"
                                 SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
@@ -135,6 +135,10 @@
 
                 </Grid>
                 <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="386*"/>
+                        <ColumnDefinition Width="89*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid Name="dataTable" BorderBrush="Gray" BorderThickness="0.5"   
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
@@ -147,14 +151,12 @@
           CanUserReorderColumns="False"   
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
-          Margin="15"
-          ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}"
-                              SelectedItem="{Binding Path=UpdateReader}"
-                              SelectionMode="Extended" 
+          Margin="15,15,15,15"
+          ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedReader, Mode=TwoWay}"
+                              Grid.ColumnSpan="2" 
           >
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
-                            
+
                             <DataGridTextColumn Width="*" IsReadOnly="True" Binding="{Binding Path=MaDG}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
@@ -215,6 +217,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

@@ -1,8 +1,5 @@
-﻿using QuanLyThuVien.Model;
-using QuanLyThuVien.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,27 +21,9 @@ namespace QuanLyThuVien.View
     /// </summary>
     public partial class Book : UserControl
     {
-        BookVM vm;
         public Book()
         {
-            vm = new BookVM();
-            this.DataContext = vm;
             InitializeComponent();
-        }
-
-        private void dgView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void btThemSach_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void btSuaSach_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

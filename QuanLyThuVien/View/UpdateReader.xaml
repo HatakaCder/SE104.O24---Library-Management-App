@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.View"
         mc:Ignorable="d" 
-  Height="850" Width="1240"
+  Height="700" Width="500"
     Background="White"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -21,7 +21,7 @@ TextOptions.TextRenderingMode="Auto"
             <ColumnDefinition Width="24*"/>
             <ColumnDefinition Width="560*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Center" Height="733" Grid.ColumnSpan="4">
+        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="4" Margin="0,50,0,0">
             <TextBlock Text="Chỉnh sửa thông tin độc giả" Foreground="#3AB19B" Style="{StaticResource TitleText}"
                        />
             <TextBox
@@ -29,36 +29,34 @@ TextOptions.TextRenderingMode="Auto"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Họ tên"
-                Text="{Binding Path=UpdateReader.HoTen, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.HoTen, Mode=TwoWay}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
 
-            <TextBox
-Margin="0 5 0 5"
-    Width="300"
-    VerticalAlignment="Top"
-    materialDesign:HintAssist.Hint="Giới tính"
-                Text="{Binding Path=UpdateReader.GioiTinh, Mode=TwoWay}"
-    AcceptsReturn="True"                                
-    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-    TextWrapping="Wrap"
-    VerticalScrollBarVisibility="Auto" />
+            <Grid Grid.Row="2" Width="300" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton x:Name="rdbtNam" Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="{Binding Path=NamChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
+                <RadioButton x:Name="rdbtNu" Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" IsChecked="{Binding Path=NuChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
+            </Grid>
 
 
             <DatePicker
       Margin="0 5 0 5"
       Width="300"
       materialDesign:HintAssist.Hint="Ngày sinh"
-      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=UpdateReader.NgaySinh, Mode=TwoWay}"  />
+      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=CurrentReader.NgaySinh, Mode=TwoWay}"  />
 
             <TextBox
 Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ"
-                Text="{Binding Path=UpdateReader.DiaChi, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.DiaChi, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -69,7 +67,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ email"
-                Text="{Binding Path=UpdateReader.Email, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.Email, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -81,7 +79,7 @@ Margin="0 5 0 5"
         VerticalAlignment="Top"
         materialDesign:HintAssist.Hint="Số điện thoại"
         AcceptsReturn="True"  
-        Text="{Binding Path=UpdateReader.SoDT, Mode=TwoWay}"
+        Text="{Binding Path=CurrentReader.SoDT, Mode=TwoWay}"
         Style="{StaticResource MaterialDesignOutlinedTextBox}"
         TextWrapping="Wrap"
         VerticalScrollBarVisibility="Auto" />

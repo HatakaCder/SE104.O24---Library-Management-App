@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:QuanLyThuVien.View"
       xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
       mc:Ignorable="d" 
-      Height="850" Width="1240"
+      Height="700" Width="500"
         Background="White"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
@@ -20,12 +20,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="24*"/>
-            <ColumnDefinition Width="560*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="1120*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Center" Height="733" Grid.ColumnSpan="4">
+        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="5" Margin="0,50,0,0">
             <TextBlock Text="Thêm sách" Foreground="#3AB19B" Style="{StaticResource TitleText}"
                        />
 
@@ -34,7 +35,7 @@
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Tên sách"
-                Text="{Binding Path=AddBook.TenSach, Mode=TwoWay}"
+                Text="{Binding Path=CurrentBook.TenSach}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -44,7 +45,7 @@
    Margin="2"
    Width="300"
 ItemsSource="{Binding bookTypes}"
-SelectedItem="{Binding Path=AddBook.TheLoai, Mode=TwoWay}"
+SelectedItem="{Binding Path=CurrentBook.TheLoai}"
 
    materialDesign:HintAssist.Hint="Thể loại"
    Style="{StaticResource MaterialDesignOutlinedComboBox}" />
@@ -54,7 +55,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Tác giả"
-                Text="{Binding Path=AddBook.TacGia, Mode=TwoWay}"
+                Text="{Binding Path=CurrentBook.TacGia, Mode=TwoWay}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -65,7 +66,7 @@ Margin="0 5 0 5"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Năm xuất bản"
-                Text="{Binding Path=AddBook.NamXB, Mode=TwoWay}"
+                Text="{Binding Path=CurrentBook.NamXB}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -76,7 +77,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Nhà xuất bản"
-                Text="{Binding Path=AddBook.NhaXB, Mode=TwoWay}"
+                Text="{Binding Path=CurrentBook.NhaXB}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -87,7 +88,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Trị giá"
-                Text="{Binding Path=AddBook.TriGia, Mode=TwoWay}"
+                Text="{Binding Path=CurrentBook.TriGia}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"

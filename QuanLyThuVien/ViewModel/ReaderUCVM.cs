@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using QuanLyThuVien.Commands;
+using QuanLyThuVien.Command;
 using System.CodeDom;
 using System.Text.RegularExpressions;
 using System.Collections.Specialized;
@@ -18,7 +18,7 @@ using System.Runtime.Remoting.Proxies;
 
 namespace QuanLyThuVien.ViewModel
 {
-    public class ReaderUCVM: INotifyPropertyChanged
+    public class ReaderUCVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -30,13 +30,15 @@ namespace QuanLyThuVien.ViewModel
         }
 
         DataOperation ObjDataOperation;
+        private string selectedOption = "";
         public ReaderUCVM()
         {
             ObjDataOperation = new DataOperation();
             LoadData();
-            UpdateReader = new READER();
-            AddReader = new READER();
-            selectedReaders = new ObservableCollection<READER>();
+            NamChecked = true;
+            NuChecked = false;
+            currentReader = new READER();
+            selectedReader = new READER();
             searchCommand = new RelayCommand(Search);
             saveCommand = new RelayCommand(Save);
             savePopUpCommand = new RelayCommand(SavePopUp);
@@ -91,18 +93,15 @@ namespace QuanLyThuVien.ViewModel
             set { readerList = value; OnPropertyChanged("ReaderList"); }
         }
 
-        private READER updateReader;
-        public READER UpdateReader
+        private READER currentReader;
+        public READER CurrentReader
         {
-            get { return updateReader; }
-            set { updateReader = value; OnPropertyChanged(nameof(UpdateReader)); }
-        }
-
-        private READER addReader;
-        public READER AddReader
-        {
-            get { return addReader; }
-            set { addReader = value; OnPropertyChanged(nameof(AddReader)); }
+            get { return currentReader; }
+            set
+            {
+                currentReader = value;
+                OnPropertyChanged(nameof(CurrentReader));
+            }
         }
 
         private string items;
@@ -123,11 +122,56 @@ namespace QuanLyThuVien.ViewModel
             }
         }
 
-        private ObservableCollection<READER> _selectedReaders;
-        public ObservableCollection<READER> selectedReaders
+        private READER selectedReader;
+        public READER SelectedReader
         {
-            get { return _selectedReaders; }
-            set { _selectedReaders = value; OnPropertyChanged(nameof(selectedReaders)); }
+            get { return selectedReader; }
+            set { selectedReader = value; OnPropertyChanged(nameof(SelectedReader)); }
+        }
+
+        private AddReader addReaderV;
+        public AddReader AddReaderV
+        {
+            get { return addReaderV; }
+            set { addReaderV = value; OnPropertyChanged(nameof(AddReaderV)); }
+        }
+
+        private UpdateReader updateReaderV;
+        public UpdateReader UpdateReaderV
+        {
+            get { return updateReaderV; }
+            set { updateReaderV = value; OnPropertyChanged(nameof(UpdateReaderV)); }
+        }
+
+        private bool namChecked;
+
+        public bool NamChecked
+        {
+            get { return namChecked; }
+            set
+            {
+                namChecked = value;
+                if (value)
+                {
+                    selectedOption = "Nam";
+                }
+                OnPropertyChanged("NamChecked");
+            }
+        }
+        private bool nuChecked;
+
+        public bool NuChecked
+        {
+            get { return nuChecked; }
+            set
+            {
+                nuChecked = value;
+                if (value)
+                {
+                    selectedOption = "Nữ";
+                }
+                OnPropertyChanged("NuChecked");
+            }
         }
         #endregion
 
@@ -149,23 +193,27 @@ namespace QuanLyThuVien.ViewModel
         private void LoadData()
         {
             ReaderList = new ObservableCollection<READER>(ObjDataOperation.getAllReader());
-            selectedReaders = new ObservableCollection<READER>(ObjDataOperation.getAllSelectedReaders());
         }
 
-        public void Save() 
+        public void Save()
         {
-            bool isSaved = ObjDataOperation.Add_Reader(AddReader);
+            if (selectedOption == "Nam") CurrentReader.GioiTinh = "Nam";
+            else CurrentReader.GioiTinh = "Nữ";
+            bool isSaved = ObjDataOperation.Add_Reader(CurrentReader);
             if (isSaved)
             {
-                System.Windows.MessageBox.Show("Thêm độc giả thành công");
+                if (System.Windows.MessageBox.Show("Thêm độc giả thành công") == MessageBoxResult.OK)
+                    AddReaderV.Close();
+
                 LoadData();
             }
         }
 
         public void SavePopUp()
         {
-            AddReader addReader = new AddReader(this);
-            addReader.ShowDialog();
+            CurrentReader = new READER();
+            addReaderV = new AddReader(this);
+            addReaderV.ShowDialog();
         }
 
         public void Search()
@@ -191,11 +239,13 @@ namespace QuanLyThuVien.ViewModel
         {
             try
             {
-                var isUpdated = ObjDataOperation.update(UpdateReader);
+                var isUpdated = ObjDataOperation.update(CurrentReader);
 
                 if (isUpdated)
                 {
-                    System.Windows.MessageBox.Show("Chỉnh sửa thông tin độc giả thành công!");
+                    if (System.Windows.MessageBox.Show("Chỉnh sửa thông tin độc giả thành công!") == MessageBoxResult.OK)
+                        UpdateReaderV.Close();
+                    SelectedReader = new READER();
                     LoadData();
                 }
             }
@@ -207,23 +257,54 @@ namespace QuanLyThuVien.ViewModel
 
         public void UpdatePopUp()
         {
-            UpdateReader updateReader = new UpdateReader(this);
-            updateReader.ShowDialog();
+            if (SelectedReader == null || SelectedReader.SoDT == null)
+            {
+                System.Windows.MessageBox.Show("Bạn vẫn chưa chọn độc giả, hãy chọn độc giả mà bạn muốn chỉnh sửa thông tin!");
+                return;
+            }
+
+            CurrentReader.MaDG = SelectedReader.MaDG;
+            CurrentReader.HoTen = SelectedReader.HoTen;
+            CurrentReader.NgaySinh = SelectedReader.NgaySinh;
+            CurrentReader.DiaChi = SelectedReader.DiaChi;
+            CurrentReader.SoDT = SelectedReader.SoDT;
+            CurrentReader.Email = SelectedReader.Email;
+            CurrentReader.GioiTinh = SelectedReader.GioiTinh;
+            CurrentReader.NgayLapThe = SelectedReader.NgayLapThe;
+            selectedOption = SelectedReader.GioiTinh;
+
+            if (selectedOption == "Nam")
+            {
+                NamChecked = true;
+                NuChecked = false;
+            }
+            else
+            {
+                NamChecked = false;
+                NuChecked = true;
+            }
+
+            UpdateReaderV = new UpdateReader(this);
+            UpdateReaderV.ShowDialog();
         }
 
         public void Delete()
         {
             try
             {
-                selectedReaders = new ObservableCollection<READER>(ObjDataOperation.getAllSelectedReaders());
+                var SelectedReaders = ObjDataOperation.getAllSelectedReaders();
 
-                if (selectedReaders.Count == 0) return;
+                if (SelectedReaders.Count == 0)
+                {
+                    System.Windows.MessageBox.Show("Hãy chọn ít nhất một độc giả mà bạn muốn xóa.");
+                    return;
+                }
 
                 MessageBoxResult confirm = System.Windows.MessageBox.Show("Bạn có chắc chắn muốn xóa những độc giả này?", "Xác nhận", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
                 if (confirm == MessageBoxResult.Cancel) return;
 
-                var isDeleted = ObjDataOperation.Delete_Reader(new List<READER>(selectedReaders));
+                var isDeleted = ObjDataOperation.Delete_Reader(SelectedReaders);
                 if (isDeleted)
                     LoadData();
             }

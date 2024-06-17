@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Chinh_Khoa\SE104_1\QuanLyThuVien\App.xaml
-25-649009024
-2-1521817571
-6155602408
-252029515681
-SignUpWindow.xaml;Styles\Button.xaml;Styles\ComboboxItem.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Styles\TheComboBox.xaml;Utilities\DataTemplate.xaml;View\AddBook.xaml;View\AddReader.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\Setting.xaml;View\UpdateBook.xaml;View\UpdateReader.xaml;
+35-1512731715
+2739969757
+95-308503440
+56-1008744169
+FormPhieuMuon.xaml;LoginWindoww.xaml;ResourceXAML\LoginResource.xaml;SignUpWindow.xaml;Styles\Button.xaml;Styles\ComboboxItem.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;Styles\TheComboBox.xaml;Utilities\DataTemplate.xaml;View\AddBook.xaml;View\AddLibrarian.xaml;View\AddReader.xaml;View\Book.xaml;View\BookBorrow.xaml;LoginWindow.xaml;MainWindow.xaml;Reader.xaml;View\ForgotPassword.xaml;View\Home.xaml;View\Librarian.xaml;ResourceXAML\MainResource.xaml;UserControlQLTV\ControlBarUC.xaml;UserControlQLTV\LeftOptions.xaml;View\Reader.xaml;View\Report.xaml;View\ResetPassword.xaml;View\Setting.xaml;View\SignIn.xaml;View\SignUp.xaml;View\UpdateBook.xaml;View\UpdateLibrarian.xaml;View\UpdateReader.xaml;View\User.xaml;
 
 False
 

@@ -15,11 +15,8 @@
                FontFamily="{DynamicResource MaterialDesignFont}"
             d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:Report></vm:Report>
-    </UserControl.DataContext>
     <Grid>
-        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
+        <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray" Background="Snow" Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
@@ -42,9 +39,8 @@
                               Width="200"
                               materialDesign:HintAssist.Hint="Loại báo cáo"
                               Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Báo cáo thống kê tình hình mượn sách theo loại" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Báo cáo thống kê sách trả trễ" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
 
@@ -62,13 +58,15 @@
                         <ComboBox                           
                                Margin="2"
                                Width="200"
-                               materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                               materialDesign:HintAssist.Hint="Theo thời gian"
                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Ngày" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tháng" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Năm" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
+                    
+                    
                 </Grid>
                 
                 <Grid Grid.Row="0">
@@ -147,14 +145,14 @@ ToolTip="Đăng xuất">
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15"
-          ItemsSource="{Binding}"
+          ItemsSource="{Binding Items}"
           >
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="ID" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding ColumnsName[0]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
@@ -164,7 +162,7 @@ ToolTip="Đăng xuất">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tên sách" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding ColumnsName[1]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
@@ -174,7 +172,7 @@ ToolTip="Đăng xuất">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tác giả" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding ColumnsName[2]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
@@ -184,7 +182,7 @@ ToolTip="Đăng xuất">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock Text="Tình trạng" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding ColumnsName[3]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
-             xmlns:local="clt-namespace:QuanLyThuVien.Converters"
+             xmlns:local="clr-namespace:QuanLyThuVien.Converters"
              mc:Ignorable="d" 
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -20,7 +20,7 @@
         <vm:BookVM/>
 
     </UserControl.DataContext>
-    
+
     <UserControl.Resources>
         <local:DateFormatConverter x:Key="DateFormatConverter"/>
     </UserControl.Resources>
@@ -164,12 +164,9 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15,15,15,15"
-          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
-                              SelectedItem="{Binding Path=UpdateBook}"
+          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedBook, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
           >
                         <DataGrid.Columns>
-
-                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
 
                             <DataGridTextColumn Width="*" Binding="{Binding Path=MaSach}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
@@ -260,6 +257,8 @@
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

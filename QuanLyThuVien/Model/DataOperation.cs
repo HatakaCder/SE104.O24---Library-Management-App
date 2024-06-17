@@ -12,6 +12,8 @@ using System.Reflection;
 using System.Net.Mail;
 using System.Diagnostics.Eventing.Reader;
 using System.Media;
+using QuanLyThuVien.View;
+using System.Windows;
 
 namespace QuanLyThuVien.Model
 {
@@ -61,7 +63,7 @@ namespace QuanLyThuVien.Model
                         NgayNhap = DateTime.Parse(sach.NgayNhap.ToString()),
                         TinhTrang = (short)sach.TinhTrang,
                         IsSelected = false
-                    }) ;
+                    });
                 }
             }
             catch (Exception ex)
@@ -124,7 +126,7 @@ namespace QuanLyThuVien.Model
         public bool Add_Book(BOOK objBook)
         {
             bool IsAdded = false;
-            objBook.NgayNhap = DateTime.Now;
+            objBook.NgayNhap = DateTime.Now;            
 
             #region Check_Book_Information
             int check = CheckInformation(objBook);
@@ -294,6 +296,32 @@ namespace QuanLyThuVien.Model
         {
             bool IsUpdated = false;
 
+            #region Check_Book_Information
+            int check = CheckInformation(objBookToUpdate);
+
+            switch (check)
+            {
+                case 1:
+                    System.Windows.MessageBox.Show("Năm xuất bản phải bé hơn hoặc bằng năm nhập!");
+                    return false;
+                case 2:
+                    System.Windows.MessageBox.Show("Ngày nhập phải bé hơn hoặc bằng ngày hiện tại!");
+                    return false;
+                case 3:
+                    System.Windows.MessageBox.Show("Năm xuất bản phải là số nguyên dương!");
+                    return false;
+                case 4:
+                    System.Windows.MessageBox.Show("Trị giá phải là số nguyên dương!");
+                    return false;
+                case 5:
+                    System.Windows.MessageBox.Show("Định dạng kiểu ngày tháng chưa đúng!");
+                    return false;
+                case 6:
+                    System.Windows.MessageBox.Show("Vui lòng điền đẩy đủ thông tin để thêm sách!");
+                    return false;
+            }
+            #endregion
+
             try
             {
                 var sach = ObjContext.SACHes.Find(objBookToUpdate.MaSach);
@@ -394,7 +422,11 @@ namespace QuanLyThuVien.Model
 
             // Kiểm tra độ tuổi
             int Age = DateTime.Now.Year - objReader.NgaySinh.Year;
-            if (Age < 15) return 4;
+
+            var para = ObjContext.SETTINGs.FirstOrDefault();
+            int maxAge = (int)para.TuoiToiDaDocGia, minAge = (int)para.TuoiToiTieuDocGia;
+
+            if (Age < minAge || Age > maxAge) return 4;
 
             // Kiểm tra định dạng email
             try
@@ -407,9 +439,13 @@ namespace QuanLyThuVien.Model
             }
 
             // Kiểm tra số điện thoại
-            List<string> ValidNum = new List<string>() {"032", "033", "034", "035", "036", "037", "038", "039", "096", "097", "098", "086", "083", "084", "085", "081", "082", "088", "091", "094", "070", "079", "077", "076", "078", "090", "093", "089", "056", "058", "092", "059", "099" };
+            List<string> ValidNum = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039", "096", "097", "098", "086", "083", "084", "085", "081", "082", "088", "091", "094", "070", "079", "077", "076", "078", "090", "093", "089", "056", "058", "092", "059", "099" };
 
             if (objReader.SoDT == null || ValidNum.Find(x => x == objReader.SoDT.Substring(0, 3)) == null) return 6;
+
+            // Kiểm tra địa chỉ email đã tồn tại hay chưa
+
+            if (ObjReadersList.FirstOrDefault(x => x.Email == objReader.Email && x.MaDG != objReader.MaDG) != null) return 8;
 
             return 0;
         }
@@ -437,7 +473,7 @@ namespace QuanLyThuVien.Model
                     System.Windows.MessageBox.Show("Định dạng ngày lập thẻ chưa hợp lệ!");
                     return false;
                 case 4:
-                    System.Windows.MessageBox.Show("Chưa đủ tuổi đăng ký thẻ độc giả!");
+                    System.Windows.MessageBox.Show("Độ tuổi đăng ký thẻ độc giả không đúng với quy định!");
                     return false;
                 case 5:
                     System.Windows.MessageBox.Show("Định dạng email chưa hợp lệ!");
@@ -448,7 +484,11 @@ namespace QuanLyThuVien.Model
                 case 7:
                     System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để thêm độc giả!");
                     return false;
+                case 8:
+                    System.Windows.MessageBox.Show("Tài khoản email này đã tồn tại, vui lòng sử dụng một tài khoản khác!");
+                    return false;
             }
+
             #endregion
 
             #region Insert_new_reader_into_database
@@ -551,6 +591,38 @@ namespace QuanLyThuVien.Model
         public bool update(READER objReaderToUpdate)
         {
             bool IsUpdated = false;
+
+            #region Check_Reader_Information
+            int check = CheckInformation(objReaderToUpdate);
+
+            switch (check)
+            {
+                case 1:
+                    System.Windows.MessageBox.Show("Giới tính chưa hợp lệ!");
+                    return false;
+                case 2:
+                    System.Windows.MessageBox.Show("Định dạng ngày sinh chưa hợp lệ!");
+                    return false;
+                case 3:
+                    System.Windows.MessageBox.Show("Định dạng ngày lập thẻ chưa hợp lệ!");
+                    return false;
+                case 4:
+                    System.Windows.MessageBox.Show("Chưa đủ tuổi đăng ký thẻ độc giả!");
+                    return false;
+                case 5:
+                    System.Windows.MessageBox.Show("Định dạng email chưa hợp lệ!");
+                    return false;
+                case 6:
+                    System.Windows.MessageBox.Show("Số điện thoại chưa hợp lệ!");
+                    return false;
+                case 7:
+                    System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để hoàn tất việc chỉnh sửa thông tin độc giả!");
+                    return false;
+                case 8:
+                    System.Windows.MessageBox.Show("Tài khoản email này đã tồn tại, vui lòng sử dụng một tài khoản khác!");
+                    return false;
+            }
+            #endregion
 
             try
             {

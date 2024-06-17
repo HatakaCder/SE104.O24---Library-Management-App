@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLyThuVien.View"
       mc:Ignorable="d" 
-        Height="850" Width="1240"
+        Height="700" Width="500"
     Background="White"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
@@ -23,7 +23,7 @@ TextOptions.TextRenderingMode="Auto"
             <ColumnDefinition Width="24*"/>
             <ColumnDefinition Width="560*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Center" Height="733" Grid.ColumnSpan="4">
+        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="4" Margin="0,50,0,0">
             <TextBlock Text="Thêm độc giả" Foreground="#3AB19B" Style="{StaticResource TitleText}"
                        />
 
@@ -32,36 +32,34 @@ TextOptions.TextRenderingMode="Auto"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Họ tên"
-                Text="{Binding Path=AddReader.HoTen, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.HoTen}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
 
-            <TextBox
-Margin="0 5 0 5"
-    Width="300"
-    VerticalAlignment="Top"
-    materialDesign:HintAssist.Hint="Giới tính"
-                Text="{Binding Path=AddReader.GioiTinh, Mode=TwoWay}"
-    AcceptsReturn="True"                                
-    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-    TextWrapping="Wrap"
-    VerticalScrollBarVisibility="Auto" />
+            <Grid Grid.Row="2" Width="300" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="{Binding NamChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" IsChecked="{Binding NuChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
+            </Grid>
 
 
             <DatePicker
       Margin="0 5 0 5"
       Width="300"
       materialDesign:HintAssist.Hint="Ngày sinh"
-      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=AddReader.NgaySinh}"  />
+      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=CurrentReader.NgaySinh}"  />
 
             <TextBox
 Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ"
-                Text="{Binding Path=AddReader.DiaChi, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.DiaChi}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -72,7 +70,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ email"
-                Text="{Binding Path=AddReader.Email, Mode=TwoWay}"
+                Text="{Binding Path=CurrentReader.Email}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -84,7 +82,7 @@ Margin="0 5 0 5"
         VerticalAlignment="Top"
         materialDesign:HintAssist.Hint="Số điện thoại"
         AcceptsReturn="True"  
-        Text="{Binding Path=AddReader.SoDT, Mode=TwoWay}"
+        Text="{Binding Path=CurrentReader.SoDT}"
         Style="{StaticResource MaterialDesignOutlinedTextBox}"
         TextWrapping="Wrap"
         VerticalScrollBarVisibility="Auto" />

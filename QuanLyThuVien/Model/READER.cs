@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace QuanLyThuVien.Model
 {
     // SoCCCD and LoaiDG: remove
-    public class READER: INotifyPropertyChanged
+    public class READER : INotifyPropertyChanged
     {
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuanLyThuVien.View"
         xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
         mc:Ignorable="d"
-        Height="850" Width="1240"
+        Height="700" Width="500"
         Background="White"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
@@ -22,8 +22,9 @@ TextOptions.TextRenderingMode="Auto"
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="146*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Center" Height="733" Grid.ColumnSpan="2">
-            <TextBlock Text="Sửa đổi thông tin sách" Foreground="#3AB19B" Style="{StaticResource TitleText}"
+        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="2" Margin="0,50,0,0">
+
+            <TextBlock Text="Sửa đổi thông tin sách" Foreground="#3AB19B" Style="{StaticResource TitleText}" 
                        />
 
             <TextBox
@@ -31,7 +32,7 @@ TextOptions.TextRenderingMode="Auto"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Tên sách"
-                Text="{Binding Path=UpdateBook.TenSach, Mode=TwoWay}"
+                Text="{Binding CurrentBook.TenSach}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -41,8 +42,8 @@ TextOptions.TextRenderingMode="Auto"
        Margin="2"
        Width="300"
     ItemsSource="{Binding bookTypes}"
-    SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
-                SelectedValue="{Binding Path=UpdateBook.TheLoai}"
+    SelectedItem="{Binding SelectedItem}" 
+                SelectedValue="{Binding CurrentBook.TheLoai}"
     
        materialDesign:HintAssist.Hint="Thể loại"
        Style="{StaticResource MaterialDesignOutlinedComboBox}" />
@@ -52,7 +53,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Tác giả"
-                Text="{Binding Path=UpdateBook.TacGia, Mode=TwoWay}"
+                Text="{Binding CurrentBook.TacGia}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -63,7 +64,7 @@ Margin="0 5 0 5"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Năm xuất bản"
-                Text="{Binding Path=UpdateBook.NamXB, Mode=TwoWay}"
+                Text="{Binding CurrentBook.NamXB}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
@@ -74,7 +75,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Nhà xuất bản"
-                Text="{Binding Path=UpdateBook.NhaXB, Mode=TwoWay}"
+                Text="{Binding CurrentBook.NhaXB}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -85,13 +86,13 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Trị giá"
-                Text="{Binding Path=UpdateBook.TriGia, Mode=TwoWay}"
+                Text="{Binding CurrentBook.TriGia}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto" />
 
-            <Button Content="Hoàn tất" Style="{StaticResource mainButton}" Command="{Binding Path=UpdateCommand}" />
+            <Button Content="Hoàn tất" Style="{StaticResource mainButton}" Command="{Binding UpdateCommand}" />
 
 
         </StackPanel>
