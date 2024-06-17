@@ -34,15 +34,14 @@ namespace QuanLyThuVien.ViewModel
         {
             ObjDataOperation = new DataOperation();
             LoadData();
-            UpdateBook = new BOOK();
-            AddBook = new BOOK();
+            currentBook = new BOOK();
+            selectedBook = new BOOK();
             saveCommand = new RelayCommand(Save);
             savePopUpCommand = new RelayCommand(SavePopUp);
             searchCommand = new RelayCommand(Search);
             deleteCommand = new RelayCommand(Delete);
             updateCommand = new RelayCommand(Update);
             updatePopUpCommand = new RelayCommand(UpdatePopUp);
-            selectedBooks = new ObservableCollection<BOOK>();
         }
 
         // Khai báo RelayCommands
@@ -97,18 +96,11 @@ namespace QuanLyThuVien.ViewModel
         }
 
         // For adding, updating book
-        private BOOK updateBook;
-        public BOOK UpdateBook
+        private BOOK currentBook;
+        public BOOK CurrentBook
         {
-            get { return updateBook; }
-            set { updateBook = value; OnPropertyChanged(nameof(UpdateBook)); }
-        }
-
-        private BOOK addBook;
-        public BOOK AddBook
-        {
-            get { return addBook; }
-            set { addBook = value; OnPropertyChanged(nameof(AddBook)); }
+            get { return currentBook; }
+            set { currentBook = value; OnPropertyChanged(nameof(UpdateBook)); }
         }
 
         // For searching books
@@ -131,11 +123,10 @@ namespace QuanLyThuVien.ViewModel
         }
 
         // For deleting books
-        private ObservableCollection<BOOK> _books;
-        public ObservableCollection<BOOK> selectedBooks
-        {
-            get { return _books; }
-            set { _books = value; OnPropertyChanged(nameof(selectedBooks)); }
+        private BOOK selectedBook;
+        public BOOK SelectedBook  {
+            get { return selectedBook; }
+            set { selectedBook = value; OnPropertyChanged(nameof(selectedBook)); }
         }
 
         private ObservableCollection<string> _bookTypes;
@@ -145,12 +136,18 @@ namespace QuanLyThuVien.ViewModel
             set { _bookTypes = value; OnPropertyChanged(nameof(_bookTypes)); }
         }
 
-        // New 
-        private bool isAdded;
-        public bool IsAdded
+        private AddBook addBookV;
+        public AddBook AddBookV
         {
-            get { return isAdded; }
-            set { isAdded = value; OnPropertyChanged(nameof(IsAdded)); }
+            get { return addBookV; }
+            set { addBookV = value;  OnPropertyChanged(nameof(AddBookV)); }
+        }
+
+        private UpdateBook updateBookV;
+        public UpdateBook UpdateBookV
+        {
+            get { return updateBookV; }
+            set { updateBookV = value; OnPropertyChanged(nameof(UpdateBookV)); }
         }
         #endregion
 
@@ -180,10 +177,13 @@ namespace QuanLyThuVien.ViewModel
         {
             try
             {
-                IsAdded = ObjDataOperation.Add_Book(AddBook);
+                var IsAdded = ObjDataOperation.Add_Book(CurrentBook);
                 if (IsAdded)
                 {
-                    IsAdded = true;
+                    if (System.Windows.MessageBox.Show("Thêm sách thành công!") == MessageBoxResult.OK)
+                    {
+                        AddBookV.Close();
+                    }
                     LoadData();
                 }
             }
@@ -191,28 +191,31 @@ namespace QuanLyThuVien.ViewModel
             {
                 throw ex;
             }
-
-            IsAdded = false;
         }
 
         public void SavePopUp()
         {
-            AddBook addBook = new AddBook(this);
-            addBook.ShowDialog();
+
+            CurrentBook = new BOOK();
+            AddBookV = new AddBook(this);
+            AddBookV.ShowDialog();
         }
 
         public void Update()
         {
+
             try
             {
-                BOOK book_temp = UpdateBook;
-                var isUpdated = ObjDataOperation.update(UpdateBook);
+                // BOOK book_temp = UpdateBook;
+                var isUpdated = ObjDataOperation.update(CurrentBook);
 
                 if (isUpdated)
                 {
-                    System.Windows.MessageBox.Show("Chỉnh sửa sách thành công!");
+                    if (System.Windows.MessageBox.Show("Chỉnh sửa sách thành công!") == MessageBoxResult.OK)
+                    {
+                        UpdateBookV.Close();
+                    }
                     LoadData();
-                    UpdateBook = book_temp;
                 }
             }
             catch (Exception ex)
@@ -223,22 +226,44 @@ namespace QuanLyThuVien.ViewModel
 
         public void UpdatePopUp()
         {
-            UpdateBook updateBook = new UpdateBook(this);
-            updateBook.ShowDialog();
+            if (SelectedBook == null || SelectedBook.NamXB < 1)
+            {
+                System.Windows.MessageBox.Show("Bạn vẫn chưa chọn sách, vui lòng chọn sách để chỉnh sửa!");
+                return;
+            }
+
+            CurrentBook.MaSach = SelectedBook.MaSach;
+            CurrentBook.TenSach = SelectedBook.TenSach;
+            CurrentBook.TheLoai = SelectedBook.TheLoai;
+            CurrentBook.TacGia = SelectedBook.TacGia;
+            CurrentBook.NamXB = SelectedBook.NamXB;
+            CurrentBook.NhaXB = SelectedBook.NhaXB;
+            CurrentBook.TriGia = SelectedBook.TriGia;
+            CurrentBook.NgayNhap = SelectedBook.NgayNhap;
+
+            UpdateBookV = new UpdateBook(this);
+            UpdateBookV.ShowDialog();
         }
+
         public void Delete()
         {
             try
             {
-                selectedBooks = new ObservableCollection<BOOK>(ObjDataOperation.getSelectedBooks());
+                var SelectedBooks = ObjDataOperation.getSelectedBooks();
 
-                if (selectedBooks.Count == 0) return;
+                if (SelectedBooks.Count == 0)
+                {
+                    
+                    System.Windows.MessageBox.Show("Hãy chọn ít nhất một cuốn sách mà bạn muốn xóa.");
+                    return;
+                    
+                }
 
                 MessageBoxResult confirm = System.Windows.MessageBox.Show("Bạn có chắc chắn muốn xóa những cuốn sách này?", "Xác nhận", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
                 if (confirm == MessageBoxResult.Cancel) return;
 
-                var isSaved = ObjDataOperation.Delete_Book(new List<BOOK>(selectedBooks));
+                var isSaved = ObjDataOperation.Delete_Book(SelectedBooks);
                 if (isSaved)
                     LoadData();
             }

@@ -32,36 +32,34 @@ TextOptions.TextRenderingMode="Auto"
             Width="300"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Họ tên"
-                Text="{Binding Path=AddReader.HoTen}"
+                Text="{Binding Path=CurrentReader.HoTen}"
             AcceptsReturn="True"                                
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
 
-            <TextBox
-Margin="0 5 0 5"
-    Width="300"
-    VerticalAlignment="Top"
-    materialDesign:HintAssist.Hint="Giới tính"
-                Text="{Binding Path=AddReader.GioiTinh}"
-    AcceptsReturn="True"                                
-    Style="{StaticResource MaterialDesignOutlinedTextBox}"
-    TextWrapping="Wrap"
-    VerticalScrollBarVisibility="Auto" />
+            <Grid Grid.Row="2" Width="300" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="0" GroupName="Gender" IsChecked="{Binding NamChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nam</RadioButton>
+                <RadioButton Style="{StaticResource RadioButton14}" Grid.Column="1" GroupName="Gender" IsChecked="{Binding NuChecked, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center">Nữ</RadioButton>
+            </Grid>
 
 
             <DatePicker
       Margin="0 5 0 5"
       Width="300"
       materialDesign:HintAssist.Hint="Ngày sinh"
-      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=AddReader.NgaySinh}"  />
+      Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Path=CurrentReader.NgaySinh}"  />
 
             <TextBox
 Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ"
-                Text="{Binding Path=AddReader.DiaChi}"
+                Text="{Binding Path=CurrentReader.DiaChi}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -72,7 +70,7 @@ Margin="0 5 0 5"
     Width="300"
     VerticalAlignment="Top"
     materialDesign:HintAssist.Hint="Địa chỉ email"
-                Text="{Binding Path=AddReader.Email}"
+                Text="{Binding Path=CurrentReader.Email}"
     AcceptsReturn="True"                                
     Style="{StaticResource MaterialDesignOutlinedTextBox}"
     TextWrapping="Wrap"
@@ -84,7 +82,7 @@ Margin="0 5 0 5"
         VerticalAlignment="Top"
         materialDesign:HintAssist.Hint="Số điện thoại"
         AcceptsReturn="True"  
-        Text="{Binding Path=AddReader.SoDT}"
+        Text="{Binding Path=CurrentReader.SoDT}"
         Style="{StaticResource MaterialDesignOutlinedTextBox}"
         TextWrapping="Wrap"
         VerticalScrollBarVisibility="Auto" />

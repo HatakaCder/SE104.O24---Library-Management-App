@@ -3,120 +3,56 @@
   "WorkspaceRootPath": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\addbook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addbook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\addbook.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addbook.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\viewmodel\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\model\\listquahanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:model\\listquahanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\viewmodel\\readerucvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\viewmodel\\readerucvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\readerucvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\view\\addreader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addreader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\model\\dataoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:model\\dataoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\formphieumuon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:formphieumuon.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\updatereader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatereader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\updatebook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatebook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\model\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:model\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\bookborrow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\bookborrow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\services\\dataproviderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\dataproviderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\services\\librarianservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\services\\librarianservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\librarianservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|d:\\chinh_khoa\\se104_1\\quanlythuvien\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\addlibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addlibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\services\\countservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:services\\countservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\viewmodel\\librarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\librarianvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\addreader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addreader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\librarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatelibrarian.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\updatebook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\updatebook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\viewmodel\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\bookvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\reader.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\book.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\viewmodel\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:viewmodel\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\bookborrow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\view\\addbook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F12293FA-EE46-4DBD-B6EC-A3CA2AEBCF08}|QuanLyThuVien.csproj|solutionrelative:view\\addbook.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 29,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,87 +90,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\UserService.cs",
-              "RelativeToolTip": "Services\\UserService.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAMwBwAAAAnAAAA",
+              "DocumentIndex": 3,
+              "Title": "LibrarianService.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\LibrarianService.cs",
+              "RelativeDocumentMoniker": "Services\\LibrarianService.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\LibrarianService.cs",
+              "RelativeToolTip": "Services\\LibrarianService.cs",
+              "ViewState": "AQIAALkAAAAAAAAAAAAAwMIAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T01:53:06.715Z",
+              "WhenOpened": "2024-06-17T14:44:08.242Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\Model1.edmx",
-              "RelativeDocumentMoniker": "Model\\Model1.edmx",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "Model\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-06-17T01:51:36.186Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-17T01:41:37.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UpdateBook.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateBook.xaml",
-              "RelativeDocumentMoniker": "View\\UpdateBook.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateBook.xaml",
-              "RelativeToolTip": "View\\UpdateBook.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-16T19:09:07.605Z",
+              "DocumentIndex": 1,
+              "Title": "DataOperation.cs",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\DataOperation.cs",
+              "RelativeDocumentMoniker": "Model\\DataOperation.cs",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\DataOperation.cs",
+              "RelativeToolTip": "Model\\DataOperation.cs",
+              "ViewState": "AQIAAFQCAAAAAAAAAADwv4kCAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T11:06:12.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "UpdateReader.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateReader.xaml",
-              "RelativeDocumentMoniker": "View\\UpdateReader.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateReader.xaml",
-              "RelativeToolTip": "View\\UpdateReader.xaml",
+              "Title": "Reader.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Reader.xaml",
+              "RelativeDocumentMoniker": "View\\Reader.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Reader.xaml",
+              "RelativeToolTip": "View\\Reader.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-16T19:08:38.05Z",
+              "WhenOpened": "2024-06-17T10:57:58.952Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\App.xaml",
-              "RelativeToolTip": "App.xaml",
+              "DocumentIndex": 11,
+              "Title": "Book.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeDocumentMoniker": "View\\Book.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Book.xaml",
+              "RelativeToolTip": "View\\Book.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:44:37.037Z",
+              "WhenOpened": "2024-06-17T10:57:06.133Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FormPhieuMuon.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\FormPhieuMuon.xaml",
-              "RelativeDocumentMoniker": "FormPhieuMuon.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\FormPhieuMuon.xaml",
-              "RelativeToolTip": "FormPhieuMuon.xaml",
+              "DocumentIndex": 6,
+              "Title": "Librarian.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeDocumentMoniker": "View\\Librarian.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Librarian.xaml",
+              "RelativeToolTip": "View\\Librarian.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:44:33.993Z",
+              "WhenOpened": "2024-06-17T10:56:25.043Z",
               "EditorCaption": ""
             },
             {
@@ -246,162 +159,79 @@
               "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateLibrarian.xaml",
               "RelativeToolTip": "View\\UpdateLibrarian.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:35:18.978Z",
+              "WhenOpened": "2024-06-17T10:52:43.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AddLibrarian.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddLibrarian.xaml",
-              "RelativeDocumentMoniker": "View\\AddLibrarian.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddLibrarian.xaml",
-              "RelativeToolTip": "View\\AddLibrarian.xaml",
+              "DocumentIndex": 8,
+              "Title": "UpdateBook.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateBook.xaml",
+              "RelativeDocumentMoniker": "View\\UpdateBook.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateBook.xaml",
+              "RelativeToolTip": "View\\UpdateBook.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:34:32.252Z"
+              "WhenOpened": "2024-06-17T10:42:48.665Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 12,
+              "Title": "AddBook.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml",
+              "RelativeDocumentMoniker": "View\\AddBook.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml",
+              "RelativeToolTip": "View\\AddBook.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-17T10:41:37.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "LibrarianVM.cs",
               "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\LibrarianVM.cs",
               "RelativeDocumentMoniker": "ViewModel\\LibrarianVM.cs",
               "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\LibrarianVM.cs",
               "RelativeToolTip": "ViewModel\\LibrarianVM.cs",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAIwKIAAAAuAAAA",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAQwL4AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:27:20.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DataProviderService.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\DataProviderService.cs",
-              "RelativeDocumentMoniker": "Services\\DataProviderService.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\DataProviderService.cs",
-              "RelativeToolTip": "Services\\DataProviderService.cs",
-              "ViewState": "AQIAAKoAAAAAAAAAAAAkwLMAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:17:39.088Z",
+              "WhenOpened": "2024-06-17T10:28:53.762Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ListQuaHanModel.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\ListQuaHanModel.cs",
-              "RelativeDocumentMoniker": "Model\\ListQuaHanModel.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\ListQuaHanModel.cs",
-              "RelativeToolTip": "Model\\ListQuaHanModel.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAQwD0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:16:50.707Z",
+              "DocumentIndex": 2,
+              "Title": "UpdateReader.xaml",
+              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateReader.xaml",
+              "RelativeDocumentMoniker": "View\\UpdateReader.xaml",
+              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\UpdateReader.xaml",
+              "RelativeToolTip": "View\\UpdateReader.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-16T19:08:38.05Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "CountService.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\CountService.cs",
-              "RelativeDocumentMoniker": "Services\\CountService.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\CountService.cs",
-              "RelativeToolTip": "Services\\CountService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:16:01.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "HomeVM.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\HomeVM.cs",
-              "RelativeDocumentMoniker": "ViewModel\\HomeVM.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\HomeVM.cs",
-              "RelativeToolTip": "ViewModel\\HomeVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T04:11:16.742Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Home.xaml.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Home.xaml.cs",
-              "RelativeDocumentMoniker": "View\\Home.xaml.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Home.xaml.cs",
-              "RelativeToolTip": "View\\Home.xaml.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAABYAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:13:14.436Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Home.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Home.xaml",
-              "RelativeDocumentMoniker": "View\\Home.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Home.xaml",
-              "RelativeToolTip": "View\\Home.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:12:48.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DataOperation.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\DataOperation.cs",
-              "RelativeDocumentMoniker": "Model\\DataOperation.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Model\\DataOperation.cs",
-              "RelativeToolTip": "Model\\DataOperation.cs",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAhwKMAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:05:56.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Reader.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Reader.xaml",
-              "RelativeDocumentMoniker": "View\\Reader.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Reader.xaml",
-              "RelativeToolTip": "View\\Reader.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:01:40.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Book.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Book.xaml",
-              "RelativeDocumentMoniker": "View\\Book.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Book.xaml",
-              "RelativeToolTip": "View\\Book.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T06:00:48.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ReaderUCVM.cs",
               "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\ReaderUCVM.cs",
               "RelativeDocumentMoniker": "ViewModel\\ReaderUCVM.cs",
               "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\ReaderUCVM.cs",
               "RelativeToolTip": "ViewModel\\ReaderUCVM.cs",
-              "ViewState": "AQIAAJsAAAAAAAAAAADwv58AAABKAAAA",
+              "ViewState": "AQIAAAEBAAAAAAAAAADwvxABAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-15T05:59:49.343Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "BookVM.cs",
               "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\BookVM.cs",
               "RelativeDocumentMoniker": "ViewModel\\BookVM.cs",
               "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\ViewModel\\BookVM.cs",
               "RelativeToolTip": "ViewModel\\BookVM.cs",
-              "ViewState": "AQIAAK4AAAAAAAAAAAAiwLsAAAARAAAA",
+              "ViewState": "AQIAAN8AAAAAAAAAAADwv+QAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-15T05:59:42.015Z",
               "EditorCaption": ""
@@ -416,91 +246,6 @@
               "RelativeToolTip": "View\\AddReader.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-06-15T05:53:44.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddBook.xaml.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml.cs",
-              "RelativeDocumentMoniker": "View\\AddBook.xaml.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml.cs",
-              "RelativeToolTip": "View\\AddBook.xaml.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAtwB0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T05:52:50.549Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddBook.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml",
-              "RelativeDocumentMoniker": "View\\AddBook.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\AddBook.xaml",
-              "RelativeToolTip": "View\\AddBook.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T05:51:55.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BookBorrow.xaml.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\BookBorrow.xaml.cs",
-              "RelativeDocumentMoniker": "View\\BookBorrow.xaml.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\BookBorrow.xaml.cs",
-              "RelativeToolTip": "View\\BookBorrow.xaml.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAowFUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T04:46:03.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "BookBorrow.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\BookBorrow.xaml",
-              "RelativeDocumentMoniker": "View\\BookBorrow.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\BookBorrow.xaml",
-              "RelativeToolTip": "View\\BookBorrow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T04:45:53.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Setting.xaml",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Setting.xaml",
-              "RelativeDocumentMoniker": "View\\Setting.xaml",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Setting.xaml",
-              "RelativeToolTip": "View\\Setting.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-15T04:44:12.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Setting.xaml.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Setting.xaml.cs",
-              "RelativeDocumentMoniker": "View\\Setting.xaml.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\View\\Setting.xaml.cs",
-              "RelativeToolTip": "View\\Setting.xaml.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAqwBEAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T04:19:49.221Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "LibrarianService.cs",
-              "DocumentMoniker": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\LibrarianService.cs",
-              "RelativeDocumentMoniker": "Services\\LibrarianService.cs",
-              "ToolTip": "D:\\Chinh_Khoa\\SE104_1\\QuanLyThuVien\\Services\\LibrarianService.cs",
-              "RelativeToolTip": "Services\\LibrarianService.cs",
-              "ViewState": "AQIAAGoAAAAAAAAAAAAMwIAAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T04:17:32.913Z",
               "EditorCaption": ""
             }
           ]

@@ -164,8 +164,7 @@
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
           Margin="15,15,15,15"
-          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
-                              SelectedItem="{Binding Path=UpdateBook}"
+          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedBook, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
           >
                         <DataGrid.Columns>
 

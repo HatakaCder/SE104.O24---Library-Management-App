@@ -24,6 +24,8 @@ namespace QuanLyThuVien.View
         {
             this.DataContext = vm;
             InitializeComponent();
+
+            
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Net.Mail;
 using System.Diagnostics.Eventing.Reader;
 using System.Media;
 using QuanLyThuVien.View;
+using System.Windows;
 
 namespace QuanLyThuVien.Model
 {
@@ -125,7 +126,7 @@ namespace QuanLyThuVien.Model
         public bool Add_Book(BOOK objBook)
         {
             bool IsAdded = false;
-            objBook.NgayNhap = DateTime.Now;
+            objBook.NgayNhap = DateTime.Now;            
 
             #region Check_Book_Information
             int check = CheckInformation(objBook);
@@ -442,6 +443,10 @@ namespace QuanLyThuVien.Model
 
             if (objReader.SoDT == null || ValidNum.Find(x => x == objReader.SoDT.Substring(0, 3)) == null) return 6;
 
+            // Kiểm tra địa chỉ email đã tồn tại hay chưa
+
+            if (ObjReadersList.FirstOrDefault(x => x.Email == objReader.Email && x.MaDG != objReader.MaDG) != null) return 8;
+
             return 0;
         }
         #endregion
@@ -479,7 +484,11 @@ namespace QuanLyThuVien.Model
                 case 7:
                     System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để thêm độc giả!");
                     return false;
+                case 8:
+                    System.Windows.MessageBox.Show("Tài khoản email này đã tồn tại, vui lòng sử dụng một tài khoản khác!");
+                    return false;
             }
+
             #endregion
 
             #region Insert_new_reader_into_database
@@ -607,7 +616,10 @@ namespace QuanLyThuVien.Model
                     System.Windows.MessageBox.Show("Số điện thoại chưa hợp lệ!");
                     return false;
                 case 7:
-                    System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để thêm độc giả!");
+                    System.Windows.MessageBox.Show("Vui lòng điền đầy đủ thông tin để hoàn tất việc chỉnh sửa thông tin độc giả!");
+                    return false;
+                case 8:
+                    System.Windows.MessageBox.Show("Tài khoản email này đã tồn tại, vui lòng sử dụng một tài khoản khác!");
                     return false;
             }
             #endregion

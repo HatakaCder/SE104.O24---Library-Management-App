@@ -202,7 +202,7 @@ namespace QuanLyThuVien.Services
                     MessageBox.Show("Độ tuổi không hợp lệ theo quy định!");
                     return IsUpdated;
                 }
-                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == obj_l.Email) != null)
+                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == obj_l.Email && l.MaTT != obj_l.MaTT) != null)
                 {
                     MessageBox.Show("Email này đã tồn tại!");
                     return IsUpdated;

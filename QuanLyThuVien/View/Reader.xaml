@@ -135,6 +135,10 @@
 
                 </Grid>
                 <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="386*"/>
+                        <ColumnDefinition Width="89*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid Name="dataTable" BorderBrush="Gray" BorderThickness="0.5"   
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
@@ -147,10 +151,9 @@
           CanUserReorderColumns="False"   
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
-          Margin="15"
-          ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}"
-                              SelectedItem="{Binding Path=UpdateReader}"
-                              SelectionMode="Extended" 
+          Margin="15,15,15,15"
+          ItemsSource="{Binding Path=ReaderList, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedReader, Mode=TwoWay}"
+                              Grid.ColumnSpan="2" 
           >
                         <DataGrid.Columns>
 
