@@ -26,7 +26,7 @@ namespace QuanLyThuVien.Services
                 var ObjDG = new DOCGIA();
                 var ObjParameter = ObjContext.PARAMETERS.First(); // lấy giá trị đầu từ bảng parameters
 
-                ObjDG.MaDG = "DG" + ObjParameter.IDDocGia.ToString("000");
+                ObjDG.MaDG = "DG" + "00" + ObjParameter.IDDocGia.ToString();
                 ObjDG.HoTen = objNewDG.HoTen;
                 ObjDG.Email = objNewDG.Email;
                 ObjDG.GioiTinh = objNewDG.GioiTinh;

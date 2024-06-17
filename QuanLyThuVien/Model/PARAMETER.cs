@@ -15,11 +15,10 @@ namespace QuanLyThuVien.Model
     public partial class PARAMETER
     {
         public int ID { get; set; }
-        public short IDDocGia { get; set; }
-        public short IDThuThu { get; set; }
-        public short IDSach { get; set; }
-        public short IDPhieuMuon { get; set; }
-        public short IDPhieuTra { get; set; }
-        public short IDMaTT { get; set; }
+        public Nullable<short> IDDocGia { get; set; }
+        public Nullable<short> IDSach { get; set; }
+        public Nullable<short> IDPhieuMuon { get; set; }
+        public Nullable<short> IDPhieuTra { get; set; }
+        public Nullable<short> IDMaTT { get; set; }
     }
 }

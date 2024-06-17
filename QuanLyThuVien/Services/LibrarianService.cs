@@ -3,12 +3,14 @@ using QuanLyThuVien.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml;
 
 namespace QuanLyThuVien.Services
 {
@@ -18,11 +20,14 @@ namespace QuanLyThuVien.Services
         List<LibrarianDTO> ObjLibrariansList;
         PasswordHashing Convert_pw;
         string datePattern = @"^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/(\d{4})$";
+        int minT, maxT;
         public LibrarianService()
         {
             ObjContext = new QLTV_BETAEntities();
             ObjLibrariansList = new List<LibrarianDTO>();
             Convert_pw = new PasswordHashing();
+            minT = ObjContext.SETTINGs.FirstOrDefault().TuoiToiTieuThuThu ?? 18;
+            maxT = ObjContext.SETTINGs.FirstOrDefault().TuoiToiDaThuThu ?? 45;
         }
         public List<LibrarianDTO> GetAll()
         {
@@ -61,12 +66,49 @@ namespace QuanLyThuVien.Services
             try
             {
                 Regex regex = new Regex(datePattern);
+
+                if (string.IsNullOrWhiteSpace(objNewLibrarian.HoTen))
+                {
+                    MessageBox.Show("Họ tên không được để trống!");
+                    return IsAdded;
+                }
+                if (string.IsNullOrWhiteSpace(objNewLibrarian.Email))
+                {
+                    MessageBox.Show("Email không được để trống!");
+                    return IsAdded;
+                }
+
+                if (string.IsNullOrWhiteSpace(objNewLibrarian.SoDT))
+                {
+                    MessageBox.Show("Số điện thoại không được để trống!");
+                    return IsAdded;
+                }
+
+                if (string.IsNullOrWhiteSpace(objNewUser.TaiKhoan))
+                {
+                    MessageBox.Show("Tên tài khoản không được để trống!");
+                    return IsAdded;
+                }
+
+                if (string.IsNullOrWhiteSpace(objNewUser.MatKhau))
+                {
+                    MessageBox.Show("Mật khẩu không được để trống!");
+                    return IsAdded;
+                }
+
                 if (!regex.IsMatch(objNewLibrarian.NgaySinh.ToString("dd/MM/yyyy")))
                 {
                     MessageBox.Show("Ngày sinh không hợp lệ!");
                     return IsAdded;
+                } else {
+                    int age = DateTime.Now.Year - objNewLibrarian.NgaySinh.Year;
+                    if (age < minT || age > maxT)
+                    {
+                        MessageBox.Show("Độ tuổi không hợp lệ theo quy định!");
+                        return IsAdded;
+                    }
                 }
-                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == objNewLibrarian.Email) != null)
+                if (ObjLibrariansList.FirstOrDefault(l => l.Email == objNewLibrarian.Email) != null)
                 {
                     MessageBox.Show("Email này đã tồn tại!");
                     return IsAdded;
@@ -76,11 +118,12 @@ namespace QuanLyThuVien.Services
                     MessageBox.Show("Tài khoản này đã tồn tại!");
                     return IsAdded;
                 }
+
                 var ObjLibrarian = new THUTHU();
                 var ObjUser = new ACCOUNT();
                 var ObjParameter = ObjContext.PARAMETERS.First();
 
-                ObjLibrarian.MaTT = "TT" + ObjParameter.IDThuThu.ToString("000");
+                ObjLibrarian.MaTT = "TT" + "00" + ObjParameter.IDMaTT.ToString();
                 ObjLibrarian.HoTen = objNewLibrarian.HoTen;
                 ObjLibrarian.Email = objNewLibrarian.Email;
                 ObjLibrarian.DiaChi = objNewLibrarian.DiaChi;
@@ -92,13 +135,14 @@ namespace QuanLyThuVien.Services
 
                 ObjUser.MaTT = ObjLibrarian.MaTT;
                 ObjUser.TaiKhoan = objNewUser.TaiKhoan;
+                ObjUser.VaiTro = 1;
                 ObjUser.MatKhau = Convert_pw.HashPassword(objNewUser.MatKhau);
                 ObjUser.IsDeleted = false;
 
                 ObjContext.THUTHUs.Add(ObjLibrarian);
                 ObjContext.ACCOUNTs.Add(ObjUser);
 
-                ObjParameter.IDThuThu += 1;
+                ObjParameter.IDMaTT += 1;
 
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
@@ -117,6 +161,53 @@ namespace QuanLyThuVien.Services
 
             try
             {
+                Regex regex = new Regex(datePattern);
+                
+                if (string.IsNullOrWhiteSpace(obj_l.HoTen))
+                {
+                    MessageBox.Show("Họ tên không được để trống!");
+                    return IsUpdated;
+                }
+                if (string.IsNullOrWhiteSpace(obj_l.Email))
+                {
+                    MessageBox.Show("Email không được để trống!");
+                    return IsUpdated;
+                }
+
+                if (string.IsNullOrWhiteSpace(obj_l.SoDT))
+                {
+                    MessageBox.Show("Số điện thoại không được để trống!");
+                    return IsUpdated;
+                }
+
+                if (string.IsNullOrWhiteSpace(obj_u.TaiKhoan))
+                {
+                    MessageBox.Show("Tên tài khoản không được để trống!");
+                    return IsUpdated;
+                }
+
+                if (string.IsNullOrWhiteSpace(obj_u.MatKhau))
+                {
+                    MessageBox.Show("Mật khẩu không được để trống!");
+                    return IsUpdated;
+                }
+                if (!regex.IsMatch(obj_l.NgaySinh.ToString("dd/MM/yyyy")))
+                {
+                    MessageBox.Show("Ngày sinh không hợp lệ!");
+                    return IsUpdated;
+                }
+                int age = DateTime.Now.Year - obj_l.NgaySinh.Year;
+                if (age < minT || age > maxT)
+                {
+                    MessageBox.Show("Độ tuổi không hợp lệ theo quy định!");
+                    return IsUpdated;
+                }
+                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == obj_l.Email) != null)
+                {
+                    MessageBox.Show("Email này đã tồn tại!");
+                    return IsUpdated;
+                }
+
                 var ObjLibrarian = ObjContext.THUTHUs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
                 var ObjUser = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
 
@@ -141,11 +232,12 @@ namespace QuanLyThuVien.Services
             }
             return IsUpdated;
         }
-        public ACCOUNT findUserTT(string MaTT) {
+        public ACCOUNT findUserTT(string MaTT)
+        {
             ACCOUNT us = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == MaTT);
             return us;
         }
-        
+
         public bool Delete(List<string> listId)
         {
             bool IsDeleted = false;

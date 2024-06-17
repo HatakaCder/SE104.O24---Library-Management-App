@@ -177,6 +177,7 @@
     <Compile Include="Class\PasswordBoxHelper.cs" />
     <Compile Include="Class\PasswordHashing.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="FormPhieuMuon.xaml.cs">
       <DependentUpon>FormPhieuMuon.xaml</DependentUpon>
     </Compile>
@@ -187,12 +188,14 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BOOK.cs" />
+    <Compile Include="Model\DataOperation.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DocGiaDTO.cs" />
     <Compile Include="Model\LibrarianDTO.cs" />
+    <Compile Include="Model\ListQuaHanModel.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +225,8 @@
     <Compile Include="Model\PHIEUTRA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PhieuTraDTO.cs" />
+    <Compile Include="Model\READER.cs" />
     <Compile Include="Model\ReportDTO.cs" />
     <Compile Include="Model\Report_1.cs" />
     <Compile Include="Model\Report_2.cs" />
@@ -241,6 +246,8 @@
     </Compile>
     <Compile Include="Model\TRA.cs" />
     <Compile Include="Model\UserDTO.cs" />
+    <Compile Include="Services\CountService.cs" />
+    <Compile Include="Services\DataProviderService.cs" />
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
     <Compile Include="Services\ReportService.cs" />
@@ -266,8 +273,14 @@
     <Compile Include="ViewModel\SignInVM.cs" />
     <Compile Include="ViewModel\SignUpVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
+    <Compile Include="View\AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddLibrarian.xaml.cs">
       <DependentUpon>AddLibrarian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddReader.xaml.cs">
+      <DependentUpon>AddReader.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Book.xaml.cs">
       <DependentUpon>Book.xaml</DependentUpon>
@@ -318,8 +331,14 @@
     <Compile Include="View\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateBook.xaml.cs">
+      <DependentUpon>UpdateBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateLibrarian.xaml.cs">
       <DependentUpon>UpdateLibrarian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateReader.xaml.cs">
+      <DependentUpon>UpdateReader.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
@@ -368,7 +387,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddLibrarian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddReader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -448,7 +475,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UpdateBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UpdateLibrarian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateReader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

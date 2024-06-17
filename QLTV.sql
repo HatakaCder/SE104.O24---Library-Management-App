@@ -3,7 +3,7 @@ GO
 USE QLTV_BETA
 GO
 SET DATEFORMAT DMY -- dateformat: dd/mm/yyyy
-GO
+GO﻿
 
 CREATE TABLE DOCGIA 
 (
@@ -18,17 +18,19 @@ CREATE TABLE DOCGIA
 	IsDeleted	BIT DEFAULT 0
 );
 GO
+
 CREATE TABLE THELOAI
 (
 	TenTheLoai	NVARCHAR(225) PRIMARY KEY,
 	IsDeleted	BIT DEFAULT 0
 );
 GO
+
 CREATE TABLE SACH 
 (
 	MaSach		VARCHAR(5) NOT NULL PRIMARY KEY,
 	TenSach		NVARCHAR(255),
-	TenTheLoai	NVARCHAR(225) FOREIGN KEY REFERENCES THELOAI(TenTheLoai),
+	TheLoai	NVARCHAR(225) FOREIGN KEY REFERENCES THELOAI(TenTheLoai),
 	TacGia		NVARCHAR(255),
 	NamXB		SMALLINT,
 	NhaXB		NVARCHAR(255),
@@ -38,7 +40,6 @@ CREATE TABLE SACH
 	IsDeleted	BIT DEFAULT 0
 );
 GO
-
 
 CREATE TABLE PHIEUMUON
 (
@@ -62,7 +63,6 @@ GO
 
 CREATE TABLE PHIEUTHU
 (
-	--Phiếu thu chỉ được tạo khi sách trả quá hạn, tạo trigger để kiểm tra việc trả quá hạn và tự lập phiếu thu nếu có. Việc truy xuất phiếu thu sẽ được thực hiện thông qua MaPhTra trong bảng PHIEUTHU
 	ID			INT IDENTITY(1, 1) PRIMARY KEY,
 	MaPhTra		VARCHAR(5) FOREIGN KEY REFERENCES PHIEUTRA(MaPhTra),
 	SoNgayQHan	SMALLINT,
@@ -89,10 +89,9 @@ CREATE TABLE ACCOUNT
 (
 	TaiKhoan	VARCHAR(30) PRIMARY KEY,
 	MatKhau		VARCHAR(255) NOT NULL,
-	-- Để phục vụ cho việc thay đổi tên tài khoản, mật khẩu, không nên để tài khoản và mật khẩu làm thuộc tính khóa chính
 	MaDG		VARCHAR(5) FOREIGN KEY REFERENCES DOCGIA(MaDG),
 	MaTT		VARCHAR(5) FOREIGN KEY REFERENCES THUTHU(MaTT),
-	VaiTro		SMALLINT NOT NULL, -- biến này để phân biệt người dùng, thủ thư hay admin, bởi vì mình chỉ sử dụng một bảng này để lưu thông tin tài khoản cho tất cả nên cần có biến này. Mình có thể xét như sau: 3: Admin, 2: thủ thư, và 1: người dùng.
+	VaiTro		SMALLINT NOT NULL,
 	IsDeleted	BIT DEFAULT 0
 );
 GO
@@ -110,45 +109,88 @@ CREATE TABLE SETTING
 	SoSachMuonToiDa		INT	DEFAULT 5,
 	SoLuongTheLoaiToiDa INT DEFAULT 30,
 	ThoiGianNhapSach	INT DEFAULT 5
-);
-GO
-
-
-
-CREATE TABLE PARAMETERS
-(
-	ID 			INT PRIMARY KEY,
-	IDDocGia	SMALLINT DEFAULT 6 NOT NULL,
-	IDThuThu	SMALLINT DEFAULT 10 NOT NULL,
-	IDSach		SMALLINT DEFAULT 8 NOT NULL,
-	IDPhieuMuon	SMALLINT DEFAULT 11 NOT NULL,
-	IDPhieuTra	SMALLINT DEFAULT 9 NOT NULL,
-	IDMaTT		SMALLINT DEFAULT 3 NOT NULL
 )
 GO
 
--- Luôn cần một dòng dữ liệu trong bảng PARAMETERs để truy xuất thông tin sau này
-INSERT INTO PARAMETERS VALUES(1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+CREATE TABLE PARAMETERS
+(
+	ID 		INT PRIMARY KEY,
+	IDDocGia	SMALLINT DEFAULT 6,
+	IDSach		SMALLINT DEFAULT 8,
+	IDPhieuMuon	SMALLINT DEFAULT 11,
+	IDPhieuTra	SMALLINT DEFAULT 9,
+	IDMaTT		SMALLINT DEFAULT 3
+)
+
+-- Luôn cần một dòng dữ liệu trong bảng SETTING và PARAMETERs để truy xuất thông tin sau này
+INSERT INTO SETTING VALUES(1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+GO
+INSERT INTO PARAMETERS VALUES(1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+GO
+
+-- Trigger nếu muốn thêm sách với thể loại không phụ thuộc vào thể loại đã có
+/*
+CREATE TRIGGER THEM_SACH_VOI_THELOAI
+ON SACH
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @MaSach VARCHAR(5), @TheLoai VARCHAR(225)
+
+	SELECT @MaSach = MaSach from INSERTED
+	SELECT @TheLoai = TheLoai from INSERTED
+
+	IF NOT EXISTS (
+		SELECT * FROM THELOAI
+		WHERE LOWER(TenTheLoai) = LOWER(@TheLoai)
+	)
+	BEGIN
+		INSERT INTO THELOAI VALUES (@TheLoai, 0)
+	END
+	ELSE IF NOT EXISTS (
+		SELECT * FROM THELOAI
+		WHERE TenTheLoai = @TheLoai
+	)
+	BEGIN
+		UPDATE SACH
+		SET TheLoai = (
+			SELECT TenTheLoai
+			FROM THELOAI
+			WHERE LOWER(TenTheLoai) = LOWER(@TheLoai)
+		)
+		WHERE SACH.MaSach = @MaSach
+	END
+END*/
 GO
 
 -- Tạo TRIGGER để tính ngày phải trả của cuốn sách
 CREATE TRIGGER NGAY_PHAI_TRA_PHIEUMUON
 ON PHIEUMUON
-FOR INSERT, UPDATE
+FOR INSERT
 AS
 BEGIN
-	DECLARE @MaPhMuon VARCHAR(5), @MAXDAY INT
+	DECLARE @MaPhMuon VARCHAR(5), @MAXDAY INT = 30
+	DECLARE @MaSach VARCHAR(5), @TinhTrang SMALLINT
 	
 	SELECT @MaPhMuon = MaPhMuon FROM INSERTED
+	SELECT @MaSach = MaSach FROM INSERTED
+	SELECT @TinhTrang = TinhTrang FROM SACH WHERE MaSach = @MaSach
 
-	-- Lấy giá trị SoNgayMuonToiDa từ bảng SETTING
-	SELECT @MAXDAY = SoNgayMuonToiDa FROM SETTING
-
-	UPDATE PHIEUMUON
+	IF (@TinhTrang = 0) 
+	BEGIN
+		ROLLBACK;
+		RAISERROR('Cuốn sách này đã được mượn!', 10, 1)
+	END
+	
+	-- Tính toán hạn trả trong phiếu mượn
+	UPDATE PHIEUMUON 
 	SET NgayPhTra = DATEADD(day, @MAXDAY, NgayMuon)
 	WHERE PHIEUMUON.MaPhMuon = @MaPhMuon
 
-	PRINT('Thông tin phiếu mượn đã được hoàn tất!')
+	-- Điều chỉnh lại thuộc tính tình trạng của sách được mượn thành 0
+	UPDATE SACH
+	SET TinhTrang = 0
+	WHERE SACH.MaSach = @MaSach
 END;
 GO
 
@@ -158,24 +200,32 @@ ON PHIEUTRA
 FOR INSERT, UPDATE
 AS
 BEGIN
-	DECLARE @NgayPhTra DATE, @NgayTra DATE, @SoTienNopTre INT
+	-- Lấy dữ liệu để kiểm tra điều kiện
+	DECLARE @NgayPhTra DATE, @NgayTra DATE
+	DECLARE @MaSach VARCHAR(5)
 
 	SELECT @NgayPhTra = NgayPhTra
 	FROM INSERTED INNER JOIN PHIEUMUON ON INSERTED.MaPhMuon = PHIEUMUON.MaPhMuon
 	SELECT @NgayTra = NgayTra FROM INSERTED
 
+	SELECT @MaSach = PHIEUMUON.MaSach
+	FROM INSERTED 
+	INNER JOIN PHIEUMUON ON INSERTED.MaPhMuon = PHIEUMUON.MaPhMuon
+	INNER JOIN SACH ON SACH.MaSach = PHIEUMUON.MaSach
+
+	UPDATE SACH
+	SET TinhTrang = 1
+	WHERE MaSach = @MaSach
+
 	IF (@NgayTra > @NgayPhTra)
 	BEGIN
-		DECLARE @MaPhTra VARCHAR(5), @SoNgQuaHan INT
+		DECLARE @MaPhTra VARCHAR(5), @IDPhTra INT = 2000, @SoNgQuaHan INT
 
 		SELECT @MaPhTra = MaPhTra FROM INSERTED
 		SELECT @SoNgQuaHan = DATEDIFF(day, @NgayPhTra, @NgayTra)
 
-		SELECT @SoTienNopTre = SoTienNopTre FROM SETTING
-
-		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @SoTienNopTre, DEFAULT);
-	
-		PRINT('Trả sách quá thời hạn, đã lập phiếu thu!')
+		-- Tổng tiền = Số ngày * Tiền nộp 1 ngày
+		INSERT INTO PHIEUTHU VALUES(@MaPhTra, @SoNgQuaHan, @SoNgQuaHan * @IDPhTra, DEFAULT);
 	END
 END;
 GO
@@ -246,6 +296,3 @@ INSERT INTO ACCOUNT VALUES ('TaiKhoan4', 'MatKhau4', 'DG004', NULL, 1, DEFAULT);
 INSERT INTO ACCOUNT VALUES ('TaiKhoan5', 'MatKhau5', 'DG005', NULL, 1, DEFAULT);
 INSERT INTO ACCOUNT VALUES ('TaiKhoan6', 'MatKhau6', NULL, 'TT001', 2, DEFAULT);
 INSERT INTO ACCOUNT VALUES ('TaiKhoan7', 'MatKhau7', NULL, 'TT002', 2, DEFAULT);
-
---SETTING TABLE
-INSERT INTO SETTING VALUES (1, 13, 70, 13,70, 24, 30, 2000, 5, 30, 5)

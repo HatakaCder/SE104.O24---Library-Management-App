@@ -47,6 +47,7 @@ namespace QuanLyThuVien.ViewModel
             passwordHashing = new PasswordHashing();
             deleteCommand = new RelayCommand(Delete);
             searchCommand = new RelayCommand(Search);
+
         }
         #region DisplayOperation
         private ObservableCollection<LibrarianDTO> librariansList;
@@ -122,6 +123,7 @@ namespace QuanLyThuVien.ViewModel
         {
             CurrentLibrarian = new LibrarianDTO();
             CurrentLibrarian.GioiTinh = selectedOption;
+            CurrentLibrarian.NgaySinh = DateTime.Now;
             AddLibrarian v = new AddLibrarian(this);
             v.Show();
         }
@@ -204,7 +206,8 @@ namespace QuanLyThuVien.ViewModel
                 bool changePw = oldpw != CurrentUser.MatKhau;
                 CurrentLibrarian.GioiTinh = selectedOption;
                 IsUpdated = librarianService.Update(CurrentLibrarian, CurrentUser, changePw);
-                if (IsUpdated) {
+                if (IsUpdated)
+                {
                     MessageBox.Show("Chỉnh sửa thủ thư thành công!");
                     LoadData();
                 }
@@ -236,7 +239,8 @@ namespace QuanLyThuVien.ViewModel
                         maTTDeleted.Add(item.MaTT);
                     }
                 }
-                if (maTTDeleted.Count == 0) {
+                if (maTTDeleted.Count == 0)
+                {
                     MessageBox.Show("Không có dữ liệu cần xoá!");
                     return;
                 }
@@ -246,6 +250,7 @@ namespace QuanLyThuVien.ViewModel
                 if (IsDeleted)
                 {
                     MessageBox.Show("Xoá dữ liệu được chọn thành công!");
+                    LoadData();
                 }
             }
             catch (Exception)

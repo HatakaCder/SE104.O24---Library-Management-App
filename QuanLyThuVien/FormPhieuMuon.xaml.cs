@@ -99,13 +99,13 @@ namespace QuanLyThuVien
         private int GetCurrentIdNumberFromDatabase(string prefix)
         {
             string entityConnectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
-                                            provider=System.Data.SqlClient;
-                                            provider connection string='data source=.;
-                                            initial catalog=QLTV_BETA;
-                                            integrated security=True;
-                                            encrypt=False;
-                                            application name=EntityFramework;
-                                            MultipleActiveResultSets=True'";
+                                 provider=System.Data.SqlClient;
+                                 provider connection string=""data source=DESKTOP-78M919L\SQLEXPRESS;
+                                 initial catalog=QLTV_BETA;
+                                 integrated security=True;
+                                 encrypt=True;
+                                 trustservercertificate=True;
+                                 MultipleActiveResultSets=True"";";
 
             string sqlConnectionString = new EntityConnectionStringBuilder(entityConnectionString).ProviderConnectionString;
 

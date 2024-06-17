@@ -130,9 +130,9 @@ namespace QuanLyThuVien.View
                 var setting = _context.SETTINGs.FirstOrDefault() ?? new SETTING();
 
                 setting.TuoiToiTieuDocGia = tuoiToiTieuDocGia;
-                setting.TuoiToiTieuDocGia = tuoiToiDaDocGia;
+                setting.TuoiToiDaDocGia = tuoiToiDaDocGia;
                 setting.TuoiToiTieuThuThu = tuoiToiTieuThuThu;
-                setting.TuoiToiTieuThuThu = tuoiToiDaThuThu;
+                setting.TuoiToiDaThuThu = tuoiToiDaThuThu;
                 setting.ThoiHanThe = thoiHanThe;
                 setting.SoNgayMuonToiDa = soNgayMuonToiDa;
                 setting.SoTienNopTre = soTienNopTre;

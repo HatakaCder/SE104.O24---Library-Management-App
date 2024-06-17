@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
+             xmlns:local="clr-namespace:QuanLyThuVien.Converters"
              mc:Ignorable="d" 
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -17,9 +18,14 @@
             Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:BookVM/>
+
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <local:DateFormatConverter x:Key="DateFormatConverter"/>
+    </UserControl.Resources>
     <Grid>
-        <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray" Background="Snow" Margin="15">
+        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
@@ -81,7 +87,8 @@
                         VerticalAlignment="Center"
                          Margin="15"
                         Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                        Text="Danh sách sách" />
+                        Text="Danh sách sách"
+                        />
                     <Grid Grid.Column="1" 
                           Width="300" 
                           Background="#FFFFff"
@@ -106,12 +113,14 @@
                                     Margin="8,0,0,0"
                                     VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
+                            
+                            Text="{Binding Path=Items}"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0" />
                         <Button
                                     Grid.Column="2"
-                                    Style="{StaticResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon
+                                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=SearchCommand}">
+                            <materialDesign:PackIcon
                                       Margin="8,0,0,0"
                                       Kind="Send"
                                       Opacity=".56" />
@@ -123,16 +132,26 @@
                         <ComboBox                           
                                Margin="2"
                                Width="200"
+                            
+                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                            
                                materialDesign:HintAssist.Hint="Tìm kiếm theo"
                                Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                            <ComboBoxItem Content="Item 1" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 2" Style="{StaticResource theComboBoxItem}"/>
-                            <ComboBoxItem Content="Item 3" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tất cả" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tên sách" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Thể loại" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Tác giả" Style="{StaticResource theComboBoxItem}"/>
+                            <ComboBoxItem Content="Có sẵn" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="357*"/>
+                        <ColumnDefinition Width="118*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid BorderBrush="Gray" 
+                              BorderThickness="0.5"   Name="dgView"
           AutoGenerateColumns="False"
           RowStyle="{StaticResource DataGridRowStyle}" 
           Background="White"
@@ -144,11 +163,13 @@
           CanUserReorderColumns="False"   
           HorizontalScrollBarVisibility="Disabled"
           HeadersVisibility="Column"
-          Margin="15"
-          ItemsSource="{Binding}"
+          Margin="15,15,15,15"
+          ItemsSource="{Binding Path=BooksList, Mode=TwoWay}"  SelectionMode="Extended" Grid.ColumnSpan="2"
+                              SelectedItem="{Binding Path=UpdateBook}"
           >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
+
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=MaSach}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -158,7 +179,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TenSach}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -168,7 +189,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TheLoai}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -178,7 +199,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TacGia}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -188,7 +209,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=NhaXB}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -198,7 +219,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="1.2*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=NamXB}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -208,7 +229,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding NgayNhap, Converter={StaticResource DateFormatConverter}}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -218,7 +239,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TriGia}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -228,7 +249,7 @@
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=TinhTrang}" IsReadOnly="True">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -237,6 +258,8 @@
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -245,14 +268,15 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                             <Button
-                                Background="#FADBD8"
+                                Background="#FADBD8" Command="{Binding Path=SavePopUpCommand}"
               Content="Thêm"
               Margin="15"
               Width="150"
               Height="50"
+                                Name="btThemSach"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Thêm sách" />
+                                />
                             <Button
                                 Background="#FADBD8"
               Content="Xóa"
@@ -261,16 +285,18 @@
               Margin="15"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Xóa sách" />
+              ToolTip="Xóa sách"
+                                Command="{Binding Path=DeleteCommand}"/>
                             <Button
                                 Background="#FADBD8"
               Content="Sửa"
               Width="150"
               Height="50"                                      
-              Margin="15"                                      
+              Margin="15"  
+                                Name="btSuaSach"
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
               Style="{StaticResource MaterialDesignRaisedLightButton}"
-              ToolTip="Sửa sách" />
+              ToolTip="Sửa sách"  Command="{Binding Path=UpdatePopUpCommand}" />
                         </StackPanel>
                     </DockPanel>
                 </Grid>
