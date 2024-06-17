@@ -346,12 +346,22 @@
                             <Button
                                 Background="#FADBD8"
                                 Foreground="Black"
-                                Content="Tạo Phiếu mượn/Trả"
+                                Content="Tạo Phiếu Mượn"
                                 Margin="15"
                                 Width="200"
                                 Height="50"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                ToolTip="Thêm phiếu mượn" Click="Button_Click" />
+                                ToolTip="Thêm phiếu mượn" Click="Button_Click_TaoPhieuMuon" />
+
+                            <Button
+                                Background="#FADBD8"
+                                Foreground="Black"
+                                Content="Tạo Phiếu Trả"
+                                Margin="15"
+                                Width="200"
+                                Height="50"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                ToolTip="Thêm phiếu trả" Click="Button_Click_TaoPhieuTra" />
 
                             <Button
                                 Background="#FADBD8"

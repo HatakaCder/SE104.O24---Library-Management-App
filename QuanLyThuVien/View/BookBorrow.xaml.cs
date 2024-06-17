@@ -95,7 +95,10 @@ namespace QuanLyThuVien.View
             {
                 var checkSach = sachList.FirstOrDefault(x => x.MaSach == data.MaSach);
 
-                if (checkSach != null && (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))))
+                // Kiểm tra nếu NgayPhTra không null và thỏa mãn điều kiện tìm kiếm
+                if (checkSach != null &&
+                    (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))) &&
+                    data.NgayPhTra != null) // Thêm điều kiện NgayPhTra không null
                 {
                     var dataItem = new
                     {
@@ -112,8 +115,27 @@ namespace QuanLyThuVien.View
 
                     list.Add(dataItem);
                 }
+                else if (checkSach != null &&
+                         (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))) &&
+                         data.NgayPhTra == null) // Thêm xử lý khi NgayPhTra là null
+                {
+                    var dataItem = new
+                    {
+                        MaPhMuon = data.MaPhMuon,
+                        tentacgia = checkSach.TacGia,
+                        tensach = checkSach.TenSach,
+                        ngaytra = "(Chưa xác định)", // Hoặc bạn có thể hiển thị thông báo khác tương ứng
+                        ngaymuon = data.NgayMuon.Value,
+                        quahan = "(Chưa xác định)", // Hoặc bạn có thể hiển thị thông báo khác tương ứng
+                        maPhMuon = data.MaPhMuon
+                    };
+
+                    list.Add(dataItem);
+                }
             }
+
             sach.ItemsSource = list;
+
         }
 
         //Khi nhấn vào tên độc giả ở grid bên trái, load danh sách các sách mà độc giả đang mượn
@@ -170,79 +192,101 @@ namespace QuanLyThuVien.View
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
         //Mở Form điền phiếu mượn
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_TaoPhieuMuon(object sender, RoutedEventArgs e)
         {
             var formPhieuMuon = new FormPhieuMuon();
             formPhieuMuon.Show();
         }
 
+        //Mở form tạo phiếu trả
+        private void Button_Click_TaoPhieuTra(object sender, RoutedEventArgs e)
+        {
+            var formPhieuTra = new FormPhieuTra();
+            formPhieuTra.Show();
+        }
+
         //Xuat du lieu PHIEUTHU ra file excel
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            string fileName = "PHIEUTHULIST.xlsx";
+            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
+
             try
             {
-                string fileName = "PHIEUTHULIST.xlsx";
-                string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
+                // Ensure the directory exists
+                string directory = System.IO.Path.GetDirectoryName(filePath);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
 
                 FileInfo file = new FileInfo(filePath);
                 bool fileExists = file.Exists;
 
-                using (ExcelPackage package = fileExists ? new ExcelPackage(file) : new ExcelPackage())
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                using (ExcelPackage package = new ExcelPackage(file))
                 {
-                    ExcelWorksheet worksheet;
-                    if (fileExists)
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault(ws => ws.Name == "PHIEUTHU");
+
+                    if (worksheet == null)
                     {
-                        worksheet = package.Workbook.Worksheets.FirstOrDefault(ws => ws.Name == "PHIEUTHU");
-                        if (worksheet != null)
-                        {
-                            worksheet.Cells["A2:E1048576"].Clear();
-                        }
+                        // Add new worksheet
+                        worksheet = package.Workbook.Worksheets.Add("PHIEUTHU");
                     }
                     else
                     {
-
-                        worksheet = package.Workbook.Worksheets.Add("PHIEUTHU");
+                        // Clear existing content
+                        worksheet.Cells[worksheet.Dimension.Address].Clear();
                     }
 
-                    worksheet.Cells["A1:E1"].Merge = true;
+                    // Set header information
+                    worksheet.Cells["A1:F1"].Merge = true;
                     worksheet.Cells["A1"].Value = "Danh sách phiếu thu";
                     worksheet.Cells["A1"].Style.Font.Size = 18;
                     worksheet.Cells["A1"].Style.Font.Bold = true;
                     worksheet.Cells["A1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                    worksheet.Cells["A3:E3"].Style.Font.Bold = true;
+                    worksheet.Cells["A3:F3"].Style.Font.Bold = true;
                     worksheet.Cells[3, 1].Value = "ID";
                     worksheet.Cells[3, 2].Value = "Mã Phiếu trả";
                     worksheet.Cells[3, 3].Value = "Họ tên độc giả";
-                    worksheet.Cells[3, 4].Value = "Ngày quá hạn";
-                    worksheet.Cells[3, 5].Value = "Số tiền thu";
+                    worksheet.Cells[3, 4].Value = "Tên sách mượn";
+                    worksheet.Cells[3, 5].Value = "Ngày quá hạn";
+                    worksheet.Cells[3, 6].Value = "Số tiền thu";
 
+                    // Retrieve data
                     var query = from pt in _context.PHIEUTHU
                                 join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
                                 join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
                                 join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
+                                join sach in _context.SACH on pm.MaSach equals sach.MaSach
                                 where pt.IsDeleted == false
                                 select new
                                 {
                                     ID = pt.ID,
                                     MaPhTra = pt.MaPhTra,
                                     HoTenDocGia = dg.HoTen,
+                                    TenSachMuon = sach.TenSach,
                                     SoNgayQHan = pt.SoNgayQHan,
                                     SoTienThu = pt.SoTienThu
                                 };
 
+                    // Write data to worksheet
                     int row = 4;
                     foreach (var item in query)
                     {
                         worksheet.Cells[row, 1].Value = item.ID;
                         worksheet.Cells[row, 2].Value = item.MaPhTra;
                         worksheet.Cells[row, 3].Value = item.HoTenDocGia;
-                        worksheet.Cells[row, 4].Value = item.SoNgayQHan;
-                        worksheet.Cells[row, 5].Value = item.SoTienThu;
+                        worksheet.Cells[row, 4].Value = item.TenSachMuon;
+                        worksheet.Cells[row, 5].Value = item.SoNgayQHan;
+                        worksheet.Cells[row, 6].Value = item.SoTienThu;
                         row++;
                     }
 
-                    using (ExcelRange headerCells = worksheet.Cells["A3:E3"])
+                    // Apply border styles to header cells
+                    using (ExcelRange headerCells = worksheet.Cells["A3:F3"])
                     {
                         headerCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
                         headerCells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
@@ -250,16 +294,22 @@ namespace QuanLyThuVien.View
                         headerCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
                     }
 
-                    using (ExcelRange dataCells = worksheet.Cells[4, 1, row - 1, 5])
+                    // Apply border styles to data cells
+                    using (ExcelRange dataCells = worksheet.Cells[4, 1, row - 1, 6])
                     {
-                        dataCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                        dataCells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                        dataCells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        dataCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        if (dataCells != null && dataCells.Any())
+                        {
+                            dataCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                            dataCells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                            dataCells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            dataCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                        }
                     }
 
+                    // Auto fit columns
                     worksheet.Cells.AutoFitColumns();
 
+                    // Save the package
                     package.Save();
 
                     MessageBox.Show("Đã cập nhật file Excel thành công: " + filePath, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -1,5 +1,6 @@
 ﻿using QuanLyThuVien.Model;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.IO;
@@ -25,9 +26,18 @@ namespace QuanLyThuVien
     public partial class FormPhieuMuon : Window
     {
         private QLTV_BETAEntities _context = new QLTV_BETAEntities();
+        private List<DOCGIA> _allDocGia;
+        private List<string> _validMaDGs;
         public FormPhieuMuon()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
+            docgia.SelectionChanged += docgia_SelectionChanged;
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadDataDocGia();
+            LoadDataSach();
         }
 
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -41,24 +51,20 @@ namespace QuanLyThuVien
 
             this.Close();
         }
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            LoadDataDocGia();
-            LoadDataSach();
-            LoadMaPhieuMuon();
-        }
 
         //Hiển thị data độc giả để chọn trong combobox
         private void LoadDataDocGia()
         {
             try
             {
-                var listDocGia = _context.DOCGIA.ToList();
-                docgia.ItemsSource = listDocGia;
+                _allDocGia = _context.DOCGIA.ToList();
+                _validMaDGs = _allDocGia.Select(d => d.MaDG).ToList();
+                docgia.ItemsSource = _allDocGia;
+                docgia.DisplayMemberPath = "MaDG";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu độc giả: " + ex.Message);
+                MessageBox.Show("Có lỗi xảy ra khi lấy data độc giả: " + ex.Message);
             }
         }
 
@@ -75,51 +81,97 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lỗi khi tải dữ liệu sách: " + ex.Message);
             }
         }
-
-        //Hiển thị mã phiếu mượn để chọn trong combobox cho phiếu trả
-        private void LoadMaPhieuMuon()
+        private void docgia_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
-                var listPhieuMuon = _context.PHIEUMUON
-                                            .Where(pm => pm.IsDeleted == false)
-                                            .Select(pm => new { pm.MaPhMuon })
-                                            .ToList();
+            var comboBox = sender as ComboBox;
+            var tb = comboBox?.Template.FindName("PART_EditableTextBox", comboBox) as TextBox;
 
-                maphieumuon1.ItemsSource = listPhieuMuon;
-                maphieumuon1.DisplayMemberPath = "MaPhMuon";
-            }
-            catch (Exception ex)
+            if (comboBox != null && tb != null && !string.IsNullOrEmpty(tb.Text))
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu phiếu mượn: " + ex.Message);
+                var filterText = tb.Text;
+
+                var filteredList = _allDocGia
+                    .Where(d => d.MaDG.IndexOf(filterText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToList();
+
+                comboBox.ItemsSource = filteredList;
+                comboBox.IsDropDownOpen = true;
+
+                // Adjust selection and caret position
+                tb.SelectionStart = filterText.Length;
+                tb.SelectionLength = 0;
             }
         }
+        private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (docgia.SelectedItem != null)
+            {
+                DOCGIA selectedDocGia = (DOCGIA)docgia.SelectedItem;
+                if (selectedDocGia != null)
+                {
+                    txtHoTen.Text = selectedDocGia.HoTen;
+                    if (selectedDocGia.NgaySinh != null)
+                    {
+                        txtNgaySinh.Text = selectedDocGia.NgaySinh.Value.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        txtNgaySinh.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void sach_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            var tb = comboBox?.Template.FindName("PART_EditableTextBox", comboBox) as TextBox;
+
+            if (comboBox != null && tb != null && !string.IsNullOrEmpty(tb.Text))
+            {
+                var filterText = tb.Text;
+
+                var filteredList = _context.SACH
+                    .Where(s => s.TenSach.Contains(filterText) && s.IsDeleted == false)
+                    .ToList();
+
+                comboBox.ItemsSource = filteredList;
+                comboBox.IsDropDownOpen = true;
+
+                // Adjust selection and caret position
+                tb.SelectionStart = filterText.Length;
+                tb.SelectionLength = 0;
+            }
+        }
+
+
         //Hàm tạo ID
         //Lấy id cao nhất hiện tại trong database để tạo id mới
         private int GetCurrentIdNumberFromDatabase(string prefix)
         {
-            string entityConnectionString = @"metadata=res://*/Model.Model1.csdl|res://*/Model.Model1.ssdl|res://*/Model.Model1.msl;
-                                     provider=System.Data.SqlClient;
-                                     provider connection string=&quot;data source=LAPTOP_OF_LAN;
-                                     initial catalog=QLTV_BETA;
-                                     integrated security=True;
-                                     encrypt=False;
-                                     MultipleActiveResultSets=True;
-                                     App=EntityFramework&quot;";
-
-            string sqlConnectionString = new EntityConnectionStringBuilder(entityConnectionString).ProviderConnectionString;
-
-            using (var connection = new SqlConnection(sqlConnectionString))
+            try
             {
-                connection.Open();
-                string sql = "SELECT ISNULL(MAX(CAST(SUBSTRING(MaPhMuon, 3, LEN(MaPhMuon) - 2) AS INT)), 0) " +
-                             "FROM PHIEUMUON WHERE MaPhMuon LIKE @prefix + '%'";
-                using (var command = new SqlCommand(sql, connection))
+                string entityConnectionStringName = "QLTV_BETAEntities"; // Tên của chuỗi kết nối trong file .config
+                var entityBuilder = new EntityConnectionStringBuilder(ConfigurationManager.ConnectionStrings[entityConnectionStringName].ConnectionString);
+                string sqlConnectionString = entityBuilder.ProviderConnectionString;
+
+                using (var connection = new SqlConnection(sqlConnectionString))
                 {
-                    command.Parameters.AddWithValue("@prefix", prefix);
-                    var result = command.ExecuteScalar();
-                    return (result == DBNull.Value) ? 0 : Convert.ToInt32(result);
+                    connection.Open();
+                    string sql = "SELECT ISNULL(MAX(CAST(SUBSTRING(MaPhMuon, 3, LEN(MaPhMuon) - 2) AS INT)), 0) " +
+                                 "FROM PHIEUMUON WHERE MaPhMuon LIKE @prefix + '%'";
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@prefix", prefix);
+                        var result = command.ExecuteScalar();
+                        return (result == DBNull.Value) ? 0 : Convert.ToInt32(result);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu: " + ex.Message);
+                return 0;
             }
         }
 
@@ -208,33 +260,59 @@ namespace QuanLyThuVien
         //Đăng ký mượn sách
         private void Button_Click_DangKy(object sender, RoutedEventArgs e)
         {
-            if (docgia.SelectedValue == null || sach.SelectedValue == null)
+            // Kiểm tra nếu các combobox không có giá trị được chọn
+            if (docgia.SelectedItem == null || sach.SelectedItem == null)
             {
                 MessageBox.Show("Vui lòng chọn độc giả và sách.");
                 return;
             }
 
-            string maDG = docgia.SelectedValue.ToString();
-            string maSach = sach.SelectedValue.ToString();
+            // Lấy mã độc giả từ combobox docgia
+            string maDG = ((DOCGIA)docgia.SelectedItem).MaDG;
 
+            // Lấy tên sách từ combobox sach và truy vấn lấy MaSach
+            string tenSach = ((SACH)sach.SelectedItem).TenSach;
+            string maSach = _context.SACH.Where(s => s.TenSach == tenSach && s.IsDeleted == false)
+                                         .Select(s => s.MaSach)
+                                         .FirstOrDefault();
+
+            // Kiểm tra nếu mã sách không tồn tại
+            if (string.IsNullOrEmpty(maSach))
+            {
+                MessageBox.Show("Không tìm thấy mã sách tương ứng.");
+                return;
+            }
+
+            // Kiểm tra mã độc giả hợp lệ
+            if (!_validMaDGs.Contains(maDG))
+            {
+                MessageBox.Show("Mã độc giả không hợp lệ.");
+                return;
+            }
+
+            // Kiểm tra số lượng sách đang mượn của độc giả
             if (!KiemTraSoLuongSachDangMuon(maDG))
             {
                 return;
             }
 
+            // Kiểm tra hạn của thẻ độc giả
             if (!KiemTraTheDocGia(maDG))
             {
                 return;
             }
 
+            // Kiểm tra sách mượn quá hạn
             if (KiemTraSachMuonQuaHan(maDG))
             {
                 return;
             }
 
+            // Tạo mã phiếu mượn mới
             string maPhMuon = generateId("PM", 3);
             DateTime ngayMuon = DateTime.Now;
 
+            // Tạo đối tượng PHIEUMUON mới
             PHIEUMUON phieuMuon = new PHIEUMUON
             {
                 MaPhMuon = maPhMuon,
@@ -244,6 +322,7 @@ namespace QuanLyThuVien
                 IsDeleted = false
             };
 
+            // Thêm phiếu mượn vào cơ sở dữ liệu và lưu thay đổi
             try
             {
                 _context.PHIEUMUON.Add(phieuMuon);
@@ -256,89 +335,5 @@ namespace QuanLyThuVien
                 MessageBox.Show($"Đã xảy ra lỗi khi đăng ký phiếu mượn: {ex.Message}");
             }
         }
-
-        //Kiểm tra sách có mượn quá hạn khi trả sách không
-        private bool KiemTraQuaHan(string maPhMuon)
-        {
-            var phieuMuon = _context.PHIEUMUON
-                                    .Where(pm => pm.MaPhMuon == maPhMuon)
-                                    .FirstOrDefault();
-            if (phieuMuon == null)
-            {
-                MessageBox.Show("Không tìm thấy thông tin phiếu mượn.");
-                return false;
-            }
-            DateTime ngayTra = DateTime.Today;
-            if (phieuMuon.NgayPhTra.HasValue && phieuMuon.NgayPhTra.Value < ngayTra)
-            {
-                int soNgayQuaHan = (ngayTra - phieuMuon.NgayPhTra.Value).Days;
-                int soTienNopTre = _context.SETTING.Select(s => s.SoTienNopTre).FirstOrDefault().GetValueOrDefault();
-                MessageBoxResult result = MessageBox.Show($"Đã quá hạn {soNgayQuaHan} ngày, vui lòng thanh toán {soNgayQuaHan * soTienNopTre} VND.", "Thông báo", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        //Trả sách
-        private void Button_Click_TraSach(object sender, RoutedEventArgs e)
-        {
-            var selectedItem = maphieumuon1.SelectedItem;
-            if (selectedItem == null)
-            {
-                MessageBox.Show("Vui lòng chọn mã phiếu mượn.");
-                return;
-            }
-
-            string maPhMuon = (selectedItem as dynamic).MaPhMuon;
-
-            if (KiemTraQuaHan(maPhMuon))
-            {
-                string maPhTra = generateId("PT", 3);
-                DateTime ngayTra = DateTime.Now;
-
-                PHIEUTRA phieuTra = new PHIEUTRA
-                {
-                    MaPhTra = maPhTra,
-                    MaPhMuon = maPhMuon,
-                    NgayTra = ngayTra,
-                    IsDeleted = false
-                };
-
-                try
-                {
-                    _context.PHIEUTRA.Add(phieuTra);
-                    var phieuMuon = _context.PHIEUMUON.FirstOrDefault(pm => pm.MaPhMuon == maPhMuon);
-                    if (phieuMuon != null)
-                    {
-                        phieuMuon.IsDeleted = true;
-                    }
-                    _context.SaveChanges();
-
-                    MessageBox.Show("Lập phiếu trả sách thành công!");
-
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    // Bắt và hiển thị chi tiết lỗi InnerException để debug
-                    string errorMessage = $"Đã xảy ra lỗi khi lập phiếu trả sách: {ex.Message}";
-                    Exception innerException = ex.InnerException;
-                    while (innerException != null)
-                    {
-                        errorMessage += $"\nInner Exception: {innerException.Message}";
-                        innerException = innerException.InnerException;
-                    }
-                    MessageBox.Show(errorMessage);
-                }
-            }
-        }
-
     }
 }

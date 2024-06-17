@@ -15,7 +15,7 @@ namespace QuanLyThuVien.View
         private readonly QLTV_BETAEntities _context = new QLTV_BETAEntities();
         private string selectedCategoryName = null;
         private readonly Dictionary<string, string> addData = new Dictionary<string, string>();
-        private string connectionString = @"Data Source=.;Initial Catalog=QLTV_BETA;Integrated Security=True";
+
 
         public Setting()
         {
@@ -130,9 +130,9 @@ namespace QuanLyThuVien.View
                 var setting = _context.SETTING.FirstOrDefault() ?? new SETTING();
 
                 setting.TuoiToiTieuDocGia = tuoiToiTieuDocGia;
-                setting.TuoiToiTieuDocGia = tuoiToiDaDocGia;
+                setting.TuoiToiDaDocGia = tuoiToiDaDocGia;
                 setting.TuoiToiTieuThuThu = tuoiToiTieuThuThu;
-                setting.TuoiToiTieuThuThu = tuoiToiDaThuThu;
+                setting.TuoiToiDaThuThu = tuoiToiDaThuThu;
                 setting.ThoiHanThe = thoiHanThe;
                 setting.SoNgayMuonToiDa = soNgayMuonToiDa;
                 setting.SoTienNopTre = soTienNopTre;
@@ -200,7 +200,7 @@ namespace QuanLyThuVien.View
             {
                 if (string.IsNullOrWhiteSpace(item.Value))
                 {
-                    MessageBox.Show($"Dữ liệu ở {item.Key} đang bị null");
+                    MessageBox.Show($"Dữ liệu ở {item.Key} đang rỗng, vui lòng nhập lại");
                     return false;
                 }
             }
@@ -228,7 +228,7 @@ namespace QuanLyThuVien.View
                 };
                 int currentCategoryCount = _context.THELOAI.Count(x => x.IsDeleted == false);
                 int? maxCategoryCountNullable = _context.SETTING.Select(s => (int?)s.SoLuongTheLoaiToiDa).FirstOrDefault();
-                int maxCategoryCount = maxCategoryCountNullable ?? 20; // Gán giá trị mặc định nếu null
+                int maxCategoryCount = maxCategoryCountNullable ?? default; // Gán giá trị mặc định nếu null
                 if (currentCategoryCount >= maxCategoryCount)
                 {
                     MessageBox.Show("Số lượng thể loại đã đạt giới hạn tối đa.");
@@ -238,12 +238,12 @@ namespace QuanLyThuVien.View
                 _context.THELOAI.Add(newCategory);
                 if (_context.SaveChanges() > 0)
                 {
-                    MessageBox.Show("Add category Success");
+                    MessageBox.Show("Thêm thể loại thành công");
                     LoadData();
                     LoadDataCategory();
                     return;
                 }
-                MessageBox.Show("Add category failed");
+                MessageBox.Show("Thêm thể loại thất bại");
             }
         }
 
@@ -252,13 +252,13 @@ namespace QuanLyThuVien.View
         {
             if (string.IsNullOrWhiteSpace(selectedCategoryName))
             {
-                MessageBox.Show("ID bị null");
+                MessageBox.Show("Thể loại đang trống");
                 return;
             }
             var categoryData = _context.THELOAI.FirstOrDefault(x => x.TenTheLoai == selectedCategoryName);
             if (categoryData == null)
             {
-                MessageBox.Show("ID không tồn tại");
+                MessageBox.Show("Thể loại không tồn tại");
                 return;
             }
 
@@ -283,7 +283,7 @@ namespace QuanLyThuVien.View
         {
             if (string.IsNullOrWhiteSpace(selectedCategoryName))
             {
-                MessageBox.Show("ID bị null");
+                MessageBox.Show("Thể loại chưa được chọn");
                 return;
             }
             var categoryData = _context.THELOAI.SingleOrDefault(x => x.TenTheLoai == selectedCategoryName);

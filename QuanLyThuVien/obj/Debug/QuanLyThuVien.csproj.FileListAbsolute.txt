@@ -132,3 +132,5 @@ D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuV
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
+D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\FormPhieuTra.g.cs
+D:\GITQLTV\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\FormPhieuTra.baml

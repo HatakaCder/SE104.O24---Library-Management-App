@@ -180,6 +180,9 @@
     <Compile Include="FormPhieuMuon.xaml.cs">
       <DependentUpon>FormPhieuMuon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FormPhieuTra.xaml.cs">
+      <DependentUpon>FormPhieuTra.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindoww.xaml.cs">
       <DependentUpon>LoginWindoww.xaml</DependentUpon>
     </Compile>
@@ -325,6 +328,10 @@
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
     <Page Include="FormPhieuMuon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormPhieuTra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
