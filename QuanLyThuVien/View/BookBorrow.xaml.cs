@@ -27,8 +27,6 @@ namespace QuanLyThuVien.View
     public partial class BookBorrow : UserControl
     {
         private readonly QLTV_BETAEntities _context = new QLTV_BETAEntities();
-        private readonly DateTime dateTime = DateTime.Now;
-        private string timkiems = null;
         private List<SachDTO> list = new List<SachDTO>();
         public BookBorrow()
         {
@@ -88,9 +86,7 @@ namespace QuanLyThuVien.View
                                        .ToList();
 
             DateTime currentDate = DateTime.Now;
-            var sachList = _context.SACH.ToList(); // Load all books into memory to use RemoveDiacritics
-
-            // Retrieve SoTienNopTre from SETTING table
+            var sachList = _context.SACH.ToList();
             int soTienNopTre = _context.SETTING.FirstOrDefault()?.SoTienNopTre ?? 0;
 
             foreach (var data in dataPhieuMuon)

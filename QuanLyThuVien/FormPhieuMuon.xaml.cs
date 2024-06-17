@@ -40,12 +40,14 @@ namespace QuanLyThuVien
             LoadDataSach();
         }
 
+        //Di chuyển Form khi kéo border ở trên
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
+        //Nút tắt Form
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
@@ -81,6 +83,8 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lỗi khi tải dữ liệu sách: " + ex.Message);
             }
         }
+
+        //TÌm kiếm trong lúc nhập
         private void docgia_TextChanged(object sender, TextChangedEventArgs e)
         {
             var comboBox = sender as ComboBox;
@@ -96,12 +100,12 @@ namespace QuanLyThuVien
 
                 comboBox.ItemsSource = filteredList;
                 comboBox.IsDropDownOpen = true;
-
-                // Adjust selection and caret position
                 tb.SelectionStart = filterText.Length;
                 tb.SelectionLength = 0;
             }
         }
+
+        //Xử lí khi chọn đúng MaDG
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (docgia.SelectedItem != null)
@@ -122,6 +126,7 @@ namespace QuanLyThuVien
             }
         }
 
+        //Tìm kiếm lúc nhập sách
         private void sach_TextChanged(object sender, TextChangedEventArgs e)
         {
             var comboBox = sender as ComboBox;
@@ -134,11 +139,8 @@ namespace QuanLyThuVien
                 var filteredList = _context.SACH
                     .Where(s => s.TenSach.Contains(filterText) && s.IsDeleted == false)
                     .ToList();
-
                 comboBox.ItemsSource = filteredList;
                 comboBox.IsDropDownOpen = true;
-
-                // Adjust selection and caret position
                 tb.SelectionStart = filterText.Length;
                 tb.SelectionLength = 0;
             }
@@ -260,59 +262,41 @@ namespace QuanLyThuVien
         //Đăng ký mượn sách
         private void Button_Click_DangKy(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra nếu các combobox không có giá trị được chọn
             if (docgia.SelectedItem == null || sach.SelectedItem == null)
             {
                 MessageBox.Show("Vui lòng chọn độc giả và sách.");
                 return;
             }
 
-            // Lấy mã độc giả từ combobox docgia
             string maDG = ((DOCGIA)docgia.SelectedItem).MaDG;
-
-            // Lấy tên sách từ combobox sach và truy vấn lấy MaSach
             string tenSach = ((SACH)sach.SelectedItem).TenSach;
             string maSach = _context.SACH.Where(s => s.TenSach == tenSach && s.IsDeleted == false)
                                          .Select(s => s.MaSach)
                                          .FirstOrDefault();
-
-            // Kiểm tra nếu mã sách không tồn tại
             if (string.IsNullOrEmpty(maSach))
             {
                 MessageBox.Show("Không tìm thấy mã sách tương ứng.");
                 return;
             }
-
-            // Kiểm tra mã độc giả hợp lệ
             if (!_validMaDGs.Contains(maDG))
             {
                 MessageBox.Show("Mã độc giả không hợp lệ.");
                 return;
             }
-
-            // Kiểm tra số lượng sách đang mượn của độc giả
             if (!KiemTraSoLuongSachDangMuon(maDG))
             {
                 return;
             }
-
-            // Kiểm tra hạn của thẻ độc giả
             if (!KiemTraTheDocGia(maDG))
             {
                 return;
             }
-
-            // Kiểm tra sách mượn quá hạn
             if (KiemTraSachMuonQuaHan(maDG))
             {
                 return;
             }
-
-            // Tạo mã phiếu mượn mới
             string maPhMuon = generateId("PM", 3);
             DateTime ngayMuon = DateTime.Now;
-
-            // Tạo đối tượng PHIEUMUON mới
             PHIEUMUON phieuMuon = new PHIEUMUON
             {
                 MaPhMuon = maPhMuon,
@@ -321,8 +305,6 @@ namespace QuanLyThuVien
                 NgayMuon = ngayMuon,
                 IsDeleted = false
             };
-
-            // Thêm phiếu mượn vào cơ sở dữ liệu và lưu thay đổi
             try
             {
                 _context.PHIEUMUON.Add(phieuMuon);

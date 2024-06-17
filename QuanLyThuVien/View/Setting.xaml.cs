@@ -24,9 +24,9 @@ namespace QuanLyThuVien.View
             LoadDataCategory();
         }
 
+        // Load settings từ database để hiển thị quy định lên màn hình
         private void LoadData()
         {
-            // Load settings từ database để hiển thị quy định lên màn hình
             var setting = _context.SETTING.FirstOrDefault();
             if (setting != null)
             {
@@ -44,6 +44,7 @@ namespace QuanLyThuVien.View
             var data = _context.THELOAI.Where(x => !x.IsDeleted.Value).ToList();
             category.ItemsSource = data;
         }
+
         //Luu quy dinh vao Database
         private void Button_Click_Luu(object sender, RoutedEventArgs e)
         {
@@ -228,7 +229,7 @@ namespace QuanLyThuVien.View
                 };
                 int currentCategoryCount = _context.THELOAI.Count(x => x.IsDeleted == false);
                 int? maxCategoryCountNullable = _context.SETTING.Select(s => (int?)s.SoLuongTheLoaiToiDa).FirstOrDefault();
-                int maxCategoryCount = maxCategoryCountNullable ?? default; // Gán giá trị mặc định nếu null
+                int maxCategoryCount = maxCategoryCountNullable ?? default;
                 if (currentCategoryCount >= maxCategoryCount)
                 {
                     MessageBox.Show("Số lượng thể loại đã đạt giới hạn tối đa.");

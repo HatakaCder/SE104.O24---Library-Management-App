@@ -29,7 +29,6 @@ namespace QuanLyThuVien
     {
         private QLTV_BETAEntities _context = new QLTV_BETAEntities();
         private List<DOCGIA> _allDocGia;
-        private List<string> _validMaDGs;
 
         public PhieuThuExport()
         {
@@ -37,13 +36,15 @@ namespace QuanLyThuVien
             Loaded += Window_Loaded_1;
             docgia.SelectionChanged += docgia_SelectionChanged;
         }
-
+        
+        //Kéo thả Form khi kéo border trên
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
+        //Nút close Form
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             this.Close();
@@ -54,26 +55,20 @@ namespace QuanLyThuVien
             LoadDataDocGia();
         }
 
+        //Lấy data để hiển thị trên Combobox
         private void LoadDataDocGia()
         {
             try
             {
-                // Truy vấn danh sách MaDG có trong bảng PHIEUTHU
                 var docGiaWithPhieuThu = (from pt in _context.PHIEUTHU
                                           join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
                                           join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
                                           select pm.MaDG).Distinct().ToList();
-
-                // Truy vấn danh sách thông tin độc giả tương ứng
                 var newDocGiaList = _context.DOCGIA
                                            .Where(d => docGiaWithPhieuThu.Contains(d.MaDG))
                                            .ToList();
-
-                // Thêm lựa chọn "Tất cả"
                 var allOption = new DOCGIA { MaDG = "Tất cả" };
                 newDocGiaList.Insert(0, allOption);
-
-                // Xóa bỏ các items hiện tại của ComboBox trước khi gán mới ItemsSource
                 Dispatcher.Invoke(() =>
                 {
                     docgia.ItemsSource = null;
@@ -88,6 +83,7 @@ namespace QuanLyThuVien
             }
         }
 
+        //Xử lí khi chọn đúng MaDG
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (docgia.SelectedItem != null)
@@ -110,6 +106,7 @@ namespace QuanLyThuVien
             }
         }
 
+        //Xử lí nhập
         private void docgia_TextChanged(object sender, TextChangedEventArgs e)
         {
             var comboBox = sender as ComboBox;
@@ -129,8 +126,6 @@ namespace QuanLyThuVien
 
                         comboBox.ItemsSource = filteredList;
                         comboBox.IsDropDownOpen = true;
-
-                        // Adjust selection and caret position
                         tb.SelectionStart = filterText.Length;
                         tb.SelectionLength = 0;
                     }
@@ -142,11 +137,11 @@ namespace QuanLyThuVien
             }
         }
 
-
+        //Tạo Excel
         private void Button_Click_ExcelExport(object sender, RoutedEventArgs e)
         {
             string fileName = "PHIEUTHULIST.xlsx";
-            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
+            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName; //Chỉnh sửa thư mục chứa Excel chỗ này
 
             try
             {
