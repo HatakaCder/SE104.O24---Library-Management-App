@@ -1,4 +1,4 @@
-﻿<Window x:Class="QuanLyThuVien.FormPhieuTra"
+﻿<Window x:Class="QuanLyThuVien.PhieuThuExport"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,7 +17,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        Title="FormPhieuTra" Height="500" Width="800" Loaded="Window_Loaded_1">
+        Title="PhieuThuExport" Height="500" Width="800" Loaded="Window_Loaded_1">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -52,11 +52,12 @@
                 </Canvas>
 
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Phiếu trả" Style="{StaticResource TitleText}" />
-                    <TextBlock Text="Phiếu trả sẽ kiểm tra khách hàng có sách mượn quá hạn hay không" 
-                       Opacity="0.8" 
-                       Margin="35 30 20 30" 
-                       Style="{StaticResource NormalText}" />
+                    <TextBlock Text="Phiếu thu" Style="{StaticResource TitleText}" />
+                    <TextBlock 
+                        Text="Chọn độc giả có phiếu thu cần được xuất ra Excel, hoặc xuất toàn bộ phiếu thu của tất cả độc giả ra Excel" 
+                        Opacity="0.8" 
+                        Margin="35 30 20 30" 
+                        Style="{StaticResource NormalText}" />
                 </StackPanel>
             </Grid>
 
@@ -69,28 +70,31 @@
                 RenderTransformOrigin="0.396,0.846">
                 <StackPanel VerticalAlignment="Top" Margin="0,70,0,0">
                     <TextBlock 
-                        Text="Phiếu trả" 
+                        Text="Phiếu thu" 
                         Margin="0 20 0 0" 
                         Foreground="#3AB19B" 
                         Style="{StaticResource TitleText}" />
                     <TextBlock 
-                        Text="Mã phiếu mượn" 
+                        Text="Chọn độc giả cần xuất phiếu thu" 
                         Margin="0 10 0 0" 
                         Foreground="#3AB19B" 
                         Style="{StaticResource TitleSize}"/>
                     <ComboBox 
-                        x:Name="maphieumuon1" 
-                        Width="150"
-                        IsEditable="True"
-                        StaysOpenOnEdit="True" 
-                        IsTextSearchEnabled="False" 
-                        TextBoxBase.TextChanged="maphieumuon1_TextChanged"
-                        SelectionChanged="maphieumuon1_SelectionChanged" />
+                         x:Name="docgia" 
+                         Width="150"
+                         IsEditable="True"
+                         StaysOpenOnEdit="True" 
+                         IsTextSearchEnabled="False" 
+                         TextBoxBase.TextChanged="docgia_TextChanged"
+                         SelectionChanged="docgia_SelectionChanged">
+                        <ComboBoxItem Content="Tất cả"/>
+                    </ComboBox>
                     <TextBlock 
                         Text="Họ tên Độc giả"
                         Margin="0 10 0 0"
                         Foreground="#3AB19B"
-                        Style="{StaticResource TitleSize}"/>    
+                        Style="{StaticResource TitleSize}"
+                        />
                     <Border 
                         BorderBrush="Black" 
                         BorderThickness="0,0,0,1" 
@@ -98,7 +102,7 @@
                         Padding="0,0,0,5">
                         <TextBlock 
                             x:Name="txtHoTen" 
-                            Text="{Binding SelectedItem.HoTen, ElementName=maphieumuon1}" />
+                            Text="" />
                     </Border>
                     <TextBlock 
                         Text="Ngày sinh"
@@ -112,26 +116,12 @@
                         Padding="0,0,0,5">
                         <TextBlock 
                             x:Name="txtNgaySinh" 
-                            Text="{Binding SelectedItem.NgaySinh, ElementName=maphieumuon1, StringFormat='{}{0:dd/MM/yyyy}'}" />
-                    </Border>
-                    <TextBlock 
-                         Text="Sách mượn" 
-                         Margin="0 10 0 0"
-                         Foreground="#3AB19B" 
-                         Style="{StaticResource TitleSize}"/>
-                    <Border 
-                        BorderBrush="Black" 
-                        BorderThickness="0,0,0,1" 
-                        Width="150"
-                        Padding="0,0,0,5">
-                        <TextBlock 
-                            x:Name="txtTenSach" 
-                            Text="{Binding SelectedItem.TenSach, ElementName=maphieumuon1}" />
+                            Text="" />
                     </Border>
                     <Button 
-                        Content="Gửi" 
+                        Content="Xuất ra Excel" 
                         Style="{StaticResource mainButton}" 
-                        Click="Button_Click_TraSach" />
+                        Click="Button_Click_ExcelExport" />
                 </StackPanel>
             </Border>
         </Grid>

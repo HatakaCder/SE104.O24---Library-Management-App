@@ -194,7 +194,7 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding NgayLapThe}" 
+                                    Binding="{Binding NgayLapThe,StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -285,7 +285,7 @@
 
                                 <DataGridTextColumn 
                                     Width="1.2*" 
-                                    Binding="{Binding ngaymuon}" 
+                                    Binding="{Binding ngaymuon,StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -302,7 +302,7 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding ngaytra}" 
+                                    Binding="{Binding ngaytra, StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>

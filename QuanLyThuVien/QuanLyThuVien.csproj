@@ -244,6 +244,9 @@
     </Compile>
     <Compile Include="Model\TRA.cs" />
     <Compile Include="Model\UserDTO.cs" />
+    <Compile Include="PhieuThuExport.xaml.cs">
+      <DependentUpon>PhieuThuExport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
     <Compile Include="Services\ReportService.cs" />
@@ -336,6 +339,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginWindoww.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PhieuThuExport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
