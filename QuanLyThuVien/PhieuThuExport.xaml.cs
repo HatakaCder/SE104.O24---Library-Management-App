@@ -36,7 +36,7 @@ namespace QuanLyThuVien
             Loaded += Window_Loaded_1;
             docgia.SelectionChanged += docgia_SelectionChanged;
         }
-        
+
         //Kéo thả Form khi kéo border trên
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -55,6 +55,26 @@ namespace QuanLyThuVien
             LoadDataDocGia();
         }
 
+        //Chọn chế độ export
+        private void chedo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (chedo.SelectedItem != null)
+            {
+                var selectedMode = (chedo.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                if (selectedMode == "Tất cả")
+                {
+                    docgia.IsEnabled = false;
+                    docgia.SelectedIndex = -1;
+                    txtHoTen.Visibility = Visibility.Collapsed;
+                    txtNgaySinh.Visibility = Visibility.Collapsed;
+                }
+                else if (selectedMode == "Theo Mã độc giả")
+                {
+                    docgia.IsEnabled = true;
+                }
+            }
+        }
         //Lấy data để hiển thị trên Combobox
         private void LoadDataDocGia()
         {
@@ -67,8 +87,7 @@ namespace QuanLyThuVien
                 var newDocGiaList = _context.DOCGIA
                                            .Where(d => docGiaWithPhieuThu.Contains(d.MaDG))
                                            .ToList();
-                var allOption = new DOCGIA { MaDG = "Tất cả" };
-                newDocGiaList.Insert(0, allOption);
+
                 Dispatcher.Invoke(() =>
                 {
                     docgia.ItemsSource = null;
@@ -76,6 +95,8 @@ namespace QuanLyThuVien
                     docgia.ItemsSource = newDocGiaList;
                     docgia.DisplayMemberPath = "MaDG";
                 });
+
+                _allDocGia = newDocGiaList; // Lưu trữ toàn bộ danh sách cho lọc tìm kiếm
             }
             catch (Exception ex)
             {
@@ -90,12 +111,7 @@ namespace QuanLyThuVien
             {
                 var selectedDocGia = docgia.SelectedItem as DOCGIA;
 
-                if (selectedDocGia != null && selectedDocGia.MaDG == "Tất cả")
-                {
-                    txtHoTen.Visibility = Visibility.Collapsed;
-                    txtNgaySinh.Visibility = Visibility.Collapsed;
-                }
-                else if (selectedDocGia != null)
+                if (selectedDocGia != null)
                 {
                     txtHoTen.Visibility = Visibility.Visible;
                     txtNgaySinh.Visibility = Visibility.Visible;
@@ -141,7 +157,7 @@ namespace QuanLyThuVien
         private void Button_Click_ExcelExport(object sender, RoutedEventArgs e)
         {
             string fileName = "PHIEUTHULIST.xlsx";
-            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName; //Chỉnh sửa thư mục chứa Excel chỗ này
+            string filePath = @"D:\GITQLTV\SE104.O24---Library-Management-App\" + fileName;
 
             try
             {
@@ -183,25 +199,51 @@ namespace QuanLyThuVien
                     worksheet.Cells[3, 5].Value = "Ngày quá hạn";
                     worksheet.Cells[3, 6].Value = "Số tiền thu";
 
-                    if (docgia.SelectedItem is DOCGIA selectedDocGia && selectedDocGia.MaDG != "Tất cả")
-                    {
-                        var query = from pt in _context.PHIEUTHU
-                                    join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
-                                    join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
-                                    join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
-                                    join sach in _context.SACH on pm.MaSach equals sach.MaSach
-                                    where dg.MaDG == selectedDocGia.MaDG
-                                    select new
-                                    {
-                                        pt.ID,
-                                        pt.MaPhTra,
-                                        dg.HoTen,
-                                        sach.TenSach,
-                                        pt.SoNgayQHan,
-                                        pt.SoTienThu
-                                    };
+                    var selectedMode = (chedo.SelectedItem as ComboBoxItem)?.Content.ToString();
 
+                    IQueryable<dynamic> query = null;
+
+                    if (selectedMode == "Theo Mã độc giả" && docgia.SelectedItem is DOCGIA selectedDocGia && !string.IsNullOrEmpty(selectedDocGia.MaDG))
+                    {
+                        query = from pt in _context.PHIEUTHU
+                                join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
+                                join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
+                                join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
+                                join sach in _context.SACH on pm.MaSach equals sach.MaSach
+                                where dg.MaDG == selectedDocGia.MaDG
+                                select new
+                                {
+                                    pt.ID,
+                                    pt.MaPhTra,
+                                    dg.HoTen,
+                                    sach.TenSach,
+                                    pt.SoNgayQHan,
+                                    pt.SoTienThu
+                                };
+                    }
+                    else if (selectedMode == "Tất cả")
+                    {
+                        query = from pt in _context.PHIEUTHU
+                                join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
+                                join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
+                                join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
+                                join sach in _context.SACH on pm.MaSach equals sach.MaSach
+                                select new
+                                {
+                                    pt.ID,
+                                    pt.MaPhTra,
+                                    dg.HoTen,
+                                    sach.TenSach,
+                                    pt.SoNgayQHan,
+                                    pt.SoTienThu
+                                };
+                    }
+
+                    if (query != null)
+                    {
                         int rowIndex = 4;
+                        int totalAmount = 0;
+
                         foreach (var item in query)
                         {
                             worksheet.Cells[rowIndex, 1].Value = item.ID;
@@ -210,53 +252,36 @@ namespace QuanLyThuVien
                             worksheet.Cells[rowIndex, 4].Value = item.TenSach;
                             worksheet.Cells[rowIndex, 5].Value = item.SoNgayQHan;
                             worksheet.Cells[rowIndex, 6].Value = item.SoTienThu;
+                            totalAmount += item.SoTienThu;
                             rowIndex++;
                         }
+
+                        // Tính tổng số tiền thu và ghi vào dòng cuối cùng
+                        worksheet.Cells[rowIndex, 1, rowIndex, 5].Merge = true;
+                        worksheet.Cells[rowIndex, 1].Value = "Tổng tiền";
+                        worksheet.Cells[rowIndex, 1].Style.Font.Bold = true;
+                        worksheet.Cells[rowIndex, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+                        worksheet.Cells[rowIndex, 6].Value = totalAmount;
+
+                        worksheet.Cells[rowIndex, 1, rowIndex, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                        worksheet.Cells[rowIndex, 1, rowIndex, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Double;
+
+                        package.Save();
                     }
-                    else
-                    {
-                        var query = from pt in _context.PHIEUTHU
-                                    join ptr in _context.PHIEUTRA on pt.MaPhTra equals ptr.MaPhTra
-                                    join pm in _context.PHIEUMUON on ptr.MaPhMuon equals pm.MaPhMuon
-                                    join dg in _context.DOCGIA on pm.MaDG equals dg.MaDG
-                                    join sach in _context.SACH on pm.MaSach equals sach.MaSach
-                                    select new
-                                    {
-                                        pt.ID,
-                                        pt.MaPhTra,
-                                        dg.HoTen,
-                                        sach.TenSach,
-                                        pt.SoNgayQHan,
-                                        pt.SoTienThu
-                                    };
-
-                        int rowIndex = 4;
-                        foreach (var item in query)
-                        {
-                            worksheet.Cells[rowIndex, 1].Value = item.ID;
-                            worksheet.Cells[rowIndex, 2].Value = item.MaPhTra;
-                            worksheet.Cells[rowIndex, 3].Value = item.HoTen;
-                            worksheet.Cells[rowIndex, 4].Value = item.TenSach;
-                            worksheet.Cells[rowIndex, 5].Value = item.SoNgayQHan;
-                            worksheet.Cells[rowIndex, 6].Value = item.SoTienThu;
-                            rowIndex++;
-                        }
-                    }
-
-                    worksheet.Cells.AutoFitColumns();
-
-                    package.Save();
-
-                    MessageBox.Show("Danh sách phiếu thu đã được xuất thành công!");
                 }
+
+                MessageBox.Show("Xuất Excel thành công!");
+
+                // Đóng cửa sổ sau khi xuất Excel thành công
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra khi xuất danh sách phiếu thu: " + ex.Message);
+                MessageBox.Show("Có lỗi xảy ra khi xuất Excel: " + ex.Message);
             }
         }
 
+
     }
-
-
 }

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
+        xmlns:converters="clr-namespace:QuanLyThuVien.Converter"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -18,6 +19,9 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Title="PhieuThuExport" Height="500" Width="800" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <converters:ComboBoxItemToVisibilityConverter x:Key="ComboBoxItemToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -75,48 +79,63 @@
                         Foreground="#3AB19B" 
                         Style="{StaticResource TitleText}" />
                     <TextBlock 
-                        Text="Chọn độc giả cần xuất phiếu thu" 
+                        Text="Chế độ" 
                         Margin="0 10 0 0" 
                         Foreground="#3AB19B" 
                         Style="{StaticResource TitleSize}"/>
                     <ComboBox 
-                         x:Name="docgia" 
-                         Width="150"
-                         IsEditable="True"
-                         StaysOpenOnEdit="True" 
-                         IsTextSearchEnabled="False" 
-                         TextBoxBase.TextChanged="docgia_TextChanged"
-                         SelectionChanged="docgia_SelectionChanged">
-                        <ComboBoxItem Content="Tất cả"/>
-                    </ComboBox>
-                    <TextBlock 
-                        Text="Họ tên Độc giả"
-                        Margin="0 10 0 0"
-                        Foreground="#3AB19B"
-                        Style="{StaticResource TitleSize}"
-                        />
-                    <Border 
-                        BorderBrush="Black" 
-                        BorderThickness="0,0,0,1" 
+                        x:Name="chedo" 
                         Width="150"
-                        Padding="0,0,0,5">
+                        SelectionChanged="chedo_SelectionChanged">
+                        <ComboBoxItem Content="Tất cả"/>
+                        <ComboBoxItem Content="Theo Mã độc giả"/>
+                    </ComboBox>
+
+                    <TextBlock 
+    Text="Độc giả" 
+    Margin="0 10 0 0" 
+    Foreground="#3AB19B" 
+    Style="{StaticResource TitleSize}"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}" />
+                    <ComboBox 
+    x:Name="docgia" 
+    Width="150"
+    IsEnabled="False"
+    IsEditable="True"
+    SelectionChanged="docgia_SelectionChanged"
+    TextBoxBase.TextChanged="docgia_TextChanged"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}" />
+                    <TextBlock 
+    Text="Họ tên Độc giả"
+    Margin="0 10 0 0"
+    Foreground="#3AB19B"
+    Style="{StaticResource TitleSize}"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}" />
+                    <Border 
+    BorderBrush="Black" 
+    BorderThickness="0,0,0,1" 
+    Width="150"
+    Padding="0,0,0,5"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}">
                         <TextBlock 
-                            x:Name="txtHoTen" 
-                            Text="" />
+        x:Name="txtHoTen" 
+        Text="" />
                     </Border>
                     <TextBlock 
-                        Text="Ngày sinh"
-                        Margin="0 10 0 0"
-                        Foreground="#3AB19B"
-                        Style="{StaticResource TitleSize}"/>
+    Text="Ngày sinh"
+    Margin="0 10 0 0"
+    Foreground="#3AB19B"
+    Style="{StaticResource TitleSize}"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}" />
                     <Border 
-                        BorderBrush="Black" 
-                        BorderThickness="0,0,0,1" 
-                        Width="150"
-                        Padding="0,0,0,5">
+    BorderBrush="Black" 
+    BorderThickness="0,0,0,1" 
+    Width="150"
+    Padding="0,0,0,5"
+    Visibility="{Binding ElementName=chedo, Path=SelectedItem.Content, Converter={StaticResource ComboBoxItemToVisibilityConverter}, ConverterParameter=Tất cả}">
                         <TextBlock 
-                            x:Name="txtNgaySinh" 
-                            Text="" />
+        x:Name="txtNgaySinh" 
+        Text="" />
                     </Border>
                     <Button 
                         Content="Xuất ra Excel" 

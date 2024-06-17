@@ -57,7 +57,13 @@ namespace QuanLyThuVien
             {
                 var listPhieuMuon = _context.PHIEUMUON
                                             .Where(pm => pm.IsDeleted == false)
-                                            .Select(pm => new { pm.MaPhMuon })
+                                            .Select(pm => new
+                                            {
+                                                pm.MaPhMuon,
+                                                pm.DOCGIA.HoTen,
+                                                pm.DOCGIA.NgaySinh,
+                                                pm.SACH.TenSach
+                                            })
                                             .ToList();
 
                 maphieumuon1.ItemsSource = listPhieuMuon;
@@ -184,16 +190,12 @@ namespace QuanLyThuVien
                 dynamic selectedPhieuMuon = maphieumuon1.SelectedItem;
                 if (selectedPhieuMuon != null)
                 {
-                    // Hiển thị thông tin DOCGIA
                     txtHoTen.Text = selectedPhieuMuon.HoTen;
                     txtNgaySinh.Text = selectedPhieuMuon.NgaySinh?.ToString("dd/MM/yyyy") ?? string.Empty;
-
-                    // Hiển thị thông tin SACH
                     txtTenSach.Text = selectedPhieuMuon.TenSach;
                 }
             }
         }
-
         // Xử lý sự kiện Click của Button TraSach
         private void Button_Click_TraSach(object sender, RoutedEventArgs e)
         {

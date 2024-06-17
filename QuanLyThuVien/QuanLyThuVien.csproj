@@ -177,6 +177,7 @@
     <Compile Include="Class\PasswordBoxHelper.cs" />
     <Compile Include="Class\PasswordHashing.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converter\ComboBoxItemToVisibilityConverter.cs" />
     <Compile Include="FormPhieuMuon.xaml.cs">
       <DependentUpon>FormPhieuMuon.xaml</DependentUpon>
     </Compile>
