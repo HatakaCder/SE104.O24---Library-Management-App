@@ -308,7 +308,7 @@
                                         <DataTemplate>
                                             <Grid>
                                                 <TextBlock 
-                                                    Text="Ngày trả" 
+                                                    Text="Ngày phải trả" 
                                                     FontFamily="Paytone One" 
                                                     VerticalAlignment="Center" 
                                                     HorizontalAlignment="Center"/>

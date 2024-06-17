@@ -88,55 +88,72 @@ namespace QuanLyThuVien.View
                                        .ToList();
 
             DateTime currentDate = DateTime.Now;
-
             var sachList = _context.SACH.ToList(); // Load all books into memory to use RemoveDiacritics
+
+            // Retrieve SoTienNopTre from SETTING table
+            int soTienNopTre = _context.SETTING.FirstOrDefault()?.SoTienNopTre ?? 0;
 
             foreach (var data in dataPhieuMuon)
             {
                 var checkSach = sachList.FirstOrDefault(x => x.MaSach == data.MaSach);
 
-                // Kiểm tra nếu NgayPhTra không null và thỏa mãn điều kiện tìm kiếm
-                if (checkSach != null &&
-                    (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))) &&
-                    data.NgayPhTra != null) // Thêm điều kiện NgayPhTra không null
+                if (checkSach != null)
                 {
-                    var dataItem = new
+                    if (data.NgayPhTra != null)
                     {
-                        MaPhMuon = data.MaPhMuon,
-                        tentacgia = checkSach.TacGia,
-                        tensach = checkSach.TenSach,
-                        ngaytra = data.NgayPhTra.Value,
-                        ngaymuon = data.NgayMuon.Value,
-                        quahan = data.NgayPhTra < currentDate
-                                 ? $"Sách đã quá hạn {Math.Abs((currentDate - data.NgayPhTra.Value).Days)} ngày"
-                                 : $"Sách chưa quá hạn, vẫn còn {Math.Abs((data.NgayPhTra.Value - currentDate).Days)} ngày",
-                        maPhMuon = data.MaPhMuon
-                    };
+                        TimeSpan difference = currentDate - data.NgayPhTra.Value;
+                        int soNgayQuaHan = (int)Math.Ceiling(difference.TotalDays);
 
-                    list.Add(dataItem);
-                }
-                else if (checkSach != null &&
-                         (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))) &&
-                         data.NgayPhTra == null) // Thêm xử lý khi NgayPhTra là null
-                {
-                    var dataItem = new
+                        if (soNgayQuaHan > 0)
+                        {
+                            int soTienPhat = soNgayQuaHan * soTienNopTre;
+                            var dataItem = new
+                            {
+                                MaPhMuon = data.MaPhMuon,
+                                tentacgia = checkSach.TacGia,
+                                tensach = checkSach.TenSach,
+                                ngaytra = data.NgayPhTra.Value,
+                                ngaymuon = data.NgayMuon.Value,
+                                quahan = $"{soNgayQuaHan} ngày, {soTienPhat} đồng",
+                                maPhMuon = data.MaPhMuon
+                            };
+                            list.Add(dataItem);
+                        }
+                        else
+                        {
+                            var dataItem = new
+                            {
+                                MaPhMuon = data.MaPhMuon,
+                                tentacgia = checkSach.TacGia,
+                                tensach = checkSach.TenSach,
+                                ngaytra = data.NgayPhTra.Value,
+                                ngaymuon = data.NgayMuon.Value,
+                                quahan = "Sách chưa quá hạn",
+                                maPhMuon = data.MaPhMuon
+                            };
+                            list.Add(dataItem);
+                        }
+                    }
+                    else
                     {
-                        MaPhMuon = data.MaPhMuon,
-                        tentacgia = checkSach.TacGia,
-                        tensach = checkSach.TenSach,
-                        ngaytra = "(Chưa xác định)", // Hoặc bạn có thể hiển thị thông báo khác tương ứng
-                        ngaymuon = data.NgayMuon.Value,
-                        quahan = "(Chưa xác định)", // Hoặc bạn có thể hiển thị thông báo khác tương ứng
-                        maPhMuon = data.MaPhMuon
-                    };
-
-                    list.Add(dataItem);
+                        var dataItem = new
+                        {
+                            MaPhMuon = data.MaPhMuon,
+                            tentacgia = checkSach.TacGia,
+                            tensach = checkSach.TenSach,
+                            ngaytra = "(Chưa xác định)",
+                            ngaymuon = data.NgayMuon.Value,
+                            quahan = "(Chưa xác định)",
+                            maPhMuon = data.MaPhMuon
+                        };
+                        list.Add(dataItem);
+                    }
                 }
             }
 
             sach.ItemsSource = list;
-
         }
+
 
         //Khi nhấn vào tên độc giả ở grid bên trái, load danh sách các sách mà độc giả đang mượn
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
