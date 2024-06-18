@@ -178,9 +178,13 @@
     <Compile Include="Class\PasswordHashing.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ComboBoxItemToVisibilityConverter.cs" />
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="FormPhieuMuon.xaml.cs">
       <DependentUpon>FormPhieuMuon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormPhieuTra.xaml.cs">
+      <DependentUpon>FormPhieuTra.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindoww.xaml.cs">
       <DependentUpon>LoginWindoww.xaml</DependentUpon>
@@ -248,6 +252,9 @@
     </Compile>
     <Compile Include="Model\TRA.cs" />
     <Compile Include="Model\UserDTO.cs" />
+    <Compile Include="PhieuThuExport.xaml.cs">
+      <DependentUpon>PhieuThuExport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\CountService.cs" />
     <Compile Include="Services\DataProviderService.cs" />
     <Compile Include="Services\ForgotPasswordService.cs" />
@@ -358,7 +365,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormPhieuTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindoww.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PhieuThuExport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
