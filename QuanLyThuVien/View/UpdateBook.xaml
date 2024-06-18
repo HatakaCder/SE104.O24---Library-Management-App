@@ -17,12 +17,10 @@ TextOptions.TextFormattingMode="Ideal"
 TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen"
         >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="9*"/>
-            <ColumnDefinition Width="146*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="2" Margin="0,50,0,0">
+    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+        <Grid>
+        
+        <StackPanel VerticalAlignment="Top" Height="700" Grid.ColumnSpan="2" Margin="0,50,0,0">
 
             <TextBlock Text="Sửa đổi thông tin sách" Foreground="#3AB19B" Style="{StaticResource TitleText}" 
                        />
@@ -97,4 +95,5 @@ Margin="0 5 0 5"
 
         </StackPanel>
     </Grid>
+    </Border>
 </Window>

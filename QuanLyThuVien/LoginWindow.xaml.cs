@@ -40,10 +40,10 @@ namespace QuanLyThuVien
             signUp.Show();
             this.Close();
         }
-
+        int vaitro;
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(vaitro);
             mainWindow.Show();
             this.Close();
         }

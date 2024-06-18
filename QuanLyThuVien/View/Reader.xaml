@@ -23,7 +23,7 @@
         <local:DateFormatConverter x:Key="DateFormatConverter"/>
     </UserControl.Resources>
     <Grid>
-        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
+        <Border CornerRadius="10" BorderThickness="1" Background="Snow" Margin="15" BorderBrush="Gray">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>

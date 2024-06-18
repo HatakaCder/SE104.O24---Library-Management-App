@@ -15,15 +15,10 @@ TextElement.FontSize="13"
 TextOptions.TextFormattingMode="Ideal"
 TextOptions.TextRenderingMode="Auto"
     WindowStartupLocation="CenterScreen">
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="24*"/>
-            <ColumnDefinition Width="560*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="4" Margin="0,50,0,0">
+    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+        <Grid>
+        
+        <StackPanel VerticalAlignment="Top" Height="700" Grid.ColumnSpan="4" Margin="0,50,0,0">
             <TextBlock Text="Thêm độc giả" Foreground="#3AB19B" Style="{StaticResource TitleText}"
                        />
 
@@ -93,4 +88,5 @@ Margin="0 5 0 5"
 
         </StackPanel>
     </Grid>
+    </Border>
 </Window>

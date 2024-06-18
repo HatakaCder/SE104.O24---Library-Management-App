@@ -17,16 +17,9 @@
     TextOptions.TextRenderingMode="Auto"
         WindowStartupLocation="CenterScreen"
       >
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="19*"/>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="48*"/>
-            <ColumnDefinition Width="1120*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Top" Height="733" Grid.ColumnSpan="5" Margin="0,50,0,0">
+    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+        <Grid>
+        <StackPanel VerticalAlignment="Top" Height="700" Grid.ColumnSpan="5" Margin="0, 50, 0, 0" >
             <TextBlock Text="Thêm sách" Foreground="#3AB19B" Style="{StaticResource TitleText}"
                        />
 
@@ -99,4 +92,5 @@ Margin="0 5 0 5"
 
         </StackPanel>
     </Grid>
+    </Border>
 </Window>

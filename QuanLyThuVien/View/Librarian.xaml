@@ -40,13 +40,7 @@ Style="{StaticResource MaterialDesignHeadline6TextBlock}"
 Text="Quản lý thủ thư"/>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Button
-IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-Style="{StaticResource MaterialDesignIconForegroundButton}"
-ToolTip="Đăng xuất">
-                            <materialDesign:PackIcon Width="35" Height="35"
-  Kind="Logout" />
-                        </Button>
+                        
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -54,16 +48,7 @@ ToolTip="Đăng xuất">
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock HorizontalAlignment="Center"
-           VerticalAlignment="Center"
-  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-  Text="Tên user" />
-                        </Grid>
-                        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
-                            <TextBlock HorizontalAlignment="Center"
-           VerticalAlignment="Center"
-  Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-  Text="Tên user" />
+                            
                         </Grid>
                     </Grid>
                 </Grid>

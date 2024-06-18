@@ -17,7 +17,7 @@
             d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
     <Grid>
-        <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
+        <Border CornerRadius="10" BorderThickness="1" Background="Snow" Margin="15" BorderBrush="Gray">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"></RowDefinition>
@@ -40,13 +40,7 @@
                           Text="Trang chủ"/>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <Button
-                          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                          Style="{StaticResource MaterialDesignIconForegroundButton}"
-                          ToolTip="Đăng xuất">
-                            <materialDesign:PackIcon Width="35" Height="35"
-                            Kind="Logout" />
-                        </Button>
+                        
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -54,16 +48,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <TextBlock HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                            Text="Tên user" />
-                        </Grid>
-                        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
-                            <TextBlock HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                            Text="Tên user" />
+                            
                         </Grid>
                     </Grid>
                 </Grid>
