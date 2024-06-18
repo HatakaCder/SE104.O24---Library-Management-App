@@ -33,6 +33,7 @@
         <MappingFragment StoreEntitySet="PARAMETERS">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
+          <ScalarProperty Name="IDThuThu" ColumnName="IDThuThu" />
           <ScalarProperty Name="IDSach" ColumnName="IDSach" />
           <ScalarProperty Name="IDPhieuMuon" ColumnName="IDPhieuMuon" />
           <ScalarProperty Name="IDPhieuTra" ColumnName="IDPhieuTra" />
@@ -78,7 +79,7 @@
         <MappingFragment StoreEntitySet="SACH">
           <ScalarProperty Name="MaSach" ColumnName="MaSach" />
           <ScalarProperty Name="TenSach" ColumnName="TenSach" />
-          <ScalarProperty Name="TheLoai" ColumnName="TheLoai" />
+          <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
           <ScalarProperty Name="TacGia" ColumnName="TacGia" />
           <ScalarProperty Name="NamXB" ColumnName="NamXB" />
           <ScalarProperty Name="NhaXB" ColumnName="NhaXB" />

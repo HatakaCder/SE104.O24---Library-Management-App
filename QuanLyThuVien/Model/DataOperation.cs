@@ -56,7 +56,7 @@ namespace QuanLyThuVien.Model
                         TenSach = sach.TenSach,
                         TacGia = sach.TacGia,
                         NamXB = (short)sach.NamXB,
-                        TheLoai = sach.TheLoai,
+                        TheLoai = sach.TenTheLoai,
                         NhaXB = sach.NhaXB,
                         TriGia = (int)sach.TriGia,
                         NgayNhap = DateTime.Parse(sach.NgayNhap.ToString()),
@@ -158,7 +158,7 @@ namespace QuanLyThuVien.Model
             {
                 var ObjBook = new SACH();
                 ObjBook.TenSach = objBook.TenSach;
-                ObjBook.TheLoai = objBook.TheLoai;
+                ObjBook.TenTheLoai = objBook.TheLoai;
                 ObjBook.TacGia = objBook.TacGia;
                 ObjBook.NamXB = objBook.NamXB;
                 ObjBook.NhaXB = objBook.NhaXB;
@@ -217,7 +217,7 @@ namespace QuanLyThuVien.Model
                     {
                         MaSach = BookToFind.MaSach,
                         TenSach = BookToFind.TenSach,
-                        TheLoai = BookToFind.TheLoai,
+                        TheLoai = BookToFind.TenTheLoai,
                         TacGia = BookToFind.TacGia,
                         NamXB = (short)BookToFind.NamXB,
                         NhaXB = BookToFind.NhaXB,
@@ -328,7 +328,7 @@ namespace QuanLyThuVien.Model
                 if (sach != null)
                 {
                     sach.TenSach = objBookToUpdate.TenSach;
-                    sach.TheLoai = objBookToUpdate.TheLoai;
+                    sach.TenTheLoai = objBookToUpdate.TheLoai;
                     sach.TacGia = objBookToUpdate.TacGia;
                     sach.NamXB = objBookToUpdate.NamXB;
                     sach.NhaXB = objBookToUpdate.NhaXB;

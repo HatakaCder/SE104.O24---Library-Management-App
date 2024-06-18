@@ -73,9 +73,19 @@ namespace QuanLyThuVien.Services
 
                 if (ObjUser != null)
                 {
-                    if (Convert_pw.VerifyPassword(objCurrentUser.MatKhau, ObjUser.MatKhau))
+                    if (ObjUser.VaiTro == 1)
                     {
-                        IsSignIn = true;
+                        if (Convert_pw.VerifyPassword(objCurrentUser.MatKhau, ObjUser.MatKhau))
+                        {
+                            IsSignIn = true;
+                        }
+                    }
+                    else if (ObjUser.VaiTro == 0)
+                    {
+                        if (objCurrentUser.MatKhau == ObjUser.MatKhau)
+                        {
+                            IsSignIn = true;
+                        }
                     }
                 }
             }
@@ -90,6 +100,11 @@ namespace QuanLyThuVien.Services
         {
             bool exists = ObjContext.DOCGIAs.Any(x => x.Email == objCurrentDG.Email);
             return exists;
+        }
+        public int getVaiTro(string taikhoan)
+        {
+            var ObjUser = ObjContext.ACCOUNTs.Where(a => a.IsDeleted == false && a.TaiKhoan == taikhoan).FirstOrDefault();
+            return ObjUser.VaiTro;
         }
     }
 }

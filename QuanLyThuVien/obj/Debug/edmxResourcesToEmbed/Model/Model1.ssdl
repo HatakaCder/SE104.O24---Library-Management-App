@@ -30,11 +30,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="IDDocGia" Type="smallint" />
-    <Property Name="IDSach" Type="smallint" />
-    <Property Name="IDPhieuMuon" Type="smallint" />
-    <Property Name="IDPhieuTra" Type="smallint" />
-    <Property Name="IDMaTT" Type="smallint" />
+    <Property Name="IDDocGia" Type="smallint" Nullable="false" />
+    <Property Name="IDThuThu" Type="smallint" Nullable="false" />
+    <Property Name="IDSach" Type="smallint" Nullable="false" />
+    <Property Name="IDPhieuMuon" Type="smallint" Nullable="false" />
+    <Property Name="IDPhieuTra" Type="smallint" Nullable="false" />
+    <Property Name="IDMaTT" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="PHIEUMUON">
     <Key>
@@ -72,7 +73,7 @@
     </Key>
     <Property Name="MaSach" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="TenSach" Type="nvarchar" MaxLength="255" />
-    <Property Name="TheLoai" Type="nvarchar" MaxLength="225" />
+    <Property Name="TenTheLoai" Type="nvarchar" MaxLength="225" />
     <Property Name="TacGia" Type="nvarchar" MaxLength="255" />
     <Property Name="NamXB" Type="smallint" />
     <Property Name="NhaXB" Type="nvarchar" MaxLength="255" />
@@ -190,7 +191,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SACH__TheLoai__3D5E1FD2">
+  <Association Name="FK__SACH__TenTheLoai__3D5E1FD2">
     <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
     <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -198,7 +199,7 @@
         <PropertyRef Name="TenTheLoai" />
       </Principal>
       <Dependent Role="SACH">
-        <PropertyRef Name="TheLoai" />
+        <PropertyRef Name="TenTheLoai" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -237,7 +238,7 @@
       <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
       <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
     </AssociationSet>
-    <AssociationSet Name="FK__SACH__TheLoai__3D5E1FD2" Association="Self.FK__SACH__TheLoai__3D5E1FD2">
+    <AssociationSet Name="FK__SACH__TenTheLoai__3D5E1FD2" Association="Self.FK__SACH__TenTheLoai__3D5E1FD2">
       <End Role="THELOAI" EntitySet="THELOAI" />
       <End Role="SACH" EntitySet="SACH" />
     </AssociationSet>

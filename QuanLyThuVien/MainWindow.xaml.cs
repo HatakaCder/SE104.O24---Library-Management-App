@@ -20,9 +20,27 @@ namespace QuanLyThuVien
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private int vaitro;
+        public MainWindow(int vaitro)
         {
             InitializeComponent();
+            this.vaitro = vaitro;
+        }
+
+        private void Btn_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Checked_1(object sender, RoutedEventArgs e)
+        {
+            var res = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                LoginWindoww loginWindoww = new LoginWindoww();
+                loginWindoww.Show();
+                this.Close();
+            }
         }
     }
 }

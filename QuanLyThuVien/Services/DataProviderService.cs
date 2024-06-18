@@ -176,7 +176,7 @@ namespace QuanLyThuVien.Services
                         TenSach = sach.TenSach,
                         TacGia = sach.TacGia,
                         NamXB = (short)sach.NamXB,
-                        TheLoai = sach.TheLoai,
+                        TheLoai = sach.TenTheLoai,
                         NhaXB = sach.NhaXB,
                         TriGia = (int)sach.TriGia,
                         NgayNhap = DateTime.Parse(sach.NgayNhap.ToString()),

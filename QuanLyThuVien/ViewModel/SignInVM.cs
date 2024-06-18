@@ -51,7 +51,7 @@ namespace QuanLyThuVien.ViewModel
                 if (IsSignIn)
                 {
                     MessageBox.Show("Đăng nhập thành công!");
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(userService.getVaiTro(currentUser.TaiKhoan));
                     mainWindow.Show();
                     var mw = Application.Current.MainWindow as LoginWindoww;
                     mw?.Close();

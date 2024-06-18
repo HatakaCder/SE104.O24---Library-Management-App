@@ -57,14 +57,19 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <Grid Grid.Row="1" 
+                        <Grid Grid.Row="1"
+                              VerticalAlignment="Top"
                               HorizontalAlignment="Left"
                               Width="250">
-                            <StackPanel Height="600"
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Height="500"
                                         Width="250">
                                 <Menu:Btn Style="{StaticResource BtnStyle}"
                                           Command="{Binding HomeCommand}"
-                                          IsChecked="True"> 
+                                          IsChecked="True" Checked="Btn_Checked"> 
                                     <Grid>
                                         <materialDesign:PackIcon Kind="Home" Height="35" 
                          Width="35" 
@@ -169,6 +174,22 @@
                                 </Menu:Btn>
                                 
                             </StackPanel>
+                            <Grid Grid.Row="1" Height="150">
+                                <Menu:Btn Style="{StaticResource BtnStyle}"
+                            Command="{Binding SettingsCommand}" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Checked="Btn_Checked_1">
+                                    <Grid>
+                                        <materialDesign:PackIcon Kind="SignOut" Height="35" 
+                         Width="35" 
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="23,0,0,0"/>
+                                        <TextBlock Margin="80,0,0,0"
+ VerticalAlignment="Center"
+Style="{StaticResource MaterialDesignBody2TextBlock}"
+Text="Đăng xuất" />
+                                    </Grid>
+                                </Menu:Btn>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>

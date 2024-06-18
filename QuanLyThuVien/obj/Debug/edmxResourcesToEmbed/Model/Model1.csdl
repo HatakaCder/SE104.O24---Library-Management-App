@@ -34,11 +34,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="IDDocGia" Type="Int16" />
-    <Property Name="IDSach" Type="Int16" />
-    <Property Name="IDPhieuMuon" Type="Int16" />
-    <Property Name="IDPhieuTra" Type="Int16" />
-    <Property Name="IDMaTT" Type="Int16" />
+    <Property Name="IDDocGia" Type="Int16" Nullable="false" />
+    <Property Name="IDThuThu" Type="Int16" Nullable="false" />
+    <Property Name="IDSach" Type="Int16" Nullable="false" />
+    <Property Name="IDPhieuMuon" Type="Int16" Nullable="false" />
+    <Property Name="IDPhieuTra" Type="Int16" Nullable="false" />
+    <Property Name="IDMaTT" Type="Int16" Nullable="false" />
   </EntityType>
   <EntityType Name="PHIEUMUON">
     <Key>
@@ -82,7 +83,7 @@
     </Key>
     <Property Name="MaSach" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenSach" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="TheLoai" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+    <Property Name="TenTheLoai" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
     <Property Name="TacGia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NamXB" Type="Int16" />
     <Property Name="NhaXB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -91,7 +92,7 @@
     <Property Name="TinhTrang" Type="Int16" />
     <Property Name="IsDeleted" Type="Boolean" />
     <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="SACH" ToRole="PHIEUMUON" />
-    <NavigationProperty Name="THELOAI1" Relationship="Self.FK__SACH__TheLoai__3D5E1FD2" FromRole="SACH" ToRole="THELOAI" />
+    <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="SACH" ToRole="THELOAI" />
   </EntityType>
   <EntityType Name="SETTING">
     <Key>
@@ -115,7 +116,7 @@
     </Key>
     <Property Name="TenTheLoai" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" />
-    <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__TheLoai__3D5E1FD2" FromRole="THELOAI" ToRole="SACH" />
+    <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="THELOAI" ToRole="SACH" />
   </EntityType>
   <EntityType Name="THUTHU">
     <Key>
@@ -204,7 +205,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SACH__TheLoai__3D5E1FD2">
+  <Association Name="FK__SACH__TenTheLoai__3D5E1FD2">
     <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
     <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -212,7 +213,7 @@
         <PropertyRef Name="TenTheLoai" />
       </Principal>
       <Dependent Role="SACH">
-        <PropertyRef Name="TheLoai" />
+        <PropertyRef Name="TenTheLoai" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -251,7 +252,7 @@
       <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
     </AssociationSet>
-    <AssociationSet Name="FK__SACH__TheLoai__3D5E1FD2" Association="Self.FK__SACH__TheLoai__3D5E1FD2">
+    <AssociationSet Name="FK__SACH__TenTheLoai__3D5E1FD2" Association="Self.FK__SACH__TenTheLoai__3D5E1FD2">
       <End Role="THELOAI" EntitySet="THELOAIs" />
       <End Role="SACH" EntitySet="SACHes" />
     </AssociationSet>

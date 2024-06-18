@@ -22,13 +22,15 @@ namespace QuanLyThuVien.View
     public partial class SignIn : UserControl
     {
         SignInVM ViewModels;
+        private bool isUpdatingPassword = false;
+        private bool isUpdatingText = false;
         public SignIn()
         {
             InitializeComponent();
             ViewModels = new SignInVM();
             this.DataContext = ViewModels;
         }
-        private void l_register_MouseEnter(object sender, MouseEventArgs e)
+        /*private void l_register_MouseEnter(object sender, MouseEventArgs e)
         {
             l_register.Foreground = (Brush)new BrushConverter().ConvertFromString("#505050");
         }
@@ -46,7 +48,7 @@ namespace QuanLyThuVien.View
         {
             l_forgot.Foreground = (Brush)new BrushConverter().ConvertFromString("#808080");
         }
-
+*/
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             PasswordUnmask.Visibility = Visibility.Visible;
@@ -80,12 +82,22 @@ namespace QuanLyThuVien.View
 
         private void PasswordUnmask_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PasswordHidden.Password = PasswordUnmask.Text;
+            if (!isUpdatingPassword)
+            {
+                isUpdatingText = true;
+                PasswordHidden.Password = PasswordUnmask.Text;
+                isUpdatingText = false;
+            }
         }
 
         private void PasswordHidden_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordUnmask.Text = PasswordHidden.Password;
+            if (!isUpdatingText)
+            {
+                isUpdatingPassword = true;
+                PasswordUnmask.Text = PasswordHidden.Password;
+                isUpdatingPassword = false;
+            }
         }
     }
 }

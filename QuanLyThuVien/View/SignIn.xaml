@@ -86,7 +86,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0"
+                <!--<TextBlock Grid.Row="0"
                    HorizontalAlignment="Center"
                    Padding="0, 3, 0, 5">
             <Hyperlink Foreground="#808080"
@@ -110,7 +110,7 @@
                        Click="l_register_Click"
                        FontFamily="Roboto"
                        Style="{StaticResource HyperLinkMS}">Đăng ký</Hyperlink>
-                </TextBlock>
+                </TextBlock> !-->
 
             </Grid>
         </Grid>
