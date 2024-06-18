@@ -1,4 +1,5 @@
-﻿using QuanLyThuVien.ViewModel;
+﻿using QuanLyThuVien.Services;
+using QuanLyThuVien.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,14 @@ namespace QuanLyThuVien.View
             l_forgot.Foreground = (Brush)new BrushConverter().ConvertFromString("#808080");
         }
 */
+        private void l_signin_MouseLeave(object sender, MouseEventArgs e)
+        {
+            l_signin.Foreground = (Brush)new BrushConverter().ConvertFromString("#808080");
+        }
+        private void l_signin_MouseEnter(object sender, MouseEventArgs e)
+        {
+            l_signin.Foreground = (Brush)new BrushConverter().ConvertFromString("#505050");
+        }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             PasswordUnmask.Visibility = Visibility.Visible;
@@ -69,15 +78,17 @@ namespace QuanLyThuVien.View
             mainWindow?.SwitchToForgot();
         }
 
-        private void l_register_Click(object sender, RoutedEventArgs e)
+        private void l_signin_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as LoginWindoww;
-            mainWindow?.SwitchToSignUp();
+            MainWindow mainWindow = new MainWindow(2);
+            mainWindow.Show();
+            var mw = Application.Current.MainWindow as LoginWindoww;
+            mw?.Close();
         }
 
         private void PasswordHidden_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            
+
         }
 
         private void PasswordUnmask_TextChanged(object sender, TextChangedEventArgs e)

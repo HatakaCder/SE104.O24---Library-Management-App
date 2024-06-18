@@ -424,3 +424,7 @@ E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.Properties.Resources.reso
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.GenerateResource.cache
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.CoreCompileInputs.cache
 E:\Software\DoAn\QuanLyThuVien\obj\Debug\QuanLyTh.B5137F7B.Up2Date
+C:\Users\Admin\Desktop\New folder (7)\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Report1.g.cs
+C:\Users\Admin\Desktop\New folder (7)\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Report2.g.cs
+C:\Users\Admin\Desktop\New folder (7)\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Report1.baml
+C:\Users\Admin\Desktop\New folder (7)\SE104.O24---Library-Management-App\QuanLyThuVien\obj\Debug\View\Report2.baml

@@ -30,8 +30,9 @@ namespace QuanLyThuVien.ViewModel
         }
 
         DataOperation ObjDataOperation;
-        public BookVM()
+        public BookVM(bool check)
         {
+            IsBookCrudEnabled = check; ;
             ObjDataOperation = new DataOperation();
             LoadData();
             UpdateBook = new BOOK();
@@ -44,7 +45,13 @@ namespace QuanLyThuVien.ViewModel
             updatePopUpCommand = new RelayCommand(UpdatePopUp);
             selectedBooks = new ObservableCollection<BOOK>();
         }
+        private bool isBookCrudEnabled;
 
+        public bool IsBookCrudEnabled
+        {
+            get { return isBookCrudEnabled; }
+            set { isBookCrudEnabled = value; OnPropertyChanged("IsBookCrudEnabled"); }
+        }
         // Khai báo RelayCommands
         #region RelayCommand
 

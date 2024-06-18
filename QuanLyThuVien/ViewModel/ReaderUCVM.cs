@@ -20,6 +20,8 @@ namespace QuanLyThuVien.ViewModel
 {
     public class ReaderUCVM : INotifyPropertyChanged
     {
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
@@ -32,6 +34,7 @@ namespace QuanLyThuVien.ViewModel
         DataOperation ObjDataOperation;
         public ReaderUCVM()
         {
+
             ObjDataOperation = new DataOperation();
             LoadData();
             UpdateReader = new READER();

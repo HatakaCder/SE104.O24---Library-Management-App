@@ -58,7 +58,14 @@ namespace QuanLyThuVien.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!");
+                    var res = MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!, đăng nhập bằng tư cách độc giả?", "Login Failed", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (res == MessageBoxResult.Yes)
+                    {
+                        MainWindow mainWindow = new MainWindow(2);
+                        mainWindow.Show();
+                        var mw = Application.Current.MainWindow as LoginWindoww;
+                        mw?.Close();
+                    }
                 }
             }
             catch (Exception ex)

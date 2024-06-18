@@ -16,16 +16,12 @@
                FontFamily="{DynamicResource MaterialDesignFont}"
             d:DesignHeight="800" d:DesignWidth="990"
             Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:BookVM/>
-
-    </UserControl.DataContext>
 
     <UserControl.Resources>
         <local:DateFormatConverter x:Key="DateFormatConverter"/>
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
-        <Grid>
+    <Grid>
         <Border CornerRadius="10" BorderThickness="5" Background="Snow" Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
@@ -59,6 +55,9 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             
+                        </Grid>
+                        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
+                           
                         </Grid>
                     </Grid>
                 </Grid>
@@ -254,6 +253,7 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                             <Button
+                                Visibility="{Binding IsBookCrudEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Background="#FADBD8" Command="{Binding Path=SavePopUpCommand}"
               Content="Thêm"
               Margin="15"
@@ -264,6 +264,7 @@
               Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 />
                             <Button
+                                Visibility="{Binding IsBookCrudEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Background="#FADBD8"
               Content="Xóa"
               Width="150"
@@ -274,6 +275,7 @@
               ToolTip="Xóa sách"
                                 Command="{Binding Path=DeleteCommand}"/>
                             <Button
+                                Visibility="{Binding IsBookCrudEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Background="#FADBD8"
               Content="Sửa"
               Width="150"
@@ -289,5 +291,4 @@
             </Grid>
         </Border>
     </Grid>
-    </Border>
 </UserControl>

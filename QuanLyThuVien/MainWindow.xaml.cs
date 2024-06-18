@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyThuVien.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,12 @@ namespace QuanLyThuVien
     public partial class MainWindow : Window
     {
         private int vaitro;
+        private NavigationVM vm;
         public MainWindow(int vaitro)
         {
             InitializeComponent();
-            this.vaitro = vaitro;
+            vm = new NavigationVM(vaitro);
+            this.DataContext = vm;
         }
 
         private void Btn_Checked(object sender, RoutedEventArgs e)

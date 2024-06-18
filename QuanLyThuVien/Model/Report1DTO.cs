@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien.Model
 {
-    public class Report_1 : INotifyPropertyChanged
+    public class Report1DTO : INotifyPropertyChanged
     {
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,14 +18,15 @@ namespace QuanLyThuVien.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        #endregion 
-        private string id;
+        #endregion
+        private int stt;
 
-        public string Id
+        public int STT
         {
-            get { return id; }
-            set { id = value; OnPropertyChanged("Id"); }
+            get { return stt; }
+            set { stt = value; OnPropertyChanged("STT"); }
         }
+
         private string tenTheLoai;
 
         public string TenTheLoai
@@ -40,5 +41,14 @@ namespace QuanLyThuVien.Model
             get { return soLuotMuon; }
             set { soLuotMuon = value; OnPropertyChanged("SoLuotMuon"); }
         }
+        private int tyLe;
+
+        public int TyLe
+        {
+            get { return tyLe; }
+            set { tyLe = value; OnPropertyChanged("TyLe"); }
+        }
+
+
     }
 }
