@@ -33,7 +33,7 @@ namespace QuanLyThuVien.Model
         public List<string> getAllBookTypes()
         {
             List<string> bookTypes = new List<string>();
-            foreach (var book_type in ObjContext.THELOAIs)
+            foreach (var book_type in ObjContext.THELOAI)
             {
                 bookTypes.Add(book_type.TenTheLoai);
             }
@@ -45,7 +45,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                var ObjQuery = from sach in ObjContext.SACHes select sach;
+                var ObjQuery = from sach in ObjContext.SACH select sach;
 
                 foreach (var sach in ObjQuery)
                 {
@@ -181,7 +181,7 @@ namespace QuanLyThuVien.Model
                     break;
                 }
 
-                ObjContext.SACHes.Add(ObjBook);
+                ObjContext.SACH.Add(ObjBook);
                 ObjBooksList.Add(objBook);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
@@ -209,7 +209,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                var BookToFind = ObjContext.SACHes.Find(id);
+                var BookToFind = ObjContext.SACH.Find(id);
 
                 if (BookToFind != null)
                 {
@@ -272,7 +272,7 @@ namespace QuanLyThuVien.Model
             {
                 foreach (var book in need_to_delete)
                 {
-                    var objBookToDelete = ObjContext.SACHes.Find(book.MaSach);
+                    var objBookToDelete = ObjContext.SACH.Find(book.MaSach);
                     objBookToDelete.IsDeleted = true;
                     ObjBooksList.Remove(book);
                 }
@@ -323,7 +323,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                var sach = ObjContext.SACHes.Find(objBookToUpdate.MaSach);
+                var sach = ObjContext.SACH.Find(objBookToUpdate.MaSach);
 
                 if (sach != null)
                 {
@@ -367,7 +367,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                var ObjQuery = from reader in ObjContext.DOCGIAs select reader;
+                var ObjQuery = from reader in ObjContext.DOCGIA select reader;
 
                 foreach (var reader in ObjQuery)
                 {
@@ -422,7 +422,7 @@ namespace QuanLyThuVien.Model
             // Kiểm tra độ tuổi
             int Age = DateTime.Now.Year - objReader.NgaySinh.Year;
 
-            var para = ObjContext.SETTINGs.FirstOrDefault();
+            var para = ObjContext.SETTING.FirstOrDefault();
             int maxAge = (int)para.TuoiToiDaDocGia, minAge = (int)para.TuoiToiTieuDocGia;
 
             if (Age < minAge || Age > maxAge) return 4;
@@ -508,7 +508,7 @@ namespace QuanLyThuVien.Model
                     break;
                 }
 
-                ObjContext.DOCGIAs.Add(ObjReader);
+                ObjContext.DOCGIA.Add(ObjReader);
                 ObjReadersList.Add(objReader);
 
                 var NoOfRowsAffected = ObjContext.SaveChanges();
@@ -537,7 +537,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                var ReaderToFind = ObjContext.DOCGIAs.Find(id);
+                var ReaderToFind = ObjContext.DOCGIA.Find(id);
 
                 if (ReaderToFind != null)
                 {
@@ -614,7 +614,7 @@ namespace QuanLyThuVien.Model
 
             try
             {
-                DOCGIA docgia = ObjContext.DOCGIAs.Find(objReaderToUpdate.MaDG);
+                DOCGIA docgia = ObjContext.DOCGIA.Find(objReaderToUpdate.MaDG);
 
                 if (docgia != null)
                 {
@@ -658,7 +658,7 @@ namespace QuanLyThuVien.Model
             {
                 foreach (var reader in need_to_delete)
                 {
-                    var objReaderToDelete = ObjContext.DOCGIAs.Find(reader.MaDG);
+                    var objReaderToDelete = ObjContext.DOCGIA.Find(reader.MaDG);
                     objReaderToDelete.IsDeleted = true;
                     ObjReadersList.Remove(reader);
                 }

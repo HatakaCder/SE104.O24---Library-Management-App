@@ -27,8 +27,6 @@ namespace QuanLyThuVien.View
     public partial class BookBorrow : UserControl
     {
         private readonly QLTV_BETAEntities _context = new QLTV_BETAEntities();
-        private readonly DateTime dateTime = DateTime.Now;
-        private string timkiems = null;
         private List<SachDTO> list = new List<SachDTO>();
         public BookBorrow()
         {
@@ -63,13 +61,13 @@ namespace QuanLyThuVien.View
         private void loadData(string searchText = "")
         {
             searchText = RemoveDiacritics(searchText.ToLower());
-            var maDGs = _context.PHIEUMUONs
+            var maDGs = _context.PHIEUMUON
                                 .Where(pm => pm.IsDeleted == false)
                                 .Select(pm => pm.MaDG)
                                 .Distinct()  //Loại bỏ các giá trị trùng lặp
                                 .ToList();
 
-            var docGias = _context.DOCGIAs
+            var docGias = _context.DOCGIA
                            .Where(dg => maDGs.Contains(dg.MaDG))
                            .ToList()
                            .Where(dg => string.IsNullOrEmpty(searchText) || RemoveDiacritics(dg.HoTen.ToLower()).Contains(searchText))
@@ -83,38 +81,75 @@ namespace QuanLyThuVien.View
         {
             var list = new List<object>();
 
-            var dataPhieuMuon = _context.PHIEUMUONs
+            var dataPhieuMuon = _context.PHIEUMUON
                                        .Where(x => x.MaDG == docGia.MaDG && x.IsDeleted.Value == false)
                                        .ToList();
 
             DateTime currentDate = DateTime.Now;
-
-            var sachList = _context.SACHes.ToList(); // Load all books into memory to use RemoveDiacritics
+            var sachList = _context.SACH.ToList();
+            int soTienNopTre = _context.SETTING.FirstOrDefault()?.SoTienNopTre ?? 0;
 
             foreach (var data in dataPhieuMuon)
             {
                 var checkSach = sachList.FirstOrDefault(x => x.MaSach == data.MaSach);
 
-                if (checkSach != null && (string.IsNullOrEmpty(searchText) || RemoveDiacritics(checkSach.TenSach.ToLower()).Contains(RemoveDiacritics(searchText.ToLower()))))
+                if (checkSach != null)
                 {
-                    var dataItem = new
+                    if (data.NgayPhTra != null)
                     {
-                        MaPhMuon = data.MaPhMuon,
-                        tentacgia = checkSach.TacGia,
-                        tensach = checkSach.TenSach,
-                        ngaytra = data.NgayPhTra.Value,
-                        ngaymuon = data.NgayMuon.Value,
-                        quahan = data.NgayPhTra < currentDate
-                                 ? $"Sách đã quá hạn {Math.Abs((currentDate - data.NgayPhTra.Value).Days)} ngày"
-                                 : $"Sách chưa quá hạn, vẫn còn {Math.Abs((data.NgayPhTra.Value - currentDate).Days)} ngày",
-                        maPhMuon = data.MaPhMuon
-                    };
+                        TimeSpan difference = currentDate - data.NgayPhTra.Value;
+                        int soNgayQuaHan = (int)Math.Ceiling(difference.TotalDays);
 
-                    list.Add(dataItem);
+                        if (soNgayQuaHan > 0)
+                        {
+                            int soTienPhat = soNgayQuaHan * soTienNopTre;
+                            var dataItem = new
+                            {
+                                MaPhMuon = data.MaPhMuon,
+                                tentacgia = checkSach.TacGia,
+                                tensach = checkSach.TenSach,
+                                ngaytra = data.NgayPhTra.Value.ToString("dd/MM/yyyy"),
+                                ngaymuon = data.NgayMuon.Value.ToString("dd/MM/yyyy"),
+                                quahan = $"{soNgayQuaHan} ngày, {soTienPhat} đồng",
+                                maPhMuon = data.MaPhMuon
+                            };
+                            list.Add(dataItem);
+                        }
+                        else
+                        {
+                            var dataItem = new
+                            {
+                                MaPhMuon = data.MaPhMuon,
+                                tentacgia = checkSach.TacGia,
+                                tensach = checkSach.TenSach,
+                                ngaytra = data.NgayPhTra.Value.ToString("dd/MM/yyyy"),
+                                ngaymuon = data.NgayMuon.Value.ToString("dd/MM/yyyy"),
+                                quahan = "Sách chưa quá hạn",
+                                maPhMuon = data.MaPhMuon
+                            };
+                            list.Add(dataItem);
+                        }
+                    }
+                    else
+                    {
+                        var dataItem = new
+                        {
+                            MaPhMuon = data.MaPhMuon,
+                            tentacgia = checkSach.TacGia,
+                            tensach = checkSach.TenSach,
+                            ngaytra = "(Chưa xác định)",
+                            ngaymuon = data.NgayMuon.Value,
+                            quahan = "(Chưa xác định)",
+                            maPhMuon = data.MaPhMuon
+                        };
+                        list.Add(dataItem);
+                    }
                 }
             }
+
             sach.ItemsSource = list;
         }
+
 
         //Khi nhấn vào tên độc giả ở grid bên trái, load danh sách các sách mà độc giả đang mượn
         private void docgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -170,125 +205,25 @@ namespace QuanLyThuVien.View
             return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
         //Mở Form điền phiếu mượn
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_TaoPhieuMuon(object sender, RoutedEventArgs e)
         {
             var formPhieuMuon = new FormPhieuMuon();
             formPhieuMuon.Show();
         }
 
+        //Mở form tạo phiếu trả
+        private void Button_Click_TaoPhieuTra(object sender, RoutedEventArgs e)
+        {
+            var formPhieuTra = new FormPhieuTra();
+            formPhieuTra.Show();
+        }
+
         //Xuat du lieu PHIEUTHU ra file excel
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string fileName = "PHIEUTHULIST.xlsx";
-            string filePath = @"D:\Chinh_Khoa\TEMP\" + fileName;
-
-            try
-            {
-                // Ensure the directory exists
-                string directory = System.IO.Path.GetDirectoryName(filePath);
-                if (!Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
-
-                FileInfo file = new FileInfo(filePath);
-                bool fileExists = file.Exists;
-
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-                using (ExcelPackage package = new ExcelPackage(file))
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault(ws => ws.Name == "PHIEUTHU");
-
-                    if (worksheet == null)
-                    {
-                        // Add new worksheet
-                        worksheet = package.Workbook.Worksheets.Add("PHIEUTHU");
-                    }
-                    else
-                    {
-                        // Clear existing content
-                        worksheet.Cells[worksheet.Dimension.Address].Clear();
-                    }
-
-                    // Set header information
-                    worksheet.Cells["A1:E1"].Merge = true;
-                    worksheet.Cells["A1"].Value = "Danh sách phiếu thu";
-                    worksheet.Cells["A1"].Style.Font.Size = 18;
-                    worksheet.Cells["A1"].Style.Font.Bold = true;
-                    worksheet.Cells["A1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-
-                    worksheet.Cells["A3:E3"].Style.Font.Bold = true;
-                    worksheet.Cells[3, 1].Value = "ID";
-                    worksheet.Cells[3, 2].Value = "Mã Phiếu trả";
-                    worksheet.Cells[3, 3].Value = "Họ tên độc giả";
-                    worksheet.Cells[3, 4].Value = "Ngày quá hạn";
-                    worksheet.Cells[3, 5].Value = "Số tiền thu";
-
-                    // Retrieve data
-                    var query = from pt in _context.PHIEUTHUs
-                                join ptr in _context.PHIEUTRAs on pt.MaPhTra equals ptr.MaPhTra
-                                join pm in _context.PHIEUMUONs on ptr.MaPhMuon equals pm.MaPhMuon
-                                join dg in _context.DOCGIAs on pm.MaDG equals dg.MaDG
-                                where pt.IsDeleted == false
-                                select new
-                                {
-                                    ID = pt.ID,
-                                    MaPhTra = pt.MaPhTra,
-                                    HoTenDocGia = dg.HoTen,
-                                    SoNgayQHan = pt.SoNgayQHan,
-                                    SoTienThu = pt.SoTienThu
-                                };
-
-                    // Write data to worksheet
-                    int row = 4;
-                    foreach (var item in query)
-                    {
-                        worksheet.Cells[row, 1].Value = item.ID;
-                        worksheet.Cells[row, 2].Value = item.MaPhTra;
-                        worksheet.Cells[row, 3].Value = item.HoTenDocGia;
-                        worksheet.Cells[row, 4].Value = item.SoNgayQHan;
-                        worksheet.Cells[row, 5].Value = item.SoTienThu;
-                        row++;
-                    }
-
-                    // Apply border styles to header cells
-                    using (ExcelRange headerCells = worksheet.Cells["A3:E3"])
-                    {
-                        headerCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                        headerCells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                        headerCells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                        headerCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                    }
-
-                    // Apply border styles to data cells
-                    using (ExcelRange dataCells = worksheet.Cells[4, 1, row - 1, 5])
-                    {
-                        if (dataCells != null && dataCells.Any())
-                        {
-                            dataCells.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                            dataCells.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                            dataCells.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                            dataCells.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                        }
-                    }
-
-                    // Auto fit columns
-                    worksheet.Cells.AutoFitColumns();
-
-                    // Save the package
-                    package.Save();
-
-                    MessageBox.Show("Đã cập nhật file Excel thành công: " + filePath, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi xảy ra khi cập nhật file Excel: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            var phieuThuExport = new PhieuThuExport();
+            phieuThuExport.Show();
         }
-
-
 
 
 

@@ -1,0 +1,139 @@
+﻿<Window x:Class="QuanLyThuVien.FormPhieuTra"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:QuanLyThuVien.UserControlQLTV"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="Transparent"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="FormPhieuTra" Height="500" Width="800" Loaded="Window_Loaded_1">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.5*" />
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:PackIcon 
+                Kind="Close"
+                Grid.Column="1" 
+                Panel.ZIndex="1" 
+                MouseUp="Image_MouseUp"
+                HorizontalAlignment="Right"
+                Height="35"
+                Width="35"
+                Margin="15"/>
+            <Border CornerRadius="10 0 0 10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0, 0" EndPoint="1,1">
+                        <GradientStop Color="#3AA9AD" Offset="0"/>
+                        <GradientStop Color="#3AADA1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Grid>
+                <Canvas>
+                    <Polygon Points="0, 20, 230, 140 0, 270" Fill="#4EB1B6"/>
+                    <Polygon Points="100, 400, 200, 370 180, 470" Fill="#4EB1B6"/>
+                    <Ellipse Margin="250 400 0 0" Width="40" Height="40" Fill="#4EB1B6"/>
+                    <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6"/>
+                </Canvas>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Phiếu trả" Style="{StaticResource TitleText}" />
+                    <TextBlock Text="Phiếu trả sẽ kiểm tra khách hàng có sách mượn quá hạn hay không" 
+                       Opacity="0.8" 
+                       Margin="35 30 20 30" 
+                       Style="{StaticResource NormalText}" />
+                </StackPanel>
+            </Grid>
+
+
+            <Border 
+                Background="Snow" 
+                Grid.Column="1" 
+                CornerRadius="0 10 10 0" 
+                MouseDown="Border_MouseDown"
+                RenderTransformOrigin="0.396,0.846">
+                <StackPanel VerticalAlignment="Top" Margin="0,70,0,0">
+                    <TextBlock 
+                        Text="Phiếu trả" 
+                        Margin="0 20 0 0" 
+                        Foreground="#3AB19B" 
+                        Style="{StaticResource TitleText}" />
+                    <TextBlock 
+                        Text="Mã phiếu mượn" 
+                        Margin="0 10 0 0" 
+                        Foreground="#3AB19B" 
+                        Style="{StaticResource TitleSize}"/>
+                    <ComboBox 
+                        x:Name="maphieumuon1" 
+                        Width="150"
+                        IsEditable="True"
+                        StaysOpenOnEdit="True" 
+                        IsTextSearchEnabled="False" 
+                        TextBoxBase.TextChanged="maphieumuon1_TextChanged"
+                        SelectionChanged="maphieumuon1_SelectionChanged" />
+                    <TextBlock 
+                        Text="Họ tên Độc giả"
+                        Margin="0 10 0 0"
+                        Foreground="#3AB19B"
+                        Style="{StaticResource TitleSize}"/>    
+                    <Border 
+                        BorderBrush="Black" 
+                        BorderThickness="0,0,0,1" 
+                        Width="150"
+                        Padding="0,0,0,5">
+                        <TextBlock 
+                            x:Name="txtHoTen" 
+                            Text="{Binding SelectedItem.HoTen, ElementName=maphieumuon1}" />
+                    </Border>
+                    <TextBlock 
+                        Text="Ngày sinh"
+                        Margin="0 10 0 0"
+                        Foreground="#3AB19B"
+                        Style="{StaticResource TitleSize}"/>
+                    <Border 
+                        BorderBrush="Black" 
+                        BorderThickness="0,0,0,1" 
+                        Width="150"
+                        Padding="0,0,0,5">
+                        <TextBlock 
+                            x:Name="txtNgaySinh" 
+                            Text="{Binding SelectedItem.NgaySinh, ElementName=maphieumuon1, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                    </Border>
+                    <TextBlock 
+                         Text="Sách mượn" 
+                         Margin="0 10 0 0"
+                         Foreground="#3AB19B" 
+                         Style="{StaticResource TitleSize}"/>
+                    <Border 
+                        BorderBrush="Black" 
+                        BorderThickness="0,0,0,1" 
+                        Width="150"
+                        Padding="0,0,0,5">
+                        <TextBlock 
+                            x:Name="txtTenSach" 
+                            Text="{Binding SelectedItem.TenSach, ElementName=maphieumuon1}" />
+                    </Border>
+                    <Button 
+                        Content="Gửi" 
+                        Style="{StaticResource mainButton}" 
+                        Click="Button_Click_TraSach" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

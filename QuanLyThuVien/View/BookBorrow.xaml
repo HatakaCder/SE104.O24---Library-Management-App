@@ -18,9 +18,8 @@
     <Grid>
         <Border 
             CornerRadius="10" 
-            BorderThickness="1" 
+            BorderThickness="5" 
             Background="Snow" 
-            BorderBrush="Gray"
             Margin="15">
             <Grid>
                 <Grid.RowDefinitions>
@@ -50,15 +49,32 @@
                             Text="Quản lý sách"/>
                     </Grid>
                     <Grid Grid.Column="3">
-                        
+                        <Button
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            ToolTip="Đăng xuất">
+                            <materialDesign:PackIcon 
+                                Width="35" 
+                                Height="35" 
+                                Kind="Logout" />
+                        </Button>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        
-                     
+                        <Grid Grid.Row="0">
+                            <TextBlock 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Tên user" />
+                        </Grid>
+                        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="150">
+                            <TextBlock 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Tên user" />
+                        </Grid>
                     </Grid>
                 </Grid>
 
@@ -178,7 +194,7 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding NgayLapThe}" 
+                                    Binding="{Binding NgayLapThe,StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -269,7 +285,7 @@
 
                                 <DataGridTextColumn 
                                     Width="1.2*" 
-                                    Binding="{Binding ngaymuon}" 
+                                    Binding="{Binding ngaymuon,StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
@@ -286,13 +302,13 @@
 
                                 <DataGridTextColumn 
                                     Width="*" 
-                                    Binding="{Binding ngaytra}" 
+                                    Binding="{Binding ngaytra, StringFormat='{}{0:dd/MM/yyyy}'}" 
                                     IsReadOnly="True">
                                     <DataGridTextColumn.HeaderTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <TextBlock 
-                                                    Text="Ngày trả" 
+                                                    Text="Ngày phải trả" 
                                                     FontFamily="Paytone One" 
                                                     VerticalAlignment="Center" 
                                                     HorizontalAlignment="Center"/>
@@ -330,12 +346,22 @@
                             <Button
                                 Background="#FADBD8"
                                 Foreground="Black"
-                                Content="Tạo Phiếu mượn/Trả"
+                                Content="Tạo Phiếu Mượn"
                                 Margin="15"
                                 Width="200"
                                 Height="50"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                ToolTip="Thêm phiếu mượn" Click="Button_Click" />
+                                ToolTip="Thêm phiếu mượn" Click="Button_Click_TaoPhieuMuon" />
+
+                            <Button
+                                Background="#FADBD8"
+                                Foreground="Black"
+                                Content="Tạo Phiếu Trả"
+                                Margin="15"
+                                Width="200"
+                                Height="50"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                ToolTip="Thêm phiếu trả" Click="Button_Click_TaoPhieuTra" />
 
                             <Button
                                 Background="#FADBD8"

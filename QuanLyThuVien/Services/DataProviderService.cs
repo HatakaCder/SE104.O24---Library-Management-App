@@ -38,10 +38,10 @@ namespace QuanLyThuVien.Services
 
             try
             {
-                var ObjQuery = from phieutra in ObjContext.PHIEUTRAs
-                               join phieumuon in ObjContext.PHIEUMUONs on phieutra.MaPhMuon equals phieumuon.MaPhMuon
-                               join docgia in ObjContext.DOCGIAs on phieumuon.MaDG equals docgia.MaDG
-                               join sach in ObjContext.SACHes on phieumuon.MaSach equals sach.MaSach
+                var ObjQuery = from phieutra in ObjContext.PHIEUTRA
+                               join phieumuon in ObjContext.PHIEUMUON on phieutra.MaPhMuon equals phieumuon.MaPhMuon
+                               join docgia in ObjContext.DOCGIA on phieumuon.MaDG equals docgia.MaDG
+                               join sach in ObjContext.SACH on phieumuon.MaSach equals sach.MaSach
                                select new PhieuTraDTO
                                {
                                    MaPhTra = phieutra.MaPhTra,
@@ -66,7 +66,7 @@ namespace QuanLyThuVien.Services
             List<THUTHU> ObjThuthuList = new List<THUTHU>();
             try
             {
-                var ObjQuery = from thuthu in ObjContext.THUTHUs select thuthu;
+                var ObjQuery = from thuthu in ObjContext.THUTHU select thuthu;
                 foreach (var thuthu in ObjQuery)
                 {
                     ObjThuthuList.Add(new THUTHU
@@ -89,8 +89,8 @@ namespace QuanLyThuVien.Services
             bool IsDeleted = false;
             try
             {
-                var ObjReaderToDelete = ObjContext.DOCGIAs.Find(id);
-                ObjContext.DOCGIAs.Remove(ObjReaderToDelete);
+                var ObjReaderToDelete = ObjContext.DOCGIA.Find(id);
+                ObjContext.DOCGIA.Remove(ObjReaderToDelete);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsDeleted = NoOfRowsAffected > 0;
             }
@@ -110,7 +110,7 @@ namespace QuanLyThuVien.Services
             List<READER> ObjReaderList = new List<READER>();
             try
             {
-                var ObjQuery = from reader in ObjContext.DOCGIAs select reader;
+                var ObjQuery = from reader in ObjContext.DOCGIA select reader;
                 foreach (var reader in ObjQuery)
                 {
                     ObjReaderList.Add(new READER
@@ -139,8 +139,8 @@ namespace QuanLyThuVien.Services
             List<ListQuaHanModel> ObjList = new List<ListQuaHanModel>();
             try
             {
-                var x = ObjContext.SETTINGs.FirstOrDefault().SoTienNopTre;
-                var query = from phieumuon in ObjContext.PHIEUMUONs
+                var x = ObjContext.SETTING.FirstOrDefault().SoTienNopTre;
+                var query = from phieumuon in ObjContext.PHIEUMUON
                             where phieumuon.NgayPhTra < DateTime.Now && phieumuon.IsDeleted == false
                             select new ListQuaHanModel
                             {
@@ -165,7 +165,7 @@ namespace QuanLyThuVien.Services
 
             try
             {
-                var ObjQuery = from sach in ObjContext.SACHes select sach;
+                var ObjQuery = from sach in ObjContext.SACH select sach;
 
                 foreach (var sach in ObjQuery)
                 {
@@ -193,13 +193,13 @@ namespace QuanLyThuVien.Services
             return ObjBooksList;
         }
 
-        public List<PHIEUMUON> GetPHIEUMUONs()
+        public List<PHIEUMUON> GetPHIEUMUON()
         {
             Objphieumuon.Clear();
 
             try
             {
-                var ObjQuery = from phieumuon in ObjContext.PHIEUMUONs select phieumuon;
+                var ObjQuery = from phieumuon in ObjContext.PHIEUMUON select phieumuon;
 
                 foreach (var phieumuon in ObjQuery)
                 {
@@ -243,7 +243,7 @@ namespace QuanLyThuVien.Services
                 ObjReader.NgayLapThe = objNewReader.NgayLapThe;
                 ObjReader.SoDT = objNewReader.SoDT;
 
-                ObjContext.DOCGIAs.Add(ObjReader);
+                ObjContext.DOCGIA.Add(ObjReader);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsAdded = NoOfRowsAffected > 0;
             }
@@ -259,7 +259,7 @@ namespace QuanLyThuVien.Services
             bool IsUpdated = false;
             try
             {
-                var ObjReader = ObjContext.DOCGIAs.Find(objReaderToUpdate.MaDG);
+                var ObjReader = ObjContext.DOCGIA.Find(objReaderToUpdate.MaDG);
                 ObjReader.MaDG = objReaderToUpdate.MaDG;
                 ObjReader.HoTen = objReaderToUpdate.HoTen;
                 ObjReader.GioiTinh = objReaderToUpdate.GioiTinh;
@@ -286,8 +286,8 @@ namespace QuanLyThuVien.Services
             bool IsDeleted = false;
             try
             {
-                var ObjLbToDelete = ObjContext.THUTHUs.Find(id);
-                ObjContext.THUTHUs.Remove(ObjLbToDelete);
+                var ObjLbToDelete = ObjContext.THUTHU.Find(id);
+                ObjContext.THUTHU.Remove(ObjLbToDelete);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsDeleted = NoOfRowsAffected > 0;
             }
@@ -306,7 +306,7 @@ namespace QuanLyThuVien.Services
             READER ObjReader = null;
             try
             {
-                var ObjReaderToFind = ObjContext.DOCGIAs.Find(id);
+                var ObjReaderToFind = ObjContext.DOCGIA.Find(id);
                 if (ObjReaderToFind != null)
                 {
                     ObjReader = new READER()

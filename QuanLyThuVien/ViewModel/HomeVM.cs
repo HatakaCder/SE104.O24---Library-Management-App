@@ -99,7 +99,7 @@ namespace QuanLyThuVien.ViewModel
         {
             BooksList = new ObservableCollection<BOOK>(ObjDataProvider.getAllBook());
             ReadersList = new ObservableCollection<READER>(ObjDataProvider.GetREADERs());
-            pHIEUMUONs = new ObservableCollection<PHIEUMUON>(ObjDataProvider.GetPHIEUMUONs());
+            pHIEUMUONs = new ObservableCollection<PHIEUMUON>(ObjDataProvider.GetPHIEUMUON());
             pHIEUTHUS = new ObservableCollection<PhieuTraDTO>(ObjDataProvider.GetPHIEUTHUs());
             listQuaHan = new ObservableCollection<ListQuaHanModel>(ObjDataProvider.GetListQuaHan());
             Count = CountService.getCount();

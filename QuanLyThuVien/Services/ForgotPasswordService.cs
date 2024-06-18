@@ -39,8 +39,8 @@ namespace QuanLyThuVien.Services
             bool IsChanged = false;
             try
             {
-                var obj_dg = ObjContext.DOCGIAs.FirstOrDefault(x => x.Email == email);
-                var obj_acc = ObjContext.ACCOUNTs.FirstOrDefault(x => x.MaDG == obj_dg.MaDG);
+                var obj_dg = ObjContext.DOCGIA.FirstOrDefault(x => x.Email == email);
+                var obj_acc = ObjContext.ACCOUNT.FirstOrDefault(x => x.MaDG == obj_dg.MaDG);
                 obj_acc.MatKhau = ph.HashPassword(password);
                 var NoOfRowsAffected = ObjContext.SaveChanges();
                 IsChanged = NoOfRowsAffected > 0;

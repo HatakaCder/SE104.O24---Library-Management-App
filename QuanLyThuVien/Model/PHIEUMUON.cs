@@ -17,7 +17,7 @@ namespace QuanLyThuVien.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUMUON()
         {
-            this.PHIEUTRAs = new HashSet<PHIEUTRA>();
+            this.PHIEUTRA = new HashSet<PHIEUTRA>();
         }
     
         public string MaPhMuon { get; set; }
@@ -30,6 +30,6 @@ namespace QuanLyThuVien.Model
         public virtual DOCGIA DOCGIA { get; set; }
         public virtual SACH SACH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUTRA> PHIEUTRAs { get; set; }
+        public virtual ICollection<PHIEUTRA> PHIEUTRA { get; set; }
     }
 }

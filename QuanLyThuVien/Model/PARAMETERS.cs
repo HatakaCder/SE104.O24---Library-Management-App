@@ -12,7 +12,7 @@ namespace QuanLyThuVien.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PARAMETER
+    public partial class PARAMETERS
     {
         public int ID { get; set; }
         public short IDDocGia { get; set; }

@@ -17,8 +17,8 @@ namespace QuanLyThuVien.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOCGIA()
         {
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
-            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
+            this.ACCOUNT = new HashSet<ACCOUNT>();
+            this.PHIEUMUON = new HashSet<PHIEUMUON>();
         }
     
         public string MaDG { get; set; }
@@ -32,8 +32,8 @@ namespace QuanLyThuVien.Model
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual ICollection<ACCOUNT> ACCOUNT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUON { get; set; }
     }
 }

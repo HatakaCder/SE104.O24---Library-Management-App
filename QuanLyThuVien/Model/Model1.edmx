@@ -279,10 +279,10 @@
           <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NgayLapThe" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaDG__5165187F" FromRole="DOCGIA" ToRole="ACCOUNT" />
-          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaDG__4222D4EF" FromRole="DOCGIA" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaDG__5165187F" FromRole="DOCGIA" ToRole="ACCOUNT" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaDG__4222D4EF" FromRole="DOCGIA" ToRole="PHIEUMUON" />
         </EntityType>
-        <EntityType Name="PARAMETER">
+        <EntityType Name="PARAMETERS">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -306,7 +306,7 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="DOCGIA" Relationship="Self.FK__PHIEUMUON__MaDG__4222D4EF" FromRole="PHIEUMUON" ToRole="DOCGIA" />
           <NavigationProperty Name="SACH" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="PHIEUMUON" ToRole="SACH" />
-          <NavigationProperty Name="PHIEUTRAs" Relationship="Self.FK__PHIEUTRA__MaPhMu__46E78A0C" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
+          <NavigationProperty Name="PHIEUTRA" Relationship="Self.FK__PHIEUTRA__MaPhMu__46E78A0C" FromRole="PHIEUMUON" ToRole="PHIEUTRA" />
         </EntityType>
         <EntityType Name="PHIEUTHU">
           <Key>
@@ -328,7 +328,7 @@
           <Property Name="NgayTra" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUTRA__MaPhMu__46E78A0C" FromRole="PHIEUTRA" ToRole="PHIEUMUON" />
-          <NavigationProperty Name="PHIEUTHUs" Relationship="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="PHIEUTHU" Relationship="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0" FromRole="PHIEUTRA" ToRole="PHIEUTHU" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -344,7 +344,7 @@
           <Property Name="TriGia" Type="Int32" />
           <Property Name="TinhTrang" Type="Int16" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="SACH" ToRole="PHIEUMUON" />
+          <NavigationProperty Name="PHIEUMUON" Relationship="Self.FK__PHIEUMUON__MaSac__4316F928" FromRole="SACH" ToRole="PHIEUMUON" />
           <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="SACH" ToRole="THELOAI" />
         </EntityType>
         <EntityType Name="SETTING">
@@ -369,7 +369,7 @@
           </Key>
           <Property Name="TenTheLoai" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="THELOAI" ToRole="SACH" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__SACH__TenTheLoai__3D5E1FD2" FromRole="THELOAI" ToRole="SACH" />
         </EntityType>
         <EntityType Name="THUTHU">
           <Key>
@@ -384,7 +384,7 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SoDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__MaTT__52593CB8" FromRole="THUTHU" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__ACCOUNT__MaTT__52593CB8" FromRole="THUTHU" ToRole="ACCOUNT" />
         </EntityType>
         <Association Name="FK__ACCOUNT__MaDG__5165187F">
           <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="0..1" />
@@ -471,43 +471,43 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="QLTV_BETAEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
-          <EntitySet Name="DOCGIAs" EntityType="Self.DOCGIA" />
-          <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETER" />
-          <EntitySet Name="PHIEUMUONs" EntityType="Self.PHIEUMUON" />
-          <EntitySet Name="PHIEUTHUs" EntityType="Self.PHIEUTHU" />
-          <EntitySet Name="PHIEUTRAs" EntityType="Self.PHIEUTRA" />
-          <EntitySet Name="SACHes" EntityType="Self.SACH" />
-          <EntitySet Name="SETTINGs" EntityType="Self.SETTING" />
-          <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
-          <EntitySet Name="THUTHUs" EntityType="Self.THUTHU" />
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" />
+          <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" />
+          <EntitySet Name="PARAMETERS" EntityType="Self.PARAMETERS" />
+          <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" />
+          <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" />
+          <EntitySet Name="PHIEUTRA" EntityType="Self.PHIEUTRA" />
+          <EntitySet Name="SACH" EntityType="Self.SACH" />
+          <EntitySet Name="SETTING" EntityType="Self.SETTING" />
+          <EntitySet Name="THELOAI" EntityType="Self.THELOAI" />
+          <EntitySet Name="THUTHU" EntityType="Self.THUTHU" />
           <AssociationSet Name="FK__ACCOUNT__MaDG__5165187F" Association="Self.FK__ACCOUNT__MaDG__5165187F">
-            <End Role="DOCGIA" EntitySet="DOCGIAs" />
-            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="DOCGIA" EntitySet="DOCGIA" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
           <AssociationSet Name="FK__ACCOUNT__MaTT__52593CB8" Association="Self.FK__ACCOUNT__MaTT__52593CB8">
-            <End Role="THUTHU" EntitySet="THUTHUs" />
-            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="THUTHU" EntitySet="THUTHU" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
           <AssociationSet Name="FK__PHIEUMUON__MaDG__4222D4EF" Association="Self.FK__PHIEUMUON__MaDG__4222D4EF">
-            <End Role="DOCGIA" EntitySet="DOCGIAs" />
-            <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
+            <End Role="DOCGIA" EntitySet="DOCGIA" />
+            <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
           <AssociationSet Name="FK__PHIEUMUON__MaSac__4316F928" Association="Self.FK__PHIEUMUON__MaSac__4316F928">
-            <End Role="SACH" EntitySet="SACHes" />
-            <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
           </AssociationSet>
           <AssociationSet Name="FK__PHIEUTRA__MaPhMu__46E78A0C" Association="Self.FK__PHIEUTRA__MaPhMu__46E78A0C">
-            <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
-            <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
+            <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+            <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
           </AssociationSet>
           <AssociationSet Name="FK__PHIEUTHU__MaPhTr__4AB81AF0" Association="Self.FK__PHIEUTHU__MaPhTr__4AB81AF0">
-            <End Role="PHIEUTRA" EntitySet="PHIEUTRAs" />
-            <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
+            <End Role="PHIEUTRA" EntitySet="PHIEUTRA" />
+            <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
           </AssociationSet>
           <AssociationSet Name="FK__SACH__TenTheLoai__3D5E1FD2" Association="Self.FK__SACH__TenTheLoai__3D5E1FD2">
-            <End Role="THELOAI" EntitySet="THELOAIs" />
-            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="THELOAI" EntitySet="THELOAI" />
+            <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -516,7 +516,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QLTV_BETAModelStoreContainer" CdmEntityContainer="QLTV_BETAEntities">
-          <EntitySetMapping Name="ACCOUNTs">
+          <EntitySetMapping Name="ACCOUNT">
             <EntityTypeMapping TypeName="QLTV_BETAModel.ACCOUNT">
               <MappingFragment StoreEntitySet="ACCOUNT">
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
@@ -528,7 +528,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DOCGIAs">
+          <EntitySetMapping Name="DOCGIA">
             <EntityTypeMapping TypeName="QLTV_BETAModel.DOCGIA">
               <MappingFragment StoreEntitySet="DOCGIA">
                 <ScalarProperty Name="MaDG" ColumnName="MaDG" />
@@ -544,7 +544,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PARAMETERS">
-            <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETER">
+            <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETERS">
               <MappingFragment StoreEntitySet="PARAMETERS">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
@@ -556,7 +556,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHIEUMUONs">
+          <EntitySetMapping Name="PHIEUMUON">
             <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUMUON">
               <MappingFragment StoreEntitySet="PHIEUMUON">
                 <ScalarProperty Name="MaPhMuon" ColumnName="MaPhMuon" />
@@ -568,7 +568,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHIEUTHUs">
+          <EntitySetMapping Name="PHIEUTHU">
             <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUTHU">
               <MappingFragment StoreEntitySet="PHIEUTHU">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -579,7 +579,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHIEUTRAs">
+          <EntitySetMapping Name="PHIEUTRA">
             <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUTRA">
               <MappingFragment StoreEntitySet="PHIEUTRA">
                 <ScalarProperty Name="MaPhTra" ColumnName="MaPhTra" />
@@ -589,7 +589,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SACHes">
+          <EntitySetMapping Name="SACH">
             <EntityTypeMapping TypeName="QLTV_BETAModel.SACH">
               <MappingFragment StoreEntitySet="SACH">
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
@@ -605,7 +605,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SETTINGs">
+          <EntitySetMapping Name="SETTING">
             <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
               <MappingFragment StoreEntitySet="SETTING">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -622,7 +622,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="THELOAIs">
+          <EntitySetMapping Name="THELOAI">
             <EntityTypeMapping TypeName="QLTV_BETAModel.THELOAI">
               <MappingFragment StoreEntitySet="THELOAI">
                 <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
@@ -630,7 +630,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="THUTHUs">
+          <EntitySetMapping Name="THUTHU">
             <EntityTypeMapping TypeName="QLTV_BETAModel.THUTHU">
               <MappingFragment StoreEntitySet="THUTHU">
                 <ScalarProperty Name="MaTT" ColumnName="MaTT" />
@@ -659,7 +659,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

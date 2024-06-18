@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QLTV_BETAModelStoreContainer" CdmEntityContainer="QLTV_BETAEntities">
-    <EntitySetMapping Name="ACCOUNTs">
+    <EntitySetMapping Name="ACCOUNT">
       <EntityTypeMapping TypeName="QLTV_BETAModel.ACCOUNT">
         <MappingFragment StoreEntitySet="ACCOUNT">
           <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
@@ -13,7 +13,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DOCGIAs">
+    <EntitySetMapping Name="DOCGIA">
       <EntityTypeMapping TypeName="QLTV_BETAModel.DOCGIA">
         <MappingFragment StoreEntitySet="DOCGIA">
           <ScalarProperty Name="MaDG" ColumnName="MaDG" />
@@ -29,7 +29,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PARAMETERS">
-      <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETER">
+      <EntityTypeMapping TypeName="QLTV_BETAModel.PARAMETERS">
         <MappingFragment StoreEntitySet="PARAMETERS">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDDocGia" ColumnName="IDDocGia" />
@@ -41,7 +41,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUMUONs">
+    <EntitySetMapping Name="PHIEUMUON">
       <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUMUON">
         <MappingFragment StoreEntitySet="PHIEUMUON">
           <ScalarProperty Name="MaPhMuon" ColumnName="MaPhMuon" />
@@ -53,7 +53,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUTHUs">
+    <EntitySetMapping Name="PHIEUTHU">
       <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUTHU">
         <MappingFragment StoreEntitySet="PHIEUTHU">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -64,7 +64,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUTRAs">
+    <EntitySetMapping Name="PHIEUTRA">
       <EntityTypeMapping TypeName="QLTV_BETAModel.PHIEUTRA">
         <MappingFragment StoreEntitySet="PHIEUTRA">
           <ScalarProperty Name="MaPhTra" ColumnName="MaPhTra" />
@@ -74,7 +74,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SACHes">
+    <EntitySetMapping Name="SACH">
       <EntityTypeMapping TypeName="QLTV_BETAModel.SACH">
         <MappingFragment StoreEntitySet="SACH">
           <ScalarProperty Name="MaSach" ColumnName="MaSach" />
@@ -90,7 +90,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SETTINGs">
+    <EntitySetMapping Name="SETTING">
       <EntityTypeMapping TypeName="QLTV_BETAModel.SETTING">
         <MappingFragment StoreEntitySet="SETTING">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -107,7 +107,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="THELOAIs">
+    <EntitySetMapping Name="THELOAI">
       <EntityTypeMapping TypeName="QLTV_BETAModel.THELOAI">
         <MappingFragment StoreEntitySet="THELOAI">
           <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
@@ -115,7 +115,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="THUTHUs">
+    <EntitySetMapping Name="THUTHU">
       <EntityTypeMapping TypeName="QLTV_BETAModel.THUTHU">
         <MappingFragment StoreEntitySet="THUTHU">
           <ScalarProperty Name="MaTT" ColumnName="MaTT" />

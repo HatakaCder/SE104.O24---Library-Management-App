@@ -19,14 +19,14 @@ namespace QuanLyThuVien.Services
         public int getCount()
         {
             int n = 0;
-            n = Objcontext.DOCGIAs.Count();
+            n = Objcontext.DOCGIA.Count();
             return n;
         }
 
         public int getCountBook()
         {
             int n = 0;
-            n = Objcontext.SACHes.Count();
+            n = Objcontext.SACH.Count();
             return n;
         }
 
@@ -39,7 +39,7 @@ namespace QuanLyThuVien.Services
             try
             {
                 // Lấy số lượng sách mượn quá hạn
-                count = Objcontext.PHIEUMUONs
+                count = Objcontext.PHIEUMUON
                                          .Where(pm => pm.NgayPhTra < ngayHomNay && pm.IsDeleted == false)
                                          .Count();
             }
@@ -56,8 +56,8 @@ namespace QuanLyThuVien.Services
             int count = 0;
             try
             {
-                var query = from phieumuon in Objcontext.PHIEUMUONs
-                            join phieutra in Objcontext.PHIEUTRAs
+                var query = from phieumuon in Objcontext.PHIEUMUON
+                            join phieutra in Objcontext.PHIEUTRA
                                 on phieumuon.MaPhMuon equals phieutra.MaPhMuon into gj
                             from subPhieuTra in gj.DefaultIfEmpty()
                             where subPhieuTra == null
@@ -82,8 +82,8 @@ namespace QuanLyThuVien.Services
             try
             {
                 // Lấy số lượng sách mượn quá hạn chưa được trả
-                count = Objcontext.PHIEUMUONs
-                                 .Where(pm => pm.NgayPhTra < ngayHomNay && pm.PHIEUTRAs.Any(pt => pt.NgayTra < ngayHomNay))
+                count = Objcontext.PHIEUMUON
+                                 .Where(pm => pm.NgayPhTra < ngayHomNay && pm.PHIEUTRA.Any(pt => pt.NgayTra < ngayHomNay))
                                  .Count();
             }
             catch (Exception ex)

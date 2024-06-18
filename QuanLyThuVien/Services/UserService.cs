@@ -41,7 +41,7 @@ namespace QuanLyThuVien.Services
                     ObjDG.DiaChi = objNewDG.DiaChi;
                 }
 
-                ObjContext.DOCGIAs.Add(ObjDG);
+                ObjContext.DOCGIA.Add(ObjDG);
                 ObjParameter.IDDocGia += 1;
                 ObjContext.SaveChanges();
 
@@ -51,7 +51,7 @@ namespace QuanLyThuVien.Services
                 ObjUser.MatKhau = Convert_pw.HashPassword(objNewUser.MatKhau);
                 ObjUser.IsDeleted = false;
 
-                ObjContext.ACCOUNTs.Add(ObjUser); // thêm User mới vào bảng ACCOUNT
+                ObjContext.ACCOUNT.Add(ObjUser); // thêm User mới vào bảng ACCOUNT
 
                 // lưu thay đổi và kiểm tra dữ liệu đã được thêm chưa
                 var NoOfRowsAffected = ObjContext.SaveChanges();
@@ -69,7 +69,7 @@ namespace QuanLyThuVien.Services
             bool IsSignIn = false;
             try
             {
-                var ObjUser = ObjContext.ACCOUNTs.Where(a => a.IsDeleted == false && a.TaiKhoan == objCurrentUser.TaiKhoan).FirstOrDefault();
+                var ObjUser = ObjContext.ACCOUNT.Where(a => a.IsDeleted == false && a.TaiKhoan == objCurrentUser.TaiKhoan).FirstOrDefault();
 
                 if (ObjUser != null)
                 {
@@ -98,12 +98,12 @@ namespace QuanLyThuVien.Services
         }
         public bool IsEmailExisted(DocGiaDTO objCurrentDG)
         {
-            bool exists = ObjContext.DOCGIAs.Any(x => x.Email == objCurrentDG.Email);
+            bool exists = ObjContext.DOCGIA.Any(x => x.Email == objCurrentDG.Email);
             return exists;
         }
         public int getVaiTro(string taikhoan)
         {
-            var ObjUser = ObjContext.ACCOUNTs.Where(a => a.IsDeleted == false && a.TaiKhoan == taikhoan).FirstOrDefault();
+            var ObjUser = ObjContext.ACCOUNT.Where(a => a.IsDeleted == false && a.TaiKhoan == taikhoan).FirstOrDefault();
             return ObjUser.VaiTro;
         }
     }
