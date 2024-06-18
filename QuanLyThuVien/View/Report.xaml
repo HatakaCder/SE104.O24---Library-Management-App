@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:QuanLyThuVien.ViewModel"
+             xmlns:vw="clr-namespace:QuanLyThuVien.View"
              mc:Ignorable="d" 
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -22,7 +23,6 @@
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="400"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
@@ -31,10 +31,11 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <ComboBox
+                        <ComboBox Name="cbTypeReport"
                               Margin="2"
                               Width="200"
                               materialDesign:HintAssist.Hint="Loại báo cáo"
@@ -45,7 +46,7 @@
                     </Grid>
 
                     <Grid Grid.Column="1">
-                        <DatePicker 
+                        <DatePicker Name="dpDate"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                           Margin="0 5 0 5"
@@ -55,18 +56,27 @@
                     </Grid>
 
                     <Grid Grid.Column="2">
-                        <ComboBox                           
+                        <ComboBox Name="cbTypeTime"            
                                Margin="2"
                                Width="200"
                                materialDesign:HintAssist.Hint="Theo thời gian"
-                               Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                               Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="ComboBox_SelectionChanged">
                             <ComboBoxItem Content="Ngày" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Tháng" Style="{StaticResource theComboBoxItem}"/>
                             <ComboBoxItem Content="Năm" Style="{StaticResource theComboBoxItem}"/>
                         </ComboBox>
                     </Grid>
-                    
-                    
+                    <Grid Grid.Column="3">
+                        <Button
+Style="{StaticResource MaterialDesignToolButton}" Margin="0,34,30,34" Click="Button_Click">
+                            <materialDesign:PackIcon
+  Margin="8,0,0,0"
+  Kind="Send"
+  Opacity=".56" />
+                        </Button>
+                    </Grid>
+
+
                 </Grid>
                 
                 <Grid Grid.Row="0">
@@ -124,6 +134,7 @@ ToolTip="Đăng xuất">
                 </Grid>
                 <Grid Grid.Row="2">
                     <TextBlock 
+                        Name="txtHeader"
                         Margin="15"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
@@ -131,97 +142,7 @@ ToolTip="Đăng xuất">
                         Text="Tên loại báo cáo + ngày/tháng/năm X" />
                 </Grid>
                 <Grid Grid.Row="3">
-
-                    <DataGrid BorderBrush="Gray" BorderThickness="0.5"   
-          AutoGenerateColumns="False"
-          RowStyle="{StaticResource DataGridRowStyle}" 
-          Background="White"
-          ScrollViewer.CanContentScroll="True" 
-          ScrollViewer.VerticalScrollBarVisibility="Auto" 
-          ScrollViewer.HorizontalScrollBarVisibility="Auto"
-          CanUserAddRows="False"
-          CanUserDeleteRows="False"
-          CanUserReorderColumns="False"   
-          HorizontalScrollBarVisibility="Disabled"
-          HeadersVisibility="Column"
-          Margin="15"
-          ItemsSource="{Binding Items}"
-          >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.5*" IsReadOnly="True">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="{Binding ColumnsName[0]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="{Binding ColumnsName[1]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn Width="*" Binding="{Binding}" IsReadOnly="True">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="{Binding ColumnsName[2]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-
-                            <DataGridTextColumn Width="*" Binding="{Binding SISO}" IsReadOnly="True">
-                                <DataGridTextColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="{Binding ColumnsName[3]}" FontFamily="Paytone One" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTextColumn.HeaderTemplate>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column ="0">
-                        <TextBlock 
-                        Margin="15"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                        Text="Tổng số lượt mượn: " />
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <TextBlock HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                                    Text="0" />
-                    </Grid>
-                    <Grid Grid.Column="2">
-                        <Button
-                            Background="#FADBD8"
-                            HorizontalAlignment="Right"
-                            Content="Xuất Excel"
-                            Margin="15"
-                            Width="150"
-                            Height="65"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                            ToolTip="Xuất file Excel" />
-                    </Grid>
+                    <ContentControl x:Name="contentControl"/>
                 </Grid>
             </Grid>
         </Border>

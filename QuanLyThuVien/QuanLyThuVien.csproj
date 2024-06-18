@@ -223,8 +223,8 @@
     <Compile Include="Model\PHIEUTRA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Report1DTO.cs" />
     <Compile Include="Model\ReportDTO.cs" />
-    <Compile Include="Model\Report_1.cs" />
     <Compile Include="Model\Report_2.cs" />
     <Compile Include="Model\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -244,6 +244,7 @@
     <Compile Include="Model\UserDTO.cs" />
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
+    <Compile Include="Services\Report1Service.cs" />
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
@@ -261,6 +262,7 @@
     <Compile Include="ViewModel\NavigationVM.cs" />
     <Compile Include="ViewModel\ReaderUCVM.cs" />
     <Compile Include="ViewModel\Report.cs" />
+    <Compile Include="ViewModel\Report1VM.cs" />
     <Compile Include="ViewModel\ReportVM.cs" />
     <Compile Include="ViewModel\ResetPasswordVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
@@ -306,6 +308,12 @@
     </Compile>
     <Compile Include="View\Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report1.xaml.cs">
+      <DependentUpon>Report1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report2.xaml.cs">
+      <DependentUpon>Report2.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ResetPassword.xaml.cs">
       <DependentUpon>ResetPassword.xaml</DependentUpon>
@@ -430,6 +438,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
