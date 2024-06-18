@@ -51,8 +51,9 @@ namespace QuanLyThuVien.View
             }
             else if (typeReport == "Báo cáo thống kê sách trả trễ")
             {
-                contentControl.Content = new Report2();
+                contentControl.Content = new Report2(selectedDate, typeTime);
             }
+            txtHeader.Text = typeReport + " " + typeTime.ToLower() + " " + selectedDate.ToString(dateFormat);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

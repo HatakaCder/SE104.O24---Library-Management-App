@@ -229,6 +229,7 @@
     <Compile Include="Model\PhieuTraDTO.cs" />
     <Compile Include="Model\READER.cs" />
     <Compile Include="Model\Report1DTO.cs" />
+    <Compile Include="Model\Report2DTO.cs" />
     <Compile Include="Model\ReportDTO.cs" />
     <Compile Include="Model\Report_2.cs" />
     <Compile Include="Model\SACH.cs">
@@ -252,6 +253,7 @@
     <Compile Include="Services\ForgotPasswordService.cs" />
     <Compile Include="Services\LibrarianService.cs" />
     <Compile Include="Services\Report1Service.cs" />
+    <Compile Include="Services\Report2Service.cs" />
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="SignUpWindow.xaml.cs">
@@ -270,6 +272,7 @@
     <Compile Include="ViewModel\ReaderUCVM.cs" />
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\Report1VM.cs" />
+    <Compile Include="ViewModel\Report2VM.cs" />
     <Compile Include="ViewModel\ReportVM.cs" />
     <Compile Include="ViewModel\ResetPasswordVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
