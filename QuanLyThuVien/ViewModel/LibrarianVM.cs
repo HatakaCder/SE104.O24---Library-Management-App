@@ -31,6 +31,8 @@ namespace QuanLyThuVien.ViewModel
         private string selectedOption = "";
         private string task = "add";
         private string oldpw = "";
+        private AddLibrarian addW;
+        private UpdateLibrarian updateW;
         PasswordHashing passwordHashing;
         public LibrarianVM()
         {
@@ -124,8 +126,8 @@ namespace QuanLyThuVien.ViewModel
             CurrentLibrarian = new LibrarianDTO();
             CurrentLibrarian.GioiTinh = selectedOption;
             CurrentLibrarian.NgaySinh = DateTime.Now;
-            AddLibrarian v = new AddLibrarian(this);
-            v.Show();
+            addW = new AddLibrarian(this);
+            addW.Show();
         }
         public void Add()
         {
@@ -136,6 +138,7 @@ namespace QuanLyThuVien.ViewModel
                 {
                     MessageBox.Show("Thêm thủ thư thành công!");
                     LoadData();
+                    addW.Close();
                 }
             }
             catch (Exception ex)
@@ -190,8 +193,8 @@ namespace QuanLyThuVien.ViewModel
                 CurrentUser.TaiKhoan = CurrentAcc.TaiKhoan;
                 CurrentUser.MatKhau = CurrentAcc.MatKhau;
                 oldpw = CurrentAcc.MatKhau;
-                var updateWindow = new UpdateLibrarian(this);
-                updateWindow.Show();
+                updateW = new UpdateLibrarian(this);
+                updateW.Show();
             }
             catch (Exception ex)
             {
@@ -210,6 +213,7 @@ namespace QuanLyThuVien.ViewModel
                 {
                     MessageBox.Show("Chỉnh sửa thủ thư thành công!");
                     LoadData();
+                    updateW.Close();
                 }
             }
             catch (Exception ex)

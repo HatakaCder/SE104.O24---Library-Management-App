@@ -309,8 +309,11 @@ namespace QuanLyThuVien.View
         //Chức năng sửa mật khẩu
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var data = matkhaucu.Password.Trim();
-            MessageBox.Show($"Data: " + data);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

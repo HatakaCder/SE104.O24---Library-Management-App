@@ -20,6 +20,8 @@ namespace QuanLyThuVien.Services
         List<LibrarianDTO> ObjLibrariansList;
         PasswordHashing Convert_pw;
         string datePattern = @"^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/(\d{4})$";
+        string passwordPattern = @"^(?=.*[A-Z])(?=.*[\W_]).{8,}$";
+        string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
         int minT, maxT;
         public LibrarianService()
         {
@@ -76,6 +78,13 @@ namespace QuanLyThuVien.Services
                 {
                     MessageBox.Show("Email không được để trống!");
                     return IsAdded;
+                } else
+                {
+                    if (!Regex.IsMatch(objNewLibrarian.Email, emailPattern))
+                    {
+                        MessageBox.Show("Email không hợp lệ!");
+                        return IsAdded;
+                    }
                 }
 
                 if (string.IsNullOrWhiteSpace(objNewLibrarian.SoDT))
@@ -116,6 +125,10 @@ namespace QuanLyThuVien.Services
                 else if (ObjContext.ACCOUNTs.FirstOrDefault(l => l.TaiKhoan == objNewUser.TaiKhoan) != null)
                 {
                     MessageBox.Show("Tài khoản này đã tồn tại!");
+                    return IsAdded;
+                } else if (!Regex.IsMatch(objNewUser.MatKhau, passwordPattern))
+                {
+                    MessageBox.Show("Mật khẩu không hợp lệ!");
                     return IsAdded;
                 }
 
@@ -197,16 +210,20 @@ namespace QuanLyThuVien.Services
                     return IsUpdated;
                 }
                 int age = DateTime.Now.Year - obj_l.NgaySinh.Year;
+                if (changePw)
+                {
+                    if (Regex.IsMatch(obj_u.MatKhau, passwordPattern))
+                    {
+                        MessageBox.Show("Mật khẩu không hợp lệ!");
+                        return IsUpdated;
+                    }
+                }
                 if (age < minT || age > maxT)
                 {
                     MessageBox.Show("Độ tuổi không hợp lệ theo quy định!");
                     return IsUpdated;
                 }
-                else if (ObjLibrariansList.FirstOrDefault(l => l.Email == obj_l.Email) != null)
-                {
-                    MessageBox.Show("Email này đã tồn tại!");
-                    return IsUpdated;
-                }
+
 
                 var ObjLibrarian = ObjContext.THUTHUs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
                 var ObjUser = ObjContext.ACCOUNTs.FirstOrDefault(l => l.MaTT == obj_l.MaTT);
