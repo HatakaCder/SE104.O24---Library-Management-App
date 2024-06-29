@@ -17,9 +17,9 @@
 
 <h3>Supervisors</h3>
 
-TS. Đỗ Thị Thanh Tuyền
+KS. Đặng Việt Dũng
 
-Email: tuyendtt@uit.edu.vn
+Email: dungdv@uit.edu.vn
 
 <h3>Video demo</h3>
 
