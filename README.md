@@ -46,6 +46,6 @@ This is [Code of Conduct](https://github.com/HatakaCder/SE104.O24---Library-Mana
 
 <h3>License</h3>
 
-Copyright © 2023 [HakataCder, luongdaiphat]()
+Copyright © 2024 [HakataCder, luongdaiphat]()
 
 This project is [MIT](https://github.com/HatakaCder/SE104.O24---Library-Management-App/blob/main/LICENSE) licensed
