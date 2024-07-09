@@ -23,7 +23,7 @@ Email: dungdv@uit.edu.vn
 
 <h3>Video demo</h3>
 
-This is video demo [Uploading...].
+[![Watch the video](https://img.youtube.com/vi/BX6MSPhZAfA/maxresdefault.jpg)](https://youtu.be/BX6MSPhZAfA)
 
 <h3>Description</h3>
 
